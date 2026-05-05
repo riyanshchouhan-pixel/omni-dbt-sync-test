@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: test_field_pilot
+    description: |
+      Riyansh's pilot model for testing dbt-to-Omni metadata sync.
+      Safe to delete after the experiment is done.
+
+    columns:
+      - name: combined_entity_id
+        description: "CE identifier. Test description from glossary pilot."
+        meta:
+          label: "CE ID [TEST]"
+          group_label: "Identifiers"
+          ai_context: |
+            Combined Entity ID. Test marker added by Riyansh.
+
+      - name: sum_revenue_predicted
+        description: "Predicted revenue in USD. Test from pilot."
+        meta:
+          label: "Revenue (Predicted) [TEST]"
+          group_label: "Revenue & Bookings"
+          format: bigcurrency
+          aggregate_type: sum
+          ai_context: |
+            Default revenue metric — test marker for Omni sync verification.
+
+      - name: sum_insider_commission
+        description: "Commission revenue. Test from pilot."
+        meta:
+          label: "Insider Commission [TEST]"
+          group_label: "Commissions"
+          format: usdcurrency
+          aggregate_type: sum
