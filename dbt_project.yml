@@ -1,0 +1,11 @@
+name: 'omni_pilot'
+version: '1.0.0'
+config-version: 2
+profile: 'default'
+model-paths: ["models"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  omni_pilot:
+    +materialized: view
