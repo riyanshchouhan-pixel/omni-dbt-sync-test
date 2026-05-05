@@ -1,0 +1,12 @@
+schema,table,check_type,column,truth_value,replica_value,diff,status
+tourlandish,airport,error,,,,,"error: 404 Not found: Table segment-data:tourlandish_prodreplica.airport was not found in location EU; reason: notFound, message: Not found: Table segment-data:tourlandish_prodreplica.airport was not found in location EU
+
+Location: EU
+Job ID: d598891a-8ebd-45cd-beb1-4bc1bcad5fd0
+"
+tourlandish,category_content,count,id,238.0,238.0,0.0,match
+tourlandish,country_language,error,,,,,"error: 404 Not found: Table segment-data:tourlandish_prodreplica.country_language was not found in location EU; reason: notFound, message: Not found: Table segment-data:tourlandish_prodreplica.country_language was not found in location EU
+
+Location: EU
+Job ID: 17cc291f-1997-452e-b07b-d761b4f3a575
+"
