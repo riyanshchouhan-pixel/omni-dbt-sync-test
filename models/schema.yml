@@ -1,29 +1,19 @@
 version: 2
 
-sources:
-  - name: dbt_audit_reporting
-    database: segment-data
-    schema: dbt_audit_reporting
-    tables:
-      - name: combined_entity_stats
-        description: "Test metadata pilot — Riyansh"
-        columns:
-          - name: combined_entity_id
-            description: "CE identifier — test pilot"
-            meta:
-              label: "CE ID [TEST]"
-              ai_context: "Test marker — Riyansh's pilot"
-
-          - name: sum_revenue_predicted
-            description: "Predicted revenue — test pilot"
-            meta:
-              label: "Revenue (Predicted) [TEST]"
-              format: bigcurrency
-              ai_context: "Default revenue metric — test marker"
-
-          - name: sum_insider_commission
-            description: "Insider commission — test pilot"
-            meta:
-              label: "Insider Commission [TEST]"
-              format: usdcurrency
-              ai_context: "Commission revenue — test marker"
+   sources:
+     - name: dbt_audit_reporting
+       database: segment-data
+       schema: dbt_audit_reporting
+       tables:
+         - name: combined_entity_stats
+           description: "Test metadata pilot — Riyansh"
+           columns:
+             - name: combined_entity_id
+               meta:
+                 label: "CE ID [TEST]"
+                 ai_context: "Test marker — Riyansh's pilot"
+             - name: sum_revenue_predicted
+               meta:
+                 label: "Revenue (Predicted) [TEST]"
+                 format: bigcurrency
+                 ai_context: "Default revenue metric — test marker"
