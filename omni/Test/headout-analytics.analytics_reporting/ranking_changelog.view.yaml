@@ -1,0 +1,36 @@
+# Reference this view as headout_analytics_analytics_reporting__ranking_changelog
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: ranking_changelog
+
+dimensions:
+  entity_id:
+    format: ID
+    description: ID of the entity whose ranking is changed.
+
+  entity_type:
+    description: Type of the entity (collection, tour etc) whose ranking is changed.
+
+  event_name:
+    description: Name of the ranking change event.
+
+  change_event_at:
+    description: Timestamp of the ranking change event.
+
+  owner:
+    description: EMail of the person who changed the ranking.
+
+  rank:
+    description: Rank which was changed.
+
+  value_before:
+    description: Entity value on the given rank before change.
+
+  value_after:
+    description: Entity value on the given rank after change.
+
+measures:
+  count:
+    aggregate_type: count

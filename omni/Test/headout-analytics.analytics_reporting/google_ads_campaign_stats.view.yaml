@@ -1,0 +1,222 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_campaign_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_campaign_stats
+
+dimensions:
+  campaign_target_combined_entity_type: {}
+  campaign_target_combined_entity_category: {}
+  campaign_target_combined_entity_subcategory: {}
+  campaign_target_evolution_bucket: {}
+  campaign_target_management_type: {}
+  is_campaign_target_existing: {}
+  campaign_target_headout_status: {}
+  campaign_target_bucket_2025: {}
+  campaign_target_roi_target: {}
+  campaign_target_ce_label: {}
+
+  surrogate_key:
+    description: Surrogate primary key created for this table using customer_id,
+      campaign_id, and report_date
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign
+
+  report_date:
+    description: Date of the performance report
+
+  account_name:
+    description: Name of the Google Ads account
+
+  campaign_name:
+    description: Current name of the campaign
+
+  campaign_category:
+    description: Category extracted from the campaign name (current value)
+
+  campaign_target_combined_entity_id:
+    format: ID
+    description: Combined entity ID that the campaign is targeting (current value)
+
+  campaign_target_combined_entity_name:
+    description: Name of the combined entity that the campaign is targeting
+
+  campaign_city:
+    description: City extracted from the campaign name (current value)
+
+  campaign_country:
+    description: Country for the campaign city
+
+  campaign_region:
+    description: Region for the campaign city
+
+  campaign_target_business_market:
+    description: Business market of the targeted combined entity
+
+  campaign_target_business_region:
+    description: Business region of the targeted combined entity
+
+  campaign_language:
+    description: Language extracted from the campaign name (current value)
+
+  campaign_targeting_location:
+    description: Targeting location extracted from the campaign name (current value)
+
+  campaign_start_date:
+    description: Date when the campaign first started reporting data
+
+  combined_entity_campaigns_start_date:
+    description: Date when campaigns for this combined entity first started
+
+  current_campaign_budget:
+    description: Current campaign budget (latest value)
+
+  current_campaign_budget_period:
+    description: Current campaign budget period (DAILY)
+
+  current_campaign_target_roas:
+    description: Current target return on ad spend percentage
+
+  current_campaign_bidding_strategy:
+    description: Current bidding strategy for the campaign
+
+  current_bidding_strategy_name:
+    description: Name of the current bidding strategy
+
+  current_campaign_status:
+    description: Current campaign status (ENABLED, PAUSED, REMOVED)
+
+  current_campaign_labels:
+    description: Current campaign labels as a string
+
+  current_campaign_target_cpa:
+    description: Current target cost per acquisition (only set if all ad groups have
+      the same target CPA)
+
+  campaign_budget:
+    description: Historical campaign budget for the specific report date
+
+  campaign_budget_period:
+    description: Historical campaign budget period for the specific report date
+
+  campaign_bidding_strategy:
+    description: Historical bidding strategy for the specific report date
+
+  bidding_strategy_name:
+    description: Name of the bidding strategy for the specific report date
+
+  campaign_target_roas:
+    description: Historical target return on ad spend percentage for the specific
+      report date
+
+  campaign_labels:
+    description: Campaign labels for the specific report date as a string
+
+  campaign_advertising_channel_type:
+    description: Advertising channel type (SEARCH, DISPLAY, etc.)
+
+  campaign_advertising_channel_sub_type:
+    description: Sub-type of the advertising channel
+
+  campaign_status:
+    description: Historical campaign status for the specific report date
+
+  campaign_serving_status:
+    description: Serving status of the campaign
+
+  campaign_target_cpa:
+    description: Historical target cost per acquisition for the specific report date
+      (only set if all ad groups have the same target CPA)
+
+  count_impressions:
+    description: Number of impressions (defaults to 0 if no data)
+
+  count_clicks:
+    description: Number of clicks (defaults to 0 if no data)
+
+  sum_spend:
+    description: Total spend in USD (defaults to 0 if no data)
+
+  count_conversions_online:
+    description: Number of online conversions tracked via Tag Manager, iOS
+      Purchases, and Android Purchases
+
+  sum_conversion_value_online:
+    description: Total value of online conversions in USD
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline conversions for gross bookings (conversion action
+      7094928711)
+
+  sum_conversion_value_offline_gross_bookings:
+    description: Total value of offline gross bookings conversions in USD
+
+  count_conversions_offline_revenue:
+    description: Number of offline conversions for revenue (conversion action 7094930064)
+
+  sum_conversion_value_offline_revenue:
+    description: Total value of offline revenue conversions in USD
+
+  count_conversions_offline_contribution_margin:
+    description: Number of offline conversions for contribution margin (conversion
+      actions 7315878951 Transactions_ECL_CM1 and 7249315145
+      Transactions_ECL_CM1_App)
+
+  sum_conversion_value_offline_contribution_margin:
+    description: Total value of offline contribution margin conversions in USD
+
+  search_impression_share:
+    description: Percentage of impressions received out of total eligible
+      impressions on the search network
+
+  count_eligible_searches:
+    description: Estimated total number of eligible searches (impressions /
+      search_impression_share, with 4.5% default for NULL values)
+
+  count_rank_lost_searches:
+    description: Estimated number of searches lost due to poor ad rank
+
+  count_budget_lost_searches:
+    description: Estimated number of searches lost due to budget constraints
+
+  count_attributed_orders:
+    description: Number of orders attributed to this campaign (last-touch
+      attribution, excluding assisted orders)
+
+  count_attributed_assisted_orders:
+    description: Total number of orders where this campaign was in the customer
+      journey (including assisted orders)
+
+  sum_attributed_value:
+    description: Total order value in USD attributed to this campaign
+
+  sum_attributed_value_completed:
+    description: Total completed order value in USD for attributed orders (only
+      includes orders with status Completed, Pending, or Partially Completed)
+
+  sum_conversion_value_calculated_revenue:
+    description: Calculated revenue by multiplying sum_conversion_value_online with
+      the campaign's historical revenue percentage (actual revenue as % of order
+      value after cancellations/changes)
+
+  sum_conversion_value_calculated_contribution_margin:
+    description: Calculated contribution margin by multiplying
+      sum_conversion_value_online with the campaign's historical contribution
+      margin percentage (revenue minus direct costs as % of order value)
+
+  sum_coupon_and_wallet_credits:
+    description: Calculated discount impact by multiplying
+      sum_conversion_value_online with the campaign's historical coupon and
+      wallet usage percentage (excludes affiliate and creator coupons, excludes
+      fraudulent period May 9 - Aug 1, 2024)
+
+measures:
+  count:
+    aggregate_type: count

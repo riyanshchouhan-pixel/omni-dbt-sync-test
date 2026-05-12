@@ -1,0 +1,42 @@
+# Reference this view as headout_analytics_analytics_reporting__page_url_combined_entity_mapping
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: page_url_combined_entity_mapping
+
+dimensions:
+  page_url:
+    description: Normalized URL of the page.
+
+  payload_documents_combined_entity_id:
+    format: ID
+    description: Combined entity ID for the page from payload documents mapping.
+
+  url_slugs_collections_combined_entity_id:
+    format: ID
+    description: Combined entity ID for the page from url slugs collections.
+
+  url_slugs_experiences_combined_entity_id:
+    format: ID
+    description: Combined entity ID for the page from url slugs experiences.
+
+  orders_combined_entity_id:
+    format: ID
+    description: Combined entity ID for the page from orders landing page mapping.
+
+  manual_combined_entity_id:
+    format: ID
+    description: Combined entity ID for the page from sheetload manual mapping.
+
+  combined_entity_id:
+    format: ID
+    description: Final selected Combined entity ID for the page through the mapping
+      process. as per the priority order.
+
+  mapping_source:
+    description: Name of the source that provided the final combined entity ID.
+
+measures:
+  count:
+    aggregate_type: count

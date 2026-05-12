@@ -1,0 +1,145 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_ad_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_ad_stats
+
+dimensions:
+  final_url: {}
+  display_url: {}
+  rsa_path1: {}
+  rsa_path2: {}
+  eta_headline1: {}
+  eta_headline2: {}
+  eta_headline3: {}
+  eta_description1: {}
+  eta_description2: {}
+  eta_path1: {}
+  eta_path2: {}
+  dsa_description: {}
+  dsa_description2: {}
+  campaign_category: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  campaign_target_combined_entity_name: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_target_business_market: {}
+  campaign_target_business_region: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  ad_group_status: {}
+  count_conversions: {}
+  sum_conversions_value: {}
+  count_interactions: {}
+  count_view_through_conversions: {}
+  sum_conversion_value_online: {}
+  sum_conversion_value_offline_gross_bookings: {}
+  sum_conversion_value_offline_revenue: {}
+  count_conversions_offline_contribution_margin: {}
+  sum_conversion_value_offline_contribution_margin: {}
+
+  surrogate_key:
+    description: Surrogate primary key from the ad stats staging model.
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID.
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign.
+
+  ad_group_id:
+    format: ID
+    description: Unique identifier for the ad group.
+
+  ad_id:
+    format: ID
+    description: Unique identifier for the ad creative.
+
+  report_date:
+    description: Date of the performance report.
+
+  device:
+    description: "Device type: MOBILE, DESKTOP, TABLET, CONNECTED_TV."
+
+  ad_network_type:
+    description: "Ad network: SEARCH, SEARCH_PARTNERS, CONTENT, YOUTUBE, MIXED."
+
+  account_name:
+    description: Name of the Google Ads account.
+
+  ad_type:
+    description: "Ad format type: RESPONSIVE_SEARCH_AD, EXPANDED_TEXT_AD,
+      EXPANDED_DYNAMIC_SEARCH_AD, TRAVEL_AD, etc."
+
+  ad_strength:
+    description: "Google's ad strength rating: EXCELLENT, GOOD, AVERAGE, POOR, PENDING."
+
+  ad_status:
+    description: "Ad status: ENABLED, PAUSED, or REMOVED."
+
+  approval_status:
+    description: Google Ads policy approval status for the ad.
+
+  rsa_headlines:
+    description: JSON array of RSA headline assets with text and assetPerformanceLabel.
+
+  rsa_headlines_performance_label:
+    sql: performance_label
+    nested_on_field: rsa_headlines
+    parent_field: rsa_headlines
+
+  rsa_headlines_text:
+    sql: text
+    nested_on_field: rsa_headlines
+    parent_field: rsa_headlines
+
+  rsa_descriptions:
+    description: JSON array of RSA description assets with text and assetPerformanceLabel.
+
+  rsa_descriptions_performance_label:
+    sql: performance_label
+    nested_on_field: rsa_descriptions
+    parent_field: rsa_descriptions
+
+  rsa_descriptions_text:
+    sql: text
+    nested_on_field: rsa_descriptions
+    parent_field: rsa_descriptions
+
+  campaign_name:
+    description: Current name of the campaign.
+
+  campaign_city:
+    description: City extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  ad_group_name:
+    description: Name of the ad group.
+
+  count_impressions:
+    description: Number of ad impressions.
+
+  count_clicks:
+    description: Number of ad clicks.
+
+  sum_spend:
+    description: Total spend in USD.
+
+  count_conversions_online:
+    description: Number of online conversions. Defaults to 0.
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline gross bookings conversions. Defaults to 0.
+
+  count_conversions_offline_revenue:
+    description: Number of offline revenue conversions. Defaults to 0.
+
+measures:
+  count:
+    aggregate_type: count

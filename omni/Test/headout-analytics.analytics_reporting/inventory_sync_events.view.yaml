@@ -1,0 +1,50 @@
+# Reference this view as headout_analytics_analytics_reporting__inventory_sync_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: inventory_sync_events
+
+dimensions:
+  inventory_period_start_offset_days: {}
+  inventory_period_end_offset_days: {}
+
+  surrogate_key:
+    description: surrogate primary key built by combining TID, VID, API pplugin,
+      Event hour, and Inventory period.
+
+  tour_id:
+    format: ID
+    description: tour id of the tour for which inventory cron runs
+
+  vendor_id:
+    format: ID
+    description: id of the vendor inventory cron is associated with
+
+  api_plugin:
+    description: rms or api plugin of the vendor of that inventory cron
+
+  event_hour:
+    description: event timestamp truncated to aggregate the data at an hour level
+
+  inventory_period:
+    description: period for which the cron updates the inventroy
+
+  count_cron_runs:
+    description: count total cron runs in the event hour
+
+  count_successful_cron_runs:
+    description: count total successful cron runs in the event hour
+
+  count_failed_cron_runs:
+    description: count total failed cron runs in the event hour
+
+  count_open_slots:
+    description: count open slots by the end of the event hour
+
+  count_closed_slots:
+    description: count closed slots by the end of the event hour
+
+measures:
+  count:
+    aggregate_type: count

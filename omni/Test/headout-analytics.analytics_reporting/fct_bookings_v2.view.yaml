@@ -1,0 +1,445 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_bookings_v2
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_bookings_v2
+
+dimensions:
+  user_fields: {}
+  promo_discount: {}
+  affiliate_partner_name: {}
+  affiliate_metadata_campaign: {}
+  affiliate_metadata_content: {}
+  affiliate_metadata_term: {}
+  amount_affiliate_commission_usd: {}
+  is_amended_booking: {}
+  final_net_price_usd: {}
+  cancelled_at: {}
+  cancellation_type: {}
+  cancellation_reason: {}
+  cancellation_comment: {}
+  is_force_cancelled: {}
+  force_cancellation_reason: {}
+  has_skipped_policy_check: {}
+  completion_type: {}
+
+  booking_id:
+    format: ID
+    description: unique id for each booking on headout
+
+  created_at:
+    description: timestamp (utc) at which the booking was created
+
+  order_id:
+    format: ID
+    description: unique identifier for each order on headout (itinerary id)
+
+  component_id:
+    format: ID
+    description: unique identifier for each component
+
+  country:
+    description: name of the destination country
+
+  region:
+    description: Market Region of the experience for which booking has been made.
+
+  city:
+    description: name of the destination city
+
+  timezone:
+    description: Timezone of the city in which the booked experience is located.
+
+  category_id:
+    format: ID
+    description: Collection ID of the experience.
+
+  category_name:
+    description: Collection name of the experience.
+
+  sub_category_id:
+    format: ID
+    description: Sub Category ID of the experience.
+
+  sub_category_name:
+    description: Sub Category Name of the experience.
+
+  primary_category_id:
+    format: ID
+    description: Primary Category ID of the experience.
+
+  primary_category_name:
+    description: Primary Category Name of the experience.
+
+  combined_entity_id:
+    format: ID
+    description: CE ID of the experience.
+
+  combined_entity_name:
+    description: CE Name of the experience.
+
+  variant_id:
+    format: ID
+    description: Variant ID of the experience.
+
+  variant_name:
+    description: Variant Name of the experience.
+
+  tour_id:
+    format: ID
+    description: Tour ID of the experience.
+
+  tour_name:
+    description: Tour Name of the experience.
+
+  experience_date:
+    description: Date for which the experience has been booked.
+
+  experience_time:
+    description: Time for which the experience has been booked.
+
+  is_seatmap:
+    description: Boolean to identify the live entertainment experience.
+
+  vendor_id:
+    format: ID
+
+  primary_guest_name:
+    description: Primary Guest for which booking has been made.
+
+  primary_guest_email:
+    description: EMail of the Primary Guest for which booking has been made.
+
+  primary_guest_number:
+    description: Phone number of the Primary Guest for which booking has been made.
+
+  user_fields_field_name:
+    sql: field_name
+    nested_on_field: user_fields
+    parent_field: user_fields
+
+  user_fields_field_value:
+    sql: field_value
+    description: Booking user fields for the booking.
+    nested_on_field: user_fields
+    parent_field: user_fields
+
+  user_fields_guest_number:
+    sql: guest_number
+    nested_on_field: user_fields
+    parent_field: user_fields
+
+  phone_country:
+    description: Country in which the primary guest phone number is registered.
+
+  phone_carrier:
+    description: Phone Carrier with which the primary guest phone number is registered.
+
+  price:
+    description: Original Selling Price of the experience.
+
+  price_payable:
+    description: Payable Price of the experience, with all applicable discounts.
+
+  price_payable_usd:
+    description: Payable Price of the experience, with all applicable discounts in USD.
+
+  price_retail:
+    description: Original Retail Price of the experience.
+
+  margin:
+    description: Margin made by Headout on this particular booking.
+
+  processing_currency:
+    description: Processing currency of the booking.
+
+  affiliate_code:
+    description: Affiliate code with which the booking has been created.
+
+  extra_charges:
+    description: Extra charges applicable on the booking.
+
+  extra_charges_charge_type:
+    sql: charge_type
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  extra_charges_extra_charge_amount:
+    sql: extra_charge_amount
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  extra_charges_extra_charge_amount_usd:
+    sql: extra_charge_amount_usd
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  amount_cashback:
+    description: Cashback amount received on the booking by the customer.
+
+  language:
+    description: Language name of the booking.
+
+  language_code:
+    description: Language code of the booking.
+
+  booking_type:
+    description: Type of booking.
+
+  updated_at:
+    description: Last updated timestamp of the booking.
+
+  created_month_timestamp:
+    description: Month in which the booking was created.
+
+  date_created_at_et:
+    description: Date at which the booking was created.
+
+  experience_id:
+    format: ID
+    description: Experience id of the experience for which the booking was created.
+
+  experience_name:
+    description: Experience name of the experience for which the booking was created.
+
+  primary_poi_id:
+    format: ID
+    description: Primary POI id for the experience for which the booking was created.
+
+  primary_poi_name:
+    description: Primary POI name for the experience for which the booking was created.
+
+  poi_venue_group:
+    description: POI venue group for the experience for which the booking was created.
+
+  lead_time_hours:
+    description: Hours difference between booking creation timestamp and experience
+      timestamp.
+
+  lead_time_days:
+    description: Days difference between booking creation timestamp and experience
+      timestamp.
+
+  number_of_guests:
+    description: Total number of guests in the booking.
+
+  number_of_guests_customer_charged_for:
+    description: Total number of guests for which customer was charged for.
+
+  guests:
+    description: Array of guest details.
+
+  guests_guest_type:
+    sql: guest_type
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_net_price_per_guest:
+    sql: net_price_per_guest
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_number_of_guests:
+    sql: number_of_guests
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_price_per_guest:
+    sql: price_per_guest
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_seat_booked:
+    sql: seat_booked
+    nested_on_field: guests
+    parent_field: guests
+
+  booking_status:
+    description: Current status of booking.
+
+  conversion_rate_to_usd:
+    description: Conversion rate to USD at the time of booking.
+
+  fulfilments:
+    description: Array of fulfillment attempt details of the booking.
+
+  fulfilments_final_net_price:
+    sql: final_net_price
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_first_successful_fulfilment_at:
+    sql: first_successful_fulfilment_at
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_attempt:
+    sql: fulfilment_attempt
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_created_at:
+    sql: fulfilment_created_at
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_failure_reason:
+    sql: fulfilment_failure_reason
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_id:
+    sql: fulfilment_id
+    format: ID
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_last_modified_at:
+    sql: fulfilment_last_modified_at
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_plugin:
+    sql: fulfilment_plugin
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_retail_price:
+    sql: fulfilment_retail_price
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_status:
+    sql: fulfilment_status
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_fulfilment_type:
+    sql: fulfilment_type
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_has_charge_loss:
+    sql: has_charge_loss
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_is_failed_due_to_inventory:
+    sql: is_failed_due_to_inventory
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_is_partially_fulfilled:
+    sql: is_partially_fulfilled
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_is_successfully_fulfilled:
+    sql: is_successfully_fulfilled
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_last_successful_fulfilment_at:
+    sql: last_successful_fulfilment_at
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_recon_currency:
+    sql: recon_currency
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_reconciliation_error_reason:
+    sql: reconciliation_error_reason
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_reconciliation_status:
+    sql: reconciliation_status
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_rms_account_name:
+    sql: rms_account_name
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_tour_id:
+    sql: tour_id
+    format: ID
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  fulfilments_vendor_id:
+    sql: vendor_id
+    format: ID
+    nested_on_field: fulfilments
+    parent_field: fulfilments
+
+  count_of_fulfilment_attempts:
+    description: Total number of fulfillment attempts made for the booking.
+
+  fulfilment_type:
+    description: Requested fulfillment type for the booking.
+
+  last_fulfilment_type:
+    description: Last fulfilment type for the booking.
+
+  fulfilment_status:
+    description: Fulfilment status of the last attempt made for the booking.
+
+  fulfilment_created_at:
+    description: Creation timestamp of the first fulfillment attempt for the booking.
+
+  fulfilment_last_modified_at:
+    description: Updated timestamp of the last fulfillment attempt for the booking.
+
+  first_successful_fulfilment_at:
+    description: Fulfilment timestamp of the first successful fulfillment attempt
+      for the booking.
+
+  first_successful_fulfilment_attempt:
+    description: Rank of the first successful fulfillment attempt for the booking.
+
+  first_successful_fulfilment_type:
+    description: Fulfilment type of the first successful fulfillment attempt for the
+      booking.
+
+  last_successful_fulfilment_at:
+    description: Fulfilment timestamp of the last successful fulfillment attempt for
+      the booking.
+
+  last_successful_fulfilment_attempt:
+    description: Rank of the last successful fulfillment attempt for the booking.
+
+  last_successful_fulfilment_type:
+    description: Fulfilment type of the last successful fulfillment attempt for the booking.
+
+  final_net_price:
+    description: Net price of the final fulfillment attempt for the booking, taking
+      account of the reconciliations.
+
+  zendesk_ticket_id:
+    format: ID
+    description: Zendesk Ticket ID associated with the booking.
+
+  is_supposed_to_be_automated:
+    description: Boolean to identify whether the booking was supposed to be
+      automatically fulfilled.
+
+  is_booking_for_manual_inventory_product:
+    description: Boolean to identify whether the booking has a manual inventory product.
+
+  is_successfully_automated:
+    description: Boolean to identify whether the booking was successfully automated.
+
+  is_reautomated:
+    description: Boolean to identify whether the booking was reautomated.
+
+  is_manually_fulfilled:
+    description: Boolean to identify whether the booking was manually fulfilled.
+
+measures:
+  count:
+    aggregate_type: count

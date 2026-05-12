@@ -1,0 +1,69 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_paypal_balance_transactions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_paypal_balance_transactions
+
+dimensions:
+  order_experience_name: {}
+  order_combined_entity_name: {}
+  order_city: {}
+  order_country: {}
+
+  balance_transaction_id:
+    format: ID
+    description: unique key created by concatinating settlement id and either of
+      settlement or fee depending on the type of row
+
+  created_at:
+    description: timestamp at which the transaction was created
+
+  settlement_id:
+    format: ID
+    description: Id for each settlement entry on PayPal
+
+  order_id:
+    format: ID
+    description: headout order Id (itinerary Id) associated with the paypal settlement
+
+  paypal_transaction_id:
+    format: ID
+    description: Id which links settlement to the original transaction Id associated
+      with auth/capture
+
+  settlement_event_code:
+    description: a five-character alphanumeric string that classifies merchant
+      transaction types based on money movement and debit or credit
+
+  settlement_event_type:
+    description: mapping derived from t-code and the table here
+      https://developer.paypal.com/docs/reports/reference/tcodes/
+
+  type:
+    description: type of entry, whether settlement or fee
+
+  amount:
+    description: amount for which the settlement is happening
+
+  amount_usd:
+    description: amount in US$ for which the settlement is happening
+
+  currency:
+    description: currency in which the settlement is happening
+
+  order_experience_id:
+    format: ID
+
+  order_combined_entity_id:
+    format: ID
+
+  extracted_at:
+    description: timestamp at which the settlement data was loaded into BigQuery
+
+  paypal_account:
+    description: PayPal account using which the transaction (& settlement) was processed
+
+measures:
+  count:
+    aggregate_type: count

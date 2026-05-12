@@ -1,0 +1,231 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_fin_zendesk_tickets
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_fin_zendesk_tickets
+
+dimensions:
+  ticket_status: {}
+  sr_issues: {}
+  paid_via: {}
+  category: {}
+  business_poc: {}
+  base_value: {}
+  cgst: {}
+  sgst: {}
+  igst: {}
+  tds: {}
+  due_date: {}
+
+  ticket_id:
+    format: ID
+    description: unique id for each ticket on zendesk
+
+  created_at:
+    description: timestamp (utc) at which the ticket was created
+
+  updated_at:
+    description: timestamp (utc) at which the ticket was updated
+
+  ticket_type:
+    description: type of ticket
+
+  ticket_tags:
+    description: tags added to the ticket on zendesk
+
+  ticket_subject:
+    description: ticket subject on zendesk
+
+  priority:
+    description: The urgency with which the ticket should be addressed
+
+  is_child:
+    description: boolean value to seperate child and parent tickets
+
+  request_id:
+    format: ID
+    description: request id of ticket
+
+  url:
+    description: url of ticket
+
+  currency:
+    description: currency of amount processed
+
+  approved_amount:
+    description: approved amount
+
+  transaction_id:
+    format: ID
+    description: transaction id of bank transfer
+
+  invoice_amount:
+    description: invoice amount
+
+  sp_invoice_number:
+    description: Partner invoices reference number
+
+  payment_done_at:
+    description: date of payment
+
+  period_of_invoice_start_timestamp:
+    description: start date of invoice
+
+  period_of_invoice_end_timestamp:
+    description: end date of invoice
+
+  payment_method:
+    description: Method used for payment.
+
+  ticket_progress:
+    description: Progress status of the ticket.
+
+  linked_data:
+    description: Indicates whether the ticket is linked to another record
+
+  city:
+    description: City of the vendor
+
+  invoice_basis:
+    description: payment basis
+
+  is_campaign:
+    description: Indicates whether vendor has campaign.
+
+  adjustment:
+    description: Adjustment made to the payment.
+
+  adjustment_total:
+    description: total adjustment amount.
+
+  sp_name:
+    description: Name of the vendor.
+
+  scorpio_sp_name:
+    description: Name of the vendor.
+
+  billing_entity_id:
+    format: ID
+    description: Billing entity id.
+
+  billing_entity_name:
+    description: Name of the billing entity.
+
+  portal_partner_id:
+    format: ID
+    description: portal partner id.
+
+  portal_partner_name:
+    description: Name of the portal partner.
+
+  amount_loaded_at:
+    description: Date when the amount id loaded in the portal.
+
+  loaded_amount:
+    description: Amount loaded in the portal.
+
+  payment_basis:
+    description: Payment basis.
+
+  ap_type:
+    description: Type of AP.
+
+  credit_number:
+    description: Credit Note allocation ID.
+
+  invoice_attached:
+    description: url of invoices.
+
+  working_url:
+    description: url of invoices.
+
+  paid_amount:
+    description: Amount paid for the ticket.
+
+  looker_url:
+    description: URL for Looker .
+
+  is_recon_updated:
+    description: boolean value to check if recon tool is updated
+
+  is_error_reported:
+    description: to check if issue tracker is updated.
+
+  sp_id:
+    format: ID
+    description: vendor id.
+
+  requester_email:
+    description: Email address of the requester. Contains Headout or vendor/supply
+      partner emails, not customer emails.
+
+  assignee_email:
+    description: Email address of the assignee
+
+  initially_assigned_at:
+    description: Timestamp when the ticket was initially assigned.
+
+  num_reopens:
+    description: Number of times the ticket has been reopened.
+
+  num_replies:
+    description: Number of replies or responses to the ticket.
+
+  minutes_to_first_reply:
+    description: Time in minutes to the first reply on the ticket.
+
+  minutes_to_first_resolution:
+    description: Time in minutes to the first resolution of the ticket.
+
+  first_resolved_at:
+    description: Timestamp when the ticket was first resolved.
+
+  minutes_to_full_resolution:
+    description: Time in minutes to the full resolution of the ticket.
+
+  resolved_at:
+    description: Timestamp when the ticket was resolved.
+
+  requester_wait_minutes:
+    description: Time in minutes the requester had to wait.
+
+  agent_wait_minutes:
+    description: Time in minutes the agent had to wait.
+
+  vendor_pending_updated_at:
+    description: Timestamp when vendor-related pending updates occurred.
+
+  payment_pending_updated_at:
+    description: Timestamp when payment-related pending updates occurred.
+
+  payment_done_updated_at:
+    description: Timestamp when payment was updated as done.
+
+  first_hold_at:
+    description: Timestamp when the ticket was first put on hold.
+
+  request_status:
+    description: status of the request/task to requester
+
+  minutes_to_first_resolution_from_assignment:
+    description: Time in minutes to the first resolution from assignment.
+
+  minutes_to_full_resolution_from_assignment:
+    description: Time in minutes to full resolution from assignment.
+
+  minutes_to_vendor_pending_progress:
+    description: Time in minutes to vendor-related pending progress.
+
+  minutes_to_payment_pending_progress:
+    description: Time in minutes to payment-related pending progress.
+
+  minutes_to_payment_done_progress:
+    description: Time in minutes to payment being marked as done.
+
+  minutes_to_first_hold:
+    description: Time in minutes to the first hold placed on the ticket.
+
+measures:
+  count:
+    aggregate_type: count

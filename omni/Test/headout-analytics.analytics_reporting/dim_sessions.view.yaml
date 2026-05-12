@@ -1,0 +1,128 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_sessions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_sessions
+
+dimensions:
+  session_start_at: {}
+  session_date: {}
+  has_user_bounced: {}
+  utm_campaign: {}
+  utm_content: {}
+  utm_term: {}
+  landing_page_host: {}
+
+  session_id:
+    format: ID
+    description: unique id for each session on the website
+
+  user_pseudo_id:
+    format: ID
+    description: The pseudonymous id (e.g., app instance ID) for the user set by
+      Google Analytics ID
+
+  session_number:
+    description: session number for the user on the website
+
+  landing_page:
+    description: URL for the page where the user started the session
+
+  hostname:
+    description: hostname for website on which the session took place
+
+  seconds_engaged:
+    description: length of the session in seconds
+
+  count_page_views:
+    description: number of pages visited by the user in the session
+
+  has_select_page_views:
+    description: boolean representing whether the user visited the select page in
+      the session
+
+  has_checkout_page_views:
+    description: boolean representing whether the user visited the checkout page in
+      the session
+
+  count_purchases:
+    description: number of purchases (orders) made by the user in the session
+
+  gross_orders:
+    description: sum of order value usd for purchases (orders) made by the user in
+      the session
+
+  exit_page:
+    description: page on which the user ended the session
+
+  has_conversion:
+    description: boolean representing whether the user completed a purchase in the session
+
+  page_views:
+    description: an array of pages visited by the user in the session
+
+  page_views_page_url:
+    sql: page_url
+    nested_on_field: page_views
+    parent_field: page_views
+
+  page_views_page_view_at:
+    sql: page_view_at
+    nested_on_field: page_views
+    parent_field: page_views
+
+  device_category:
+    description: device being used by the user
+
+  device_language:
+    description: device language
+
+  browser:
+    description: browser used by the user
+
+  geo_continent:
+    description: continent name from where the user is browsing as determined using
+      the IP address
+
+  geo_sub_continent:
+    description: sub continent name from where the user is browsing as determined
+      using the IP address
+
+  geo_country:
+    description: country name from where the user is browsing as determined using
+      the IP address
+
+  geo_region:
+    description: region name from where the user is browsing as determined using the
+      IP address
+
+  geo_metro:
+    description: metro name from where the user is browsing as determined using the
+      IP address
+
+  geo_city:
+    description: city name from where the user is browsing as determined using the
+      IP address
+
+  campaign:
+    description: name of the campaign as determined using gclid and utm params
+
+  medium:
+    description: traffic medium for the session as determined using utm medium
+
+  source:
+    description: traffic source for the session as determined using utm source
+
+  channel_grouping:
+    description: channels grouped together based on medium
+
+  platform:
+    description: always web for now
+
+  landing_page_final:
+    description: formatted landing page
+
+measures:
+  count:
+    aggregate_type: count

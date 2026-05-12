@@ -1,0 +1,132 @@
+# Reference this view as headout_analytics_analytics_reporting__checkout_events
+description: This table stores events from checkout for payment and dispute actions.
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: checkout_events
+
+dimensions:
+  sift_decision: {}
+
+  event_id:
+    format: ID
+    description: unique id for each event in the table
+
+  event_timestamp:
+    description: timestamp (utc) at which the event took place
+
+  event_name:
+    description: name of the event
+
+  event_type:
+    description: the action which triggered the event
+
+  payment_id:
+    format: ID
+    description: checkout payment id for which the event was triggered
+
+  order_id:
+    format: ID
+    description: headout order id associated with the payment
+
+  authorized_at:
+    description: timestamp (utc) at which the original payment was authorized
+
+  is_micro_auth_payment:
+    description: boolean specifying whether the payment was a micro auth or not
+
+  order_city:
+    description: name of the city associated with the headout order
+
+  order_country:
+    description: name of the country associated with the headout order
+
+  order_collection:
+    description: headout collection associated with the order
+
+  order_combined_entity_id:
+    format: ID
+    description: headout combined entity id associated with the order
+
+  order_combined_entity_name:
+    description: headout combined entity name associated with the order
+
+  order_experience_name:
+    description: headout experience name associated with the order
+
+  order_experience_id:
+    format: ID
+    description: headout experience id associated with the order
+
+  order_tour_id:
+    format: ID
+    description: headout tour name associated with the order
+
+  order_tour_name:
+    description: headout tour name associated with the order
+
+  customer_ip:
+    description: IP address of the customer while making the payment
+
+  payment_method:
+    description: type of payment method used by the customer (visa, mastercard,
+      iDeal, PayPal etc.)
+
+  card_network:
+    description: name of the card network (scheme) used to make the payment. visa,
+      mastercard etc
+
+  card_bin:
+    description: first 6 digits of the card number used for making the payment
+
+  card_customer_name:
+    description: name of the customer on the card used for making the payment
+
+  customer_email:
+    description: email address of the customer while making the payment
+
+  card_issuing_bank:
+    description: name of the card issuing bank
+
+  card_issuing_country:
+    description: name of the country issuing the card
+
+  card_wallet_type:
+    description: type of card wallet used used by the customer (e.g. - Apple pay)\
+
+  fingerprint_id:
+    format: ID
+    description: fingerprint id (unique identifier for a device) associated with that order
+
+  has_three_ds:
+    description: bool representing whether the payment request had 3ds
+
+  amount:
+    description: amount in decimal for the event
+
+  currency:
+    description: processing currency of the event inherited from the payment
+
+  amount_usd:
+    description: amount in usd converted using currency conversion from currency
+      conversion rates API
+
+  response_code:
+    description: response code received for the event from checkout
+
+  response_message:
+    description: response message received for the event from checkout
+
+  acquirer_transaction_id:
+    format: ID
+    description: transaction id for the payment action for the acquirer
+
+  acquirer_reference_number:
+    description: reference number for the payment action for the acquirer
+
+  api_version:
+    description: checkout api version for the event
+
+measures:
+  count:
+    aggregate_type: count

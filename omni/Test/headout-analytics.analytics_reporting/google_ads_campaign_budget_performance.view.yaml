@@ -1,0 +1,103 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_campaign_budget_performance
+description: |
+  **Business Purpose:** Campaign budget health and pacing report enriched with campaign dimensions. Each row represents one campaign x date with historical budget configuration (daily budget, recommended budget, shared status), budget utilization metrics, Google's estimated weekly uplift, and standard campaign performance. Powers budget pacing dashboards, over/under-spend alerts, budget increase impact analysis, and identification of budget-constrained campaigns leaving conversions on the table.
+  **Refresh Cadence:** Daily.
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_campaign_budget_performance
+
+dimensions:
+  campaign_category: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  budget_status: {}
+  sum_conversions_value: {}
+  count_all_conversions: {}
+  sum_all_conversions_value: {}
+  count_interactions: {}
+  count_view_through_conversions: {}
+  est_weekly_interactions_gain: {}
+  est_weekly_views_gain: {}
+
+  surrogate_key:
+    description: Surrogate primary key from the budget stats staging model.
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID.
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign.
+
+  budget_id:
+    format: ID
+    description: Unique identifier for the budget.
+
+  report_date:
+    description: Date of the performance report.
+
+  account_name:
+    description: Name of the Google Ads account.
+
+  campaign_name:
+    description: Current name of the campaign.
+
+  campaign_city:
+    description: City extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  campaign_advertising_channel_type:
+    description: "Campaign channel type: SEARCH, PERFORMANCE_MAX, DISPLAY, VIDEO, etc."
+
+  daily_budget:
+    description: Campaign daily budget in USD as of this date (historical snapshot).
+
+  recommended_budget:
+    description: Google's recommended daily budget in USD.
+
+  has_recommended_budget:
+    description: Whether Google has a budget recommendation for this campaign on this date.
+
+  is_shared_budget:
+    description: Whether this budget is shared across multiple campaigns.
+
+  shared_campaign_count:
+    description: Number of campaigns sharing this budget.
+
+  budget_utilization_pct:
+    description: Actual spend as a percentage of daily budget. Values above 100%
+      indicate over-delivery.
+
+  budget_remaining:
+    description: Daily budget minus actual spend in USD. Negative when over-delivering.
+
+  recommended_budget_increase:
+    description: Difference between recommended and current budget in USD.
+
+  count_impressions:
+    description: Number of ad impressions.
+
+  count_clicks:
+    description: Number of ad clicks.
+
+  sum_spend:
+    description: Total spend in USD.
+
+  count_conversions:
+    description: Number of primary (biddable) conversions.
+
+  est_weekly_clicks_gain:
+    description: Google's estimate of additional weekly clicks if budget is increased.
+
+  est_weekly_cost_gain:
+    description: Google's estimate of additional weekly cost in USD if budget is increased.
+
+measures:
+  count:
+    aggregate_type: count

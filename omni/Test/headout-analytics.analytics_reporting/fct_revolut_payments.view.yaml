@@ -1,0 +1,65 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_revolut_payments
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_revolut_payments
+
+dimensions:
+  order_city: {}
+  order_country: {}
+  order_experience_name: {}
+  order_combined_entity_name: {}
+
+  order_id:
+    format: ID
+    description: headout order Id for the payment
+
+  payment_id:
+    format: ID
+    description: unique identifier for each payment on checkout
+
+  payment_event_id:
+    format: ID
+    description: id of that particular step of the payment event
+
+  created_at:
+    description: timestamp at which the payment was created (UTC)
+
+  payment_refunded_at:
+    description: ts at which the payment was refunded at
+
+  amount_captured:
+    description: amount successfully captured for this payment in currency
+
+  amount_refunded:
+    description: amount successfully refunded or voided for this payment in currency
+
+  amount_refunded_usd:
+    description: amount successfully refunded or voided for this payment in usd
+
+  payment_event:
+    description: particular step of the payment event
+
+  payment_event_status:
+    description: status of that particular step of the payment event
+
+  amount:
+    description: amount in decimal
+
+  currency:
+    description: processing currency for the payment on checkout
+
+  payment_method:
+    description: type of payment method used by the customer (visa, mastercard,
+      iDeal, PayPal etc.)
+
+  order_experience_id:
+    format: ID
+
+  order_combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,191 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_fulfilments
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_fulfilments
+
+dimensions:
+  month_created_at: {}
+  collection_name: {}
+  sub_category_name: {}
+  primary_category_name: {}
+  combined_entity_name: {}
+  variant_name: {}
+  experience_name: {}
+  experience_date: {}
+  experience_time: {}
+  tour_name: {}
+  vendor_city: {}
+  vendor_country: {}
+  is_inventory_automated: {}
+  is_manual_inventory: {}
+  manual_inventory_frequency: {}
+  final_fulfilment_type: {}
+  number_of_attempts: {}
+  number_of_successfull_attempts: {}
+  number_of_cancelled_attempts: {}
+  number_of_failed_attempts: {}
+  failed_reason: {}
+  fulfilment_timestamp: {}
+  is_reautomated: {}
+  is_manually_fulfilled: {}
+  is_failed_due_to_inventory: {}
+  is_supposed_to_be_two_step_fulfilled: {}
+  rms_account_name: {}
+  rms_name: {}
+  booking_automation_failure_timestamp: {}
+  booking_automation_error_message: {}
+  booking_automation_plugin: {}
+  selenium_failure_timestamp: {}
+
+  fulfilment_id:
+    format: ID
+    description: unique id for the table, same as booking id
+
+  created_at:
+    description: timestamp (utc) when the fulfilment entry was created
+
+  booking_id:
+    format: ID
+    description: unique id for each booking
+
+  fulfilment_status:
+    description: status of the booking
+
+  fulfilment_type:
+    description: fulfilment type
+
+  collection_id:
+    format: ID
+
+  sub_category_id:
+    format: ID
+
+  primary_category_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  variant_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  tour_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+  is_partnered:
+    description: whether the vendor fulfilling this booking is a partnered
+      (pre-purchase) vendor.
+
+  vendor_name:
+    description: vendor name the booking is fulfilled with
+
+  supply_partner_billing_entity_id:
+    format: ID
+
+  vendor_reference:
+    description: vendor reference for the fulfilment
+
+  vendor_cancellation_id:
+    format: ID
+    description: vendor cancellation id to be used to cancel the booking
+
+  ticket_ids:
+    description: array of ticket ids booked for the booking
+
+  ticket_ids_id:
+    sql: id
+    format: ID
+    nested_on_field: ticket_ids
+    parent_field: ticket_ids
+
+  vouchers:
+    description: array of voucher sent to the customer
+    parent_field: vouchers
+
+  vouchers_url:
+    sql: vouchers.url
+    parent_field: vouchers
+
+  fulfilment_price:
+    description: price to be paid to the vendor for the fulfilment
+
+  fulfilment_price_currency:
+    description: currency code for the fulfilment price
+
+  is_cancelled:
+    description: boolean specifying whether the fulfilment has been cancelled on BMS
+
+  cancelled_at:
+    description: timestamp (utc) at which the fulfilment was cancelled
+
+  cancellation_comment:
+    description: comment added on BMS while cancelling the fulfilment
+
+  cancellation_type:
+    description: type of cancellation (similar to fulfilment status)
+
+  cancellation_reason:
+    description: reason for cancellation
+
+  has_skipped_policy_check:
+    description: boolean specifying whether policy check was skipped during cancellation
+
+  is_force_cancelled:
+    description: boolean specifying whether the fulfilment was force cancelled
+
+  force_cancellation_reason:
+    description: reason for force cancellation
+
+  ticket_id:
+    format: ID
+    description: unique id for the ticket on the source (zendesk or desk)
+
+  ticket_source:
+    description: source of the ticket
+
+  minutes_to_first_reply:
+    description: number of minutes to the first reply
+
+  minutes_to_first_resolution:
+    description: number of minutes to the first resolution time
+
+  minutes_to_full_resolution:
+    description: number of minutes to the full resolution
+
+  ticket_tags:
+    description: tags added to the ticket
+
+  ticket_status:
+    description: the current status of the ticket
+
+  completion_type:
+    description: completion type of the booking entered in the custom field
+
+  fulfilment_plugin:
+    description: name of the plugin used to fulfil the booking
+
+  is_supposed_to_be_automated:
+    description: whether the booking was supposed to be automated as determined by
+      the presence of the AI label
+
+  is_booking_for_manual_inventory_product:
+    description: is there a MANUAL INV tag on the booking ticket
+
+  is_successfully_automated:
+    description: whether the booking was succesfully automated as determined by the
+      presence of the AUTO label
+
+  selenium_failure_event_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,88 @@
+# Reference this view as headout_analytics_analytics_reporting__realtime_payment_authorizations
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: realtime_payment_authorizations
+
+dimensions:
+  amount_in_cents: {}
+  currency: {}
+  authorization_code: {}
+  response_code: {}
+  response_message: {}
+  response_type: {}
+  payment_type: {}
+  is_cko_network_token_available: {}
+  processing_retrieval_reference_number: {}
+  processing_scheme: {}
+  processing_aft: {}
+  has_three_ds: {}
+  three_ds_authentication_response: {}
+  three_ds_challenge_indicator: {}
+  is_three_ds_challenged: {}
+  is_three_ds_downgraded: {}
+  three_ds_eci: {}
+  three_ds_enrolled: {}
+  three_ds_exemption: {}
+  three_ds_flow_type: {}
+  three_ds_upgrade_reason: {}
+  three_ds_version: {}
+  three_ds_xid: {}
+  is_flagged_for_risk_by_payment_gateway: {}
+  payment_gateway_risk_score: {}
+  pan_type: {}
+  payment_source_type: {}
+  payment_source_scheme: {}
+  payment_source_product_type: {}
+  payment_source_card_wallet_type: {}
+  payment_source_card_bin: {}
+  payment_source_card_category: {}
+  payment_source_card_type: {}
+  payment_source_card_expiry_month: {}
+  payment_source_card_expiry_year: {}
+  payment_source_card_fingerprint: {}
+  payment_source_card_issuer: {}
+  payment_source_card_issuer_country: {}
+  payment_source_card_avs_check: {}
+  payment_source_card_cvv_check: {}
+  payment_source_card: {}
+  event_rank: {}
+
+  event_id:
+    format: ID
+
+  payment_id:
+    format: ID
+    description: unique id for each payment
+
+  scheme_id:
+    format: ID
+
+  processing_channel_id:
+    format: ID
+
+  processing_acquirer_transaction_id:
+    format: ID
+
+  processing_scheme_merchant_id:
+    format: ID
+
+  processing_card_acceptor_id:
+    format: ID
+
+  payment_source_id:
+    format: ID
+
+  payment_source_product_id:
+    format: ID
+
+  payment_source_card_name:
+    description: name of the card used for making the payment
+
+  order_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

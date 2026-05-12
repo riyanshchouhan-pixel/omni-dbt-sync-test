@@ -1,0 +1,88 @@
+# Reference this view as headout_analytics_analytics_reporting__livechat_group_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: livechat_group_stats
+
+dimensions:
+  min_wait_time: {}
+  max_wait_time: {}
+  average_wait_time: {}
+
+  surrogate_key:
+    description: primary key created by combining group id and ts
+
+  group_id:
+    format: ID
+    description: group id of the livechat group
+
+  group_name:
+    description: name of the group
+
+  timestamp:
+    description: ts-hour (utc) for which the metrics are recorded
+
+  availability:
+    description: How long was the group available for chatting in the hour. In minutes
+
+  chatting_time:
+    description: How much time the group spent on chatting during a specified period.
+
+  total_chats:
+    description: the number of chats attended by the group in the hour
+
+  first_response_time:
+    description: the average amount of time it takes the group to respond to a new
+      chat (in seconds)
+
+  response_time:
+    description: the average amount of time it takes the group to respond to a new
+      message (in seconds)
+
+  rated_good:
+    description: the number of chats rated good for the group
+
+  rated_bad:
+    description: the number of chats rated bad for the group
+
+  entered_queue:
+    description: the number of visitors who entered a waiting queue
+
+  left_queue:
+    description: the number of visitors who left the waiting queue
+
+  entered_chat:
+    description: the number of visitors who entered chat from the waiting queue
+
+  chats_from_auto_invite:
+    description: number of chats started from automatic invitations
+
+  chats_from_manual_invite:
+    description: number of chats started from a manual invite
+
+  chats_from_immediate_start:
+    description: number of chats from immediate start
+
+  missed_chats:
+    description: the number of chats with no messages sent by agents (except the
+      first welcome message)
+
+  greetings_displayed:
+    description: number of displayed greetings
+
+  greetings_accepted:
+    description: how many chats resulted from these greetings
+
+  greetings_goals:
+    description: how many goals resulted from these greetings
+
+  num_orders:
+    description: the number of tracked sales goal for the agent
+
+  order_value:
+    description: value of tracked sales for the agent
+
+measures:
+  count:
+    aggregate_type: count

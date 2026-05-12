@@ -1,0 +1,87 @@
+# Reference this view as headout_analytics_analytics_reporting__apple_ads_campaign_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: apple_ads_campaign_stats
+
+dimensions:
+  surrogate_key:
+    description: unique identifier for each row created by concatenating campaign Id
+      and report date
+
+  report_date:
+    description: date for which the data is recorded
+
+  campaign_id:
+    format: ID
+    description: unique identifier for the campaign
+
+  campaign_name:
+    description: name of the campaign, in case the campaign name has changed then we
+      pick the latest name and backfill for all dates
+
+  org_id:
+    format: ID
+    description: Headout's org ID
+
+  ad_channel_type:
+    description: what type of channel campaign uses; search, display etc.
+
+  app_id:
+    format: ID
+    description: Headout's iOS app ID
+
+  app_name:
+    description: Headout's iOS app name
+
+  billing_event:
+    description: type of campaign billing, clicks (taps) or installs
+
+  campaign_status:
+    description: campaign status as of the report date
+
+  serving_status:
+    description: campaign ad serving status as of the report date
+
+  daily_budget_amount:
+    description: campaign's daily budget as of the report date
+
+  daily_budget_currency:
+    description: currency for the daily budget
+
+  count_impressions:
+    description: number of times our ad appeared on the App Store on the reporting date
+
+  count_taps:
+    description: number of times our ad was tapped by users on the reporting date
+
+  count_installs:
+    description: total number of conversions from new downloads and redownloads
+      resulting from an ad on the reporting date
+
+  count_new_downloads:
+    description: These represent app downloads from new users who have never before
+      downloaded our app
+
+  count_re_downloads:
+    description: Redownloads occur when a user downloads our app, deletes it, and
+      downloads the same app again following a tap on an ad on the App Store, or
+      downloads the same app on an additional device
+
+  ad_spend:
+    description: The sum of the cost of each customer tap on our ad on the report date
+
+  currency:
+    description: currency in which ad spend is recorded
+
+  modification_time:
+    description: last time the campaign was modified
+
+  extraction_timestamp:
+    description: time at which the data for the campaign and report date was added
+      to BigQuery
+
+measures:
+  count:
+    aggregate_type: count

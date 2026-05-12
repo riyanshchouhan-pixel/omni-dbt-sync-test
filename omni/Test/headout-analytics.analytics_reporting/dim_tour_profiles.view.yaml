@@ -1,0 +1,138 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_tour_profiles
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_tour_profiles
+
+dimensions:
+  created_at: {}
+  tour_profile_source: {}
+  is_latest_active_general_profile: {}
+  opening_time: {}
+  closing_time: {}
+  next_profile_start_date_at: {}
+
+  surrogate_key:
+    description: unique key made by combining tour_profile_id and profile_source
+
+  tour_profile_id:
+    format: ID
+    description: ID of the tour profile.
+
+  vendor_id:
+    format: ID
+    description: ID of the Vendor.
+
+  tour_id:
+    format: ID
+    description: ID of the tour.
+
+  tour_profile_status:
+    description: If the tour profile is activated or deactivated.
+
+  tour_profile_name:
+    description: Name of the tour profile.
+
+  is_event:
+    description: Boolean to identify if the tour profile is general or event.
+
+  start_date_at:
+    description: Start Date of the tour profile.
+
+  end_date_at:
+    description: End Date of the tour profile.
+
+  experience_id:
+    format: ID
+    description: ID of the experience which has this tour profile.
+
+  experience_name:
+    description: Name of the experience which has this tour profile.
+
+  tour_name:
+    description: Name of the tour which has this tour profile.
+
+  tour_status:
+    description: If the tour is activated or deactivated.
+
+  fulfillment_type:
+    description: Fulfilment type of the tour which has this tour profile.
+
+  vendor_name:
+    description: Name of the Vendor associated with the tour profile.
+
+  city:
+    description: City of the Vendor associated with the tour profile.
+
+  rms_name:
+    description: RMS Name of the Vendor associated with the tour profile.
+
+  inventory_type:
+    description: Inventory Type of the Vendor Tour associated with the tour profile.
+
+  total_booking_value:
+    description: Total Booking Value of the Tour associated with the tour profile.
+
+  last_3_months_booking_value:
+    description: Last 3 Months Booking Value of the Tour associated with the tour profile.
+
+  is_latest_active_profile:
+    description: Boolean to identify if this tour profile is the latest one.
+
+  is_on_price_sync:
+    description: Boolean to identify if the tour profile is on price sync.
+
+  price_profile_type:
+    description: Type of the price profile (GROUP Or PERSON)
+
+  is_inventory_automated:
+    description: Boolean to identify if the inventory is automated for the vendor
+      tour associated with the tour profile.
+
+  is_booking_automated:
+    description: Boolean to identify if the booking is automated for the vendor tour
+      associated with the tour profile.
+
+  is_reschedulable:
+    description: Boolean to identify if the booking is reschedulable for the vendor
+      tour associated with the tour profile.
+
+  reschedulable_up_to:
+    description: Upto when is the rescheduling of the vendor tour booking allowed
+
+  is_cancellable:
+    description: Boolean to identify if the booking is cancellable for the vendor
+      tour associated with the tour profile.
+
+  cancellable_up_to:
+    description: Upto when is the cancellable of the vendor tour booking allowed
+
+  release_period:
+    description: Release Period of the vendor tour associated with the tour profile.
+
+  priority:
+    description: Priority of the vendor tour associated with the tour profile.
+
+  has_two_step_fulfillment:
+    description: Boolean to identify if the vendor tour has 2 step fulfillment
+      associated with the tour profile.
+
+  vendor_tour_is_active:
+    description: Field to identify if the vendor tour is active.
+
+  vendor_tour_is_available_7d:
+    description: Field to identify if the vendor tour is available in next 7 days.
+
+  vendor_tour_is_available_30d:
+    description: Field to identify if the vendor tour is available in next 30 days.
+
+  vendor_tour_next_available_date:
+    description: Next available date of the vendor tour.
+
+  vendor_tour_last_available_date:
+    description: Last available date of the vendor tour.
+
+measures:
+  count:
+    aggregate_type: count

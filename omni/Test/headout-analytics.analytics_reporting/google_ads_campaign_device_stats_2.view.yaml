@@ -1,0 +1,71 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_campaign_device_stats_2
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_campaign_device_stats_2
+
+dimensions:
+  surrogate_key: {}
+  device: {}
+  date: {}
+  account_name: {}
+  campaign_name: {}
+  campaign_city: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_category: {}
+  combined_entity_campaign_launch_date: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  campaign_start_date: {}
+  campaign_budget_latest: {}
+  campaign_budget: {}
+  campaign_budget_period_latest: {}
+  campaign_budget_period: {}
+  bidding_strategy_latest: {}
+  bidding_strategy: {}
+  bid_strategy_name: {}
+  bid_strategy_name_latest: {}
+  target_roas_latest: {}
+  target_cpa_latest: {}
+  target_roas: {}
+  target_cpa: {}
+  labels: {}
+  labels_latest: {}
+  advertising_channel_type: {}
+  advertising_channel_sub_type: {}
+  campaign_status: {}
+  campaign_status_latest: {}
+  campaign_serving_status: {}
+  count_impressions: {}
+  count_clicks: {}
+  sum_spend: {}
+  sum_spend_predicted: {}
+  count_conversions: {}
+  sum_conversion_value_predicted: {}
+  search_impression_share: {}
+  count_eligible_searches: {}
+  count_rank_lost_searches: {}
+  count_budget_lost_searches: {}
+  count_attributed_orders: {}
+  count_attributed_assisted_orders: {}
+  sum_attributed_value: {}
+  sum_direct_costs: {}
+  sum_amount_received: {}
+  sum_amount_net: {}
+  sum_revenue: {}
+  sum_coupon_discount: {}
+  sum_wallet_credits: {}
+  sum_conversion_value: {}
+
+  customer_id:
+    format: ID
+
+  campaign_id:
+    format: ID
+
+  campaign_combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

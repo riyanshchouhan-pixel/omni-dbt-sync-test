@@ -1,0 +1,143 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_zendesk_tickets
+description: This model has one record for each booking and email support ticket
+  created on Zendesk.
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_zendesk_tickets
+
+dimensions:
+  updated_at: {}
+  created_date: {}
+  custom_charge_loss_reason: {}
+  custom_cancellation_reason: {}
+  custom_amendment_reason: {}
+  custom_error_classification: {}
+  custom_final_price_usd: {}
+  custom_interaction_tag: {}
+  custom_booking_progress: {}
+  custom_partial_refund_amount: {}
+  custom_ticket_url: {}
+  custom_escalation_reason: {}
+  partial_refund_requested_at: {}
+  partial_refund_resolved_at: {}
+  wallet_refund_requested_at: {}
+  wallet_refund_resolved_at: {}
+  refund_requested_at: {}
+  refund_resolved_at: {}
+  assignee_name: {}
+  minutes_to_assignment: {}
+  minutes_to_first_resolution_from_assignment: {}
+  minutes_to_full_resolution_from_assignment: {}
+  is_bkngs_and_zen: {}
+  first_replied_at: {}
+  price_variance_action: {}
+  reason_for_price_variance: {}
+  due_date_at: {}
+
+  ticket_id:
+    format: ID
+    description: unique id for each ticket on zendesk
+
+  created_at:
+    description: timestamp (utc) at which the ticket was created
+
+  ticket_type:
+    description: booking or email support
+
+  ticket_subject:
+    description: ticket subject on zendesk
+
+  ticket_tags:
+    description: tags added to the ticket on zendesk
+
+  ticket_status:
+    description: the current status of the ticket on zendesk
+
+  priority:
+    description: The urgency with which the ticket should be addressed
+
+  sla_days:
+    description: number of business days within which the ticket needs to be resolved
+
+  custom_booking_id:
+    format: ID
+    description: headout booking id the ticket is created for
+
+  custom_amount_paid:
+    description: amount paid for the booking as entered in the custom field
+
+  custom_vendor_reference:
+    description: vendor reference for the booking entered in the custom field
+
+  custom_completion_type:
+    description: completion type of the booking entered in the custom field
+
+  custom_ai_response_at:
+    description: Zendesk custom field ID 56732435238809. Timestamp of the first AI
+      response on booking-related email tickets, parsed from the raw
+      locale-formatted string (DD/MM/YYYY, HH:MM:SS). Populated from 07/04/2026
+      onwards; NULL for older or non-booking tickets.
+
+  customer_satisfaction_rating:
+    description: rating given by customers for email support tickets 24 hours after
+      resolution
+
+  customer_satisfaction_rating_reason:
+    description: reason for the rating given by the customer
+
+  customer_satisfaction_rating_comment:
+    description: comment for the rating by the customer
+
+  refund_type:
+    description: Type of Refund processed for Customer. Can be Wallet, Partial or
+      Full Refund.
+
+  requester_email:
+    description: email id of the user requesting the ticket
+
+  requester_name:
+    description: name of the user requesting the ticket
+
+  requester_phone:
+    description: phone of the user requesting the ticket
+
+  assignee_email:
+    description: email of the agent assigned on the ticket
+
+  assignee_group_id:
+    format: ID
+
+  initially_assigned_at:
+    description: when the ticket was initially assigned
+
+  num_reopens:
+    description: total number of times the ticket was reopened
+
+  num_replies:
+    description: total number of times the ticket was replied to
+
+  first_resolved_at:
+    description: when the ticket was first resolved
+
+  minutes_to_first_resolution:
+    description: number of minutes to the first resolution time
+
+  minutes_to_full_resolution:
+    description: number of minutes to the full resolution
+
+  minutes_to_first_reply:
+    description: number of minutes to the first reply
+
+  resolved_at:
+    description: when the ticket was resolved
+
+  agent_wait_minutes:
+    description: number of minutes the agent spent waiting
+
+  has_met_sla:
+    description: boolean signifying whether the ticket was resolved within SLA
+
+measures:
+  count:
+    aggregate_type: count

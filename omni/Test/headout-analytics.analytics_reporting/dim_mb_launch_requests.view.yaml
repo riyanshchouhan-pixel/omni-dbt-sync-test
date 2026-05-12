@@ -1,0 +1,199 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_mb_launch_requests
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_mb_launch_requests
+
+dimensions:
+  ticket_id:
+    format: ID
+    description: PLC/Biz Ops Team Ticket ID. All MB Flows start from PLC/Biz Ops
+      ticket only.
+
+  launch_request_id:
+    format: ID
+    description: Root Parent Ticket of the whole flow. Same as PLC Ticket ID if
+      request is raised via HALP.
+
+  created_at:
+    description: PLC/Biz Ops Team ticket creation timestamp.
+
+  source:
+    description: Source from where MB Launch Request is raised (Halp, Internal, External)
+
+  experience_id:
+    format: ID
+    description: Experience ID for which MB Launch Request is raised. Only populated
+      for non HALP cases
+
+  pod:
+    description: Market Pod in which MB Launch Request is raised.
+
+  priority:
+    description: Priority of the MB Launch Request.
+
+  owner:
+    description: Requester of the MB Launch Request
+
+  is_cancelled:
+    description: Boolean to see if MB Launch Request is cancelled
+
+  market_region:
+    description: Market Region in which MB Launch Request is raised.
+
+  is_localisation_required:
+    description: Boolean to see if localisation of requested MB is required.
+
+  issue_type:
+    description: Issue type of the MB Launch Request (MB launch, New Listing and MB
+      Launch etc.)
+
+  c1_mb_allowed:
+    description: Boolean to see if C1 MB Type is allowed for requested MB
+
+  mb_launch_needed:
+    description: Boolean to check if MB Launch request has to be proceeded or not.
+
+  mb_setup_tasks:
+    description: Custom Field for tracking the setup tasks in a MB Launch request.
+
+  domain_to_be_setup:
+    description: Name of the domain to be setup in the MB launch request.
+
+  domain_purchase_status:
+    description: Purchase status of the domain in MB launch request.
+
+  mb_type:
+    description: Type of MB needed to be launched in the given request (A1, B1, C1)
+
+  new_suggested_root_domain:
+    description: Suggested Name of the domain to be setup in the MB launch request.
+
+  new_suggested_sub_domain:
+    description: Suggested Name of the sub domain to be setup in the MB launch request.
+
+  banner_footer_information:
+    description: Information about the banner footer in the MB launch request.
+
+  campaign_reach:
+    description: Information about the campaign reach in the MB launch request.
+
+  mb_languages:
+    description: Languages in which the MB is requested.
+
+  priority_language:
+    description: Highest Priority Language in which the MB is requested.
+
+  ticket_status:
+    description: Status of the PLC/Biz Ops Ticket.
+
+  ticket_assignee:
+    description: Assignee of the PLC/Biz Ops Ticket
+
+  ticket_updated_at:
+    description: Update Timestamp of the PLC/Biz Ops Ticket
+
+  ticket_status_updated_at:
+    description: Status Update Timestamp of the PLC/Biz Ops Ticket
+
+  children_status:
+    description: Status of all children tickets. In-progress if anyone of them is open
+
+  children_chain:
+    description: Array of children tickets
+
+  children_chain_child_ticket_assignee:
+    sql: child_ticket_assignee
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_child_ticket_created_at:
+    sql: child_ticket_created_at
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_child_ticket_id:
+    sql: child_ticket_id
+    format: ID
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_child_ticket_status:
+    sql: child_ticket_status
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_child_ticket_status_updated_at:
+    sql: child_ticket_status_updated_at
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_child_ticket_team_name:
+    sql: child_ticket_team_name
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_child_ticket_updated_at:
+    sql: child_ticket_updated_at
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_content_mkt_setup_type:
+    sql: content_mkt_setup_type
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_immediate_parent_ticket_id:
+    sql: immediate_parent_ticket_id
+    format: ID
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  children_chain_parent_ticket_team_name:
+    sql: parent_ticket_team_name
+    nested_on_field: children_chain
+    parent_field: children_chain
+
+  localisation_children_chain:
+    description: Array of Localisation Children Tickets
+
+  localisation_children_chain_assignee:
+    sql: assignee
+    nested_on_field: localisation_children_chain
+    parent_field: localisation_children_chain
+
+  localisation_children_chain_created_at:
+    sql: created_at
+    nested_on_field: localisation_children_chain
+    parent_field: localisation_children_chain
+
+  localisation_children_chain_localisation_language:
+    sql: localisation_language
+    nested_on_field: localisation_children_chain
+    parent_field: localisation_children_chain
+
+  localisation_children_chain_localisation_ticket_status_updated_at:
+    sql: localisation_ticket_status_updated_at
+    nested_on_field: localisation_children_chain
+    parent_field: localisation_children_chain
+
+  localisation_children_chain_parent_ticket_id:
+    sql: parent_ticket_id
+    format: ID
+    nested_on_field: localisation_children_chain
+    parent_field: localisation_children_chain
+
+  localisation_children_chain_status:
+    sql: status
+    nested_on_field: localisation_children_chain
+    parent_field: localisation_children_chain
+
+  localisation_children_chain_updated_at:
+    sql: updated_at
+    nested_on_field: localisation_children_chain
+    parent_field: localisation_children_chain
+
+measures:
+  count:
+    aggregate_type: count

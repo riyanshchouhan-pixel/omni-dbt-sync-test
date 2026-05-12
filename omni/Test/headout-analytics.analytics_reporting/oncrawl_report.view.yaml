@@ -1,0 +1,85 @@
+# Reference this view as headout_analytics_analytics_reporting__oncrawl_report
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: oncrawl_report
+
+dimensions:
+  inrank: {}
+
+  url:
+    description: url for which oncrawl data is extracted
+
+  status_code:
+    description: status_code for url
+
+  robots_txt_denied:
+    description: True/False value for crawler access to url
+
+  meta_robots:
+    description: noindex, nofollow, index and follow values for the crawler
+
+  title:
+    description: seo assigned title
+
+  title_length:
+    description: character length of title
+
+  meta_description:
+    description: description accompanied with the title
+
+  description_length:
+    description: character length for meta_description
+
+  h1:
+    description: header for the url
+
+  rel_canonical:
+    description: original version for the url
+
+  nb_inlinks:
+    description: number of internal links pointing to an url
+
+  internal_outlinks:
+    description: number of links given to other headout pages within website
+
+  external_outlinks:
+    description: number of links to the outer websites (non headout pages)
+
+  depth:
+    description: crawl depth
+
+  word_count:
+    description: number of words used in the page
+
+  crawled_by_googlebot:
+    description: True/False status coming from SEO logs
+
+  googlebot_hits:
+    description: number of times googlebot has hit the website
+
+  googlebot_status_code:
+    description: http status code captured by googlebot
+
+  seo_visits:
+    description: number of organic visits to the website
+
+  url_has_params:
+    description: query parameter
+
+  sitemaps_file_origin:
+    description: link to the origin sitemap or None if not available
+
+  meta_robots_follow:
+    description: access permission to follow internal links
+
+  weight:
+    description: page weight in bytes
+
+  load_time:
+    description: page load time in miliseconds
+
+measures:
+  count:
+    aggregate_type: count

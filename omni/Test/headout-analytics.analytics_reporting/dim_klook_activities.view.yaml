@@ -1,0 +1,101 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_klook_activities
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_klook_activities
+
+dimensions:
+  booked: {}
+
+  experience_id:
+    format: ID
+    description: unique id for each experience on Klook
+
+  experience_name:
+    description: name of the experience on Klook
+
+  category:
+    description: category name of the experience on Klook
+
+  experience_url:
+    description: URL of the experience on Klook can be accessed via -
+      'klook.com/activity/{experience_id}-{url}'
+
+  region:
+    description: region of the experience on Klook (template)
+
+  country:
+    description: destination country name of the experience
+
+  city:
+    description: destination city name of the experience
+
+  reviews:
+    description: number of reviews the experience has
+
+  star_rating:
+    description: avg star rating the experience has
+
+  extractions:
+    description: an array of dates the experience has been scraped Klook
+
+  extractions_change_in_review_count:
+    sql: change_in_review_count
+    description: change in review count for the experience since the last extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_change_in_star_rating:
+    sql: change_in_star_rating
+    description: change in star rating for the experience since the last extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_daily_change_review_count:
+    sql: daily_change_review_count
+    description: ∆ in review count for the experience since the last extraction,
+      normalized using the number of days since last extraction.
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_daily_change_star_rating:
+    sql: daily_change_star_rating
+    description: ∆ in ratings for the experience since the last extraction,
+      normalized using the number of days since last extraction.
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_days_since_last_extraction:
+    sql: days_since_last_extraction
+    description: number of days since the experience was last extraxcted from get your guide
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_extraction_date:
+    sql: extraction_date
+    description: extraction date (utc)
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_reviews:
+    sql: reviews
+    description: number of reviews the experience had as of the extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_star_rating:
+    sql: star_rating
+    description: average rating of the experience as of the extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  is_new_experience:
+    description: check if the experience is newly added on klook
+
+  last_extracted_at:
+    description: ts at which the experience was last extracted
+
+measures:
+  count:
+    aggregate_type: count

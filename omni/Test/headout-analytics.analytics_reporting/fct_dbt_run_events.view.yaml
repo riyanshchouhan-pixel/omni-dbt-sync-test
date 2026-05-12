@@ -1,0 +1,89 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_dbt_run_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_dbt_run_events
+
+dimensions:
+  total_bytes_billed: {}
+  is_latest_run: {}
+
+  dag_name:
+    description: The DAG associated with the run, e.g. full_refresh, payment_gateway etc.
+
+  id:
+    format: ID
+    description: The unique identifier for the task run.
+    primary_key: true
+
+  step:
+    description: The step within the DAG, i.e. audit, test, or replace.
+
+  run_status:
+    description: The status of the dbt run.
+
+  project:
+    description: The project associated with the run.
+
+  dataset:
+    description: The dataset used in the run.
+
+  model_name:
+    description: The name of the dbt model.
+
+  exec_timestamp:
+    description: The execution date of the run according to airflow.
+
+  filepath:
+    description: The file path of the dbt model.
+
+  log_url:
+    description: The URL to the run's log.
+
+  airflow_task:
+    description: The task name in Airflow.
+
+  rows_failed_count:
+    description: The number of rows that failed for a particular test.
+
+  bigquery_creation_timestamp:
+    description: The query creation timestamp in BigQuery.
+
+  bigquery_job_id:
+    format: ID
+    description: The BigQuery job ID.
+
+  bigquery_start_timestamp:
+    description: The start time of the job.
+
+  bigquery_end_timestamp:
+    description: The end time of the job.
+
+  total_bytes_processed:
+    description: The total bytes processed in the job.
+
+  total_slot_ms:
+    description: The total slot milliseconds used.
+
+  query_cost_usd:
+    description: The cost of running query.
+
+  error_result:
+    description: The error result, if any.
+
+  destination_table:
+    description: The destination table in BigQuery.
+
+  referenced_tables:
+    description: The referenced tables in the job.
+
+  airflow_extraction_timestamp:
+    description: The timestamp of the event in Apache Airflow.
+
+  bigquery_extraction_timestamp:
+    description: The timestamp of the event in BigQuery.
+
+measures:
+  count:
+    aggregate_type: count

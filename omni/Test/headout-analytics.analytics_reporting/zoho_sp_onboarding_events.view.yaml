@@ -1,0 +1,61 @@
+# Reference this view as headout_analytics_analytics_reporting__zoho_sp_onboarding_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: zoho_sp_onboarding_events
+
+dimensions:
+  surrogate_key:
+    description: surrogate primary key built by combining Lead ID and Lead status.
+
+  lead_id:
+    format: ID
+    description: Unique ID given by Zoho to a specific SP Lead created.
+
+  lead_owner:
+    description: Name of Person responsible for management of this SP lead.
+
+  company:
+    description: Company name of SP Lead.
+
+  updated_company_name:
+    description: Updated company name / latest entry of SP name.
+
+  website:
+    description: Website of SP Lead.
+
+  lead_status:
+    description: Current status of SP Lead.
+
+  modified_by:
+    description: Name of person responsible for last modification of SP Lead.
+
+  modified_by_id:
+    format: ID
+    description: ID of person responsible for last modification of SP Lead.
+
+  city:
+    description: City where SP operates.
+
+  country:
+    description: Country where SP operates.
+
+  lead_type:
+    description: Type of lead.
+
+  is_converted:
+    description: A boolean stating about the conversion status of a lead.
+
+  creation_at:
+    description: Creation Timestamp SP Lead in UTC.
+
+  last_modified_at:
+    description: Last modification Timestamp SP Lead in UTC.
+
+  next_modification_at:
+    description: Next Modification Timestamp for status change of a given lead.
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,43 @@
+# Reference this view as headout_analytics_analytics_reporting__hub_slot_changes_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: hub_slot_changes_events
+
+dimensions:
+  event_id:
+    format: ID
+    description: id of the event recieved from backend
+
+  event_name:
+    description: event name
+
+  event_received_at:
+    description: timestamp at which the event was triggered
+
+  sp_email:
+    description: email of the supply partner who triggered the event
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: billing entity ID of the supply partner who triggered the event
+
+  slot_timestamp:
+    description: inventory slot timestamp for which inventory or pricing changes are made
+
+  pax_type:
+    description: pax_type for which inventory or pricing changes are made
+
+  changed_field:
+    description: name of the field which was changed
+
+  before_value:
+    description: value of the field before the changes
+
+  after_value:
+    description: value of the field after changes
+
+measures:
+  count:
+    aggregate_type: count

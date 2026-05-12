@@ -1,0 +1,137 @@
+# Reference this view as headout_analytics_analytics_reporting__ads_campaign_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: ads_campaign_stats
+
+dimensions:
+  campaign_category: {}
+  campaign_target_combined_entity_name: {}
+  campaign_city: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_target_business_market: {}
+  campaign_target_business_region: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  campaign_start_date: {}
+  combined_entity_campaigns_start_date: {}
+  current_campaign_budget: {}
+  current_campaign_budget_period: {}
+  current_campaign_target_roas: {}
+  current_campaign_bidding_strategy: {}
+  current_bidding_strategy_name: {}
+  current_campaign_status: {}
+  current_campaign_labels: {}
+  current_campaign_target_cpa: {}
+  campaign_budget: {}
+  campaign_budget_period: {}
+  campaign_bidding_strategy: {}
+  bidding_strategy_name: {}
+  campaign_target_roas: {}
+  campaign_labels: {}
+  campaign_advertising_channel_type: {}
+  campaign_advertising_channel_sub_type: {}
+  campaign_status: {}
+  campaign_serving_status: {}
+  campaign_target_cpa: {}
+  count_conversions_offline_contribution_margin: {}
+  sum_conversion_value_offline_contribution_margin: {}
+  search_impression_share: {}
+  count_eligible_searches: {}
+  count_rank_lost_searches: {}
+  count_budget_lost_searches: {}
+  campaign_target_combined_entity_type: {}
+  campaign_target_combined_entity_category: {}
+  campaign_target_combined_entity_subcategory: {}
+  campaign_target_evolution_bucket: {}
+  campaign_target_management_type: {}
+  is_campaign_target_existing: {}
+  campaign_target_headout_status: {}
+  campaign_target_bucket_2025: {}
+  campaign_target_roi_target: {}
+  campaign_target_ce_label: {}
+
+  surrogate_key:
+    description: Surrogate primary key created for this table using customer_id,
+      campaign_id, and report_date
+
+  customer_id:
+    format: ID
+    description: Platform-specific account ID
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign
+
+  report_date:
+    description: Date of the performance report
+
+  account_name:
+    description: Name of the advertising account
+
+  campaign_name:
+    description: Current name of the campaign
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  count_impressions:
+    description: Number of impressions
+
+  count_clicks:
+    description: Number of clicks
+
+  sum_spend:
+    description: Total spend in USD
+
+  count_conversions_online:
+    description: Number of online conversions tracked by the platform
+
+  sum_conversion_value_online:
+    description: Total value of online conversions
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline conversions for gross bookings
+
+  sum_conversion_value_offline_gross_bookings:
+    description: Total value of offline gross bookings conversions
+
+  count_conversions_offline_revenue:
+    description: Number of offline conversions for revenue
+
+  sum_conversion_value_offline_revenue:
+    description: Total value of offline revenue conversions
+
+  count_attributed_orders:
+    description: Number of orders attributed to this campaign
+
+  count_attributed_assisted_orders:
+    description: Total number of orders where this campaign was in the customer journey
+
+  sum_attributed_value:
+    description: Total order value in USD attributed to this campaign
+
+  sum_attributed_value_completed:
+    description: Total completed order value in USD for attributed orders
+
+  sum_conversion_value_calculated_revenue:
+    description: Calculated revenue by multiplying conversion value with historical
+      revenue percentages
+
+  sum_conversion_value_calculated_contribution_margin:
+    description: Calculated contribution margin by multiplying conversion value with
+      historical contribution margin percentages
+
+  sum_coupon_and_wallet_credits:
+    description: Calculated discount impact by multiplying conversion value with
+      historical coupon and wallet usage percentages
+
+  ad_platform:
+    description: The advertising platform source for the campaign data (Meta Ads,
+      Google Ads, or Microsoft Ads)
+
+measures:
+  count:
+    aggregate_type: count

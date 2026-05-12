@@ -1,0 +1,76 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_ticket_db_allotments
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_ticket_db_allotments
+
+dimensions:
+  created_at: {}
+  currency_code: {}
+  sp_name: {}
+  pax_type: {}
+  quantity: {}
+  ticket_price: {}
+  order_fees: {}
+  payment_type: {}
+  payment_method: {}
+  due_date: {}
+  invoice_attachment: {}
+  tickets_link: {}
+  validity: {}
+  validity_type: {}
+  rebate_ticket_quantity: {}
+  rebate_amount: {}
+  rebate_frequency: {}
+  redemption_cost: {}
+  credit_adjustment_amount: {}
+  loss_liability: {}
+  status: {}
+  bd_status: {}
+  fin_status: {}
+  amount_paid: {}
+  first_payment_date: {}
+  payments: {}
+
+  request_id:
+    format: ID
+
+  public_id:
+    format: ID
+
+  supply_partner_tour_id:
+    format: ID
+
+  sp_id:
+    format: ID
+
+  tour_id:
+    format: ID
+
+  user_id:
+    format: ID
+
+  payments_amount_paid:
+    sql: amount_paid
+    nested_on_field: payments
+    parent_field: payments
+
+  payments_payment_date:
+    sql: payment_date
+    nested_on_field: payments
+    parent_field: payments
+
+  payments_receipt_attachment:
+    sql: receipt_attachment
+    nested_on_field: payments
+    parent_field: payments
+
+  payments_ref_no:
+    sql: ref_no
+    nested_on_field: payments
+    parent_field: payments
+
+measures:
+  count:
+    aggregate_type: count

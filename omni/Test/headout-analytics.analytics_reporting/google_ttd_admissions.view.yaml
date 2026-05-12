@@ -1,0 +1,112 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ttd_admissions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ttd_admissions
+
+dimensions:
+  collection_region: {}
+  collection_country: {}
+  collection_city: {}
+  is_focus_ce: {}
+  is_smart_pricing_eligible: {}
+  is_smart_pricing_live: {}
+  experience_name: {}
+  price_in_euros: {}
+  default_currency: {}
+  local_currency: {}
+  conversion_rate: {}
+  price_rank_in_group: {}
+
+  surrogate_key:
+    description: surrogate primary key built by combining ttd_kw, company_name,
+      rank, sub_rank, last_extracted_date
+
+  last_extracted_date:
+    description: date (utc) on which this row was extracted
+
+  collection_id:
+    format: ID
+    description: Headout collection id of the given POI KW
+
+  experience_id:
+    format: ID
+
+  correct_tgid:
+    description: Headout TGID that is expected to be part of the admissions result
+
+  ttd_kw:
+    description: Things to Do Keyword that is used for google search results
+
+  poi_url:
+    description: Google search URL used to fetch the TTD results
+
+  company_name:
+    description: Name of the company that appears on google search results in
+      Admissions section
+
+  is_official_site:
+    description: Check if the TTD result is from official site
+
+  status:
+    description: status of the POI No TTD module, Free, Restricted, Not restricted,
+      Not available
+
+  ticket_type:
+    parent_field: ticket_type
+
+  ticket_type_category:
+    sql: ticket_type.category
+    parent_field: ticket_type
+
+  rank:
+    description: Rank of the company that appeared on the Admissions section of the
+      google search results
+
+  product_url:
+    description: URL of the products listed
+
+  sub_rank:
+    description: Sub Rank of the products provided by companies appearing on google
+      search results
+
+  is_general_admissions:
+    description: Check if the product is having general admission
+
+  promo:
+    description: Aggregate data of smart pricing promo details including active
+      status, discount, and local/non-local classification
+
+  promo_is_active:
+    sql: is_active
+    nested_on_field: promo
+    parent_field: promo
+
+  promo_promo_code:
+    sql: promo_code
+    nested_on_field: promo
+    parent_field: promo
+
+  promo_promo_discount_value:
+    sql: promo_discount_value
+    nested_on_field: promo
+    parent_field: promo
+
+  promo_promo_id:
+    sql: promo_id
+    format: ID
+    nested_on_field: promo
+    parent_field: promo
+
+  promo_promo_location:
+    sql: promo_location
+    nested_on_field: promo
+    parent_field: promo
+
+  collection_name:
+    description: Headout collection name of the given POI KW
+
+measures:
+  count:
+    aggregate_type: count

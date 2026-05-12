@@ -1,0 +1,180 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_checkout_payments_batch
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_checkout_payments_batch
+
+dimensions:
+  payment_id:
+    format: ID
+    description: Unique identifier for each payment on Checkout.
+
+  created_at:
+    description: Timestamp (UTC) at which the payment was created.
+
+  amount_in_cents:
+    description: Payment amount in the currency's smallest unit (e.g. cents for USD).
+
+  amount:
+    description: Payment amount in decimal form in the processing currency.
+
+  currency:
+    description: ISO 4217 processing currency code for the payment (e.g. USD, EUR, GBP).
+
+  amount_usd:
+    description: Payment amount converted to USD using the currency conversion rate
+      on the payment date.
+
+  payment_method:
+    description: Type of payment method used (e.g. visa, mastercard, ideal, paypal).
+
+  response_code:
+    description: Response code returned by the payment processor for the
+      authorization attempt.
+
+  response_message:
+    description: Human-readable response message from the processor for the
+      authorization attempt.
+
+  is_authorized:
+    description: Whether the payment was successfully authorized on Checkout.
+
+  amount_captured:
+    description: |-
+      Amount successfully captured for this payment in the processing currency.
+      Sourced from balance transactions with fallback to event pipeline capture events.
+      Capped at the original payment amount.
+
+  amount_refunded:
+    description: |-
+      Amount successfully refunded or voided for this payment in the processing currency.
+      Sourced from balance transactions with fallback to event pipeline refund events.
+      Capped at the original payment amount.
+
+  amount_refunded_usd:
+    description: |-
+      Amount refunded converted to USD using the conversion rate on the refund date.
+      Capped at the original payment amount_usd.
+
+  payment_refunded_at:
+    description: Timestamp (UTC) of the most recent refund event for this payment.
+
+  order_id:
+    format: ID
+    description: Headout order ID associated with the payment.
+
+  order_city:
+    description: Name of the city for the linked Headout order.
+
+  order_country:
+    description: Name of the country for the linked Headout order.
+
+  order_experience_name:
+    description: Headout experience name associated with the order.
+
+  order_experience_id:
+    format: ID
+    description: Headout experience ID associated with the order.
+
+  order_combined_entity_id:
+    format: ID
+    description: Headout combined entity ID associated with the order.
+
+  order_combined_entity_name:
+    description: Headout combined entity name associated with the order.
+
+  is_micro_auth_payment:
+    description: Whether the payment was a micro authorization (zero-amount verification).
+
+  is_mit_auth_payment:
+    description: Whether the payment was a merchant-initiated transaction (MIT)
+      authorization.
+
+  is_mit_booking_payment:
+    description: Whether the payment was a merchant-initiated booking payment.
+
+  customer_email:
+    description: Email address of the customer who made the payment.
+
+  customer_ip:
+    description: IP address of the customer at the time of payment.
+
+  card_network:
+    description: Card network (scheme) used for the payment (e.g. visa, mastercard).
+
+  card_bin:
+    description: First 6 digits of the card number, used for identifying the issuing bank.
+
+  card_customer_name:
+    description: Cardholder name as printed on the card.
+
+  card_type:
+    description: Type of card used (credit or debit).
+
+  card_product_name:
+    description: Card product name (e.g. Visa Gold, Mastercard Platinum).
+
+  card_category:
+    description: Card category (consumer or corporate).
+
+  card_issuing_bank:
+    description: Name of the bank that issued the card.
+
+  card_issuing_country_code:
+    description: ISO 3166-1 alpha-2 country code of the card-issuing country.
+
+  card_issuing_country:
+    description: Full name of the card-issuing country.
+
+  card_wallet_type:
+    description: Digital wallet used for the payment (e.g. ApplePay, GooglePay).
+      NULL if no wallet.
+
+  has_three_ds:
+    description: Whether the payment request included 3D Secure authentication.
+
+  is_three_ds_downgraded:
+    description: Whether the 3D Secure request was downgraded to non-3DS.
+
+  three_ds_eci:
+    description: Electronic Commerce Indicator from the 3DS response indicating
+      authentication level.
+
+  three_ds_enrolled:
+    description: Whether the card is enrolled in the 3D Secure scheme.
+
+  three_ds_signature_valid:
+    description: Whether the 3D Secure signature was valid.
+
+  is_three_ds_challenged:
+    description: Whether the 3DS flow went through the challenge (interactive) flow.
+
+  three_ds_requestor_challenge_indicator:
+    description: Merchant's preference for 3DS challenge (e.g. no_preference,
+      challenge_requested).
+
+  three_ds_directory_response:
+    description: Response from the card scheme's 3DS directory server.
+
+  three_ds_authentication_response:
+    description: Result of the 3DS authentication (e.g. successful, attempted, failed).
+
+  three_ds_cavv:
+    description: Cardholder Authentication Verification Value — 3DS cryptogram.
+
+  three_ds_xid:
+    description: 3DS transaction identifier.
+
+  three_ds_version:
+    description: 3DS protocol version used (e.g. 2.1.0, 2.2.0).
+
+  sift_score:
+    description: Fraud risk score assigned by Sift (0-100, higher = riskier).
+
+  sift_decision:
+    description: Sift's fraud decision for this payment (RISKY or NORMAL).
+
+measures:
+  count:
+    aggregate_type: count

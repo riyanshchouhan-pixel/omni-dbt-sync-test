@@ -1,0 +1,133 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_gyg_experiences
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_gyg_experiences
+
+dimensions:
+  is_transportation_included: {}
+  is_skip_the_line: {}
+  sp_contact_number: {}
+
+  surrogate_key:
+    description: surrogate primary key built by combining experience ID and supply
+      partner ID.
+
+  experience_id:
+    format: ID
+    description: Id for each experience on get your guide
+
+  experience_name:
+    description: name of the experience on get your guide
+
+  experience_url:
+    description: url slug of the experience on get your guide
+
+  country:
+    description: destination country of the experience
+
+  city:
+    description: destination city of the experience
+
+  category:
+    description: category of experience (not the same as primary category on Headout)
+
+  ratings:
+    description: number of ratings the experience has
+
+  average_rating:
+    description: avg rating the experience has
+
+  starting_price:
+    description: starting selling price of the experience
+
+  currency:
+    description: currency for the starting price of the experience
+
+  availability_type:
+    description: type of availability the experience has
+
+  extractions:
+    description: an array of dates the experience has been scraped from Get Your Guide
+
+  extractions_average_rating:
+    sql: average_rating
+    description: average rating of the experience as of the extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_change_in_ratings:
+    sql: change_in_ratings
+    description: change in ratings for the experience since the last extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_daily_change_in_ratings:
+    sql: daily_change_in_ratings
+    description: ∆ in ratings for the experience since the last extraction,
+      normalized using the number of days since last extraction.
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_days_since_last_extraction:
+    sql: days_since_last_extraction
+    description: number of days since the experience was last extraxcted from get your guide
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_extraction_date:
+    sql: extraction_date
+    description: extraction date (utc)
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_ratings:
+    sql: ratings
+    description: number of ratings the experience had as of the extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  is_best_seller:
+    description: bool specifying whether the experience is a best seller for get your guide
+
+  is_gyg_original:
+    description: bool specifying whether the experience is a get your guide original
+
+  is_from_certified_partner:
+    description: bool specifying whether the experience is from a certified partner
+
+  is_eco_certified:
+    description: bool specifying whether the experience is eco certified
+
+  sp_id:
+    format: ID
+    description: id given to the SP by GYG
+
+  sp_name:
+    description: name of the SP for GYG experiences
+
+  sp_review_count:
+    description: total number of reviews given to the SPs experiences on GYG
+
+  sp_legal_name:
+    description: legal name of the SP for GYG experiences
+
+  sp_managing_director:
+    description: managing director of the SP for GYG experiences
+
+  sp_registered_address:
+    description: registered address of the SP for GYG experiences
+
+  sp_vat_registration_number:
+    description: vat registration number of the SP for GYG experiences
+
+  sp_registration_number:
+    description: registration number of the SP for GYG experiences
+
+  last_extracted_at:
+    description: ts at which the experience was last extracted
+
+measures:
+  count:
+    aggregate_type: count

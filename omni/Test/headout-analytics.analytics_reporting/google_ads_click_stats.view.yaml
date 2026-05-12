@@ -1,0 +1,115 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_click_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_click_stats
+
+dimensions:
+  serp_page_number: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  campaign_target_combined_entity_name: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_target_business_market: {}
+  campaign_target_business_region: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  current_ad_group_status: {}
+  user_country_name: {}
+  user_country_code: {}
+  user_region_name: {}
+  user_city_name: {}
+  user_metro_name: {}
+  user_most_specific_location: {}
+  interest_country_name: {}
+  interest_city: {}
+  interest_city_name: {}
+  interest_metro: {}
+  interest_most_specific_location: {}
+
+  gclid:
+    description: Unique Google Click ID. Join key to orders_attribution.click_id.
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID.
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign.
+
+  ad_group_id:
+    format: ID
+    description: Unique identifier for the ad group.
+
+  ad_resource_name:
+    description: Google Ads resource name of the ad that was clicked.
+
+  report_date:
+    description: Date of the click.
+
+  device:
+    description: "Device type: MOBILE, DESKTOP, TABLET."
+
+  ad_network_type:
+    description: "Ad network: SEARCH, CONTENT, YOUTUBE, MIXED."
+
+  click_type:
+    description: "Type of click: URL_CLICKS, SITELINKS, AD_IMAGE, TRAVEL_ASSETS, etc."
+
+  slot:
+    description: "Ad position: SEARCH_TOP, SEARCH_OTHER, MIXED, CONTENT,
+      SEARCH_PARTNER_OTHER."
+
+  account_name:
+    description: Name of the Google Ads account.
+
+  campaign_name:
+    description: Current name of the campaign.
+
+  campaign_city:
+    description: City extracted from the campaign name (the destination being advertised).
+
+  campaign_category:
+    description: Category extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  ad_group_name:
+    description: Name of the ad group.
+
+  keyword_text:
+    description: Actual keyword text the user searched. NULL for
+      PMax/Display/YouTube (~52% coverage for Search campaigns).
+
+  keyword_match_type:
+    description: EXACT, BROAD, or PHRASE.
+
+  user_country:
+    description: Geo target constant for the user's physical country (IP-based).
+
+  user_region:
+    description: Geo target constant for the user's physical region/state.
+
+  user_city:
+    description: Geo target constant for the user's physical city.
+
+  user_metro:
+    description: Geo target constant for the user's physical metro area. ~11% coverage.
+
+  interest_country:
+    description: Geo target constant for the destination searched about (only when
+      different from physical location).
+
+  interest_region:
+    description: Geo target constant for the destination region searched about.
+
+  count_clicks:
+    description: Click count for this GCLID (usually 1 per row after deduplication).
+
+measures:
+  count:
+    aggregate_type: count

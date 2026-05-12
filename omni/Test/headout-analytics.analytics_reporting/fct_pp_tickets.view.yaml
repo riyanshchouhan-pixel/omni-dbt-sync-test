@@ -1,0 +1,141 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_pp_tickets
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_pp_tickets
+
+dimensions:
+  vendor_name: {}
+  combined_entity_name: {}
+
+  ticket_id:
+    format: ID
+    description: Ticket ID of the pre-purchased ticket.
+
+  uploaded_at:
+    description: Upload Timestamp of the pre-purchased ticket.
+
+  ticket_information:
+    description: Information Field for the pre-purchased ticket.
+
+  comment:
+    description: Comment Field for the pre-purchased ticket.
+
+  expiring_at:
+    description: Expiry Timestamp of the pre-purchased ticket.
+
+  pp_booking_id:
+    format: ID
+    description: Booking ID (PP DB) of a sold pre-purchased ticket.
+
+  vendor_reference_number:
+    description: Vendor Reference Number of a pre-purchased ticket.
+
+  experience_timestamp:
+    description: Experience Timestamp of the pre-purchased ticket.
+
+  pax_type:
+    description: PAX Type of a pre-purchased ticket.
+
+  net_price:
+    description: Net Price of a pre-purchased ticket.
+
+  retail_price:
+    description: Retail Price of a pre-purchased ticket.
+
+  is_sold:
+    description: Boolean to identify whether a pre-purchased ticket is sold or not.
+
+  ticket_status:
+    description: Status of a pre-purchased ticket.
+
+  purchase_order_number:
+    description: Purchase Order Number of the allotment to which this pre-purchased
+      ticket belongs.
+
+  ticket_purchase_date:
+    description: Purchase Date of the pre-purchased ticket.
+
+  updated_at:
+    description: Latest update timestamp of the pre-purchased ticket.
+
+  payment_type:
+    description: Payment Type of the allotment to which this pre-purchased ticket belongs.
+
+  loss_liability:
+    description: Loss Liability of the allotment to which this pre-purchased ticket belongs.
+
+  tour_id:
+    format: ID
+    description: Tour ID of the pre-purchased ticket.
+
+  vendor_id:
+    format: ID
+    description: Vendor ID of the pre-purchased ticket.
+
+  ticket_type:
+    description: Ticket Type of the pre-purchased ticket.
+
+  validity_type:
+    description: Validity Type of the pre-purchased ticket.
+
+  is_ticket_reusable:
+    description: Boolean to identify whether the pre-purchased ticket is reusable.
+
+  currency_code:
+    description: Local Currency Code of the pre-purchased ticket.
+
+  latest_cancelled_booking_id:
+    format: ID
+    description: Latest Cancelled Booking ID (PP DB) of the pre-purchased ticket.
+
+  latest_booking_cancelled_at:
+    description: Latest Cancellation Timestamp (PP DB) of the pre-purchased ticket.
+
+  headout_booking_id:
+    format: ID
+    description: Booking ID (Tourlandish DB) of a sold pre-purchased ticket.
+
+  pp_booking_status:
+    description: Status of a PP DB Fulfilment Booking.
+
+  booking_created_at:
+    description: Booking Creation Timestamp (Tourlandish DB) of a sold pre-purchased ticket.
+
+  is_expired:
+    description: Boolean to identify if pre-purchased ticket is expired or not.
+
+  inventory_type:
+    description: Inventory Type of the allotment to which this pre-purchased ticket belongs.
+
+  primary_experience_id:
+    format: ID
+    description: Primary Experience ID of the Vendor Tour associated with given
+      Prepurchase Allotment.
+
+  primary_experience_name:
+    description: Primary Experience Name of the Vendor Tour associated with given
+      Prepurchase Allotment.
+
+  combined_entity_id:
+    format: ID
+
+  city:
+    description: City of the primary experience associated with given Prepurchase Allotment.
+
+  country:
+    description: Country of the primary experience associated with given Prepurchase
+      Allotment.
+
+  market_region:
+    description: Market Region of the primary experience associated with given
+      Prepurchase Allotment.
+
+  usd_to_currency_conversion_rate:
+    description: Latest currency conversion rate from local currency to USD. This is
+      used for reporting purposes only.
+
+measures:
+  count:
+    aggregate_type: count

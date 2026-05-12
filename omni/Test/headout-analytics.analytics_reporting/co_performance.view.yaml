@@ -1,0 +1,57 @@
+# Reference this view as headout_analytics_analytics_reporting__co_performance
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: co_performance
+
+dimensions:
+  ticket_tags: {}
+
+  event_id:
+    format: ID
+    description: unique id for each event (primary key created by stitch)
+
+  event_name:
+    description: name of the event
+
+  received_at:
+    description: ts (utc) at which the event took place
+
+  ticket_id:
+    format: ID
+    description: id of the ticket associated with the trigger
+
+  booking_id:
+    format: ID
+    description: id of the booking associated with the trigger
+
+  ticket_status:
+    description: status of the ticket
+
+  assignee_name:
+    description: name of the user assinged to the ticket
+
+  assignee_email:
+    description: email id of the user assinged to the ticket
+
+  trigger_name:
+    description: name of the trigger from the value is triggered in the zendesk
+
+  trigger_id:
+    format: ID
+    description: id of the trigger from the value is triggered in the zendesk
+
+  task_minute:
+    description: average minutes to complete the task, mapped by co leads
+
+  vendor_id:
+    format: ID
+    description: vendor id of the assosciated booking id.
+
+  vendor_name:
+    description: vendor name of the assosciated booking id.
+
+measures:
+  count:
+    aggregate_type: count

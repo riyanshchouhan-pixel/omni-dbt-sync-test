@@ -1,0 +1,284 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_creator_coupons
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_creator_coupons
+
+dimensions:
+  creator_id:
+    format: ID
+    description: Unique ID for the creator
+
+  coupon_id:
+    format: ID
+    description: Unique ID for the coupon. Primary key of this table.
+
+  coupon_number:
+    description: Serial number of coupon issued to a particular creator, ordered by
+      creation time. Used as the join key to content_number.
+
+  coupon_code:
+    description: Unique promo code string issued to the creator for redemption on Headout
+
+  coupon_status:
+    description: Current status of the coupon (e.g., ACTIVE, REDEEMED, EXPIRED)
+
+  coupon_created_at:
+    description: Timestamp when the coupon was created and issued to the creator
+
+  coupon_redeemed_at:
+    description: Timestamp when the coupon was redeemed on an order, NULL if not redeemed
+
+  is_coupon_redeemed:
+    description: Whether the coupon has been redeemed (coupon_status = REDEEMED)
+
+  has_order:
+    description: Whether an order exists for this coupon code
+
+  has_content:
+    description: Whether a content submission is linked to this coupon via
+      coupon_number = content_number
+
+  has_content_approved:
+    description: Whether the linked content submission has been approved
+
+  order_created_at:
+    description: Timestamp when the associated order was created
+
+  experience_date:
+    description: Date of the booked experience (latest if multiple bookings)
+
+  order_id:
+    format: ID
+    description: Headout order ID associated with the coupon redemption
+
+  order_status:
+    description: Current status of the associated order
+
+  city:
+    description: City where the experience takes place
+
+  country:
+    description: Country where the experience takes place
+
+  region:
+    description: Business region for the experience location
+
+  experience_id:
+    format: ID
+    description: Headout experience/product identifier
+
+  experience_name:
+    description: Display name of the experience
+
+  primary_category_id:
+    format: ID
+    description: Identifier of the experience's primary category
+
+  primary_category_name:
+    description: Name of the experience's primary category
+
+  combined_entity_id:
+    format: ID
+    description: Identifier of the parent attraction/combined entity
+
+  combined_entity_name:
+    description: Name of the parent combined entity
+
+  number_of_guests:
+    description: Number of guests on the order
+
+  price_payable_usd:
+    description: Total amount payable by the customer in USD after discounts
+
+  price_net_usd:
+    description: Net price to Headout in USD
+
+  order_value_usd:
+    description: Total order value in USD before discounts
+
+  order_value_completed_usd:
+    description: Order value in USD after accounting for refunds. This is the GBV metric.
+
+  amount_coupon_discount_usd:
+    description: Discount amount applied via the creator coupon in USD
+
+  amount_revenue_usd:
+    description: Gross margin in USD (order_value_completed - price_net). Headout's
+      take after vendor costs.
+
+  content_submitted_at:
+    description: Timestamp when the creator submitted the linked content for review
+
+  content_reviewed_at:
+    description: Timestamp when the linked content was reviewed
+
+  content_number:
+    description: Sequence number of the content submission for this creator, mapped
+      to coupon_number
+
+  content_id:
+    format: ID
+    description: Unique identifier of the linked content submission
+
+  content_status:
+    description: Workflow status of the linked content (e.g., SUBMITTED, APPROVED, REJECTED)
+
+  content_title:
+    description: Title of the submitted content
+
+  content_url:
+    description: URL where the content is hosted/published
+
+  content_format:
+    description: Format of the content (e.g., REEL, POST)
+
+  content_note:
+    description: Creator's notes or comments about the content
+
+  review_time:
+    description: Hours between first content submission and review completion
+
+  count_rejected_submissions:
+    description: Number of times content for this content_number was rejected before
+      the latest submission
+
+  all_submissions:
+    description: Nested array of all submission attempts for this content_number,
+      including rejected versions
+
+  all_submissions_content_format:
+    sql: content_format
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_id:
+    sql: content_id
+    format: ID
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_note:
+    sql: content_note
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_rejection_reason:
+    sql: content_rejection_reason
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_reviewed_at:
+    sql: content_reviewed_at
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_status:
+    sql: content_status
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_submitted_at:
+    sql: content_submitted_at
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_url:
+    sql: content_url
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  views_1d:
+    description: View count 1 day after content publication
+
+  likes_1d:
+    description: Like count 1 day after content publication
+
+  comments_1d:
+    description: Comment count 1 day after content publication
+
+  shares_1d:
+    description: Share count 1 day after content publication
+
+  saves_1d:
+    description: Save count 1 day after content publication
+
+  interactions_1d:
+    description: Total interactions (likes + comments + shares + saves) at 1 day
+
+  views_3d:
+    description: View count 3 days after content publication
+
+  likes_3d:
+    description: Like count 3 days after content publication
+
+  comments_3d:
+    description: Comment count 3 days after content publication
+
+  shares_3d:
+    description: Share count 3 days after content publication
+
+  saves_3d:
+    description: Save count 3 days after content publication
+
+  interactions_3d:
+    description: Total interactions (likes + comments + shares + saves) at 3 days
+
+  views_7d:
+    description: View count 7 days after content publication
+
+  likes_7d:
+    description: Like count 7 days after content publication
+
+  comments_7d:
+    description: Comment count 7 days after content publication
+
+  shares_7d:
+    description: Share count 7 days after content publication
+
+  saves_7d:
+    description: Save count 7 days after content publication
+
+  interactions_7d:
+    description: Total interactions (likes + comments + shares + saves) at 7 days
+
+  views_14d:
+    description: View count 14 days after content publication
+
+  likes_14d:
+    description: Like count 14 days after content publication
+
+  comments_14d:
+    description: Comment count 14 days after content publication
+
+  shares_14d:
+    description: Share count 14 days after content publication
+
+  saves_14d:
+    description: Save count 14 days after content publication
+
+  interactions_14d:
+    description: Total interactions (likes + comments + shares + saves) at 14 days
+
+  views_30d:
+    description: View count 30 days after content publication
+
+  likes_30d:
+    description: Like count 30 days after content publication
+
+  comments_30d:
+    description: Comment count 30 days after content publication
+
+  shares_30d:
+    description: Share count 30 days after content publication
+
+  saves_30d:
+    description: Save count 30 days after content publication
+
+  interactions_30d:
+    description: Total interactions (likes + comments + shares + saves) at 30 days
+
+measures:
+  count:
+    aggregate_type: count

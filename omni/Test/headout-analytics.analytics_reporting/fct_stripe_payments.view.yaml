@@ -1,0 +1,68 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_stripe_payments
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_stripe_payments
+
+dimensions:
+  payment_id:
+    format: ID
+    description: unique identifier for each payment on stripe
+
+  created_at:
+    description: timestamp at which the payment was created (utc)
+
+  amount:
+    description: amount in decimals
+
+  amount_in_cents:
+    description: amount in currency's smallest unit
+
+  currency:
+    description: processing currency
+
+  is_authorized:
+    description: bool representing whether the payment was successfully authorized on stripe
+
+  amount_captured:
+    description: amount successfully captured for this payment
+
+  amount_refunded:
+    description: amount successfully refunded
+
+  order_id:
+    format: ID
+    description: headout order id, same as itinerary id
+
+  order_city:
+    description: name of the city with the linked order
+
+  order_country:
+    description: name of the country with the linked order
+
+  is_micro_auth_payment:
+    description: bool representing whether the payment was a micro auth payment or not
+
+  customer_email:
+    description: customer email making the order associated with the payment
+
+  customer_ip:
+    description: IP address of the customer while making the payment
+
+  card_network:
+    description: name of the card network (scheme) used to make the payment. visa,
+      mastercard etc
+
+  card_customer_name:
+    description: name of the customer on the card used for making the payment
+
+  card_type:
+    description: type of card used for making the payment; credit vs debit
+
+  card_issuing_country:
+    description: name of the country issuing the card
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,142 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_meta_reconv2
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_meta_reconV2
+
+dimensions:
+  created_at: {}
+  experience_date: {}
+  city: {}
+  experience_name: {}
+  tour_name: {}
+  combined_entity_name: {}
+  supply_partner_billing_entity_name: {}
+  supply_partner_name: {}
+  payment_method: {}
+  payment_basis: {}
+  processing_currency: {}
+  conversion_rate_to_usd: {}
+  value_usd: {}
+  value_local: {}
+  price_net_local: {}
+  price_net_usd: {}
+  booking_status: {}
+  completion_type: {}
+  reconciled_price_net: {}
+  reconciled_booking_count: {}
+  recon_date: {}
+  updated_at: {}
+  has_charged_loss: {}
+  reconciliation_data: {}
+
+  booking_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  tour_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  supply_partner_billing_entity_id:
+    format: ID
+
+  supply_partner_id:
+    format: ID
+
+  reconciliation_data_billing_entity_id:
+    sql: billing_entity_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_charged_loss:
+    sql: charged_loss
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_comments:
+    sql: comments
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_error_bucket:
+    sql: error_bucket
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_error_team_attribution:
+    sql: error_team_attribution
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_created_at:
+    sql: fulfilment_created_at
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_id:
+    sql: fulfilment_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_method:
+    sql: fulfilment_method
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_status:
+    sql: fulfilment_status
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_headout_selling_price:
+    sql: headout_selling_price
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciled_price_net:
+    sql: reconciled_price_net
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciliation_created_at:
+    sql: reconciliation_created_at
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciliation_status:
+    sql: reconciliation_status
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciliation_updated_at:
+    sql: reconciliation_updated_at
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_sp_booking_ref_number:
+    sql: sp_booking_ref_number
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_supply_partner_id:
+    sql: supply_partner_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_version:
+    sql: version
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+measures:
+  count:
+    aggregate_type: count

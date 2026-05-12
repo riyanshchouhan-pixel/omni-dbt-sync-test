@@ -1,0 +1,31 @@
+# Reference this view as headout_analytics_analytics_reporting__hourly_experience_inventory
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: hourly_experience_inventory
+
+dimensions:
+  hour_extracted_at: {}
+  previous_hour_extracted_at: {}
+  count_days_available: {}
+  previous_count_days_available: {}
+  first_available_date: {}
+  previous_first_available_date: {}
+  first_available_date_offset_days: {}
+  previous_first_available_date_offset_days: {}
+  last_available_date: {}
+  previous_last_available_date: {}
+  last_available_date_offset_days: {}
+  previous_last_available_date_offset_days: {}
+
+  experience_id:
+    format: ID
+
+  tour_id:
+    format: ID
+    description: tour id for which this inventory is extracted
+
+measures:
+  count:
+    aggregate_type: count

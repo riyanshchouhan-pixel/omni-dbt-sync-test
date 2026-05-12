@@ -1,0 +1,99 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_ad_group_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_ad_group_stats
+
+dimensions:
+  campaign_language: {}
+  campaign_targeting_location: {}
+  campaign_target_combined_entity_name: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_target_business_market: {}
+  campaign_target_business_region: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  ad_group_status: {}
+  sum_conversions_value: {}
+  count_interactions: {}
+  count_view_through_conversions: {}
+  sum_conversion_value_online: {}
+  sum_conversion_value_offline_gross_bookings: {}
+  sum_conversion_value_offline_revenue: {}
+  count_conversions_offline_contribution_margin: {}
+  sum_conversion_value_offline_contribution_margin: {}
+
+  surrogate_key:
+    description: Surrogate primary key from the ad group stats staging model.
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID.
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign.
+
+  ad_group_id:
+    format: ID
+    description: Unique identifier for the ad group.
+
+  report_date:
+    description: Date of the performance report.
+
+  device:
+    description: "Device type: MOBILE, DESKTOP, TABLET, CONNECTED_TV."
+
+  ad_network_type:
+    description: "Ad network: SEARCH, SEARCH_PARTNERS, CONTENT, YOUTUBE, MIXED."
+
+  account_name:
+    description: Name of the Google Ads account.
+
+  campaign_name:
+    description: Current name of the campaign.
+
+  campaign_city:
+    description: City extracted from the campaign name.
+
+  campaign_category:
+    description: Category extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  ad_group_name:
+    description: Name of the ad group.
+
+  ad_group_target_cpa:
+    description: Target cost per acquisition set at the ad group level.
+
+  ad_group_target_roas:
+    description: Target return on ad spend set at the ad group level.
+
+  count_impressions:
+    description: Number of ad impressions.
+
+  count_clicks:
+    description: Number of ad clicks.
+
+  sum_spend:
+    description: Total spend in USD.
+
+  count_conversions:
+    description: Number of primary (biddable) conversions.
+
+  count_conversions_online:
+    description: Number of online conversions. Defaults to 0.
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline gross bookings conversions. Defaults to 0.
+
+  count_conversions_offline_revenue:
+    description: Number of offline revenue conversions. Defaults to 0.
+
+measures:
+  count:
+    aggregate_type: count

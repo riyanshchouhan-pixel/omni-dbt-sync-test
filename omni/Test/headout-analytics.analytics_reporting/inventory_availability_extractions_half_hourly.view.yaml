@@ -1,0 +1,47 @@
+# Reference this view as headout_analytics_analytics_reporting__inventory_availability_extractions_half_hourly
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: inventory_availability_extractions_half_hourly
+
+dimensions:
+  experience_date: {}
+  experience_time: {}
+  extracted_at: {}
+  remaining: {}
+  availability: {}
+  pax_profiles: {}
+
+  _surrogate_key:
+    hidden: true
+
+  experience_id:
+    format: ID
+
+  tour_id:
+    format: ID
+
+  pax_profiles_availability:
+    sql: availability
+    nested_on_field: pax_profiles
+    parent_field: pax_profiles
+
+  pax_profiles_price:
+    sql: price
+    nested_on_field: pax_profiles
+    parent_field: pax_profiles
+
+  pax_profiles_remaining:
+    sql: remaining
+    nested_on_field: pax_profiles
+    parent_field: pax_profiles
+
+  pax_profiles_type:
+    sql: type
+    nested_on_field: pax_profiles
+    parent_field: pax_profiles
+
+measures:
+  count:
+    aggregate_type: count

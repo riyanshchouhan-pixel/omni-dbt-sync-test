@@ -1,0 +1,54 @@
+# Reference this view as headout_analytics_analytics_reporting__inventory_change_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: inventory_change_events
+
+dimensions:
+  _dbt_source_relation:
+    description: The underlying relation in BigQuery from where this row was picked up.
+    hidden: true
+
+  tour_id:
+    format: ID
+    description: tour id of the tour for which the inventory was updated
+
+  vendor_id:
+    format: ID
+    description: id of the vendor who's inventory was modified
+
+  experience_date:
+    description: date for which the inventory was updated
+
+  experience_time:
+    description: time for which the inventory was updated
+
+  guest_type:
+    description: type of guest for whom the inventory has changed
+
+  status:
+    description: the updated status of the inventory update
+
+  remaining:
+    description: the number of remaining tickets for the slot post the update
+
+  event_name:
+    description: the source of how inventory was synced to BigQuery
+
+  updated_at:
+    description: ts (utc) at which the event took place
+
+  supply_partner_user_id:
+    format: ID
+    description: user id of the supply partner who triggered the event
+
+  user_name:
+    description: user name for the user who updated the inventory on Aries
+
+  comment:
+    description: comment left during the inventory update
+
+measures:
+  count:
+    aggregate_type: count

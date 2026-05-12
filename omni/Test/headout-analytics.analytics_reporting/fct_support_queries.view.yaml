@@ -1,0 +1,54 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_support_queries
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_support_queries
+
+dimensions:
+  query_tag: {}
+  booking_created_at: {}
+  tour_name: {}
+  experience_name: {}
+
+  contact_type:
+    description: type of contact in which query is recieved. email, chat, call etc
+
+  query_id:
+    format: ID
+    description: id of the query recieved
+
+  query_created_at:
+    description: timestamp when the query is recieved
+
+  query_solved_at:
+    description: timestamp when the query is solved or closed
+
+  tags:
+    description: tags applied to the query
+
+  is_auto_resolved:
+    description: boolean specifying whether query is autoresolved by automation or by bot
+
+  query_type:
+    description: type of the query recieved.
+
+  booking_id:
+    format: ID
+    description: existing booking_id associated with the query.
+
+  tour_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  requester_email:
+    description: email of the requester
+
+  minutes_to_resolution:
+    description: number of minutes to resolve or close the query
+
+measures:
+  count:
+    aggregate_type: count

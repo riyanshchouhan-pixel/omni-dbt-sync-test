@@ -1,0 +1,128 @@
+# Reference this view as headout_analytics_analytics_reporting__web_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: web_events
+
+dimensions:
+  utm_campaign: {}
+  utm_content: {}
+  utm_term: {}
+  extracted_affiliate_code: {}
+
+  event_id:
+    format: ID
+    description: unique id for each event built by combining user pseudo id, event
+      ts and event name
+
+  event_date:
+    description: date of the event in YYYYMMDD format
+
+  event_timestamp:
+    description: ts in utc when the event happened
+
+  event_name:
+    description: name of the event
+
+  user_pseudo_id:
+    format: ID
+    description: user id set by google analytics every time a new user visits the
+      website. This may be different across whitelabels.
+
+  session_id:
+    format: ID
+    description: a unique id for each session as measured by google analytics
+
+  session_number:
+    description: session number for the user
+
+  page_title:
+    description: title of the page where the event took place
+
+  page_referrer:
+    description: URL for the referring page
+
+  search_term:
+    description: search term entered by user for search events; derived from query params
+
+  order_id:
+    format: ID
+    description: Headout order ID for the purchase event
+
+  order_value_usd:
+    description: order value in US$
+
+  experience_id:
+    format: ID
+    description: headout experience id for ecommerce events
+
+  city:
+    description: headout city applicable for ecommerce events
+
+  session_start_timestamp:
+    description: timestamp (utc) at which the current session started
+
+  session_duration_seconds:
+    description: seconds since the session start when the event occured
+
+  user_first_touch_timestamp:
+    description: timestamp (utc) at which the user first visits the website
+
+  device_category:
+    description: device being used by the user
+
+  device_language:
+    description: device language
+
+  browser:
+    description: browser used by the user
+
+  hostname:
+    description: hostname on which the event took place
+
+  geo_continent:
+    description: continent name from where the user is browsing as determined using
+      the IP address
+
+  geo_sub_continent:
+    description: sub continent name from where the user is browsing as determined
+      using the IP address
+
+  geo_country:
+    description: country name from where the user is browsing as determined using
+      the IP address
+
+  geo_region:
+    description: region name from where the user is browsing as determined using the
+      IP address
+
+  geo_metro:
+    description: metro name from where the user is browsing as determined using the
+      IP address
+
+  geo_city:
+    description: city name from where the user is browsing as determined using the
+      IP address
+
+  campaign:
+    description: name of the campaign as determined using gclid and utm params
+
+  medium:
+    description: traffic medium for the session as determined using utm medium
+
+  source:
+    description: traffic source for the session as determined using utm source
+
+  channel_grouping:
+    description: channels grouped together based on medium
+
+  platform:
+    description: always web for now
+
+  page_location:
+    description: page URL where the event took place
+
+measures:
+  count:
+    aggregate_type: count

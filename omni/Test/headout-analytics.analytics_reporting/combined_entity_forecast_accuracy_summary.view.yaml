@@ -1,0 +1,59 @@
+# Reference this view as headout_analytics_analytics_reporting__combined_entity_forecast_accuracy_summary
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: combined_entity_forecast_accuracy_summary
+
+dimensions:
+  forecast_model: {}
+
+  surrogate_key:
+    description: Unique key generated from forecast_generated_date, forecast_model,
+      and forecast_horizon
+
+  forecast_generated_date:
+    description: Date when the forecasts in this summary were generated
+
+  report_timestamp:
+    description: Timestamp for partitioning (forecast_generated_date + 30 minutes offset)
+
+  forecast_horizon:
+    description: Forecast horizon bucket. Values are next_day (lead_time = 1), 7_day
+      (lead_time 1-7), 30_day (lead_time 1-30).
+
+  wmape:
+    description: Weighted Mean Absolute Percentage Error. SUM(absolute_error) /
+      SUM(ABS(actual_revenue)). Weights larger entities more heavily.
+
+  mape:
+    description: Mean Absolute Percentage Error. AVG(absolute_percentage_error)
+      across all entity-date pairs in the horizon.
+
+  mae:
+    description: Mean Absolute Error in USD. AVG(absolute_error) across all
+      entity-date pairs in the horizon.
+
+  mean_forecast_error:
+    description: Average signed forecast error in USD. Positive indicates systematic
+      over-prediction (bias indicator).
+
+  confidence_interval_coverage:
+    description: Proportion of forecasts where actual revenue fell within the 95%
+      confidence interval. Values range 0 to 1.
+
+  count_forecasts:
+    description: Number of entity-date forecast pairs in this horizon bucket.
+      Indicates sample size.
+
+  sum_actual_revenue:
+    description: Total actual revenue in USD across all entity-date pairs in the
+      horizon bucket.
+
+  sum_forecasted_revenue:
+    description: Total forecasted revenue in USD across all entity-date pairs in the
+      horizon bucket.
+
+measures:
+  count:
+    aggregate_type: count

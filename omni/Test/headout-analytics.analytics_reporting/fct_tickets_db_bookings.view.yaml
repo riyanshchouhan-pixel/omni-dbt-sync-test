@@ -1,0 +1,92 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_tickets_db_bookings
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_tickets_db_bookings
+
+dimensions:
+  ticket_type: {}
+
+  tickets_database_booking_id:
+    format: ID
+    description: unique id assigned to each booking id in the tickets db
+
+  booking_id:
+    format: ID
+    description: booking_id
+
+  created_at:
+    description: timestamp (utc) at which the booking was created
+
+  status:
+    description: current status of the booking
+
+  booked_at:
+    description: timestamp (utc) at which the original booking was created
+
+  order_id:
+    format: ID
+    description: Headout order id
+
+  experience_id:
+    format: ID
+    description: Headout experience id for which the booking was made
+
+  experience_name:
+    description: Headout experience name for which the booking was made
+
+  price_net:
+    description: net price for fulfilment for this booking as per the tourlandish db
+
+  city:
+    description: Destination city for which the booking was made
+
+  vendor_name:
+    description: vendor name the booking was fulfilled with
+
+  booking_status:
+    description: status of the main booking
+
+  experience_date:
+    description: experience date for the booking
+
+  experience_time:
+    description: experience time for the booking
+
+  sum_tickets_net_price:
+    description: sum of net price of each ticket used from the tickets db to fulfill
+      the booking
+
+  processing_currency:
+    description: processing currency for the net price
+
+  count_tickets:
+    description: count of tickets used to fulfill the booking
+
+  tickets:
+    description: an array made up of tickets used to fulfill the booking
+
+  tour_id:
+    format: ID
+    description: tour id for which these tickets were uploaded to tickets db
+
+  vendor_id:
+    format: ID
+    description: vendor id for which these tickets were uploaded to tickets db
+
+  purchase_orders:
+    description: comma separated list of purchase orders used to place the tickets
+      used for fulfilling the booking
+
+  has_price_mismatch:
+    description: boolean column indicating whether the price on the booking table is
+      different than the net price of tickets sent
+
+  has_status_mismatch:
+    description: boolean column indicating whether the status on the booking table
+      is different than the status of the booking in tickets db
+
+measures:
+  count:
+    aggregate_type: count

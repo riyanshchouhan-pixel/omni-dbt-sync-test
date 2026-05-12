@@ -1,0 +1,178 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_vendors
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_vendors
+
+dimensions:
+  vendor_id:
+    format: ID
+    description: Primary key - unique identifier for each vendor on Headout
+
+  created_at:
+    description: Timestamp (UTC) when the vendor was created in the system
+
+  vendor_name:
+    description: Display name of the vendor (supply partner)
+
+  vendor_city:
+    description: Primary city where the vendor is headquartered or operates from
+
+  country_iso2_code:
+    description: ISO 3166-1 alpha-2 country code for the vendor's country of
+      operation (e.g., US, GB, IT)
+
+  vendor_country:
+    description: Full name of the country where the vendor operates
+
+  is_partnered:
+    description: Boolean flag indicating whether the vendor has a formal partnership
+      agreement with Headout
+
+  has_email_opt_out:
+    description: Boolean flag indicating whether the vendor has opted out of email
+      communications
+
+  supply_partner_status:
+    description: "Current operational status of the vendor. Values: ACTIVE
+      (currently operating), INACTIVE (temporarily not operating), DEFUNCT
+      (permanently closed/terminated)"
+
+  fulfilment_type:
+    description: "Primary fulfillment method used by the vendor to process bookings.
+      Values include: Freesale (instant confirmation), Vendor Request (manual
+      confirmation required), Vendor API (automated via API), Selenium
+      (automated web scraping), 3rd Party API (external API integration),
+      Portal, Official Website, Tickets DB, API"
+
+  payment_method:
+    description: "Method used to pay the vendor. Values: HEADOUT_STANDARD_REPORTING
+      (standard invoice process), INVOICE_SP (supply partner invoice), CARD
+      (credit card payment), PORTAL_DEPOSIT (deposit via vendor portal), PREPAID
+      (prepayment required)"
+
+  payment_basis:
+    description: "Basis on which the vendor is paid. Values: DATE_OF_BOOKING (paid
+      when booking is made), DATE_OF_EXPERIENCE (paid when experience occurs),
+      DATE_OF_REDEMPTION (paid when ticket is redeemed)"
+
+  payment_frequency:
+    description: "Frequency of payment settlements with the vendor. Values: MONTHLY,
+      WEEKLY, BI-WEEKLY"
+
+  contact_details:
+    description: "Array of contact information for the vendor. Each entry contains:
+      name (contact person), type (contact type e.g., PRIMARY, FINANCE), email
+      (email address), phone (phone number)"
+
+  contact_details_email:
+    sql: email
+    nested_on_field: contact_details
+    parent_field: contact_details
+
+  contact_details_name:
+    sql: name
+    nested_on_field: contact_details
+    parent_field: contact_details
+
+  contact_details_phone:
+    sql: phone
+    nested_on_field: contact_details
+    parent_field: contact_details
+
+  contact_details_type:
+    sql: type
+    nested_on_field: contact_details
+    parent_field: contact_details
+
+  contract_details:
+    description: "Array of contract information for the vendor. Each entry contains:
+      contract_id, contract_status, contract_entity (legal entity),
+      contract_type, contract_link (URL to contract document), notice_period
+      (days), contract_expiry_at, contract_created_at,
+      contract_last_modified_at"
+
+  contract_details_contract_created_at:
+    sql: contract_created_at
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_contract_entity:
+    sql: contract_entity
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_contract_expiry_at:
+    sql: contract_expiry_at
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_contract_id:
+    sql: contract_id
+    format: ID
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_contract_last_modified_at:
+    sql: contract_last_modified_at
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_contract_link:
+    sql: contract_link
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_contract_status:
+    sql: contract_status
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_contract_type:
+    sql: contract_type
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  contract_details_notice_period:
+    sql: notice_period
+    nested_on_field: contract_details
+    parent_field: contract_details
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: Foreign key to the billing entity associated with the vendor for
+      payment processing
+
+  supply_partner_billing_entity_name:
+    description: Display name of the billing entity used for invoicing and payments
+
+  billing_entity_created_at:
+    description: Timestamp (UTC) when the billing entity was created
+
+  settlement_currency_code:
+    description: ISO 4217 currency code used for settlements with this vendor (e.g.,
+      USD, EUR, GBP)
+
+  supply_partner_billing_beneficiary_name:
+    description: Name of the beneficiary for payment transfers (may differ from
+      billing entity name)
+
+  rms_id:
+    format: ID
+    description: Foreign key to the Reservation Management System (RMS) the vendor
+      uses for inventory management
+
+  rms_account_id:
+    format: ID
+    description: Vendor's account identifier within the RMS
+
+  rms_name:
+    description: Name of the RMS provider (e.g., PRE_PURCHASE for prepurchase ticket system)
+
+  rms_account_name:
+    description: Display name for the vendor's account within the RMS
+
+measures:
+  count:
+    aggregate_type: count

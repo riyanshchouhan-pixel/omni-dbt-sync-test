@@ -1,0 +1,38 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_cities
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_cities
+
+dimensions:
+  created_at: {}
+  city_code: {}
+  city: {}
+  is_discoverable: {}
+  timezone: {}
+  is_calipso_supported: {}
+  currency_code: {}
+  currency_name: {}
+  currency_symbol: {}
+  currency_local_symbol: {}
+  currency_precision: {}
+  currency: {}
+  has_no_index: {}
+  city_latitude: {}
+  city_longitude: {}
+  country_iso2_code: {}
+  country_iso3_code: {}
+  country: {}
+  continent: {}
+  region: {}
+  country_latitude: {}
+  country_longitude: {}
+
+  city_id:
+    format: ID
+    description: unique id for each city on Headout
+
+measures:
+  count:
+    aggregate_type: count

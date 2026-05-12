@@ -1,0 +1,98 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_adyen_balance_transactions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_adyen_balance_transactions
+
+dimensions:
+  created_at: {}
+
+  balance_transaction_id:
+    format: ID
+    description: surrogate key created using action id and breakdown type
+
+  action_id:
+    format: ID
+    description: action id in case of payment actions and payout id for settlements
+
+  batch_number:
+    description: sequence number of the settlement.
+
+  processed_at:
+    description: timestamp (utc) at which the balance transaction occured
+
+  payment_id:
+    format: ID
+    description: payment id for payment action and settlement id for settlements
+
+  order_id:
+    format: ID
+    description: Headout order ID; can be null for micro auth payments and settlements
+
+  payment_method:
+    description: payment method using which the payment is processed (visa,
+      mastercard, ideal etc.)
+
+  action_type:
+    description: name of the action type the balance transaction is associated with
+
+  breakdown_type:
+    description: a further breakdown for each action specifying different associated amounts
+
+  status:
+    description: status of the payment amount
+
+  processing_currency:
+    description: processing currency for the payment associated with the balance transaction
+
+  gross_amount_processing_currency:
+    description: gross amount in the processing currency of the payment
+
+  gross_amount_settlement_currency:
+    description: gross amount in the settlement currency of the payment
+
+  gross_amount_usd:
+    description: gross amount in usd converted using currency conversion from
+      currency conversion rates API
+
+  settlement_currency:
+    description: settlement currency used by Adyen for settling the balance transaction
+
+  net_amount_settlement_currency:
+    description: amount in the settlement currency used by Adyen to settle the transaction
+
+  net_amount_usd:
+    description: net amount in usd converted using currency conversion from currency
+      conversion rates API
+
+  markup:
+    description: charged by acquiring bank
+
+  markup_usd:
+    description: charged by acquiring bank in usd
+
+  scheme_fees:
+    description: charged by the card scheme
+
+  scheme_fees_usd:
+    description: charged by the card scheme in usd
+
+  interchange_fees:
+    description: charged by issuer's bank
+
+  interchange_fees_usd:
+    description: charged by issuer's bank in usd
+
+  commission:
+    description: sum of markup, scheme and interchange fees
+
+  commission_usd:
+    description: sum of markup, scheme and interchange fees in usd
+
+  adyen_account:
+    description: name of the Adyen account for which this statement is generated
+
+measures:
+  count:
+    aggregate_type: count

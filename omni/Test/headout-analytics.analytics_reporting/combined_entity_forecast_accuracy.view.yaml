@@ -1,0 +1,80 @@
+# Reference this view as headout_analytics_analytics_reporting__combined_entity_forecast_accuracy
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: combined_entity_forecast_accuracy
+
+dimensions:
+  surrogate_key:
+    description: Unique key generated from combined_entity_id,
+      forecast_generated_date, and report_date
+
+  combined_entity_id:
+    format: ID
+    description: Unique identifier for the combined entity
+
+  combined_entity_name:
+    description: Name of the combined entity
+
+  city:
+    description: City where the combined entity is located
+
+  country:
+    description: Country where the combined entity is located
+
+  region:
+    description: Region where the combined entity is located
+
+  business_market:
+    description: Business market classification for the combined entity
+
+  business_region:
+    description: Business region classification for the combined entity
+
+  report_date:
+    description: The actual date for which revenue was realized and forecast was made
+
+  report_timestamp:
+    description: Timestamp for reporting (report_date + 30 minutes offset)
+
+  forecasted_revenue:
+    description: Predicted daily revenue in USD for the report_date
+
+  forecasted_revenue_lower:
+    description: Lower bound of 95% confidence interval in USD
+
+  forecasted_revenue_upper:
+    description: Upper bound of 95% confidence interval in USD
+
+  forecast_method:
+    description: Method used to generate the forecast (arima_plus, seasonal_naive,
+      linear, lightgbm_per_region, or lightgbm_per_ce)
+
+  forecast_generated_date:
+    description: Date when the forecast was generated
+
+  lead_time_days:
+    description: Number of days between forecast generation and the forecasted date
+
+  actual_revenue:
+    description: Actual gross revenue in USD from combined_entity_stats (sum_revenue)
+
+  forecast_error:
+    description: Signed error in USD (forecasted_revenue - actual_revenue). Positive
+      means over-prediction.
+
+  absolute_error:
+    description: Absolute forecast error in USD. ABS(forecasted_revenue - actual_revenue).
+
+  absolute_percentage_error:
+    description: Absolute error as a proportion of actual revenue. NULL when actual
+      revenue is zero.
+
+  is_within_confidence_interval:
+    description: TRUE if actual_revenue falls between forecasted_revenue_lower and
+      forecasted_revenue_upper
+
+measures:
+  count:
+    aggregate_type: count

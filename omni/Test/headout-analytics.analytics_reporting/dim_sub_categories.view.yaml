@@ -1,0 +1,112 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_sub_categories
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_sub_categories
+
+dimensions:
+  category_name: {}
+  experiences: {}
+  language_content_data: {}
+
+  sub_category_id:
+    format: ID
+    description: unique id for each tour on Headout
+
+  created_at:
+    description: timestamp (utc) at which the sub-category was created
+
+  sub_category_name:
+    description: name of the sub-category
+
+  sub_category_rank:
+    description: rank of the sub-category amongst all categories
+
+  category_id:
+    format: ID
+    description: the associated category_id with the sub-category
+
+  tour_groups:
+    description: an array of tour groups the sub-category is mapped to
+
+  tour_groups_tour_group_id:
+    sql: tour_group_id
+    format: ID
+    nested_on_field: tour_groups
+    parent_field: tour_groups
+
+  tour_groups_tour_group_rank:
+    sql: tour_group_rank
+    nested_on_field: tour_groups
+    parent_field: tour_groups
+
+  experiences_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: experiences
+    parent_field: experiences
+
+  experiences_rank:
+    sql: rank
+    nested_on_field: experiences
+    parent_field: experiences
+
+  language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_display_name:
+    sql: display_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_heading:
+    sql: heading
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_code:
+    sql: language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_name:
+    sql: language_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_location_level:
+    sql: location_level
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_title:
+    sql: meta_title
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_subtext:
+    sql: subtext
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,38 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_channel_managers
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_channel_managers
+
+dimensions:
+  channel_manager: {}
+  country: {}
+  country_code: {}
+  city: {}
+  experience_name: {}
+  vendor_name: {}
+  activity_type: {}
+  currency: {}
+  price: {}
+  description: {}
+  languages: {}
+  availability: {}
+  ratings: {}
+  reviews: {}
+  activity_categories: {}
+  activity_attributes: {}
+
+  surrogate_key:
+    description: surrogate primary key built by combining experience ID and channel
+      manager name.
+
+  experience_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

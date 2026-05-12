@@ -1,0 +1,334 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_trips
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_trips
+
+dimensions:
+  customer_id:
+    format: ID
+    description: Surrogate key for the customer, generated from email. Matches
+      customer_id in dim_customers.
+
+  trip_id:
+    format: ID
+    description: Surrogate key for the trip, generated from email and trip_number.
+      Primary key.
+
+  email:
+    description: Email address of the customer.
+
+  trip_number:
+    description: Sequential trip number for the customer, starting at 1.
+
+  customer_trip_sequence_number:
+    description: Sequential trip number for the customer, identical to trip_number.
+      Provided for naming consistency with customer_order_sequence_number on
+      fct_orders.
+
+  is_repeat_trip:
+    description: Boolean indicating whether this is a repeat trip
+      (customer_trip_sequence_number > 1). Use this instead of is_repeat_order
+      for true retention analysis.
+
+  is_multi_booking_trip:
+    description: Boolean indicating whether this trip contains more than one
+      booking. Key cross-sell indicator — multi-booking trips are worth ~2x
+      single-booking trips on average.
+
+  trip_start_date:
+    description: First experience date in the trip.
+
+  trip_end_date:
+    description: Last experience date in the trip.
+
+  trip_duration_days:
+    description: Number of days between first and last experience date. 0 for
+      single-day trips.
+
+  booking_lead_time_days:
+    description: Number of days between when the trip was first booked
+      (first_order_created_at) and the first experience date (trip_start_date).
+      Negative values indicate bookings made after the experience date (rare
+      data issues). Key segmentation axis for impulse bookers (0-2 days) vs
+      planners (30+ days).
+
+  num_active_days:
+    description: Number of distinct experience dates in this trip. A trip spanning 7
+      days may only have 2-3 active days with experiences. Measures trip
+      density/intensity.
+
+  num_bookings:
+    description: Total number of bookings (any status) in this trip. Includes
+      completed, cancelled, and pending bookings.
+
+  num_orders:
+    description: Number of distinct orders that contributed bookings to this trip. A
+      trip can span multiple orders.
+
+  num_experiences:
+    description: Number of distinct experiences booked in this trip.
+
+  num_cities:
+    description: Number of distinct cities visited in this trip. Most trips (99%)
+      are single-city.
+
+  num_guests:
+    description: Total guest-booking instances across all bookings in this trip. A
+      family of 4 booking 3 experiences = 12 num_guests. For party size, use
+      max_guests_per_booking instead.
+
+  num_completed_bookings:
+    description: Number of completed bookings in this trip. Used with num_bookings
+      to calculate trip completion rate (num_completed_bookings / num_bookings).
+
+  max_guests_per_booking:
+    description: Maximum number of guests on any single booking in the trip. Best
+      proxy for the travel party size — the largest booking reflects the full
+      group, since not everyone participates in every activity.
+
+  has_child_guests:
+    description: Boolean indicating whether any booking in the trip has child,
+      infant, or family guest types. Uses cross-booking inference — if even one
+      experience in the trip has child pax, the entire trip is flagged. Cannot
+      detect families when no experience in the trip offers child ticket types.
+
+  trip_group_type:
+    description: |-
+      Classification of the travel party. Values: Solo (1 guest), Couple (2 guests, no children),
+      Family (child/infant pax detected via cross-booking inference), Small Group (3-5 guests, no children detected),
+      Large Group (6+ guests, no children detected). Note that some Small Group trips may actually be
+      undetected families where no experience offered child ticket types.
+
+  has_coupon:
+    description: Boolean indicating whether any order in this trip used a coupon
+      code. Key for distinguishing promo-driven retention from organic
+      retention.
+
+  has_used_app:
+    description: Boolean indicating whether any order in this trip was placed via
+      the iOS or Android app.
+
+  has_used_pay_later:
+    description: Boolean indicating whether any order in this trip used Headout's
+      buy-now-pay-later (BNPL) feature.
+
+  has_booking_insurance:
+    description: Boolean indicating whether any booking in this trip had
+      cancellation insurance purchased.
+
+  coupon_codes:
+    description: Array of distinct coupon codes used across orders in this trip.
+      Enables promotion-level trip attribution beyond the has_coupon boolean.
+
+  has_affiliate_order:
+    description: Boolean indicating whether any order in this trip was placed via an
+      affiliate partner.
+
+  primary_affiliate_code:
+    description: Affiliate code from the earliest order in this trip. NULL if no
+      affiliate orders.
+
+  primary_domain_host:
+    description: Domain host (e.g., headout.com or microbrand domain) from the
+      earliest order in this trip. Identifies which Headout property initiated
+      the trip.
+
+  is_logged_in_trip:
+    description: Boolean indicating whether the customer was logged in for any order
+      in this trip.
+
+  primary_category_name:
+    description: Most frequently occurring experience category across bookings in
+      this trip (e.g., Theme Parks, Museums, Tours).
+
+  primary_language:
+    description: Most frequently occurring experience language across bookings in
+      this trip. Proxy for tourist nationality when customer_country is
+      unavailable.
+
+  primary_poi_id:
+    format: ID
+    description: Most frequently occurring POI ID across bookings in this trip.
+
+  primary_poi_name:
+    description: Most frequently occurring POI name (venue/attraction) across
+      bookings in this trip. Identifies which venue defined the trip.
+
+  total_order_value_usd:
+    description: Total order value in USD across all distinct orders in this trip.
+      Order-level metric summing order_value_usd from fct_orders. Note that if
+      an order's bookings span multiple trips (rare), the full order value is
+      counted in each trip.
+
+  total_order_value_completed_usd:
+    description: Total order value in USD for orders where all bookings within this
+      trip are completed. Useful for measuring realized trip value vs intended
+      trip value.
+
+  total_order_revenue_usd:
+    description: Total order revenue in USD across all distinct orders in this trip.
+      Order-level metric summing amount_revenue_usd from fct_orders
+      (order_value_completed - price_net).
+
+  total_order_revenue_completed_usd:
+    description: Total order revenue in USD for orders where all bookings within
+      this trip are completed. Useful for measuring realized trip revenue vs
+      intended trip revenue.
+
+  primary_channel_grouping:
+    description: Marketing channel grouping of the first order (by created_at) in
+      this trip. Answers "what channel brought the customer back for this trip?"
+      Use for trip-level re-acquisition analysis.
+
+  primary_device:
+    description: Device used for the first order (by created_at) in this trip.
+      Answers "what device did the customer start this trip on?"
+
+  channels:
+    description: Array of distinct marketing channel groupings across all orders in
+      this trip. Captures the full multi-touch journey within a trip.
+
+  devices:
+    description: Array of distinct devices used across all orders in this trip.
+
+  customer_country:
+    description: Home country of the customer, derived from the trip's earliest
+      order (card issuing country, falling back to phone country). Used to
+      classify trip_travel_type.
+
+  primary_city:
+    description: Most frequently occurring city across bookings in this trip.
+
+  primary_country:
+    description: Most frequently occurring country across bookings in this trip.
+      Used with customer_country to determine trip_travel_type.
+
+  primary_region:
+    description: Most frequently occurring region (e.g., Europe, Asia) across
+      bookings in this trip.
+
+  customer_region:
+    description: Region of the customer's home country, derived from the
+      country-to-region mapping in booking destinations.
+
+  trip_travel_type:
+    description: |-
+      Classification of the trip based on the customer's home country vs destination.
+      Values: Domestic (same country), International - Same Region (different country, same region),
+      International - Cross Region (different country, different region), International (region lookup unavailable),
+      NULL (customer_country unknown).
+
+  prev_trip_primary_city:
+    description: Primary city of the customer's previous trip. NULL for the first
+      trip. Enables city-to-city transition analysis.
+
+  is_same_city_as_prev_trip:
+    description: Boolean indicating whether the customer returned to the same
+      primary city as their previous trip. NULL for the first trip. Key city
+      loyalty metric.
+
+  primary_business_region:
+    description: Most frequently occurring business region across bookings in this trip.
+
+  primary_business_market:
+    description: Most frequently occurring business market across bookings in this trip.
+
+  primary_combined_entity_id:
+    format: ID
+    description: Most frequently occurring combined entity ID across bookings in
+      this trip. Identifies which business entity (collection) primarily drove
+      the trip.
+
+  primary_combined_entity_name:
+    description: Most frequently occurring combined entity name across bookings in
+      this trip.
+
+  cities:
+    description: Array of distinct cities visited in this trip.
+
+  experiences:
+    description: Array of distinct experience IDs booked in this trip.
+
+  bookings:
+    description: Nested array of booking details for this trip, ordered by experience_date.
+
+  bookings_booking_id:
+    sql: booking_id
+    format: ID
+    description: Unique identifier for each booking.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_booking_status:
+    sql: booking_status
+    description: Current status of the booking (e.g., Completed, Cancelled, Pending).
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_city:
+    sql: city
+    description: City where the experience takes place.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_id:
+    sql: combined_entity_id
+    format: ID
+    description: Combined entity ID for the experience.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_name:
+    sql: combined_entity_name
+    description: Name of the combined entity for the experience.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_date:
+    sql: experience_date
+    description: Date of the booked experience.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_id:
+    sql: experience_id
+    format: ID
+    description: Unique identifier for the experience.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_name:
+    sql: experience_name
+    description: Name of the booked experience.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  first_order_created_at:
+    description: Timestamp (UTC) of the earliest booking creation in this trip.
+      Indicates when the customer first booked for this trip.
+
+  prev_trip_end_date:
+    description: End date of the customer's previous trip. NULL for the first trip.
+
+  days_since_last_trip:
+    description: Number of days between the start of this trip and the end of the
+      previous trip. NULL for the first trip.
+
+  months_since_last_trip:
+    description: Number of months between the start of this trip and the end of the
+      previous trip. NULL for the first trip.
+
+  days_since_first_trip:
+    description: Number of days between the start of this trip and the start of the
+      customer's first trip. 0 for the first trip.
+
+  days_until_next_trip:
+    description: Number of days between the end of this trip and the start of the
+      customer's next trip. NULL for the most recent trip. Key metric for
+      predicting repeat behavior and understanding inter-trip intervals.
+
+measures:
+  count:
+    aggregate_type: count

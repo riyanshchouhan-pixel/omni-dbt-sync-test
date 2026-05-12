@@ -1,0 +1,102 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_musement_experiences
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_musement_experiences
+
+dimensions:
+  vendor_name: {}
+  extractions: {}
+
+  experience_id:
+    format: ID
+    description: unique id for each experience on musement
+
+  experience_name:
+    description: name of the experience on musement
+
+  description:
+    description: description of the experience
+
+  city:
+    description: destination city of the experience
+
+  country:
+    description: destination country of the experience
+
+  country_code:
+    description: country code of the experience
+
+  experience_url:
+    description: url of the experience on musement
+
+  categories:
+    description: categories of experience
+
+  flavours:
+    description: different versions of experience
+
+  verticals:
+    description: tag under which it is shown on the main website
+
+  currency:
+    description: currency for the price of the experience
+
+  retail_price:
+    description: retail price of the experience
+
+  service_fee:
+    description: service fee levied on the experience (already included in the retail_price)
+
+  original_retail_price:
+    description: original retail price of the experience
+
+  discount:
+    description: discount given on the experience
+
+  average_rating:
+    description: avg rating the experience has
+
+  ratings:
+    description: number of ratings the experience has
+
+  vendor_id:
+    format: ID
+
+  last_extracted_at:
+    description: ts at which the experience was last extracted
+
+  extractions_average_rating:
+    sql: average_rating
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_change_in_ratings:
+    sql: change_in_ratings
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_daily_change_in_ratings:
+    sql: daily_change_in_ratings
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_days_since_last_extraction:
+    sql: days_since_last_extraction
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_extraction_date:
+    sql: extraction_date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_ratings:
+    sql: ratings
+    nested_on_field: extractions
+    parent_field: extractions
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,123 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_tickets_db_tickets
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_tickets_db_tickets
+
+dimensions:
+  created_at: {}
+  tgid: {}
+  experience_name: {}
+  combined_entity_name: {}
+  city: {}
+  country: {}
+  region: {}
+  conversion_rate: {}
+  loss_liability: {}
+  usd_to_currency_conversion_rate: {}
+  loss_liability_usd: {}
+
+  ticket_id:
+    format: ID
+    description: unique id for each ticket uploaded
+
+  uploaded_at:
+    description: timestamp (utc) at which the ticket was uploaded to the db
+
+  experience_date:
+    description: experience date for date timed entry tickets
+
+  experience_time:
+    description: experience time for the slot for which ticket is uploaded (timed
+      entry ticket)
+
+  guest_type:
+    description: the guest type for which ticket is uploaded, note -> this will be
+      null for unpublished inventory data maintained in this sheet
+      https://docs.google.com/spreadsheets/d/1FicuLvFutGk-93VuByFfPt82icWjM8_v0YsuqDoBbc4/
+
+  price_net:
+    description: the net price for the ticket
+
+  comment:
+    description: comment added to the ticket
+
+  expiring_at:
+    description: ts at which the ticket is expiring
+
+  tickets_database_booking_id:
+    format: ID
+    description: booking id (ticket db) assigned to the ticket
+
+  vendor_ref_num:
+    description: vendor reference number
+
+  is_sold:
+    description: boolean representing whether the ticket has been sold or not
+
+  ticket_status:
+    description: current status of the ticket
+
+  purchase_order_number:
+    description: purchase order number with the sp where we ordered this ticket
+
+  purchased_date:
+    description: date on which the ticket was purchased
+
+  vendor_tour_id:
+    format: ID
+    description: vendor tour id this ticket is mapped to
+
+  cancelled_bookings:
+    description: booking id which is cancelled on inventory level
+
+  cancelled_bookings_booking_id:
+    sql: booking_id
+    format: ID
+    nested_on_field: cancelled_bookings
+    parent_field: cancelled_bookings
+
+  cancelled_bookings_cancelled_at:
+    sql: cancelled_at
+    nested_on_field: cancelled_bookings
+    parent_field: cancelled_bookings
+
+  last_booking_cancelled_at:
+    description: latest timestamp when the booking is cancelled
+
+  tour_id:
+    format: ID
+    description: tour id this vendor tour is mapped to
+
+  vendor_id:
+    format: ID
+    description: vendor id this vendor tour is mapped to
+
+  currency_code:
+    description: tour currency for the vendor tour
+
+  ticket_type:
+    description: type of tickets uploaded for this vendor tour
+
+  validity_type:
+    description: validity type for the tickets uploaded for this vendor tour
+
+  is_reusable_pp_tickets:
+    description: boolean representing whether can reuse pp tickets
+
+  vendor_name:
+    description: vendor name this vendor tour is mapped to
+
+  headout_booking_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

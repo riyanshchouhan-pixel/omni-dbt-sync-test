@@ -1,0 +1,87 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_campaign_hourly_performance
+description: |
+  **Business Purpose:** Hourly campaign performance enriched with campaign dimensions. Each row represents one campaign x date x hour x device x ad network combination with campaign context. Combines basic hourly stats (impressions, clicks, spend) with per-conversion-action breakdowns. Powers dayparting optimization, ad scheduling analysis, and time-of-day CPA/CVR reporting.
+  **Refresh Cadence:** Daily.
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_campaign_hourly_performance
+
+dimensions:
+  campaign_language: {}
+  campaign_targeting_location: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  sum_conversions_value: {}
+  count_interactions: {}
+  sum_conversion_value_online: {}
+  sum_conversion_value_offline_gross_bookings: {}
+  sum_conversion_value_offline_revenue: {}
+  count_conversions_offline_contribution_margin: {}
+  sum_conversion_value_offline_contribution_margin: {}
+
+  surrogate_key:
+    description: Surrogate primary key from the hourly stats staging model.
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID.
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign.
+
+  report_date:
+    description: Date of the performance report.
+
+  hour_of_day:
+    description: Hour of the day (0-23) in the account timezone.
+
+  day_of_week:
+    description: "Day of the week: MONDAY through SUNDAY."
+
+  device:
+    description: "Device type: MOBILE, DESKTOP, TABLET, CONNECTED_TV."
+
+  ad_network_type:
+    description: "Ad network: SEARCH, SEARCH_PARTNERS, CONTENT, YOUTUBE, MIXED."
+
+  account_name:
+    description: Name of the Google Ads account.
+
+  campaign_name:
+    description: Current name of the campaign.
+
+  campaign_city:
+    description: City extracted from the campaign name.
+
+  campaign_category:
+    description: Category extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  count_impressions:
+    description: Number of ad impressions.
+
+  count_clicks:
+    description: Number of ad clicks.
+
+  sum_spend:
+    description: Total spend in USD.
+
+  count_conversions:
+    description: Number of primary (biddable) conversions.
+
+  count_conversions_online:
+    description: Number of online conversions. Defaults to 0.
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline gross bookings conversions. Defaults to 0.
+
+  count_conversions_offline_revenue:
+    description: Number of offline revenue conversions. Defaults to 0.
+
+measures:
+  count:
+    aggregate_type: count

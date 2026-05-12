@@ -1,0 +1,37 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_greenhouse_metrics
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_greenhouse_metrics
+
+dimensions:
+  job_department_name: {}
+  job_status: {}
+  job_name: {}
+  job_hiring_team: {}
+  job_stage_name: {}
+  job_stage_priority: {}
+  number_of_candidates: {}
+  avg_tat_seconds: {}
+  avg_tat: {}
+  percentile_25: {}
+  percentile_25_tat: {}
+  percentile_50: {}
+  percentile_50_tat: {}
+  percentile_75: {}
+  percentile_75_tat: {}
+  percentile_90: {}
+  percentile_90_tat: {}
+
+  job_department_id:
+    format: ID
+    description: unique id assigned for each job department
+
+  job_id:
+    format: ID
+    description: unique id assigned for each job
+
+measures:
+  count:
+    aggregate_type: count

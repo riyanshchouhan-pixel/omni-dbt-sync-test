@@ -1,0 +1,175 @@
+# Reference this view as headout_analytics_analytics_reporting__mixpanel_user_page_funnel_progression
+description: |
+  **Business Purpose:** Tracks the complete customer journey from session start through conversion
+  for each Mixpanel web session. Each row represents a session with its entry point attributes
+  and timestamped flags for each funnel step (experience selection, checkout, payment attempt,
+  order completion). Powers conversion rate dashboards, funnel drop-off analysis, and acquisition
+  attribution reporting.
+
+  **Refresh Cadence:** Daily (incremental with partition replacement for last 60 days)
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: mixpanel_user_page_funnel_progression
+
+dimensions:
+  event_date: {}
+  event_timestamp: {}
+  is_microbrand_page: {}
+  browsing_country: {}
+
+  user_id:
+    format: ID
+    description: |-
+      Mixpanel distinct_id representing the user or device. Primary key for joining
+      funnel events across sessions.
+
+  session_id:
+    format: ID
+    description: |-
+      Unique session identifier from mixpanel_user_events_sessions_v2. Constructed as
+      CONCAT(session_number, '-', user_id). A new session is created whenever the acquisition
+      source changes between consecutive session-starter events for the same user.
+
+  session_start_timestamp:
+    description: |-
+      Timestamp of the first event in the session. Used as the anchor point for tracking
+      funnel progression timing.
+
+  page_url:
+    description: |-
+      URL of the session-starter page (landing page for this session), with query parameters,
+      fragments, and language path segments stripped.
+
+  previous_page_url:
+    description: |-
+      URL of the page the user was on before the session-starter page. NULL for direct entry
+      or when referrer is unknown.
+
+  page_type:
+    description: |-
+      Type of page where the session started (e.g. 'Microsite', 'Collection', 'Experience Page',
+      'Category Page'). Categorizes the session entry point.
+
+  page_sub_type:
+    description: |-
+      Sub-type classification of the session entry page. Only populated for Microsite Page
+      Viewed events.
+
+  combined_entity_mapping_source:
+    description: |-
+      Source used to derive combined_entity_id. Possible values: 'page_url_mapping'
+      (from url-to-entity mapping table), 'events_properties_collection_id',
+      'events_properties_category_id'. NULL if no entity could be mapped.
+
+  combined_entity_id:
+    format: ID
+    description: |-
+      Combined entity identifier for the session entry point. Represents a grouping of
+      experiences derived from the collection_id, category_id, or sub_category_id of the
+      session-starter event. Used for entity-level funnel aggregation.
+
+  experience_id:
+    format: ID
+    description: |-
+      Tour Group ID of the experience the user selected during the funnel (from 'Experience Selected'
+      or 'Seats Page Viewed' events). NULL if the user never reached the experience selection step.
+
+  experience_date:
+    description: |-
+      Date of the experience selected by the user during checkout. Captured from the 'Checkout
+      Started' event. NULL if the user never reached checkout.
+
+  experience_time:
+    description: |-
+      Time slot of the experience selected during checkout. Captured from the 'Checkout Started'
+      event. NULL if the user never reached checkout.
+
+  lead_time_days:
+    description: |-
+      Number of days between when checkout was started and the experience date. Calculated from
+      the 'Checkout Started' event. NULL if the user never reached checkout.
+
+  device_type:
+    description: |-
+      Normalized device category of the session-starter event. Possible values: 'iOS Mweb',
+      'Android Mweb', 'Other Mweb', 'Desktop'.
+
+  browsing_city:
+    description: City from which the user was browsing at session start, detected
+      via Mixpanel geo-IP lookup.
+
+  language:
+    description: |-
+      Normalized language name derived from the page URL path of the session-starter event
+      (e.g. 'English', 'French', 'Spanish').
+
+  campaign_id:
+    format: ID
+    description: |-
+      Marketing campaign ID from which the user arrived, with numeric channel prefix stripped.
+      NULL if the user did not arrive via a tracked campaign.
+
+  channel_id:
+    format: ID
+    description: Marketing channel ID from which the user arrived at session start.
+
+  channel_name:
+    description: |-
+      Human-readable marketing channel name (e.g. 'Google Ads', 'Facebook Ads', 'Affiliates').
+      Derived from channel_id and referrer domain.
+
+  advertising_channel_type:
+    description: |-
+      Sub-channel classification for Google Ads and Bing Ads (e.g. 'PAMX', 'Discovery', 'Search').
+      Joined from ads_campaign_stats, Defaults to 'Others' for non-paid or unmapped campaigns.
+
+  select_page_viewed_timestamp:
+    description: |-
+      Earliest timestamp when the user triggered 'Experience Selected' or 'Seats Page Viewed'
+      within this session for the selected experience_id. NULL if the user never reached this
+      funnel step.
+
+  checkout_started_timestamp:
+    description: |-
+      Timestamp when the user triggered 'Checkout Started' within this session, after
+      select_page_viewed_timestamp, for the same experience_id. NULL if the user never
+      reached checkout.
+
+  order_attempted_timestamp:
+    description: |-
+      Timestamp when the user clicked 'Confirm And Pay' within this session, after
+      checkout_started_timestamp, for the same experience_id. NULL if the user never
+      attempted payment.
+
+  order_completed_timestamp:
+    description: |-
+      Timestamp when the user viewed the 'Order Confirmation Page' within this session,
+      after order_attempted_timestamp, for the same experience_id. Used as a proxy for
+      order completion because the 'Order Completed' event lacks experience_id in over
+      75% of cases. NULL if the user never completed an order.
+
+  has_select_page_viewed:
+    description: |-
+      Boolean flag. TRUE if the user reached the experience selection step (experience_id
+      is not NULL), meaning they triggered 'Experience Selected' or 'Seats Page Viewed'.
+
+  has_checkout_started:
+    description: |-
+      Boolean flag. TRUE if the user initiated checkout after selecting an experience
+      (checkout_started_timestamp is not NULL).
+
+  has_order_attempted:
+    description: |-
+      Boolean flag. TRUE if the user clicked 'Confirm And Pay' after starting checkout
+      (order_attempted_timestamp is not NULL).
+
+  has_order_completed:
+    description: |-
+      Boolean flag. TRUE if the user viewed the order confirmation page after attempting
+      payment (order_completed_timestamp is not NULL). Uses 'Order Confirmation Page Viewed'
+      as a proxy for order completion.
+
+measures:
+  count:
+    aggregate_type: count

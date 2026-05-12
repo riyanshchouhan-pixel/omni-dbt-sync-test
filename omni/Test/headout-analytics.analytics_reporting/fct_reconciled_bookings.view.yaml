@@ -1,0 +1,310 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_reconciled_bookings
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_reconciled_bookings
+
+dimensions:
+  experience_name: {}
+  combined_entity_name: {}
+  conversion_rate_to_usd: {}
+  order_value_usd: {}
+  order_value: {}
+  price_net: {}
+  price_net_usd: {}
+  completion_type: {}
+  count_reconciled_fulfilments: {}
+  updated_at: {}
+  has_charged_loss: {}
+  latest_reconciliation_status: {}
+
+  booking_id:
+    format: ID
+    description: Booking ID for which reconciliation is tried.
+
+  created_at:
+    description: Timestamp at which booking was created.
+
+  experience_date:
+    description: Date for which experience is booked in the corresponding booking.
+
+  city:
+    description: City in which experience is situated.
+
+  experience_id:
+    format: ID
+
+  tour_id:
+    format: ID
+    description: tour id
+
+  tour_name:
+    description: tour name
+
+  combined_entity_id:
+    format: ID
+
+  processing_currency:
+    description: Processing Currency associated with the vendor.
+
+  booking_status:
+    description: Status of the booking id.
+
+  reconciled_price_net:
+    description: reconciled price net
+
+  recon_date:
+    description: date of recon according to the payment method of vendor
+
+  reconciliation_data:
+    description: Array consisting of reconciliation data of the booking like,
+      recon_type, recon_count and recon_date.
+
+  reconciliation_data_balance_amount_payable:
+    sql: balance_amount_payable
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_balance_dispute_amount:
+    sql: balance_dispute_amount
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_billing_entity_id:
+    sql: billing_entity_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_charged_loss:
+    sql: charged_loss
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_comments:
+    sql: comments
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_concat_date_of_payment:
+    sql: concat_date_of_payment
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_concat_dispute_amount_adjusted_invoice_id:
+    sql: concat_dispute_amount_adjusted_invoice_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_concat_utr:
+    sql: concat_utr
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_dispute_status:
+    sql: dispute_status
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_error_bucket:
+    sql: error_bucket
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_error_team_attribution:
+    sql: error_team_attribution
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_created_at:
+    sql: fulfilment_created_at
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_id:
+    sql: fulfilment_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_method:
+    sql: fulfilment_method
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_fulfilment_status:
+    sql: fulfilment_status
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_headout_net_price:
+    sql: headout_net_price
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_headout_selling_price:
+    sql: headout_selling_price
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_invoice_id:
+    sql: invoice_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciled_price_net:
+    sql: reconciled_price_net
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciliation_created_at:
+    sql: reconciliation_created_at
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciliation_status:
+    sql: reconciliation_status
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_reconciliation_updated_at:
+    sql: reconciliation_updated_at
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_sp_booking_ref_number:
+    sql: sp_booking_ref_number
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_sp_net:
+    sql: sp_net
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_supply_partner_id:
+    sql: supply_partner_id
+    format: ID
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_total_amount_paid:
+    sql: total_amount_paid
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_total_amount_payable:
+    sql: total_amount_payable
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_total_discrepancy_amount:
+    sql: total_discrepancy_amount
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_total_dispute_adjustment_amount:
+    sql: total_dispute_adjustment_amount
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_total_dispute_amount:
+    sql: total_dispute_amount
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_version:
+    sql: version
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  invoice_id:
+    format: ID
+    description: Comma-separated invoice IDs associated with the reconciliation
+      records for this booking.
+
+  sp_net:
+    description: Comma-separated supply partner net prices as recorded on the
+      reconciliation records for this booking.
+
+  sum_total_amount_payable:
+    description: Total amount payable to the supply partner for this booking, summed
+      across all reconciled fulfilments. In the booking's processing currency
+      (see `processing_currency` for denomination).
+
+  sum_balance_amount_payable:
+    description: Outstanding balance still payable to the supply partner for this
+      booking, summed across all reconciled fulfilments. In the booking's
+      processing currency (see `processing_currency` for denomination).
+
+  sum_total_amount_paid:
+    description: Total amount paid to the supply partner for this booking, summed
+      from reconciliation_actions entries across all fulfilments. In the
+      booking's processing currency (see `processing_currency` for
+      denomination).
+
+  concat_utr:
+    description: Comma-separated UTR (Unique Transaction Reference) numbers from all
+      payment action entries for this booking.
+
+  concat_date_of_payment:
+    description: Comma-separated payment dates from all payment action entries for
+      this booking.
+
+  dispute_status:
+    description: Comma-separated dispute statuses across all reconciliation records
+      for this booking.
+
+  sum_total_dispute_amount:
+    description: Total dispute amount raised for this booking, summed across all
+      reconciled fulfilments. In the booking's processing currency (see
+      `processing_currency` for denomination).
+
+  sum_total_dispute_adjustment_amount:
+    description: Total dispute adjustment amount applied for this booking, summed
+      from reconciliation_actions entries across all fulfilments. In the
+      booking's processing currency (see `processing_currency` for
+      denomination).
+
+  sum_total_discrepancy_amount:
+    description: Total discrepancy amount for this booking, summed from
+      reconciliation_actions entries across all fulfilments. In the booking's
+      processing currency (see `processing_currency` for denomination).
+
+  sum_balance_dispute_amount:
+    description: |-
+      Remaining unresolved dispute amount at booking level, in the booking's processing currency (see `processing_currency` for denomination). Summed across fulfilments.
+      Computed as: total_dispute_amount - total_dispute_adjustment_amount - total_discrepancy_amount.
+      NULL when no dispute has been raised (total_dispute_amount is NULL); 0 when fully resolved.
+
+  concat_dispute_amount_adjusted_invoice_id:
+    format: ID
+    description: Comma-separated invoice IDs against which dispute adjustments have
+      been applied, across all fulfilments for this booking.
+
+  supply_partner_id:
+    format: ID
+    description: Vendor which is responsible for the experience.
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: billing_entity which is responsible for the experience.
+
+  supply_partner_billing_entity_name:
+    description: supply partner billing entity name
+
+  supply_partner_name:
+    description: Vendor name associated with the vendor_id.
+
+  payment_method:
+    description: Payment Method associated with the vendor.
+
+  payment_basis:
+    description: Payment basis on which booking is based.
+
+measures:
+  count:
+    aggregate_type: count

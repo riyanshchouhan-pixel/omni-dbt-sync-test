@@ -1,0 +1,49 @@
+# Reference this view as headout_analytics_analytics_reporting__statsig_mixpanel_events
+description: This model has one record for each mixpanel event, with arrays for
+  properties to take an arbitrary amount
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: statsig_mixpanel_events
+
+dimensions:
+  event_timestamp:
+    description: Timestamp of the event
+
+  event_date:
+    description: Truncated timestamp for partitioning
+
+  hsid:
+    description: hsid for experiment attribution where available
+
+  email_id:
+    format: ID
+    description: email of user for experiment attribution, where available
+
+  statsig_experiment_user_id:
+    format: ID
+    description: custom id generated and stored as a cookie to assign user to experiment
+
+  event:
+    description: event name
+
+  event_id:
+    format: ID
+    description: unique id for each event - concat of timestamp, user id, event name
+
+  properties:
+    description: an array of structs containing keys and values for properties
+
+  properties_key:
+    sql: key
+    nested_on_field: properties
+    parent_field: properties
+
+  properties_value:
+    sql: value
+    nested_on_field: properties
+    parent_field: properties
+
+measures:
+  count:
+    aggregate_type: count

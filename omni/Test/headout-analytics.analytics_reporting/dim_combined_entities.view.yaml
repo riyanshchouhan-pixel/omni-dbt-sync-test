@@ -1,0 +1,62 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_combined_entities
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_combined_entities
+
+dimensions:
+  combined_entity_id:
+    format: ID
+    description: Unique identifier for the combined entity
+
+  combined_entity_name:
+    description: Name of the combined entity
+
+  combined_entity_type:
+    description: |-
+      Type of the combined entity. Derived from the combined_entity_id pattern:
+      'collection' when the CE maps to a primary collection,
+      'category' when the CE maps to a category-level grouping (Travel Services, Water Sports, Wellness, Staycations, Cruises),
+      'subcategory' when the CE maps to a subcategory-level grouping.
+
+  country:
+    description: Country where the combined entity is located
+
+  market:
+    description: Business market the combined entity belongs to
+
+  region:
+    description: Business region the combined entity belongs to
+
+  combined_entity_category:
+    description: Category classification for the combined entity (e.g., POI/
+      Attractions, Non-POI, Entertainment)
+
+  combined_entity_subcategory:
+    description: Subcategory classification providing additional granularity within
+      the category
+
+  evolution_bucket:
+    description: Evolution bucket classification for the combined entity
+
+  management_type:
+    description: |-
+      Type of management for the combined entity. Resolved using a three-tier
+      fallback: (1) the latest management type update event
+      (experience_os_combined_entity_management_type_updated), (2) the management
+      type from the collection creation event (experience_os_collection_created),
+      (3) the value from the combined entities metadata sheet.
+
+  is_existing:
+    description: Whether this is an existing combined entity
+
+  headout_status:
+    description: Current status of the combined entity on Headout
+
+  bucket_2025:
+    description: 2025 planning bucket classification for the combined entity
+
+measures:
+  count:
+    aggregate_type: count

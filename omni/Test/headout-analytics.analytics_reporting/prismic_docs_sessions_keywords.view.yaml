@@ -1,0 +1,139 @@
+# Reference this view as headout_analytics_analytics_reporting__prismic_docs_sessions_keywords
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: prismic_docs_sessions_keywords
+
+dimensions:
+  uid: {}
+  language: {}
+  has_longform: {}
+  document_type: {}
+  title: {}
+  description: {}
+  first_tgid: {}
+  tgid_arr: {}
+  tgids: {}
+  count_experiences_on_page: {}
+  city: {}
+  canonical_link: {}
+  available_languages: {}
+  has_noindex: {}
+  has_nofollow: {}
+  has_amp: {}
+  has_breadcrumbs: {}
+  has_shoulder_page_tickets: {}
+  has_primary_footer: {}
+  has_secondary_footer: {}
+  has_accordions_as_faq_and_schema: {}
+  attraction_name: {}
+  headout_page_type: {}
+  tags: {}
+  main_h1_headings: {}
+  content_framework_h1_headings: {}
+  breadcrumbs_l1_text: {}
+  breadcrumbs_l1_url: {}
+  breadcrumbs_l2_text: {}
+  breadcrumbs_l2_url: {}
+  breadcrumbs_l3_text: {}
+  breadcrumbs_l3_url: {}
+  breadcrumbs_l4_text: {}
+  breadcrumbs_l4_url: {}
+  structure: {}
+  page_type: {}
+  parent_domain: {}
+  updated_at: {}
+  first_publication_at: {}
+  last_publication_at: {}
+  redirect_type: {}
+  category_name: {}
+  sub_category_name: {}
+  country: {}
+  mb_type: {}
+  focus_keyword: {}
+  author_name: {}
+  content_type: {}
+  shoulder_page_type: {}
+  header_logo_url: {}
+  header_logo_redirect_url: {}
+  favicon_url: {}
+  layout: {}
+  banner_subtext: {}
+  footer_logo_url: {}
+  footer_disclaimer: {}
+  microsite_doc_footer_disclaimer: {}
+  meta_image_url: {}
+  is_freelancer: {}
+  meta_title_override: {}
+  meta_description_override: {}
+  root_domain: {}
+  mb_page_url: {}
+  raw_prismic_page_url: {}
+  lfc_published_at: {}
+  custom_banner_subtext: {}
+  footer_subtext: {}
+  custom_footer_disclaimer: {}
+  is_poi_mb: {}
+  disclaimer_type: {}
+  primary_tag: {}
+  shoulder_page_custom_label: {}
+  misc_page_mapping: {}
+  category_heading_override: {}
+  category_subtext_override: {}
+  is_entertainment_mb: {}
+
+  page_location:
+    description: Formatted page URL of the microbrand, used as the join key to
+      keyword performance data.
+
+  id:
+    format: ID
+    description: Prismic document ID inherited from stg_prismic__documents.
+    primary_key: true
+
+  headout_page_id:
+    format: ID
+
+  collection_id:
+    format: ID
+
+  ho_sub_category_id:
+    format: ID
+
+  ho_category_id:
+    format: ID
+
+  google_site_verification_id:
+    format: ID
+
+  product_cards_id:
+    format: ID
+
+  bing_site_verification_id:
+    format: ID
+
+  linked_content_framework_id:
+    format: ID
+
+  report_date:
+    description: Date for which the keyword search performance data is recorded.
+
+  keyword:
+    description: The search query that triggered an impression or click for this page.
+
+  avg_position:
+    description: Average position of the page in search results for this keyword on
+      this date. Lower values indicate higher ranking.
+
+  count_clicks:
+    description: Number of times a user clicked through to the page from search
+      results for this keyword on this date.
+
+  count_impressions:
+    description: Number of times the page appeared in search results for this
+      keyword on this date.
+
+measures:
+  count:
+    aggregate_type: count

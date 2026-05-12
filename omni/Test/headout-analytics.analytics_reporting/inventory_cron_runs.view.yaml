@@ -1,0 +1,53 @@
+# Reference this view as headout_analytics_analytics_reporting__inventory_cron_runs
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: inventory_cron_runs
+
+dimensions:
+  event_id:
+    format: ID
+    description: Event ID of the event generated from the selenium auto closures
+
+  event_timestamp:
+    description: timestamp of the event generated
+
+  event_name:
+    description: name of the event
+
+  cron_run_date:
+    description: date when cron run happens
+
+  tour_id:
+    format: ID
+    description: tour id of the tour for which inventory cron runs
+
+  vendor_id:
+    format: ID
+    description: id of the vendor inventory cron is associated with
+
+  inventory_sync_status:
+    description: status of the inventory sync
+
+  inventory_period_start_date:
+    description: start date of the period in inventory cron run
+
+  inventory_period_end_date:
+    description: end date of the period in inventory cron run
+
+  inventory_period_start_offset_days:
+    description: difference in days from cron run date to inventory start date
+
+  inventory_period_end_offset_days:
+    description: difference in days from cron run date to inventory end date
+
+  api_plugin:
+    description: rms or api plugin of the vendor of that inventory cron
+
+  failure_reason:
+    description: reason for the failure of the cron run
+
+measures:
+  count:
+    aggregate_type: count

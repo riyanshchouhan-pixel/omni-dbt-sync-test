@@ -1,0 +1,172 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_inventory_slots
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_inventory_slots
+
+dimensions:
+  inventory_slot_id:
+    format: ID
+    description: Unique id for each inventory slot on Headout
+
+  created_at:
+    description: timestamp (utc) at which the slot was created!
+
+  tour_id:
+    format: ID
+    description: tour id for which this slot exists
+
+  vendor_id:
+    format: ID
+    description: vendor id for which this slot exists
+
+  experiences:
+    description: An array of experiences which consume the inventory slot and are
+      linked via tours & variants
+
+  experiences_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: experiences
+    parent_field: experiences
+
+  experiences_variant_id:
+    sql: variant_id
+    format: ID
+    nested_on_field: experiences
+    parent_field: experiences
+
+  experience_month:
+    description: experience_month
+
+  experience_date:
+    description: experience date for the inventory slot
+
+  experience_time:
+    description: experience time for the inventory slot
+
+  inventory:
+    description: an aggregated array which contains all inventory units mapped to
+      this inventory slot
+
+  inventory_guest_type:
+    sql: guest_type
+    nested_on_field: inventory
+    parent_field: inventory
+
+  inventory_inventory_id:
+    sql: inventory_id
+    format: ID
+    nested_on_field: inventory
+    parent_field: inventory
+
+  inventory_remaining:
+    sql: remaining
+    nested_on_field: inventory
+    parent_field: inventory
+
+  inventory_status:
+    sql: status
+    nested_on_field: inventory
+    parent_field: inventory
+
+  slot_pricing:
+    description: an aggregated array which contains all pax level pricing points
+      mapped to this inventory slot
+
+  slot_pricing_commission:
+    sql: commission
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_ho_discount:
+    sql: ho_discount
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_listing_price:
+    sql: listing_price
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_margin:
+    sql: margin
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_net_price:
+    sql: net_price
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_pax_type:
+    sql: pax_type
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_price_profile_type:
+    sql: price_profile_type
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_retail_price:
+    sql: retail_price
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_selling_price:
+    sql: selling_price
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  slot_pricing_sp_discount:
+    sql: sp_discount
+    nested_on_field: slot_pricing
+    parent_field: slot_pricing
+
+  availability_status:
+    description: Boolean to identify if the inventory slot is available.
+
+  allotment:
+    description: number of tickets that were alloted to Headout for this slot!
+
+  commitment:
+    description: number of tickets that Headout has committed to selling.
+
+  loss_liability:
+    description: loss liability for each ticket for the committed tickets
+
+  is_closed:
+    description: boolean for whether the inventory slot is closed or not
+
+  tour_profile_id:
+    format: ID
+    description: ID of tour profile in which this inventory slot belongs.
+
+  default_inventory_availability:
+    description: if the inventory is limited/unlimited for a tour_profile.
+
+  default_inventory_remaining:
+    description: number of seats remaining (seat count) for a tour_profile.
+
+  active_status:
+    description: Boolean to check if this inventory slot is active.
+
+  release_period_minutes:
+    description: Release period (in minutes) for the vendor tour of this inventory slot.
+
+  tag_schedule_days:
+    description: tag_schedule_days
+
+  next_available_date:
+    description: Latest date at which the slot is available for this vendor tour in
+      a given tour profile.
+
+  last_available_date:
+    description: Last date at which the slot is available for this vendor tour in a
+      given tour profile.
+
+measures:
+  count:
+    aggregate_type: count

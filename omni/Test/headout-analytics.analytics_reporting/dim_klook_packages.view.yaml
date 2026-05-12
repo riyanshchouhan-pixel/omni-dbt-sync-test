@@ -1,0 +1,62 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_klook_packages
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_klook_packages
+
+dimensions:
+  surrogate_key:
+    description: surrogate primary key built by combining experience ID and extraction date.
+
+  experience_id:
+    format: ID
+    description: unique id for each experience on Klook
+
+  experience_name:
+    description: name of the experience on Klook
+
+  package_id:
+    format: ID
+    description: unique id for each package on Klook
+
+  package_name:
+    description: name of the package on Klook
+
+  category:
+    description: category name of the experience on Klook
+
+  experience_url:
+    description: URL of the experience on Klook can be accessed via -
+      'klook.com/activity/{experience_id}-{url}'
+
+  region:
+    description: region of the experience on Klook (template)
+
+  country:
+    description: destination country name of the experience
+
+  city:
+    description: destination city name of the experience
+
+  experience_date:
+    description: ts at which the experience is scheduled
+
+  package_selling_price:
+    description: selling price for the package
+
+  package_market_price:
+    description: market price for the package
+
+  package_from_price:
+    description: min price for the package
+
+  package_to_price:
+    description: max price for the package
+
+  currency:
+    description: local currency of the destination country of the experience on Klook
+
+measures:
+  count:
+    aggregate_type: count

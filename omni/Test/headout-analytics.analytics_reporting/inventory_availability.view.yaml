@@ -1,0 +1,50 @@
+# Reference this view as headout_analytics_analytics_reporting__inventory_availability
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: inventory_availability
+
+dimensions:
+  surrogate_key:
+    description: Concatenation of tour_id, experience_date and extracted_date to be
+      used as primary key
+
+  tour_id:
+    format: ID
+    description: tour id for which this inventory is extracted
+
+  experience_date:
+    description: date at which the experience is scheduled and inventory data is extracted
+
+  extracted_date:
+    description: date at which snapshot of inventory data have been taken
+
+  count_time_slots:
+    description: total number of inventory time slots available
+
+  count_unlimited_time_slots:
+    description: total number of unlimited inventory time slots available
+
+  count_limited_time_slots:
+    description: total number of limited inventory time slots available
+
+  total_remaining:
+    description: total inventory value remaining
+
+  is_same_day:
+    description: whether if the extracted and experience date is same to find we are
+      extracting same day availability
+
+  first_available_date:
+    description: Is the next date when the inventory will be available
+
+  last_available_date:
+    description: Is the date when the last available date with non-zero inventory
+
+  last_extracted_date:
+    description: Is the last date the inventory for any particular experience was checked
+
+measures:
+  count:
+    aggregate_type: count

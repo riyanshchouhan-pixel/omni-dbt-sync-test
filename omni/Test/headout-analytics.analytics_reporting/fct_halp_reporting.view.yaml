@@ -1,0 +1,117 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_halp_reporting
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_halp_reporting
+
+dimensions:
+  halp_request_id:
+    format: ID
+    description: ID of original ticket which was raised from Halp.
+
+  created_at:
+    description: Creation Timestamp of original ticket which was raised from Halp.
+
+  resolved_at:
+    description: Full Resolution Timestamp of original ticket which was raised from Halp.
+
+  parent_status:
+    description: Status of the original ticket which was raised from Halp.
+
+  requester_name:
+    description: User who requested the ticket from Halp.
+
+  nature_of_request:
+    description: Nature of request (Fix or Post Launch Change)
+
+  pod:
+    description: Pod for which ticket was raised.
+
+  market_region:
+    description: Country for which request was raised.
+
+  description:
+    description: Description of the original ticket.
+
+  children_status:
+    description: Aggregated status of all child requests, can be either in-progress
+      or solved.
+
+  team_name:
+    description: Team for which request was raised.
+
+  issue_type:
+    description: Issue type for which Halp request was raised.
+
+  children:
+    description: Array for records of child tickets associated with the parent ticket.
+
+  children_child_ticket_id:
+    sql: child_ticket_id
+    format: ID
+    nested_on_field: children
+    parent_field: children
+
+  children_child_ticket_status:
+    sql: child_ticket_status
+    nested_on_field: children
+    parent_field: children
+
+  children_created_at:
+    sql: created_at
+    nested_on_field: children
+    parent_field: children
+
+  children_description:
+    sql: description
+    nested_on_field: children
+    parent_field: children
+
+  children_immediate_parent_ticket_id:
+    sql: immediate_parent_ticket_id
+    format: ID
+    nested_on_field: children
+    parent_field: children
+
+  children_is_child:
+    sql: is_child
+    nested_on_field: children
+    parent_field: children
+
+  children_issue_type:
+    sql: issue_type
+    nested_on_field: children
+    parent_field: children
+
+  children_nature_of_request:
+    sql: nature_of_request
+    nested_on_field: children
+    parent_field: children
+
+  children_resolved_at:
+    sql: resolved_at
+    nested_on_field: children
+    parent_field: children
+
+  children_sub_issue_type:
+    sql: sub_issue_type
+    nested_on_field: children
+    parent_field: children
+
+  children_team_name:
+    sql: team_name
+    nested_on_field: children
+    parent_field: children
+
+  children_ticket_subject:
+    sql: ticket_subject
+    nested_on_field: children
+    parent_field: children
+
+  latest_child_updated_at:
+    description: Timestamp at which the latest child ticket is updated.
+
+measures:
+  count:
+    aggregate_type: count

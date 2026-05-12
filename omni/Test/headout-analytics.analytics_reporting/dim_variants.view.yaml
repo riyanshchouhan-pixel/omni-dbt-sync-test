@@ -1,0 +1,290 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_variants
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_variants
+
+dimensions:
+  variant_category: {}
+  experience_name: {}
+  primary_collection_name: {}
+  primary_category_name: {}
+  primary_sub_category_name: {}
+  combined_entity_name: {}
+  primary_poi_name: {}
+  poi_venue_group: {}
+  city: {}
+  country: {}
+  continent: {}
+  region: {}
+  timezone: {}
+  business_market: {}
+  business_region: {}
+  url: {}
+  image_url: {}
+  next_available_date: {}
+  is_available: {}
+  currency: {}
+  pricing_type: {}
+  minimum_price: {}
+  listing_original_price: {}
+  listing_final_price: {}
+  tags: {}
+  micro_brands_descriptors: {}
+  average_rating: {}
+  count_ratings: {}
+  count_images: {}
+  image_urls: {}
+  experience_promos: {}
+  product_descriptors: {}
+  mapped_sub_categories: {}
+  mapped_collections: {}
+  mapped_persona_affinities: {}
+  mapped_pois: {}
+  discount_type: {}
+  discount_value: {}
+  language_content_data: {}
+
+  variant_id:
+    format: ID
+    description: unique id for each variant on headout
+
+  created_at:
+    description: timestamp (utc) at which the variant was created
+
+  variant_name:
+    description: name of the variant in english
+
+  experience_id:
+    format: ID
+    description: unique id for the experience the variant is mapped to
+
+  primary_collection_id:
+    format: ID
+
+  primary_category_id:
+    format: ID
+
+  primary_sub_category_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  primary_poi_id:
+    format: ID
+
+  experience_promos_active_days:
+    sql: active_days
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_is_active:
+    sql: is_active
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_offset_days:
+    sql: offset_days
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_code:
+    sql: promo_code
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_discount_value:
+    sql: promo_discount_value
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_id:
+    sql: promo_id
+    format: ID
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_location:
+    sql: promo_location
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_type:
+    sql: promo_type
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  product_descriptors_descriptor_code:
+    sql: descriptor_code
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  product_descriptors_descriptor_id:
+    sql: descriptor_id
+    format: ID
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  product_descriptors_descriptor_name:
+    sql: descriptor_name
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  mapped_sub_categories_category_id:
+    sql: category_id
+    format: ID
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_category_name:
+    sql: category_name
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_rank:
+    sql: rank
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_sub_category_id:
+    sql: sub_category_id
+    format: ID
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_sub_category_name:
+    sql: sub_category_name
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_collections_collection_city:
+    sql: collection_city
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_collections_collection_id:
+    sql: collection_id
+    format: ID
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_collections_collection_name:
+    sql: collection_name
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_collections_rank:
+    sql: rank
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_persona_affinities_persona_affinity_id:
+    sql: persona_affinity_id
+    format: ID
+    nested_on_field: mapped_persona_affinities
+    parent_field: mapped_persona_affinities
+
+  mapped_persona_affinities_persona_affinity_name:
+    sql: persona_affinity_name
+    nested_on_field: mapped_persona_affinities
+    parent_field: mapped_persona_affinities
+
+  mapped_persona_affinities_persona_affinity_type:
+    sql: persona_affinity_type
+    nested_on_field: mapped_persona_affinities
+    parent_field: mapped_persona_affinities
+
+  mapped_pois_mapping_rank:
+    sql: mapping_rank
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_parent_poi_id:
+    sql: parent_poi_id
+    format: ID
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_parent_poi_name:
+    sql: parent_poi_name
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_poi_id:
+    sql: poi_id
+    format: ID
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_poi_name:
+    sql: poi_name
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_poi_venue_group:
+    sql: poi_venue_group
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  variant_status:
+    description: current status of the variant
+
+  tours:
+    description: an array of tours the variant is mapped to
+
+  tours_tour_id:
+    sql: tour_id
+    format: ID
+    nested_on_field: tours
+    parent_field: tours
+
+  tours_tour_priority:
+    sql: tour_priority
+    nested_on_field: tours
+    parent_field: tours
+
+  language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_code:
+    sql: language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_name:
+    sql: language_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_variant_description:
+    sql: variant_description
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_variant_info:
+    sql: variant_info
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_variant_name:
+    sql: variant_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,27 @@
+# Reference this view as headout_analytics_analytics_reporting__language_demand_potential
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: language_demand_potential
+
+dimensions:
+  campaign_country: {}
+  campaign_region: {}
+  campaign_language: {}
+  campaign_category: {}
+  campaign_status: {}
+  date: {}
+  count_clicks: {}
+  english_language_clicks: {}
+  language_potential_score: {}
+
+  campaign_city:
+    description: campaign city for which scores are recorded
+
+  campaign_combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

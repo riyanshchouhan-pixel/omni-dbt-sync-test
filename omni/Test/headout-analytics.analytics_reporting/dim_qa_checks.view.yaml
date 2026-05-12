@@ -1,0 +1,181 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_qa_checks
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_qa_checks
+
+dimensions:
+  catalog_owner: {}
+  content_owner: {}
+  media_owner: {}
+  pod: {}
+  fqa_duration: {}
+
+  ticket_id:
+    format: ID
+    description: Ticket ID of the dummy parent ticket of the requested listing.
+
+  experience_id:
+    format: ID
+    description: Experience ID of the requested listing.
+
+  tour_id:
+    format: ID
+    description: |-
+      Tour ID assigned by the Catalog Ops team on the catalog sub-ticket for this listing request.
+      Sourced from the catalog ops Zendesk ticket (first ticket, by creation date). May be NULL if
+      no catalog ops ticket exists. Note: the underlying Zendesk field is a free-text STRING and
+      may contain multiple comma-separated tour IDs when multiple tours were assigned. For
+      per-validation-level tour IDs, see the tour_id field inside the validations array.
+
+  vendor_id:
+    format: ID
+    description: |-
+      Vendor ID of the supplier assigned to fulfill this listing, as recorded on the catalog ops
+      sub-ticket. NULL when no catalog ops ticket exists for the listing request. For
+      per-validation-level vendor IDs, see the vendor_id field inside the validations array.
+
+  combined_entity_id:
+    format: ID
+    description: CE ID of the Experience.
+
+  combined_entity_name:
+    description: CE Name of the Experience.
+
+  market_region:
+    description: Market Region of the Experience.
+
+  focus_ce:
+    description: Flag to check if the CE is Focus CE or Non Focus CE.
+
+  issue_type:
+    description: Issue Type of the New Listing Request.
+
+  supply_queue_name:
+    description: Supply Queue Name to check if this listing is in MMP Queue or
+      Listing Ad-Hoc Queue.
+
+  priority:
+    description: Priority of this listing.
+
+  biz_owner:
+    description: Business Team Owner of this listing request.
+
+  fqa_owner:
+    description: FQA Owner of this listing.
+
+  fqa_fixes:
+    description: Fixes raised by FQA Owner while doing FQA of the listing request.
+
+  listing_requested_at:
+    description: Timestamp at which this listing was requested.
+
+  fqa_requested_at:
+    description: Timestamp at which FQA for this listing was requested.
+
+  fqa_solved_at:
+    description: Timestamp at which FQA Ticket for this listing was solved.
+
+  fqa_done_at:
+    description: Timestamp at which FQA process for this listing was done on the
+      ExperienceCheck Tool.
+
+  validations:
+    description: Array of validation records on different levels.
+
+  validations_comments:
+    sql: comments
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_field_class:
+    sql: field_class
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_field_tag:
+    sql: field_tag
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_is_critical:
+    sql: is_critical
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_ticket_id:
+    sql: ticket_id
+    format: ID
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_tour_id:
+    sql: tour_id
+    format: ID
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_validation_level:
+    sql: validation_level
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_vendor_id:
+    sql: vendor_id
+    format: ID
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_verdict:
+    sql: verdict
+    nested_on_field: validations
+    parent_field: validations
+
+  validations_weightage:
+    sql: weightage
+    nested_on_field: validations
+    parent_field: validations
+
+  experience_level_incorrect_score:
+    description: Aggregated sum of the weightages of the incorrect fields on
+      Experience Level.
+
+  experience_level_critical_incorrects:
+    description: Aggregated count of the incorrect fields on Experience Level.
+
+  tour_level_incorrect_score:
+    description: Aggregated sum of the weightages of the incorrect fields on Tour Level.
+
+  tour_level_critical_incorrects:
+    description: Aggregated count of the incorrect fields on Tour Level.
+
+  schedule_level_incorrect_score:
+    description: Aggregated sum of the weightages of the incorrect fields on Tour
+      Profile Level.
+
+  schedule_level_critical_incorrects:
+    description: Aggregated count of the incorrect fields on Tour Profile Level.
+
+  vendor_tour_level_incorrect_score:
+    description: Aggregated sum of the weightages of the incorrect fields on Vendor
+      Tour Level.
+
+  vendor_tour_level_critical_incorrects:
+    description: Aggregated count of the incorrect fields on Vendor Tour.
+
+  listing_score:
+    description: Score of the listing. 100 - (All incorrect scores).
+
+  is_perfect_listing:
+    description: Boolean to check if the listing score is 100.
+
+measures:
+  count:
+    aggregate_type: count

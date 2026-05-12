@@ -1,0 +1,166 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_creator_profile
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_creator_profile
+
+dimensions:
+  creator_id:
+    format: ID
+    description: Unique ID for the creator
+
+  social_media_platform:
+    description: Latest platform used by the creator
+
+  profile_username:
+    description: Username on the social media platform
+
+  profile_url:
+    description: Profile URL of the creator on the platform
+
+  creator_score:
+    description: Internal score assigned to the creator
+
+  onboarding_status:
+    description: Current onboarding status of the creator
+
+  phyllo_screening_status:
+    description: Phyllo screening status
+
+  creator_name:
+    description: Full name of the creator
+
+  creator_email:
+    description: Email address of the creator used for communication
+
+  creator_phone_number:
+    description: Contact phone number of the creator
+
+  referral_code:
+    description: Referral code assigned to the creator for sharing
+
+  signup_at:
+    description: Timestamp when the creator signed up for the program
+
+  approved_at:
+    description: |-
+      Proxy for when the creator was approved, derived from last_modified_at when both
+      onboarding_status and phyllo_screening_status are APPROVED. May be inaccurate if
+      the record was modified after approval for other reasons (e.g., creator score update).
+
+  followers_count:
+    description: Follower count on the creator's primary social media platform
+
+  phone_country_name:
+    description: Country name derived from the creator's phone number country code prefix
+
+  utm_source:
+    description: UTM source that the creator was acquired from
+
+  utm_medium:
+    description: UTM medium that the creator was acquired from
+
+  utm_campaign:
+    description: UTM campaign that the creator was acquired from
+
+  utm_term:
+    description: UTM term that the creator was acquired from
+
+  is_travel_creator:
+    description: Flag indicating if the creator's content_type includes 'Travel'
+
+  is_referred_creator:
+    description: Indicates if the creator was referred by another creator in the program
+
+  follower_bucket:
+    description: |-
+      Bucketed follower count for segmentation. Ranges: < 3K, 3K-10K, 10K-25K, 25K-50K,
+      50K-100K, 100K-150K, 150K-250K, 250K-500K, 500K-1M, >= 1M, Unknown.
+      Zero-padded sort prefixes (00-10) for correct lexicographic ordering in BI tools.
+
+  country_bucket:
+    description: "Geographic bucket derived from phone country: India, UAE, United
+      States, United Kingdom, or ROW (Rest of World)"
+
+  funnel_stage:
+    description: |-
+      Furthest point the creator has reached in the program funnel.
+      Values: signed_up, approved, coupon_issued, coupon_redeemed, content_submitted, content_approved.
+
+  count_coupons_issued:
+    description: Total number of coupons issued to this creator
+
+  count_coupons_redeemed:
+    description: "Total number of coupons associated with a valid (non-Dummy,
+      non-Fraudulent) order. Note: may differ from coupons with
+      coupon_status=REDEEMED — see is_coupon_redeemed in fct_creator_coupons for
+      the coupon-system definition."
+
+  count_content_submitted:
+    description: Total distinct content pieces submitted by this creator
+
+  count_content_approved:
+    description: Total distinct content pieces approved for this creator
+
+  count_orders:
+    description: Total orders placed using this creator's coupons
+
+  count_referrals:
+    description: Number of other creators this creator has referred to the program
+
+  total_gbv_usd:
+    description: Lifetime gross booking value in USD from this creator's coupon
+      orders (post-refunds, excludes Dummy and Fraudulent orders)
+
+  total_revenue_usd:
+    description: Lifetime customer-payable amount in USD from this creator's coupon orders
+
+  total_coupon_discount_usd:
+    description: Lifetime coupon discount amount in USD given through this creator's coupons
+
+  total_margin_usd:
+    description: Lifetime gross margin in USD (order_value_completed - price_net).
+      Represents Headout's take after vendor costs.
+
+  first_coupon_at:
+    description: Timestamp when this creator's first coupon was issued
+
+  first_redeemed_at:
+    description: Timestamp when this creator first redeemed a coupon
+
+  first_content_submitted_at:
+    description: Timestamp when this creator first submitted content
+
+  first_content_approved_at:
+    description: Timestamp when this creator's first content was approved
+
+  hours_signup_to_approval:
+    description: Hours between signup and approval
+
+  hours_approval_to_coupon:
+    description: Hours between approval and first coupon issuance
+
+  hours_coupon_to_redemption:
+    description: Hours between first coupon issuance and first redemption
+
+  hours_redemption_to_content:
+    description: Hours between first redemption and first content submission
+
+  hours_content_to_approval:
+    description: Hours between first content submission and first content approval
+
+  peak_views_30d:
+    description: Highest 30-day view count across all approved content by this creator
+
+  peak_engagement_rate_30d:
+    description: Highest 30-day engagement rate (interactions / views) across all
+      approved content
+
+  peak_reach_rate_30d:
+    description: Peak 30-day views divided by follower count. Values > 1.0 indicate
+      viral reach beyond the creator's follower base.
+
+measures:
+  count:
+    aggregate_type: count

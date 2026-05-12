@@ -1,0 +1,49 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_customers_internal
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_customers_internal
+
+dimensions:
+  email: {}
+  country: {}
+  locale: {}
+
+  first_name:
+    sql: firstName
+
+  last_name:
+    sql: lastName
+
+  first_order_date:
+    sql: firstOrderDate
+
+  last_order_date:
+    sql: lastOrderDate
+
+  total_orders:
+    sql: totalOrders
+
+  completed_orders:
+    sql: completedOrders
+
+  first_order_city:
+    sql: firstOrderCity
+
+  first_order_country:
+    sql: firstOrderCountry
+
+  first_order_region:
+    sql: firstOrderRegion
+
+  first_order_landing_page:
+    sql: firstOrderLandingPage
+
+  first_order_device:
+    sql: firstOrderDevice
+
+  last_experience_date:
+    sql: lastExperienceDate
+
+measures:
+  count:
+    aggregate_type: count

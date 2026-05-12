@@ -1,0 +1,52 @@
+# Reference this view as headout_analytics_analytics_reporting__seo_url_inspection
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: seo_url_inspection
+
+dimensions:
+  inspection_result_link: {}
+  index_status_result_verdict: {}
+  index_status_result_coverage_state: {}
+  index_status_result_robots_txt_state: {}
+  index_status_result_indexing_state: {}
+  index_status_result_last_crawl_time: {}
+  index_status_result_page_fetch_state: {}
+  index_status_result_google_canonical: {}
+  index_status_result_user_canonical: {}
+  index_status_result_sitemap: {}
+  index_status_result_referring_urls: {}
+  index_status_result_crawled_as: {}
+  amp_result_verdict: {}
+  amp_result_amp_url: {}
+  amp_result_robots_txt_state: {}
+  amp_result_indexing_state: {}
+  amp_result_amp_index_status_verdict: {}
+  amp_result_last_crawl_time: {}
+  amp_result_page_fetch_state: {}
+  mobile_usability_result_verdict: {}
+  message: {}
+  rich_result_verdict: {}
+  rich_result_type: {}
+  item_name: {}
+  issue_message: {}
+
+  site_url:
+    description: site url derived from sitemap
+
+  inspection_url:
+    description: inspection url derived from sitemap
+
+  timestamp:
+    description: timestamp at which the api is called
+
+  site_type:
+    description: Indicates whether it is a HO site or an MB site
+
+  issue_type:
+    sql: issueType
+
+measures:
+  count:
+    aggregate_type: count

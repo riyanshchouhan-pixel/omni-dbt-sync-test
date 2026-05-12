@@ -1,0 +1,17 @@
+# Reference this view as headout_analytics_analytics_reporting__west_end_ranks
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: west_end_ranks
+
+dimensions:
+  rank: {}
+
+  collection_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

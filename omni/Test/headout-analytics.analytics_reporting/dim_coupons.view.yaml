@@ -1,0 +1,58 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_coupons
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_coupons
+
+dimensions:
+  max_discount_value: {}
+  cashback_value: {}
+  max_cashback_value: {}
+  currency: {}
+  min_value: {}
+  is_android_allowed: {}
+  is_ios_allowed: {}
+  is_desktop_allowed: {}
+  is_mobile_web_allowed: {}
+  is_logged_in_required: {}
+  user_restriction: {}
+  is_cashback_products_allowed: {}
+  max_count_per_user: {}
+  total_count: {}
+  used_count: {}
+  entered_count: {}
+  expired_by: {}
+  coupon_status: {}
+  comments: {}
+  coupon_generator: {}
+  coupon_type: {}
+
+  coupon_id:
+    format: ID
+    description: Unique ID for each coupon.
+
+  calipso_user_id:
+    format: ID
+
+  coupon_code:
+    description: The actual coupon code used for discounts.
+
+  discount_type:
+    description: Type of discount applied (percentage, flat, cashback, etc.).
+
+  discount_value:
+    description: Value of the discount.
+
+  cashback_type:
+    description: Type of cashback (fixed or percentage).
+
+  created_at:
+    description: Timestamp when the coupon was created.
+
+  updated_at:
+    description: Timestamp when the coupon was last updated.
+
+measures:
+  count:
+    aggregate_type: count

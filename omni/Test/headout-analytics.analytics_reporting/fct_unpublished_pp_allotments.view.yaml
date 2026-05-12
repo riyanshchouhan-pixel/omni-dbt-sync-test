@@ -1,0 +1,91 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_unpublished_pp_allotments
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_unpublished_pp_allotments
+
+dimensions:
+  uploaded_at: {}
+  guest_type: {}
+  price_net: {}
+  comment: {}
+  expiring_at: {}
+  vendor_ref_num: {}
+  is_sold: {}
+  ticket_status: {}
+  purchase_order_number: {}
+  purchased_date: {}
+  cancelled_bookings: {}
+  last_booking_cancelled_at: {}
+  currency_code: {}
+  ticket_type: {}
+  is_reusable_pp_tickets: {}
+  vendor_name: {}
+  created_at: {}
+  experience_name: {}
+  combined_entity_name: {}
+  city: {}
+  country: {}
+  region: {}
+  conversion_rate: {}
+  usd_to_currency_conversion_rate: {}
+  loss_liability_usd: {}
+
+  ticket_id:
+    format: ID
+    description: Concatenation of tid, vid, tgid, experience_date, experience_time
+      to be used as dummy ticket id
+
+  experience_date:
+    description: experience date for the inventory slot
+
+  experience_time:
+    description: experience time for the inventory slot
+
+  tickets_database_booking_id:
+    format: ID
+
+  vendor_tour_id:
+    format: ID
+
+  cancelled_bookings_booking_id:
+    sql: booking_id
+    format: ID
+    nested_on_field: cancelled_bookings
+    parent_field: cancelled_bookings
+
+  cancelled_bookings_cancelled_at:
+    sql: cancelled_at
+    nested_on_field: cancelled_bookings
+    parent_field: cancelled_bookings
+
+  tour_id:
+    format: ID
+    description: ID of the tour.
+
+  vendor_id:
+    format: ID
+    description: ID of the Vendor.
+
+  validity_type:
+    description: dimension to differentiat dated and dated-timed allotments
+
+  headout_booking_id:
+    format: ID
+
+  tgid:
+    description: unique id for each experience on Headout (tour group id)
+
+  experience_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  loss_liability:
+    description: loss liability for each ticket for the committed tickets
+
+measures:
+  count:
+    aggregate_type: count

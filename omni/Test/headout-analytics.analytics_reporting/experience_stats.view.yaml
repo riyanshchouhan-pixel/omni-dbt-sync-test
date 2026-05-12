@@ -1,0 +1,519 @@
+# Reference this view as headout_analytics_analytics_reporting__experience_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: experience_stats
+
+dimensions:
+  experience_date_key:
+    description: Surrogate key on (experience_id, date). Primary key of the table.
+
+  experience_id:
+    format: ID
+    description: Unique id for each experience (tour group id).
+
+  date:
+    description: Calendar date for the row. Metrics on the `_created` axis aggregate
+      bookings where this equals `DATE(fct_bookings.created_at)`; metrics on the
+      `_scheduled` axis aggregate bookings where this equals
+      `fct_bookings.experience_date`. Review metrics aggregate where this equals
+      `DATE(fct_reviews.reviewed_at)`.
+
+  as_of_date_experience_name:
+    description: Name of the experience as of `date`, snapshotted from the inventory
+      API. NULL for dates before inventory API extractions existed.
+
+  as_of_date_url:
+    description: Canonical URL of the experience as of `date`.
+
+  as_of_date_city:
+    description: Name of the city the experience belongs to as of `date`.
+
+  as_of_date_currency:
+    description: Currency for the experience based on the city as of `date`.
+
+  as_of_date_pricing_type:
+    description: Type of pricing the experience followed (Per Person or Per Group)
+      as of `date`.
+
+  as_of_date_minimum_price:
+    description: Minimum selling price for the experience in its local currency as
+      of `date`.
+
+  as_of_date_listing_original_price:
+    description: Listed original (pre-discount) price in the experience's local
+      currency as of `date`.
+
+  as_of_date_listing_final_price:
+    description: Listed final (post-discount) price shown to customers in the
+      experience's local currency as of `date`.
+
+  as_of_date_next_available_date:
+    description: Next bookable date for the experience as seen on `date` (from the
+      listing availability API).
+
+  as_of_date_primary_collection_id:
+    format: ID
+    description: Primary collection id the experience was mapped to as of `date`.
+
+  as_of_date_primary_collection_name:
+    description: Primary collection display name as of `date`.
+
+  as_of_date_primary_category_id:
+    format: ID
+    description: Primary category id as of `date`.
+
+  as_of_date_primary_category_name:
+    description: Primary category display name as of `date`.
+
+  as_of_date_primary_sub_category_id:
+    format: ID
+    description: Primary sub-category id as of `date`.
+
+  as_of_date_primary_sub_category_name:
+    description: Primary sub-category display name as of `date`. For Hop-on Hop-off
+      sub-category (id 1011), normalized to "Hop-on Hop-off Tours" to align with
+      database convention.
+
+  as_of_date_average_rating:
+    description: Average customer rating for the experience as of `date`.
+
+  as_of_date_count_ratings:
+    description: Total number of ratings received for the experience as of `date`
+      (cumulative snapshot shown on the listing).
+
+  as_of_date_count_images:
+    description: Number of product images on the experience listing as of `date`.
+
+  as_of_date_tags:
+    description: Array of all tags applied to the experience as of `date`.
+
+  as_of_date_image_urls:
+    description: Array of product image URLs shown on the experience listing page as
+      of `date`.
+
+  as_of_date_micro_brands_descriptors:
+    description: Array of Micro-Brand descriptors attached to the experience as of `date`.
+
+  current_experience_name:
+    description: Name of the experience as of the latest inventory API extraction.
+      Same value for all rows of a given experience_id; use for comparing how
+      the listing looked then (`as_of_date_*`) vs now.
+
+  current_url:
+    description: Canonical URL of the experience as of the latest inventory API extraction.
+
+  current_city:
+    description: City of the experience as of the latest inventory API extraction.
+
+  current_currency:
+    description: Listing currency as of the latest inventory API extraction.
+
+  current_pricing_type:
+    description: Pricing type (Per Person or Per Group) as of the latest inventory
+      API extraction.
+
+  current_minimum_price:
+    description: Minimum selling price in the experience's local currency as of the
+      latest inventory API extraction.
+
+  current_listing_original_price:
+    description: Listed original (pre-discount) price in the experience's local
+      currency as of the latest inventory API extraction.
+
+  current_listing_final_price:
+    description: Listed final (post-discount) price in the experience's local
+      currency as of the latest inventory API extraction.
+
+  current_next_available_date:
+    description: Next bookable date for the experience as of the latest inventory
+      API extraction.
+
+  current_primary_collection_id:
+    format: ID
+    description: Primary collection id as of the latest inventory API extraction.
+
+  current_primary_collection_name:
+    description: Primary collection display name as of the latest inventory API extraction.
+
+  current_primary_category_id:
+    format: ID
+    description: Primary category id as of the latest inventory API extraction.
+
+  current_primary_category_name:
+    description: Primary category display name as of the latest inventory API extraction.
+
+  current_primary_sub_category_id:
+    format: ID
+    description: Primary sub-category id as of the latest inventory API extraction.
+
+  current_primary_sub_category_name:
+    description: Primary sub-category display name as of the latest inventory API
+      extraction.
+
+  current_average_rating:
+    description: Average customer rating as of the latest inventory API extraction.
+
+  current_count_ratings:
+    description: Total number of ratings for the experience as of the latest
+      inventory API extraction.
+
+  current_count_images:
+    description: Number of product images on the listing as of the latest inventory
+      API extraction.
+
+  current_tags:
+    description: Array of tags applied to the experience as of the latest inventory
+      API extraction.
+
+  current_image_urls:
+    description: Array of product image URLs as of the latest inventory API extraction.
+
+  current_micro_brands_descriptors:
+    description: Array of Micro-Brand descriptors as of the latest inventory API extraction.
+
+  count_orders_created:
+    description: Distinct orders containing at least one booking for this
+      experience, where the order was created on `date`. Filters applied at the
+      order level (matches `combined_entity_stats`) — customer orders only,
+      excluding Dummy / Cancelled - Fraudulent orders and City Card bookings.
+
+  count_orders_scheduled:
+    description: Distinct orders containing at least one booking for this
+      experience, where the booking's experience date is `date`.
+
+  count_bookings_created:
+    description: Count of bookings for this experience created on `date`.
+
+  count_bookings_scheduled:
+    description: Count of bookings for this experience whose experience date is `date`.
+
+  count_customers_created:
+    description: Distinct customers (by email) who placed at least one booking for
+      this experience on `date`.
+
+  count_customers_scheduled:
+    description: Distinct customers (by email) with at least one booking for this
+      experience scheduled on `date`.
+
+  number_of_guests_created:
+    description: Sum of guests across bookings for this experience created on `date`.
+
+  number_of_guests_scheduled:
+    description: Sum of guests across bookings for this experience scheduled on `date`.
+
+  amount_revenue_usd_created:
+    description: Gross margin contribution in USD (`price_payable_usd -
+      price_net_usd`) summed across completed and pending bookings created on
+      `date`. Cancelled bookings contribute 0.
+
+  amount_revenue_usd_scheduled:
+    description: Gross margin contribution in USD summed across completed and
+      pending bookings scheduled on `date`. Cancelled bookings contribute 0.
+
+  order_value_completed_usd_created:
+    description: Sum of `price_payable_usd` across completed and pending bookings
+      created on `date`. Approximates the customer-payable portion attributable
+      to this experience within each order.
+
+  order_value_completed_usd_scheduled:
+    description: Sum of `price_payable_usd` across completed and pending bookings
+      scheduled on `date`.
+
+  count_repeat_orders_created:
+    description: Distinct orders created on `date` for this experience where the
+      order is a repeat (customer's Nth order across all experiences, per
+      `fct_orders.is_repeat_order`).
+
+  count_repeat_orders_scheduled:
+    description: Distinct orders scheduled on `date` for this experience where the
+      order is a repeat.
+
+  count_repeat_customers_created:
+    description: Distinct repeat customers (by email) who placed bookings for this
+      experience on `date`.
+
+  count_repeat_customers_scheduled:
+    description: Distinct repeat customers (by email) with bookings scheduled on `date`.
+
+  count_orders_same_country_created:
+    description: Distinct orders created on `date` where the customer's country
+      (card-issuing country, falling back to phone country) matches the
+      experience's country.
+
+  count_orders_same_country_scheduled:
+    description: Distinct orders scheduled on `date` where the customer's country
+      matches the experience's country.
+
+  count_orders_cross_border_created:
+    description: Distinct orders created on `date` where the customer's country
+      differs from the experience's country. Excludes orders with unknown
+      customer country.
+
+  count_orders_cross_border_scheduled:
+    description: Distinct orders scheduled on `date` where the customer's country
+      differs from the experience's country.
+
+  amount_revenue_usd_same_country_created:
+    description: Revenue in USD on `date` (created axis) from orders where customer
+      and experience countries match.
+
+  amount_revenue_usd_same_country_scheduled:
+    description: Revenue in USD on `date` (scheduled axis) from orders where
+      customer and experience countries match.
+
+  amount_revenue_usd_cross_border_created:
+    description: Revenue in USD on `date` (created axis) from orders where customer
+      country differs from experience country.
+
+  amount_revenue_usd_cross_border_scheduled:
+    description: Revenue in USD on `date` (scheduled axis) from orders where
+      customer country differs from experience country.
+
+  count_ratings_submitted:
+    description: Count of reviews or ratings submitted for this experience on `date`
+      (by `DATE(reviewed_at)`). Includes all records in `fct_reviews`, whether
+      they contain a written review or are rating-only.
+
+  count_reviews_submitted:
+    description: Count of reviews submitted for this experience on `date` that
+      include written review text (subset of `count_ratings_submitted` where
+      `review IS NOT NULL`).
+
+  bookings_by_status:
+    description: Array of per-booking-status rollups. One struct per distinct
+      `booking_status` observed on `date` across either axis. `count_orders` is
+      not included because status is a booking-level attribute and an order can
+      contain bookings across multiple statuses.
+
+  bookings_by_status_amount_revenue_usd_created:
+    sql: amount_revenue_usd_created
+    description: Revenue USD contribution from bookings in this status created on `date`.
+    nested_on_field: bookings_by_status
+    parent_field: bookings_by_status
+
+  bookings_by_status_amount_revenue_usd_scheduled:
+    sql: amount_revenue_usd_scheduled
+    description: Revenue USD contribution from bookings in this status scheduled on `date`.
+    nested_on_field: bookings_by_status
+    parent_field: bookings_by_status
+
+  bookings_by_status_booking_status:
+    sql: booking_status
+    description: Status of the booking (e.g., Completed, Pending, Cancelled,
+      Cancelled - Fraudulent, Partially Completed).
+    nested_on_field: bookings_by_status
+    parent_field: bookings_by_status
+
+  bookings_by_status_count_bookings_created:
+    sql: count_bookings_created
+    description: Count of bookings in this status for the experience created on `date`.
+    nested_on_field: bookings_by_status
+    parent_field: bookings_by_status
+
+  bookings_by_status_count_bookings_scheduled:
+    sql: count_bookings_scheduled
+    description: Count of bookings in this status for the experience scheduled on `date`.
+    nested_on_field: bookings_by_status
+    parent_field: bookings_by_status
+
+  bookings_by_status_number_of_guests_created:
+    sql: number_of_guests_created
+    description: Sum of guests across bookings in this status created on `date`.
+    nested_on_field: bookings_by_status
+    parent_field: bookings_by_status
+
+  bookings_by_status_number_of_guests_scheduled:
+    sql: number_of_guests_scheduled
+    description: Sum of guests across bookings in this status scheduled on `date`.
+    nested_on_field: bookings_by_status
+    parent_field: bookings_by_status
+
+  bookings_by_device:
+    description: Array of per-device rollups. One struct per distinct device
+      observed on `date`.
+
+  bookings_by_device_amount_revenue_usd_created:
+    sql: amount_revenue_usd_created
+    description: Revenue USD contribution from bookings on this device created on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_amount_revenue_usd_scheduled:
+    sql: amount_revenue_usd_scheduled
+    description: Revenue USD contribution from bookings on this device scheduled on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_count_bookings_created:
+    sql: count_bookings_created
+    description: Count of bookings placed on this device created on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_count_bookings_scheduled:
+    sql: count_bookings_scheduled
+    description: Count of bookings placed on this device scheduled on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_count_orders_created:
+    sql: count_orders_created
+    description: Distinct orders placed on this device on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_count_orders_scheduled:
+    sql: count_orders_scheduled
+    description: Distinct orders placed on this device scheduled on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_device:
+    sql: device
+    description: Device the order was placed on (e.g., Desktop, iOS Mweb, Android
+      Mweb, iOS App, Android App).
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_number_of_guests_created:
+    sql: number_of_guests_created
+    description: Sum of guests across bookings on this device created on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_device_number_of_guests_scheduled:
+    sql: number_of_guests_scheduled
+    description: Sum of guests across bookings on this device scheduled on `date`.
+    nested_on_field: bookings_by_device
+    parent_field: bookings_by_device
+
+  bookings_by_country:
+    description: Array of per-customer-country rollups. Customer country derived as
+      `COALESCE(card_issuing_country, phone_country)`. One struct per distinct
+      customer country observed on `date`; NULL customer country is surfaced as
+      its own struct.
+
+  bookings_by_country_amount_revenue_usd_created:
+    sql: amount_revenue_usd_created
+    description: Revenue USD contribution from customers of this country created on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_amount_revenue_usd_scheduled:
+    sql: amount_revenue_usd_scheduled
+    description: Revenue USD contribution from customers of this country scheduled
+      on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_count_bookings_created:
+    sql: count_bookings_created
+    description: Count of bookings from customers of this country created on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_count_bookings_scheduled:
+    sql: count_bookings_scheduled
+    description: Count of bookings from customers of this country scheduled on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_count_orders_created:
+    sql: count_orders_created
+    description: Distinct orders from customers of this country created on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_count_orders_scheduled:
+    sql: count_orders_scheduled
+    description: Distinct orders from customers of this country scheduled on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_customer_country:
+    sql: customer_country
+    description: Two-letter country code inferred from the customer's card-issuing
+      country (fallback to phone country).
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_number_of_guests_created:
+    sql: number_of_guests_created
+    description: Sum of guests across bookings from customers of this country
+      created on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_country_number_of_guests_scheduled:
+    sql: number_of_guests_scheduled
+    description: Sum of guests across bookings from customers of this country
+      scheduled on `date`.
+    nested_on_field: bookings_by_country
+    parent_field: bookings_by_country
+
+  bookings_by_channel_grouping:
+    description: Array of per-channel-grouping rollups. Channel grouping is derived
+      on the order in `fct_orders` (with web-to-app attribution applied).
+
+  bookings_by_channel_grouping_amount_revenue_usd_created:
+    sql: amount_revenue_usd_created
+    description: Revenue USD contribution from bookings in this channel grouping
+      created on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_amount_revenue_usd_scheduled:
+    sql: amount_revenue_usd_scheduled
+    description: Revenue USD contribution from bookings in this channel grouping
+      scheduled on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_channel_grouping:
+    sql: channel_grouping
+    description: Attribution channel grouping for the order (e.g., Organic, Paid
+      Search, Paid Social, Direct, Affiliates, Email, Direct (App)).
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_count_bookings_created:
+    sql: count_bookings_created
+    description: Count of bookings in this channel grouping created on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_count_bookings_scheduled:
+    sql: count_bookings_scheduled
+    description: Count of bookings in this channel grouping scheduled on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_count_orders_created:
+    sql: count_orders_created
+    description: Distinct orders in this channel grouping created on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_count_orders_scheduled:
+    sql: count_orders_scheduled
+    description: Distinct orders in this channel grouping scheduled on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_number_of_guests_created:
+    sql: number_of_guests_created
+    description: Sum of guests across bookings in this channel grouping created on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+  bookings_by_channel_grouping_number_of_guests_scheduled:
+    sql: number_of_guests_scheduled
+    description: Sum of guests across bookings in this channel grouping scheduled on `date`.
+    nested_on_field: bookings_by_channel_grouping
+    parent_field: bookings_by_channel_grouping
+
+measures:
+  count:
+    aggregate_type: count

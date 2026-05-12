@@ -1,0 +1,165 @@
+# Reference this view as headout_analytics_analytics_reporting__mixpanel_user_events_sessions
+description: This view has the mixpanel data we get from API with sessionisation
+  logic applied.[ Built on top of stg_mixpanel__events view ]
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: mixpanel_user_events_sessions
+
+dimensions:
+  session_end_timestamp: {}
+  experience_name: {}
+
+  event_id:
+    format: ID
+    description: Surrogate primary key built by combining event_timestamp,
+      event_name, user_id.
+
+  user_id:
+    format: ID
+    description: User for each visitor (essentially the device ID from Mixpanel).
+
+  session_id:
+    format: ID
+    description: Created session ID for each user based on the sessionisation logic
+      applied. Changes if the acquisition_source changes.
+
+  session_start_timestamp:
+    description: Session start timestamp for each user based on the sessionisation
+      logic applied.
+
+  session_event_duration_seconds:
+    description: Time spent between each activity within the session, calculated as
+      the difference between the current event timestamp and the previous event
+      timestamp.
+
+  session_number:
+    description: Session number for each user based on the sessionisation logic
+      applied. Incremented by 1 for each new session.
+
+  session_start_pointer:
+    description: Session start pointer for each user based on the sessionisation
+      logic applied. This is the first event of the session.
+
+  event_date:
+    description: Event date for each event.
+
+  event_timestamp:
+    description: Event timestamp for each event.
+
+  event_name:
+    description: Event name for each event.
+
+  refined_page_url:
+    description: Refined page URL of each event.
+
+  previous_page_url:
+    description: Previous page URL of each event.
+
+  page_type:
+    description: Page type of each event.
+
+  page_sub_type:
+    description: Subtype of the respective page viewed by the user.
+
+  browser:
+    description: Browser used by the user.
+
+  browsing_city:
+    description: City from which the user is browsing.
+
+  browsing_country:
+    description: Country from which the user is browsing.
+
+  refined_language:
+    description: Language from which the user is browsing.
+
+  refined_device:
+    description: Device used by the user.
+
+  campaign_id:
+    format: ID
+    description: Campaign ID from which the user has come to the current page.
+
+  channel_id:
+    format: ID
+    description: Marketing channel ID from which the user has come to the current page.
+
+  channel_name:
+    description: Added field on top of channel ID via a static mapping between them.
+
+  acqusition_source:
+    description: Acquisition source derived from campaign_id or channel_id if
+      campaign is null. Used to identify the source of the user for session
+      change logic.
+
+  geo_non_geo:
+    description: Indicates whether the browsing location and experience location are
+      the same (Geo) or different (Non-Geo).
+
+  advertising_channel_type:
+    description: Specifies sub-channels of Google Ads and Bing Ads, such as PAMX,
+      Discovery, etc.
+
+  combined_entity_id:
+    format: ID
+    description: Combined entity ID for respective funnel CTEs where event activities occur.
+
+  combined_entity_name:
+    description: Name of the combined entity associated with the event.
+
+  experience_id:
+    format: ID
+    description: Experience ID for respective funnel CTEs where event activities occur.
+
+  experience_city:
+    description: City associated with the event.
+
+  experience_country:
+    description: Country associated with the event.
+
+  experience_region:
+    description: Region associated with the event.
+
+  experience_business_market:
+    description: Business market associated with the event.
+
+  experience_business_region:
+    description: Business region associated with the event.
+
+  tour_id:
+    format: ID
+    description: Tour ID associated with the event.
+
+  variant_id:
+    format: ID
+    description: Variant ID associated with the event.
+
+  experience_date_time:
+    description: Date and time of the experience associated with the event.
+
+  experience_date:
+    description: Date of the experience associated with the event.
+
+  experience_time:
+    description: Time of the experience associated with the event.
+
+  lead_time_days:
+    description: Lead time in days between the booking and the experience date.
+
+  order_id:
+    format: ID
+    description: Order ID associated with the event.
+
+  currency:
+    description: Currency used for the transaction.
+
+  experiment_name:
+    description: Name of the experiment associated with the event.
+
+  experiment_variant:
+    description: Variant of the experiment associated with the event.
+
+measures:
+  count:
+    aggregate_type: count

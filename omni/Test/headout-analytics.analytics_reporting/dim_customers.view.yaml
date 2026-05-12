@@ -1,0 +1,535 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_customers
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_customers
+
+dimensions:
+  customer_country_first_order: {}
+  acquisition_landing_page: {}
+  acquisition_landing_page_host: {}
+  acquisition_collection_name: {}
+
+  customer_id:
+    format: ID
+    description: a surrogate key built by combining email and user type. The same
+      email can have two different user types and hence the surrogate key as
+      primary key.
+
+  email:
+    description: email ID of the customer
+
+  name:
+    description: Name of the customer as used by them in the last order made by them
+
+  calipso_user_id:
+    format: ID
+    description: Calispo user id of the customer for customers for whom an account
+      exists in the backend.
+
+  acquired_at:
+    description: timestamp (utc) at which the customer first interacted with
+      Headout. Interaction means either signing up or making an order.
+
+  customer_country:
+    description: Home country of the customer as determined by the card issuing
+      country for the last order made by the customer.
+
+  acquisition_city:
+    description: The first city the customer made an order for
+
+  acquisition_country:
+    description: The first country the customer made an order for
+
+  acquisition_region:
+    description: The first region the customer made an order for
+
+  acquisition_traffic_channel:
+    description: Traffic source as determined by Google Analytics for the first
+      order made by the customer
+
+  acquisition_device:
+    description: Device used for the first order made by the customer
+
+  last_ordered_city:
+    description: The last city the customer made an order for
+
+  last_ordered_country:
+    description: The last country the customer made an order for
+
+  acquisition_collection_id:
+    format: ID
+
+  first_order_at:
+    description: timestamp (UTC) at which the customer made their first order
+
+  last_order_at:
+    description: timestamp (UTC) at which the customer made their last order
+
+  num_orders:
+    description: Total number of orders made by the customer
+
+  completed_orders:
+    description: Total number of orders completed successfully for the customer
+
+  customer_lifetime_value:
+    description: Total amount received from the customer (ignoring coupon and wallet
+      credits) in their lifetime
+
+  average_order_value:
+    description: Average order value for the orders made by the customer
+
+  num_disputes:
+    description: Total number of disputes by the customer
+
+  num_fraudulent_orders:
+    description: Total number of fraudulent orders by the customer as determined
+      basis fraudulent disputes and TC40 and SAFE reports.
+
+  num_logged_in_orders:
+    description: total number of orders made by the customer where they were logged in
+
+  has_disputed:
+    description: bool representing whether the customer has disputed a Headout
+      payment or not
+
+  is_fraudulent:
+    description: bool representing whether the customer is fraudulent or not
+
+  has_logged_in:
+    description: bool representing whether the customer has made any order while
+      being logged in or not
+
+  orders:
+    description: an array containing all the orders made by the customer
+
+  orders_card_issuing_country:
+    sql: card_issuing_country
+    description: the country where the card was issued for making the payment for the order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_city:
+    sql: city
+    description: name of the city for which the customer made the order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_combined_entity_id:
+    sql: combined_entity_id
+    format: ID
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_combined_entity_name:
+    sql: combined_entity_name
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_country:
+    sql: country
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_coupon_code:
+    sql: coupon_code
+    description: coupon code applied by the customer for making the order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_created_at:
+    sql: created_at
+    description: Timestamp (UTC) at which the customer made the order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_customer_order_sequence_number:
+    sql: customer_order_sequence_number
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_days_since_first_order:
+    sql: days_since_first_order
+    description: number of calendar days between this order and customer's first order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_days_since_last_order:
+    sql: days_since_last_order
+    description: number of calendar days between this order and customer's previous order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_device:
+    sql: device
+    description: the device used by the customer for making the order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_experience_id:
+    sql: experience_id
+    format: ID
+    description: ID of the experience booked by the customer
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_months_since_first_order:
+    sql: months_since_first_order
+    description: number of calendar months between this order and customer's first order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_months_since_last_order:
+    sql: months_since_last_order
+    description: number of calendar months between this order and customer's previous order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_order_id:
+    sql: order_id
+    format: ID
+    description: Headout order ID for the order made by the customer
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_order_status:
+    sql: order_status
+    description: status of the order made by the customer
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_order_value_usd:
+    sql: order_value_usd
+    description: order value in US$ for the order made by the customer
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_payment_amount_received_usd:
+    sql: payment_amount_received_usd
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_region:
+    sql: region
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_session_landing_page_host:
+    sql: session_landing_page_host
+    description: Host name for the landing page of the session in which the customer
+      made the order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_session_traffic_channel_grouping:
+    sql: session_traffic_channel_grouping
+    description: Traffic channel grouping like GA's for the session in which the
+      customer made the order
+    nested_on_field: orders
+    parent_field: orders
+
+  experiences_ordered:
+    description: an array of distinct experiences ordered by the customer
+
+  cities_ordered_in:
+    description: an array of distinct cities ordered for by the customer
+
+  last_order_language:
+    description: The last client language (Full name) on the website the customer
+      made an order
+
+  last_order_language_code:
+    description: The last client language (Two letter code) on the website the
+      customer made an order
+
+  last_order_currency:
+    description: The last currency used by the customer to make an order
+
+  last_order_experience_date:
+    description: The date of experience booked by a customer in the last order
+
+  last_experience_date:
+    description: The last date of experience booked by a customer
+
+  has_ordered_on_headout:
+    description: Boolean flag to indicate if a customer has made an order via
+      Headout.com or a Microbrand. 1 if atleast one order was placed via HO and
+      0 otherwise.
+
+  has_wallet:
+    description: boolean representing whether the customer has a wallet or not
+
+  wallet_balance:
+    description: credits the customer has in their wallet
+
+  wallet_currency:
+    description: currency associated with the credits the customer has in their wallet
+
+  num_bookings:
+    description: Total number of completed bookings across all orders for the
+      customer. Includes bookings from all statuses that pass the booking_status
+      filter.
+
+  bookings:
+    description: Nested array of booking details for the customer, ordered by order_id.
+
+  bookings_booking_id:
+    sql: booking_id
+    format: ID
+    description: Unique identifier for the booking.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_booking_status:
+    sql: booking_status
+    description: Current status of the booking.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_city:
+    sql: city
+    description: City where the experience takes place.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_id:
+    sql: combined_entity_id
+    format: ID
+    description: Combined entity ID grouping related experiences.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_name:
+    sql: combined_entity_name
+    description: Name of the combined entity for the experience.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_created_at:
+    sql: created_at
+    description: Timestamp (UTC) when the booking was created.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_days_since_first_order:
+    sql: days_since_first_order
+    description: Number of calendar days between the booking creation date and the
+      customer's acquisition date.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_id:
+    sql: experience_id
+    format: ID
+    description: ID of the experience booked.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_is_repeat_booking_combo:
+    sql: is_repeat_booking_combo
+    description: Boolean indicating whether this booking is not the first booking in
+      its order.
+    nested_on_field: bookings
+    parent_field: bookings
+
+  num_trips:
+    description: Total number of trips taken by the customer. A trip is defined as
+      all bookings where experience dates fall within a 7-day window.
+
+  is_repeat_trip_customer:
+    description: Boolean indicating whether the customer has taken more than one
+      trip. The trip-level equivalent of repeat order analysis — use this for
+      true retention segmentation.
+
+  days_since_last_trip:
+    description: Number of days between the current date and the customer's most
+      recent trip start date. Key recency metric for identifying at-risk and
+      lapsed customers. NULL for customers with no trips.
+
+  total_trip_value_usd:
+    description: Total order value across all trips in USD. Trip-based customer
+      lifetime value.
+
+  avg_bookings_per_trip:
+    description: Average number of bookings (experiences) per trip across all
+      customer trips.
+
+  avg_trip_value_usd:
+    description: Average total order value per trip in USD across all customer trips.
+
+  avg_days_between_trips:
+    description: Average number of days between the end of one trip and the start of
+      the next. NULL for single-trip customers.
+
+  first_trip_date:
+    description: Date of the customer's first trip (earliest experience date of
+      their first trip).
+
+  last_trip_date:
+    description: Date of the customer's most recent trip (earliest experience date
+      of their last trip).
+
+  num_unique_cities:
+    description: Number of distinct primary cities across all trips. Measures
+      exploration breadth — customers with 3+ unique cities are explorers.
+
+  primary_trip_city:
+    description: The city the customer has visited most across all trips. Key for
+      city-level retention targeting.
+
+  has_used_coupon:
+    description: Boolean indicating whether the customer has ever used a coupon on
+      any trip. Promo sensitivity indicator.
+
+  has_used_app:
+    description: Boolean indicating whether the customer has ever placed an order
+      via the iOS or Android app during any trip.
+
+  has_used_pay_later:
+    description: Boolean indicating whether the customer has ever used
+      buy-now-pay-later (BNPL) on any trip.
+
+  has_used_booking_insurance:
+    description: Boolean indicating whether the customer has ever purchased
+      cancellation insurance on any trip.
+
+  trips:
+    description: Nested array of trip details for the customer, ordered by trip_start_date.
+
+  trips_booking_lead_time_days:
+    sql: booking_lead_time_days
+    description: Days between booking date and first experience date in this trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_customer_trip_sequence_number:
+    sql: customer_trip_sequence_number
+    description: Sequential trip number for the customer.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_days_since_last_trip:
+    sql: days_since_last_trip
+    description: Days between the start of this trip and the end of the previous
+      trip. NULL for the first trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_has_booking_insurance:
+    sql: has_booking_insurance
+    description: Boolean indicating whether any booking in this trip had
+      cancellation insurance.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_has_coupon:
+    sql: has_coupon
+    description: Boolean indicating whether any order in this trip used a coupon.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_has_used_app:
+    sql: has_used_app
+    description: Boolean indicating whether any order in this trip was placed via app.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_has_used_pay_later:
+    sql: has_used_pay_later
+    description: Boolean indicating whether any order in this trip used BNPL.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_is_repeat_trip:
+    sql: is_repeat_trip
+    description: Boolean indicating whether this is a repeat trip (trip sequence
+      number > 1).
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_is_same_city_as_prev_trip:
+    sql: is_same_city_as_prev_trip
+    description: Boolean indicating whether the customer returned to the same
+      primary city as their previous trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_num_bookings:
+    sql: num_bookings
+    description: Number of bookings in this trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_num_cities:
+    sql: num_cities
+    description: Number of distinct cities visited in this trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_num_orders:
+    sql: num_orders
+    description: Number of distinct orders in this trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_primary_category_name:
+    sql: primary_category_name
+    description: Most frequently occurring experience category in this trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_primary_city:
+    sql: primary_city
+    description: Most frequently occurring city in this trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_total_order_value_usd:
+    sql: total_order_value_usd
+    description: Total order value in USD across all distinct orders in this trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_trip_duration_days:
+    sql: trip_duration_days
+    description: Number of days between first and last experience date in the trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_trip_end_date:
+    sql: trip_end_date
+    description: Last experience date in the trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_trip_group_type:
+    sql: trip_group_type
+    description: Travel party classification (Solo, Couple, Family, Small Group,
+      Large Group).
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_trip_id:
+    sql: trip_id
+    format: ID
+    description: Surrogate key for the trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_trip_start_date:
+    sql: trip_start_date
+    description: First experience date in the trip.
+    nested_on_field: trips
+    parent_field: trips
+
+  trips_trip_travel_type:
+    sql: trip_travel_type
+    description: Domestic/International classification based on customer country vs
+      destination.
+    nested_on_field: trips
+    parent_field: trips
+
+measures:
+  count:
+    aggregate_type: count

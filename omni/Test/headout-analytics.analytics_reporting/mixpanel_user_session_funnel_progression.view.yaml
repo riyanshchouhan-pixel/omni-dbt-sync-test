@@ -1,0 +1,57 @@
+# Reference this view as headout_analytics_analytics_reporting__mixpanel_user_session_funnel_progression
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: mixpanel_user_session_funnel_progression
+
+dimensions:
+  session_date: {}
+  session_start_timestamp: {}
+  session_end_timestamp: {}
+  flow_type: {}
+  refined_page_url: {}
+  previous_page_url: {}
+  page_type: {}
+  page_sub_type: {}
+  browser: {}
+  browsing_city: {}
+  browsing_country: {}
+  refined_language: {}
+  refined_device: {}
+  channel_name: {}
+  acqusition_source: {}
+  geo_non_geo: {}
+  advertising_channel_type: {}
+  combined_entity_name: {}
+  experience_business_market: {}
+  experience_business_region: {}
+  experience_name: {}
+  experience_date: {}
+  experience_time: {}
+  lead_time_days: {}
+  select_page_viewed_timestamp: {}
+  checkout_started_timestamp: {}
+  order_attempted_timestamp: {}
+  order_completed_timestamp: {}
+  has_select_page_viewed: {}
+  has_checkout_started: {}
+  has_order_attempted: {}
+  has_order_completed: {}
+
+  user_id:
+    format: ID
+
+  campaign_id:
+    format: ID
+
+  channel_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

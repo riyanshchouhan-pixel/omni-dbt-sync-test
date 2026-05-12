@@ -1,0 +1,114 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_ad_group_geo_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_ad_group_geo_stats
+
+dimensions:
+  user_country_name: {}
+  user_country_code: {}
+  user_location_name: {}
+  user_location_canonical_name: {}
+  user_location_type: {}
+  ad_group_status: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  campaign_target_combined_entity_name: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_target_business_market: {}
+  campaign_target_business_region: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  count_conversions: {}
+  count_all_conversions: {}
+  sum_conversions_value: {}
+  sum_all_conversions_value: {}
+  count_cross_device_conversions: {}
+  count_view_through_conversions: {}
+  count_interactions: {}
+  sum_conversion_value_online: {}
+  sum_conversion_value_offline_gross_bookings: {}
+  sum_conversion_value_offline_revenue: {}
+  count_conversions_offline_contribution_margin: {}
+  sum_conversion_value_offline_contribution_margin: {}
+
+  surrogate_key:
+    description: Surrogate primary key from the geo stats staging model.
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID.
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign.
+
+  ad_group_id:
+    format: ID
+    description: Unique identifier for the ad group.
+
+  report_date:
+    description: Date of the performance report.
+
+  device:
+    description: "Device type: MOBILE, DESKTOP, TABLET, CONNECTED_TV."
+
+  ad_network_type:
+    description: "Ad network: SEARCH, SEARCH_PARTNERS, CONTENT, YOUTUBE, MIXED."
+
+  account_name:
+    description: Name of the Google Ads account.
+
+  country_criterion_id:
+    format: ID
+    description: Google Ads geo target constant for the country (e.g., 2840 for US,
+      2826 for UK).
+
+  geo_target_most_specific:
+    description: Most granular geo target constant available for this row.
+
+  location_type:
+    description: LOCATION_OF_PRESENCE (where the user physically is) or
+      AREA_OF_INTEREST (what destination they searched about).
+
+  ad_group_name:
+    description: Name of the ad group from the GeoStats source.
+
+  campaign_name:
+    description: Current name of the campaign.
+
+  campaign_city:
+    description: City extracted from the campaign name (the destination being advertised).
+
+  campaign_category:
+    description: Category extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  count_impressions:
+    description: Number of ad impressions.
+
+  count_clicks:
+    description: Number of ad clicks.
+
+  sum_spend:
+    description: Total spend in USD.
+
+  count_video_views:
+    description: Number of video views (relevant for YouTube/Display geo analysis).
+
+  count_conversions_online:
+    description: Number of online conversions. Defaults to 0.
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline gross bookings conversions. Defaults to 0.
+
+  count_conversions_offline_revenue:
+    description: Number of offline revenue conversions. Defaults to 0.
+
+measures:
+  count:
+    aggregate_type: count

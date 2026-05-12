@@ -1,0 +1,36 @@
+# Reference this view as headout_analytics_analytics_reporting__revenue_goals
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: revenue_goals
+
+dimensions:
+  target_month:
+    description: Calendar month for goals (first day of month)
+
+  target_year:
+    description: Year for the goals
+
+  market:
+    description: Market that the entity belongs to
+
+  region:
+    description: Region that the entity belongs to
+
+  entity_id:
+    format: ID
+    description: Entity identifier (combined entity id or market/region id)
+
+  entity_name:
+    description: Name of the entity
+
+  entity_type:
+    description: Type of entity (e.g., combined_entity, market, region)
+
+  target_revenue:
+    description: Target revenue for the entity
+
+measures:
+  count:
+    aggregate_type: count

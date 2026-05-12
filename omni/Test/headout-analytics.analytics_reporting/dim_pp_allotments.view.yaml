@@ -1,0 +1,172 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_pp_allotments
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_pp_allotments
+
+dimensions:
+  allotment_request_id:
+    format: ID
+    description: Allotment ID of a Prepurchase Allotment.
+
+  purchase_order_number:
+    description: Purchase Order Number (Public ID) for a Prepurchase Allotment.
+
+  allotment_created_at:
+    description: Creation Date for a Prepurchase Allotment.
+
+  allotment_status:
+    description: Status of a Prepurchase Allotment.
+
+  payment_type:
+    description: Payment Type for a Prepurchase Allotment.
+
+  payment_method:
+    description: Payment Method for a Prepurchase Allotment.
+
+  due_at:
+    description: Due Date for a Prepurchase Allotment.
+
+  vendor_tour_id:
+    format: ID
+    description: Vendor Tour ID of the Vendor Tour for a given Prepurchase Allotment.
+
+  order_fees:
+    description: Extra Fees paid for the order of Prepurchase Allotment.
+
+  pax_type:
+    description: PAX Type of the tickets in a given Prepurchase Allotment.
+
+  ticket_validity_timestamp:
+    description: Validity of the tickets in a given Prepurchase Allotment.
+
+  net_price:
+    description: Net Price of the tickets in a given Prepurchase Allotment.
+
+  retail_price:
+    description: Retail Price of the tickets in a given Prepurchase Allotment.
+
+  redemption_cost:
+    description: Redemption Cost of the tickets in a given Prepurchase Allotment.
+
+  loss_liability:
+    description: Loss Liability of the tickets in a given Prepurchase Allotment.
+
+  rebate_frequency:
+    description: DEFUNCT - Rebate Frequency for a given allotment.
+
+  credit_adjustment_details:
+    description: Comments about Credit Adjustment Details.
+
+  tour_id:
+    format: ID
+    description: Tour ID for which a Prepurchase Allotment has been raised.
+
+  vendor_id:
+    format: ID
+    description: Vendor ID for which a Prepurchase Allotment has been raised.
+
+  currency_code:
+    description: Local Currency Code of the vendor supplying tickets for a
+      Prepurchase Allotment.
+
+  validity_type:
+    description: Validity Type of the tickets in a Prepurchase Allotment.
+
+  inventory_type:
+    description: Inventory Type of the tickets in a Prepurchase Allotment.
+
+  venue_type:
+    description: Venue Type for the tickets in a Prepurchase Allotment.
+
+  is_ticket_reuseable:
+    description: Boolean to identify if tickets are resuable in this Prepurchase Allotment.
+
+  stock_quantity:
+    description: Decided Stock Quantity of a Prepurchase Allotment.
+
+  primary_experience_id:
+    format: ID
+    description: Primary Experience ID of the Vendor Tour associated with given
+      Prepurchase Allotment.
+
+  primary_experience_name:
+    description: Primary Experience Name of the Vendor Tour associated with given
+      Prepurchase Allotment.
+
+  city:
+    description: City of the primary experience associated with given Prepurchase Allotment.
+
+  country:
+    description: Country of the primary experience associated with given Prepurchase
+      Allotment.
+
+  market_region:
+    description: Market Region of the primary experience associated with given
+      Prepurchase Allotment.
+
+  usd_to_currency_conversion_rate:
+    description: Latest currency conversion rate from local currency to USD. This is
+      used for reporting purposes only.
+
+  loss_liability_usd:
+    description: Loss Liability in USD of the tickets in a given Prepurchase Allotment.
+
+  payment_records:
+    description: Payment Records for given Prepurchase Allotment.
+
+  payment_records_amount_paid:
+    sql: amount_paid
+    nested_on_field: payment_records
+    parent_field: payment_records
+
+  payment_records_payment_done_at:
+    sql: payment_done_at
+    nested_on_field: payment_records
+    parent_field: payment_records
+
+  payment_records_payment_receipt:
+    sql: payment_receipt
+    nested_on_field: payment_records
+    parent_field: payment_records
+
+  payment_records_payment_record_id:
+    sql: payment_record_id
+    format: ID
+    nested_on_field: payment_records
+    parent_field: payment_records
+
+  payment_records_payment_reference_number:
+    sql: payment_reference_number
+    nested_on_field: payment_records
+    parent_field: payment_records
+
+  total_amount_paid:
+    description: Total Amount Paid in local currency across all Payment Records.
+
+  count_uploaded_tickets:
+    description: Count of total uploaded tickets in a given Prepurchase Allotment.
+
+  count_sold_tickets:
+    description: Count of total sold tickets in a given Prepurchase Allotment.
+
+  count_cancelled_tickets:
+    description: Count of total cancelled tickets in a given Prepurchase Allotment.
+
+  count_pending_tickets:
+    description: Count of total pending tickets in a given Prepurchase Allotment.
+
+  count_invalid_tickets:
+    description: Count of total invalid tickets in a given Prepurchase Allotment.
+
+  latest_ticket_uploaded_at:
+    description: Timestamp of the most recently uploaded ticket in a given
+      Prepurchase Allotment.
+
+  is_strict_allotment:
+    description: Boolean to identify if the Prepurchase Allotment is sensitive or not.
+
+measures:
+  count:
+    aggregate_type: count

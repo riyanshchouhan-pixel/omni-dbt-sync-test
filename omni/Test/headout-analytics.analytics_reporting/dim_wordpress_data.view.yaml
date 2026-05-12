@@ -1,0 +1,107 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_wordpress_data
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_wordpress_data
+
+dimensions:
+  wordpress_category_ids: {}
+  country: {}
+  collection_name: {}
+  sub_category_name: {}
+  category_name: {}
+  content_type: {}
+  page_type: {}
+
+  id:
+    format: ID
+    description: unique id assigned to each page/post on wordpress
+    primary_key: true
+
+  h1:
+    description: H1 key value representing the heading
+
+  url:
+    description: blog url
+
+  slug:
+    description: url slug
+
+  status:
+    description: status of the blog publication
+
+  meta_title:
+    description: title of the blog
+
+  meta_description:
+    description: description of the blog
+
+  published_at:
+    description: Timestamp at which the page was published
+
+  modified_at:
+    description: Timestamp at which the page was modified
+
+  categories:
+    description: categories as text
+
+  tag_ids:
+    description: tag ids assigned to the blog
+
+  tags:
+    description: tags as text
+
+  schemas:
+    description: schema key value as json
+
+  schema_types:
+    description: vlues of all @type keys in schemas
+
+  type:
+    description: Check wether the blog is a post or a page
+
+  author:
+    description: Author who published the page
+
+  breadcrumbs:
+    description: breadcrumbs associated to the blog
+
+  word_count:
+    description: word count of the blog
+
+  yoast_head_json:
+    description: yoast_head_json key value as json
+
+  index_status:
+    description: checking the status of index
+
+  follow_status:
+    description: checking the status of follow
+
+  canonical_link:
+    description: canonical link associated to the blog
+
+  extraction_timestamp:
+    description: Timestamp at which the page was scraped
+
+  mapped_kw:
+    description: keyword mapped to the blog, maintained in the Microbrands on Looker sheet
+
+  city:
+    description: city mapped to the blog, maintained in the Microbrands on Looker sheet
+
+  collection_id:
+    format: ID
+    description: collection_id mapped to the blog, maintained in the Microbrands on
+      Looker sheet
+
+  sub_category_id:
+    format: ID
+
+  category_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

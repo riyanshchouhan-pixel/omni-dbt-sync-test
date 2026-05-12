@@ -1,0 +1,99 @@
+# Reference this view as headout_analytics_analytics_reporting__new_supply_metrics
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: new_supply_metrics
+
+dimensions:
+  first_booking_date: {}
+  first_support_query_date: {}
+  revenue_usd: {}
+
+  ticket_id:
+    format: ID
+    description: Zendesk Ticket ID for the requested new supply.
+
+  experience_id:
+    format: ID
+    description: Experience ID for the requested new supply.
+
+  listing_type:
+    description: Listing (Issue) Type of the new supply.
+
+  is_perfect_listing:
+    description: Boolean to identify whether a new supply listing is a perfect
+      listing or not.
+
+  live_at:
+    description: FQA Done Timestamp, timestamp at which new supply was made live on
+      Headout platform.
+
+  days_since_live:
+    description: Days since the new supply was made live on Headout platform.
+
+  entity_performance_metrics:
+    description: Array of struct records, which have performance metrics for the
+      entity made live.
+
+  entity_performance_metrics_count_bookings:
+    sql: count_bookings
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_count_headout_cancelled_bookings:
+    sql: count_headout_cancelled_bookings
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_count_support_load_bookings:
+    sql: count_support_load_bookings
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_count_vendor_cancelled_bookings:
+    sql: count_vendor_cancelled_bookings
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_entity_id:
+    sql: entity_id
+    format: ID
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_entity_type:
+    sql: entity_type
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_first_booking_date:
+    sql: first_booking_date
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_first_support_query_date:
+    sql: first_support_query_date
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  entity_performance_metrics_revenue_usd:
+    sql: revenue_usd
+    nested_on_field: entity_performance_metrics
+    parent_field: entity_performance_metrics
+
+  count_vendor_cancelled_bookings:
+    description: Count of the cancelled bookings which are cancelled by Vendor.
+
+  count_headout_cancelled_bookings:
+    description: Count of the cancelled bookings which are cancelled by Headout.
+
+  count_support_load_bookings:
+    description: Count of the bookings which have support query raised on them.
+
+  count_bookings:
+    description: Count of the bookings for the new supply.
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,402 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_experiences
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_experiences
+
+dimensions:
+  primary_collection_name: {}
+  primary_category_name: {}
+  primary_sub_category_name: {}
+  primary_poi_name: {}
+  poi_venue_group: {}
+  combined_entity_name: {}
+  business_region: {}
+  business_market: {}
+  country: {}
+  continent: {}
+  region: {}
+  timezone: {}
+  next_available_date: {}
+  is_available: {}
+  listing_original_price: {}
+  listing_final_price: {}
+  experience_promos: {}
+  product_descriptors: {}
+  mapped_sub_categories: {}
+  mapped_collections: {}
+  mapped_persona_affinities: {}
+  mapped_pois: {}
+
+  experience_id:
+    format: ID
+    description: unique id for each experience on Headout (tour group id)
+
+  created_at:
+    description: ts (utc) at which the experience was created
+
+  experience_name:
+    description: name of the experience
+
+  language_content_data:
+    description: an array of language_code, language, meta_description, highlights,
+      inclusions, microbrands_highlight, select_page_instructions, summary,
+      meta_title, ticket_delivery_info, exclusions
+
+  language_content_data_cancellation:
+    sql: cancellation
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_confirmed_ticket_info:
+    sql: confirmed_ticket_info
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_exclusions:
+    sql: exclusions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_name:
+    sql: experience_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_faq:
+    sql: faq
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_first_human_translation_at:
+    sql: first_human_translation_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_first_machine_translation_at:
+    sql: first_machine_translation_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_highlights:
+    sql: highlights
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_inclusions:
+    sql: inclusions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_code:
+    sql: language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_name:
+    sql: language_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_title:
+    sql: meta_title
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_microbrands_descriptor:
+    sql: microbrands_descriptor
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_microbrands_highlight:
+    sql: microbrands_highlight
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_neighborhood:
+    sql: neighborhood
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_promotion_label:
+    sql: promotion_label
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_select_page_instructions:
+    sql: select_page_instructions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_select_page_instructions_updated_at:
+    sql: select_page_instructions_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_short_summary:
+    sql: short_summary
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_summary:
+    sql: summary
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_ticket_delivery_info:
+    sql: ticket_delivery_info
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_translation_mode:
+    sql: translation_mode
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_validity:
+    sql: validity
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  primary_collection_id:
+    format: ID
+    description: the primary collection id associated with the experience
+
+  primary_category_id:
+    format: ID
+
+  primary_sub_category_id:
+    format: ID
+    description: the primary sub category id associated with the experience
+
+  primary_poi_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  canonical_url:
+    description: canonical_url of the experience
+
+  is_no_index:
+    description: an experience can either have a value of 0 or 1 for no_index
+
+  is_hidden:
+    description: an experience can either have a value of 0 or 1 for is_hidden
+
+  city:
+    description: name of the primary city the experience belongs to
+
+  mapped_cities:
+    description: array of all cities (primary and secondary) mapped to the experience
+
+  url:
+    description: headout url of the experience
+
+  image_url:
+    description: url of the primary image of the experience
+
+  currency:
+    description: local currency for the experience
+
+  pricing_type:
+    description: type of pricing for the experience
+
+  minimum_price:
+    description: minimum price for the experience for days where inventory is available
+
+  tags:
+    description: an array of display tags added to the experience along with the position
+
+  micro_brands_descriptors:
+    description: an array of MB descriptors added to the experience
+
+  average_rating:
+    description: the current rating for the experience
+
+  count_ratings:
+    description: number of ratings added for the experience
+
+  count_images:
+    description: number of image urls on experience page
+
+  image_urls:
+    description: an array of image urls on experience page
+
+  experience_promos_active_days:
+    sql: active_days
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_is_active:
+    sql: is_active
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_offset_days:
+    sql: offset_days
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_code:
+    sql: promo_code
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_discount_value:
+    sql: promo_discount_value
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_id:
+    sql: promo_id
+    format: ID
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_location:
+    sql: promo_location
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_type:
+    sql: promo_type
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  product_descriptors_descriptor_code:
+    sql: descriptor_code
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  product_descriptors_descriptor_id:
+    sql: descriptor_id
+    format: ID
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  product_descriptors_descriptor_name:
+    sql: descriptor_name
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  mapped_sub_categories_category_id:
+    sql: category_id
+    format: ID
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_category_name:
+    sql: category_name
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_rank:
+    sql: rank
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_sub_category_id:
+    sql: sub_category_id
+    format: ID
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_sub_categories_sub_category_name:
+    sql: sub_category_name
+    nested_on_field: mapped_sub_categories
+    parent_field: mapped_sub_categories
+
+  mapped_collections_collection_city:
+    sql: collection_city
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_collections_collection_id:
+    sql: collection_id
+    format: ID
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_collections_collection_name:
+    sql: collection_name
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_collections_rank:
+    sql: rank
+    nested_on_field: mapped_collections
+    parent_field: mapped_collections
+
+  mapped_persona_affinities_persona_affinity_id:
+    sql: persona_affinity_id
+    format: ID
+    nested_on_field: mapped_persona_affinities
+    parent_field: mapped_persona_affinities
+
+  mapped_persona_affinities_persona_affinity_name:
+    sql: persona_affinity_name
+    nested_on_field: mapped_persona_affinities
+    parent_field: mapped_persona_affinities
+
+  mapped_persona_affinities_persona_affinity_type:
+    sql: persona_affinity_type
+    nested_on_field: mapped_persona_affinities
+    parent_field: mapped_persona_affinities
+
+  mapped_pois_mapping_rank:
+    sql: mapping_rank
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_parent_poi_id:
+    sql: parent_poi_id
+    format: ID
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_parent_poi_name:
+    sql: parent_poi_name
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_poi_id:
+    sql: poi_id
+    format: ID
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_poi_name:
+    sql: poi_name
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+  mapped_pois_poi_venue_group:
+    sql: poi_venue_group
+    nested_on_field: mapped_pois
+    parent_field: mapped_pois
+
+measures:
+  count:
+    aggregate_type: count

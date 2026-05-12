@@ -1,0 +1,51 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_zendesk_calls
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_zendesk_calls
+
+dimensions:
+  created_at: {}
+  updated_at: {}
+  completion_status: {}
+  direction: {}
+  duration: {}
+  is_exceeded_queue_wait_time: {}
+  hold_time: {}
+  recieved_at: {}
+  ticket_tags: {}
+  custom_interaction_tag: {}
+  time_to_answer: {}
+  wait_time: {}
+  wrap_up_time: {}
+  talk_time: {}
+  is_voicemailed: {}
+  is_callback_opted: {}
+  line_type: {}
+  requester_phone: {}
+  assignee_email: {}
+  assignee_name: {}
+  completed_at: {}
+
+  call_id:
+    format: ID
+
+  ticket_id:
+    format: ID
+
+  custom_booking_id:
+    format: ID
+
+  requester_email:
+    description: email id of the user requesting the ticket
+
+  requester_name:
+    description: name of the user requesting the ticket
+
+  assignee_group_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

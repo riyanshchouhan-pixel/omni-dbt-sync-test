@@ -1,0 +1,36 @@
+# Reference this view as headout_analytics_analytics_reporting__combined_entity_ad_spends
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: combined_entity_ad_spends
+
+dimensions:
+  report_date: {}
+  count_ad_impressions: {}
+  count_ad_clicks: {}
+  count_ad_conversions: {}
+  sum_google_ads_spend: {}
+  sum_microsoft_ads_spend: {}
+  sum_facebook_ads_spend: {}
+  sum_google_ads_conversion_value: {}
+  sum_microsoft_ads_conversion_value: {}
+  sum_facebook_ads_conversion_value: {}
+  sum_google_split_ads_spend: {}
+  sum_facebook_split_ads_spend: {}
+  sum_microsoft_split_ads_spend: {}
+  sum_pmax_ads_spend: {}
+  sum_travel_ads_spend: {}
+  sum_google_remarketing_ads_spend: {}
+  sum_facebook_remarketing_ads_spend: {}
+  sum_criteo_remarketing_ads_spend: {}
+  sum_google_brand_ads_spend: {}
+  sum_apple_ads_spend: {}
+
+  combined_entity_id:
+    format: ID
+    description: combined entity ID for which ad spends are being recorded
+
+measures:
+  count:
+    aggregate_type: count

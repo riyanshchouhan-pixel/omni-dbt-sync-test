@@ -1,0 +1,34 @@
+# Reference this view as headout_analytics_analytics_reporting__product_code_validation
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: product_code_validation
+
+dimensions:
+  event_name: {}
+  api_plugin: {}
+  tour_name: {}
+  vendor_name: {}
+  validation_status: {}
+  failure_reason: {}
+  next_available_date: {}
+  cron_run_date: {}
+  product_code: {}
+
+  event_id:
+    format: ID
+    description: assigned id to each event
+
+  event_timestamp:
+    description: ts (utc) at which the event took place
+
+  tour_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

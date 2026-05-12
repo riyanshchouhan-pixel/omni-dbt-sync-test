@@ -1,0 +1,14 @@
+# Reference this view as headout_analytics_analytics_reporting__goals_market_region_h2_2023
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: goals_market_region_h2_2023
+
+dimensions:
+  target_month: {}
+  market: {}
+  region: {}
+  target_gross_bookings: {}
+
+measures:
+  count:
+    aggregate_type: count

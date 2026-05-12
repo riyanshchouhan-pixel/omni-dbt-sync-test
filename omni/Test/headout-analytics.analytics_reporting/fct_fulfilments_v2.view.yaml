@@ -1,0 +1,215 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_fulfilments_v2
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_fulfilments_v2
+
+dimensions:
+  headout_selling_price: {}
+  headout_net_price: {}
+  sp_net: {}
+  total_amount_payable: {}
+  balance_amount_payable: {}
+  total_amount_paid: {}
+  concat_utr: {}
+  concat_date_of_payment: {}
+  dispute_status: {}
+  total_dispute_amount: {}
+  total_dispute_adjustment_amount: {}
+  total_discrepancy_amount: {}
+  balance_dispute_amount: {}
+
+  fulfilment_id:
+    format: ID
+    description: Unique identifier for each fulfilment attempt.
+
+  fulfilment_timestamp:
+    description: Timestamp (UTC) at which the fulfilment was created. Partition field.
+
+  booking_id:
+    format: ID
+    description: Identifier of the booking this fulfilment attempt belongs to.
+
+  fulfilment_status:
+    description: Current status of the fulfilment attempt (e.g. SUCCESS, PENDING, FAILED).
+
+  fulfilment_type:
+    description: |-
+      Method used for this fulfilment attempt (e.g. 'Vendor Api', 'Manual', 'Pre Purchase').
+      'Pre Purchase' is substituted for 'Vendor Api' when the vendor's RMS name is 'PRE_PURCHASE'.
+
+  experience_date:
+    description: Date of the customer's experience.
+
+  experience_time:
+    description: Time of the customer's experience.
+
+  tour_id:
+    format: ID
+    description: Identifier of the tour for this fulfilment.
+
+  tour_name:
+    description: Name of the tour for this fulfilment.
+
+  vendor_id:
+    format: ID
+    description: Identifier of the vendor who fulfilled this booking.
+
+  vendor_name:
+    description: Name of the vendor.
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: Identifier of the vendor's billing entity.
+
+  supply_partner_billing_entity_name:
+    description: Name of the vendor's billing entity.
+
+  vendor_city:
+    description: City where the vendor operates.
+
+  vendor_country:
+    description: Country where the vendor operates.
+
+  payment_method:
+    description: Payment method used for this fulfilment (from the vendor dimension,
+      e.g. VCC, Bank Transfer).
+
+  payment_basis:
+    description: Basis on which the vendor is paid (DATE_OF_BOOKING or DATE_OF_EXPERIENCE).
+
+  rms_account_name:
+    description: RMS account name associated with the vendor.
+
+  rms_name:
+    description: RMS system name for the vendor (e.g. PRE_PURCHASE, DIRECT).
+
+  vendor_reference:
+    description: The vendor's own booking reference number for this fulfilment.
+
+  is_inventory_automated:
+    description: Boolean from dim_vendor_tours indicating whether the vendor–tour
+      combination supports automated inventory.
+
+  is_manual_inventory:
+    description: Boolean indicating whether this tour–vendor combination is tracked
+      in the manual inventory experience sheet.
+
+  manual_inventory_frequency:
+    description: Frequency category for manual inventory restocking as configured in
+      the manual inventory experience sheet.
+
+  fulfilment_price:
+    description: Net price agreed with the vendor for this fulfilment in the
+      processing currency.
+
+  failed_reason:
+    description: Reason for failure if this fulfilment attempt did not succeed. Null
+      when status is SUCCESS.
+
+  booking_rank:
+    description: Rank of this fulfilment attempt among all attempts for the same
+      booking, ordered by created_at ascending. 1 = first attempt.
+
+  is_failed_due_to_inventory:
+    description: |-
+      Boolean derived from failed_reason text indicating whether the failure was caused by an
+      inventory-related issue (keywords: availability, capacity, date, time, inventory, seat,
+      slot, sold, error_failed_pax_selection).
+
+  is_successfully_fulfilled:
+    description: Boolean from fulfilment logs indicating whether this attempt
+      reached SUCCESS or partial success (PENDING + is_partially_fulfilled =
+      true).
+
+  is_partially_fulfilled:
+    description: Boolean indicating whether the booking was only partially fulfilled
+      in this attempt.
+
+  first_successful_fulfilment_at:
+    description: Timestamp (UTC) of the first successful log entry for this
+      fulfilment attempt.
+
+  last_successful_fulfilment_at:
+    description: Timestamp (UTC) of the most recent successful log entry for this
+      fulfilment attempt.
+
+  vcc_number:
+    description: Virtual credit card number used for this fulfilment, populated when
+      payment_method is VCC.
+
+  vcc_transaction_id:
+    format: ID
+    description: Virtual credit card transaction identifier, populated when
+      payment_method is VCC.
+
+  fulfilment_payment_method:
+    description: Payment method recorded directly on the fulfilment attempt (may
+      differ from the vendor-level payment_method).
+
+  is_reconciled:
+    description: Boolean indicating whether this fulfilment has been matched in the
+      vendor reconciliation system.
+
+  reconciliation_status:
+    description: Status of the reconciliation (e.g.
+      RECONCILIATION_STATUS_AUTO_RECONCILED,
+      RECONCILIATION_STATUS_MANUALLY_RECONCILED).
+
+  reconciled_price_net:
+    description: Net price confirmed during reconciliation in the reconciliation currency.
+
+  reconciliation_updated_at:
+    description: Timestamp (UTC) when the reconciliation record was last updated.
+
+  reconciliation_created_at:
+    description: Timestamp (UTC) when the reconciliation record was first created.
+
+  billing_entity_id:
+    format: ID
+    description: Billing entity identifier from the reconciliation record.
+
+  supply_partner_id:
+    format: ID
+    description: Supply partner identifier from the reconciliation record.
+
+  sp_booking_ref_number:
+    description: Supply partner booking reference number from the reconciliation record.
+
+  version:
+    description: Version of the reconciliation record used (latest version per
+      fulfilment_id is selected).
+
+  error_bucket:
+    description: Error category assigned during reconciliation if the fulfilment had
+      discrepancies.
+
+  error_team_attribution:
+    description: Team attributed with resolving the reconciliation error, if applicable.
+
+  comments:
+    description: Free-text comments added by the reconciliation team.
+
+  fulfilment_method:
+    description: Fulfilment method as recorded in the reconciliation system.
+
+  charged_loss:
+    description: Flag indicating whether a loss was charged to the vendor for this
+      fulfilment.
+
+  invoice_id:
+    format: ID
+
+  concat_dispute_amount_adjusted_invoice_id:
+    format: ID
+
+  vendor_recon_date:
+    description: |-
+      Date used for vendor reconciliation and payment reporting. Equals the booking date
+      (DATE(fulfilment_timestamp)) when payment_basis is DATE_OF_BOOKING, otherwise
+      equals the experience_date.
+
+measures:
+  count:
+    aggregate_type: count

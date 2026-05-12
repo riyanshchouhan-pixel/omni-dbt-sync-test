@@ -1,0 +1,92 @@
+# Reference this view as headout_analytics_analytics_reporting__inventory_availability_extractions_v2
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: inventory_availability_extractions_v2
+
+dimensions:
+  experience_date: {}
+  experience_time: {}
+  availability: {}
+  inventory_type: {}
+  inventory_pax_type: {}
+  is_primary_pax: {}
+  remaining: {}
+  pax_details: {}
+  extracted_at: {}
+
+  _surrogate_key:
+    hidden: true
+
+  experience_id:
+    format: ID
+
+  tour_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+  inventory_slot_id:
+    format: ID
+
+  inventory_id:
+    format: ID
+
+  price_profile_id:
+    format: ID
+
+  pax_details_age_from:
+    sql: age_from
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_age_to:
+    sql: age_to
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_commission:
+    sql: commission
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_headout_discount:
+    sql: headout_discount
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_margin:
+    sql: margin
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_people:
+    sql: people
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_person_type:
+    sql: person_type
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_price:
+    sql: price
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_price_profile_type:
+    sql: price_profile_type
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+  pax_details_supply_partner_discount:
+    sql: supply_partner_discount
+    nested_on_field: pax_details
+    parent_field: pax_details
+
+measures:
+  count:
+    aggregate_type: count

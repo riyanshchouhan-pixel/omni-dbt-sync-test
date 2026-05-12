@@ -1,0 +1,563 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_orders
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_orders
+
+dimensions:
+  region: {}
+  business_region: {}
+  business_market: {}
+  tour_name: {}
+  experience_name: {}
+  primary_collection_name: {}
+  category_name: {}
+  sub_category_name: {}
+  primary_category_name: {}
+  primary_sub_category_name: {}
+  primary_poi_name: {}
+  poi_venue_group: {}
+  combined_entity_name: {}
+  bookings: {}
+  number_of_guests: {}
+  tour_currency: {}
+  amount_currency_markup: {}
+  price_markdown: {}
+  amount_audio_guide_cost: {}
+  amount_currency_markup_usd: {}
+  price_markdown_usd: {}
+  amount_audio_guide_cost_usd: {}
+  amount_payment_gateway_fees: {}
+  amount_payment_gateway_fees_usd: {}
+  amount_connectivity_fees: {}
+  amount_connectivity_fees_usd: {}
+  has_booking_insurance: {}
+  count_bookings_with_insurance: {}
+  count_bookings_insurance_claimed: {}
+  has_claimed_booking_insurance: {}
+  amount_booking_insurance_coverage: {}
+  amount_booking_insurance_coverage_usd: {}
+  amount_booking_insurance_premium: {}
+  amount_booking_insurance_premium_usd: {}
+  amount_booking_insurance_revenue: {}
+  amount_booking_insurance_revenue_usd: {}
+  is_using_pay_later: {}
+  amount_for_pay_later: {}
+  pay_later_reminder_email_status: {}
+  pay_later_reminder_email_scheduled_timestamp: {}
+  pay_later_charge_status: {}
+  pay_later_charge_scheduled_timestamp: {}
+  pay_later_cancelled_timestamp: {}
+  payment_deadline_timestamp: {}
+  payment_amount_usd: {}
+  payment_amount_captured: {}
+  payment_amount_refunded: {}
+  amount_forex_fees: {}
+  amount_forex_fees_usd: {}
+  is_creators_coupon: {}
+  coupon_type: {}
+  phone_country: {}
+  phone_carrier: {}
+  partner_type: {}
+  affiliate_code: {}
+  user_browsing_country: {}
+  channel_name: {}
+  channel_grouping: {}
+  has_moved_from_web_to_app: {}
+  campaign_name: {}
+  ad_group_name: {}
+  ad_network: {}
+  landing_page: {}
+  referrer: {}
+  referring_domain: {}
+  touchpoints: {}
+  landing_page_old: {}
+  distribution_partner_tier_entity_type: {}
+  tier_priority_rank: {}
+  updated_at: {}
+  commission: {}
+  partner_revenue_share: {}
+  valid_from_timestamp: {}
+  valid_to_timestamp: {}
+  amount_affiliate_commission_usd: {}
+  amount_revenue: {}
+  amount_revenue_usd: {}
+
+  order_id:
+    format: ID
+    description: unique id for each order on Headout, same as itinerary ID
+
+  created_at:
+    description: timestamp (utc) at which the order was created
+
+  calipso_user_id:
+    format: ID
+    description: calipso user id for the customer who made the order
+
+  city:
+    description: name of the city order is for
+
+  country:
+    description: name of the country order is for
+
+  tour_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  primary_collection_id:
+    format: ID
+
+  category_id:
+    format: ID
+
+  sub_category_id:
+    format: ID
+
+  primary_category_id:
+    format: ID
+
+  primary_sub_category_id:
+    format: ID
+
+  primary_poi_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  bookings_booking_id:
+    sql: booking_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_booking_status:
+    sql: booking_status
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_date:
+    sql: experience_date
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_language:
+    sql: language
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_language_code:
+    sql: language_code
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_price_net:
+    sql: price_net
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_price_net_usd:
+    sql: price_net_usd
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_vendor_id:
+    sql: vendor_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  domain_id:
+    format: ID
+    description: id of the domain order transaction took place
+
+  domain_host:
+    description: domain host on which the order transaction took place
+
+  order_status:
+    description: current status of the order
+
+  order_value:
+    description: total value of the order to be paid by the customer in processing
+      (tour) currency
+
+  order_value_usd:
+    description: total value of the order to be paid by the customer in USD
+
+  processing_currency:
+    description: currency in which the order is processed by Headout (tour currency)
+
+  price_payable:
+    description: price payable in process currency after applying coupon discount
+
+  price_payable_usd:
+    description: price payable in USD after applying coupon discount
+
+  distribution_partner_net_price:
+    description: |-
+      Distribution Partner Net Price (DPNP) in tour currency — the discounted amount
+      a B2B partner (API or Agent) actually pays. Aggregated from booking-level data
+      for completed/pending bookings. 0 for B2C orders. Distinct from order_value
+      for post-2025-07-25 B2B orders where order_value includes price_markdown to
+      reach Headout Selling Price (GBV).
+
+  distribution_partner_net_price_usd:
+    description: |-
+      Distribution Partner Net Price (DPNP) in USD. Derived from
+      distribution_partner_net_price * conversion_rate_to_usd. 0 for B2C orders.
+
+  price_net:
+    description: net price paid to the vendor in the processing currency
+
+  price_net_usd:
+    description: net price paid to the vendor in USD
+
+  amount_coupon_discount:
+    description: discount amount the user got after successfully applying the coupon
+
+  amount_cart_discount:
+    description: discount amount the user gets when adding multiple things in the
+      cart (started after proj cross sell)
+
+  promo_discount:
+    description: smart pricing promo discount applied on the product
+
+  audio_guide_provider:
+    description: name of the audio guide provider
+
+  amount_coupon_discount_usd:
+    description: discount amount in USD the user got after successfully applying the coupon
+
+  amount_cart_discount_usd:
+    description: discount amount in USD the user gets when adding multiple things in
+      the cart (started after proj cross sell)
+
+  amount_concierge_commission:
+    description: concierge commission amount to be paid out to the concierge for this order
+
+  amount_concierge_commission_usd:
+    description: concierge commission amount in USD to be paid out to the concierge
+      for this order
+
+  conversion_rate_to_usd:
+    description: processing currency to usd conversion rate used for this order
+
+  amount_direct_costs:
+    description: direct cost amount calculated for this order
+
+  amount_direct_costs_usd:
+    description: direct cost amount calculated for this order in USD
+
+  order_pay_later_id:
+    format: ID
+
+  payment_id:
+    format: ID
+    description: unique identifier for each payment on the payment gateway
+
+  payment_amount:
+    description: amount the payment was initially authorised for
+
+  payment_amount_received:
+    description: amount received after captures, voids and refunds
+
+  payment_amount_received_usd:
+    description: amount received in usd after captures, voids and refunds
+
+  card_issuing_country:
+    description: name of the country where the card used for making the order was issued
+
+  payment_gateway:
+    description: name of the payment gateway
+
+  coupon_code:
+    description: coupon code applied by the user for making the order
+
+  is_affiliate_coupon:
+    description: boolean describing whether the coupon code used is an affiliate
+      coupon or not
+
+  is_city_card_coupon:
+    description: boolean flag for City Card fulfillment bookings identified by HOCC
+      coupon code prefix. These are internal bookings made by Headout to fulfil
+      City Card orders using 100% discount codes, and are excluded from market
+      P&L reporting.
+
+  device:
+    description: device used to make the order by the user
+
+  is_logged_in:
+    description: bool describing whether the user was logged in while making the
+      order or not!
+
+  user_type:
+    description: type of user making the order
+
+  email:
+    description: email of the customer making the order
+
+  name:
+    description: name of the customer making the order
+
+  fingerprint_id:
+    format: ID
+    description: fingerprint id (unique identifier for a user) associated with that order
+
+  partner_name:
+    description: Valid only for the non Customer calipso users. Name of the parent
+      company (vendor or hotel or affiliate network) for this user.
+
+  amount_operating_cost:
+    description: |-
+      Order-level operating cost in tour (processing) currency. Summed from
+      booking-level calculations so combo orders with mixed is_partnered/validity_type
+      values are handled correctly per booking. Rates: non-partnered or PP DATE_TIME
+      → 15% of margin, PP OPEN → 8% of margin. Only applied to completed bookings.
+
+  amount_operating_cost_usd:
+    description: |-
+      Order-level operating cost in USD. Summed from booking-level calculations so
+      combo orders with mixed is_partnered/validity_type values are handled correctly
+      per booking. Rates: non-partnered or PP DATE_TIME → 15% of margin, PP OPEN →
+      8% of margin. Only applied to completed bookings.
+
+  wallet_credits:
+    description: wallet credits used in processing currency to pay for this order
+
+  wallet_credits_usd:
+    description: wallet credits used in USD to pay for this order
+
+  wallet_transactions:
+    description: an array of all wallet transactions associated with the order
+
+  wallet_transactions_amount:
+    sql: amount
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_amount_usd:
+    sql: amount_usd
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_created_at:
+    sql: created_at
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_processing_currency:
+    sql: processing_currency
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_transaction_type:
+    sql: transaction_type
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_wallet_transaction_id:
+    sql: wallet_transaction_id
+    format: ID
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  affiliate_partner_name:
+    description: name of the affiliate partner based on session attribution
+
+  affiliate_metadata_campaign:
+    description: UTM campaign parameter extracted from affiliate metadata
+
+  affiliate_metadata_content:
+    description: UTM content parameter extracted from affiliate metadata
+
+  affiliate_metadata_term:
+    description: UTM term parameter extracted from affiliate metadata
+
+  affiliate_metadata_utm_source:
+    description: UTM source parameter extracted from affiliate metadata
+
+  click_id:
+    format: ID
+
+  touchpoints_ad_device:
+    sql: ad_device
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_ad_extension_id:
+    sql: ad_extension_id
+    format: ID
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_ad_group_id:
+    sql: ad_group_id
+    format: ID
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_ad_group_name:
+    sql: ad_group_name
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_ad_keyword:
+    sql: ad_keyword
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_ad_keyword_match_type:
+    sql: ad_keyword_match_type
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_ad_network:
+    sql: ad_network
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_attribution_timestamp:
+    sql: attribution_timestamp
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_campaign_id:
+    sql: campaign_id
+    format: ID
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_campaign_name:
+    sql: campaign_name
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_channel_grouping:
+    sql: channel_grouping
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_channel_name:
+    sql: channel_name
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_click_id:
+    sql: click_id
+    format: ID
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_landing_page:
+    sql: landing_page
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_referrer:
+    sql: referrer
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_referring_domain:
+    sql: referring_domain
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_touchpoint_rank:
+    sql: touchpoint_rank
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  touchpoints_touchpoint_rank_reversed:
+    sql: touchpoint_rank_reversed
+    nested_on_field: touchpoints
+    parent_field: touchpoints
+
+  session_traffic_source:
+    description: traffic source for the session based on utm parameters
+
+  session_traffic_medium:
+    description: traffic medium for the session based on utm parameters
+
+  session_campaign_name:
+    description: name of the campaign for the session based on utm parameters
+
+  session_keyword:
+    description: keyword used for displaying the result clicked by the user to start
+      the session
+
+  session_ad_content:
+    description: ad content for the ad clicked by the user to start the session
+
+  session_referrer:
+    description: website from which the user came to headout to start their session
+
+  session_adwords_ad_group_id:
+    format: ID
+    description: google ads ad group id associated with the google ads ad group the
+      session was attributed to by google analytics
+
+  session_adwords_campaign_id:
+    format: ID
+    description: google ads campaign id associated with the google ads campaign the
+      session was attributed to by google analytics
+
+  session_adwords_customer_id:
+    format: ID
+    description: google ads customer (account) id associated with the google ads
+      account the session was attributed to by google analytics
+
+  session_ad_matched_query:
+    description: user's query which matched with the keyword to display the ad /
+      result to start the session
+
+  session_landing_page:
+    description: page on which the user entered headout's wesbite to start the session
+
+  session_landing_page_host:
+    description: host name for the landing page for the session
+
+  session_num_pages_visited:
+    description: number of pages visited by the user in the session
+
+  session_traffic_origin_country:
+    description: country name from where the traffic was originating for the session
+
+  session_traffic_channel_grouping:
+    description: channels grouped together based on medium
+
+  distribution_partner_tier_id:
+    format: ID
+
+  tier_id:
+    format: ID
+
+  order_value_completed:
+    description: |-
+      Completed value of the order in processing (tour) currency, on Headout Selling
+      Price (HSP) basis. For B2B AGENT/API_PARTNER orders with `created_at >= '2025-07-25'`,
+      includes `price_markdown` so the value reflects HSP — mirroring the workaround
+      applied to `order_value` in `stg_database__orders`. For all other orders, equals
+      payment amount received (after refunds) plus coupon discount plus wallet credits.
+
+  order_value_completed_usd:
+    description: |-
+      Completed value of the order in USD, on Headout Selling Price (HSP) basis.
+      For B2B AGENT/API_PARTNER orders with `created_at >= '2025-07-25'`, includes
+      `price_markdown_usd` so the value reflects HSP — mirroring the workaround
+      applied to `order_value_usd` in `stg_database__orders`. For all other orders,
+      equals payment amount received in USD (after refunds) plus coupon discount
+      plus wallet credits.
+
+  customer_order_sequence_number:
+    description: the order number in sequence for the customer
+
+  is_repeat_order:
+    description: boolean specifying whether the order was from a repeating customer or not
+
+measures:
+  count:
+    aggregate_type: count

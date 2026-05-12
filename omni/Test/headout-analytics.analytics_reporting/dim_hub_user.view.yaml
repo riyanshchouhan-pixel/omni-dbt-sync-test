@@ -1,0 +1,52 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_hub_user
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_hub_user
+
+dimensions:
+  user_name: {}
+
+  user_id:
+    format: ID
+    description: User ID of Hub user.
+
+  created_at:
+    description: Creation Timestamp of Hub user.
+
+  type:
+    description: Type of Hub user
+
+  supply_partner_user_id:
+    format: ID
+    description: Supply Partner User ID of the Hub user.
+
+  supply_partner_user_name:
+    description: Name of Supply Partner User on Hub
+
+  role:
+    description: Role of Supply Partner User on Hub
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: Billing Entity ID of Supply Partner User on Hub
+
+  is_onboarding_form_filled:
+    description: Boolean to check if Hub user has filled the onboarding form.
+
+  is_sp_partnered:
+    description: Boolean to check if Hub user is partnered.
+
+  vendor_city:
+    description: City of Supply Partner
+
+  vendor_country:
+    description: Country of Supply Partner
+
+  vendor_country_iso2_code:
+    description: ISO2 Code of Supply Partner Country.
+
+measures:
+  count:
+    aggregate_type: count

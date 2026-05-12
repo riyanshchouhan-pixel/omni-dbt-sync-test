@@ -1,0 +1,143 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_adyen_payments
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_adyen_payments
+
+dimensions:
+  order_combined_entity_name: {}
+
+  payment_id:
+    format: ID
+    description: unique identifier for each payment on Adyen
+
+  created_at:
+    description: timestamp at which the payment was created (UTC)
+
+  amount:
+    description: amount in decimal
+
+  currency:
+    description: processing currency for the payment on checkout
+
+  response_message:
+    description: response message received for the auth event from Adyen
+
+  is_authorized:
+    description: bool representing whether the payment was successfully authorized on Adyen
+
+  payment_status:
+    description: status of the payment
+
+  amount_usd:
+    description: amount in usd converted using currency conversion from currency
+      conversion rates API
+
+  amount_captured:
+    description: amount successfully captured for this payment
+
+  amount_refunded:
+    description: amount successfully refunded or voided for this payment
+
+  amount_refunded_usd:
+    description: amount in usd successfully refunded or voided for this payment
+
+  payment_refunded_at:
+    description: ts at which the payment was refunded at
+
+  order_id:
+    format: ID
+    description: headout order id for the payment
+
+  order_city:
+    description: name of the city with the linked order
+
+  order_country:
+    description: name of the country for the linked order
+
+  order_experience_name:
+    description: headout experience name associated with the order
+
+  order_experience_id:
+    format: ID
+    description: headout experience id associated with the order
+
+  order_combined_entity_id:
+    format: ID
+
+  is_micro_auth_payment:
+    description: bool representing whether the payment was a micro auth payment or not
+
+  customer_email:
+    description: customer email making the order associated with the payment
+
+  customer_ip:
+    description: IP address of the customer while making the payment
+
+  payment_method:
+    description: type of payment method used by the customer (visa, mastercard,
+      iDeal, PayPal etc.)
+
+  card_network:
+    description: name of the card network (scheme) used to make the payment. visa,
+      mastercard etc
+
+  card_bin:
+    description: first 6 digits of the card number used for making the payment
+
+  card_customer_name:
+    description: name of the customer on the card used for making the payment
+
+  card_type:
+    description: type of card used for making the payment; credit vs debit
+
+  card_product_name:
+    description: name of the card product used for making the payment
+
+  card_issuing_bank:
+    description: name of the card issuing bank
+
+  card_issuing_country_code:
+    description: iso2 code for the country issuing the card
+
+  card_issuing_country:
+    description: name of the country issuing the card
+
+  card_wallet_type:
+    description: type of card wallet used used by the customer (e.g. - ApplePay, GooglePay)
+
+  has_three_ds:
+    description: bool representing whether the payment request had 3ds
+
+  is_liability_shift:
+    description: will liability shift be applicable
+
+  three_ds_eci:
+    description: eci code returned in the 3ds response;
+      https://docs.checkout.com/docs/3d-secure-payments#section-electronic-commerce-indicator-eci-values
+
+  is_three_ds_redirect:
+    description: for 3d secure 2, the transaction went through the redirect flow.
+
+  three_ds_requestor_challenge_indicator:
+    description: whether the merchant (Headout) had a preference for Challenge or not
+
+  three_ds_directory_response:
+    description: 3ds response from the card scheme
+
+  three_ds_authentication_response:
+    description: 3ds authentication response
+
+  three_ds_version:
+    description: 3ds version used for completing the request
+
+  sift_score:
+    description: what was the score assigned to the payment by Sift
+
+  sift_decision:
+    description: did Sift mark the payment has RISKY or NORMAL
+
+measures:
+  count:
+    aggregate_type: count

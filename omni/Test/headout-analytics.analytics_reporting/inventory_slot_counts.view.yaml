@@ -1,0 +1,43 @@
+# Reference this view as headout_analytics_analytics_reporting__inventory_slot_counts
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: inventory_slot_counts
+
+dimensions:
+  tour_name: {}
+  experience_name: {}
+  city: {}
+  fulfillment_type: {}
+  is_inventory_automated: {}
+  booking_count: {}
+  gross_bookings: {}
+  weekly_average_count: {}
+  current_count: {}
+  previous_hour_count: {}
+  previous_day_count: {}
+  diff_from_prev_hour: {}
+  diff_from_yesterday: {}
+  diff_with_average: {}
+  last_day_update: {}
+  last_week_update: {}
+  booking_rank: {}
+  is_manual_inventory: {}
+  manual_inventory_frequency: {}
+
+  tour_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+  category_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

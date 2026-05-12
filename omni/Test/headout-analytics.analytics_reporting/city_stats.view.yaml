@@ -1,0 +1,93 @@
+# Reference this view as headout_analytics_analytics_reporting__city_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: city_stats
+
+dimensions:
+  days_since_created: {}
+  country: {}
+  region: {}
+  count_completed_orders: {}
+  avg_percentage_cancelled_by_day_n: {}
+  sum_order_value_cancelled_predicted: {}
+  sum_revenue: {}
+  sum_audio_guide_costs: {}
+  sum_connectivity_fees: {}
+  sum_payment_gateway_fees: {}
+  sum_forex_fees: {}
+  sum_organic_session_order_value: {}
+  sum_affiliate_commission: {}
+  sum_apple_ads_spend: {}
+  sum_criteo_ads_spend: {}
+  sum_google_ads_conversion_value: {}
+  sum_microsoft_ads_conversion_value: {}
+  sum_facebook_ads_conversion_value: {}
+  sum_inventory_loss: {}
+  sum_chargeback_costs: {}
+  sum_insider_commission: {}
+  sum_co_marketing_commission: {}
+  sum_price_discrepancies: {}
+  sum_creator_collab_costs: {}
+  sum_creator_collab_coupon_costs: {}
+  sum_cancellation_costs: {}
+
+  surrogate_key:
+    description: a unique key created by combining city and date fields
+
+  city:
+    description: name of the city
+
+  report_timestamp:
+    description: date for which the metrics are recorded
+
+  count_orders:
+    description: number of orders for the city on the said date
+
+  sum_order_value:
+    description: sum of order values in usd for orders received for the city
+
+  sum_order_value_completed:
+    description: sum of value of orders paid by customers after accounting for refunds
+
+  sum_fulfilment_value:
+    description: total net amount in USD paid out to vendors in the city for the date
+
+  sum_direct_costs:
+    description: total direct costs for the city on the date in USD
+
+  sum_coupon_discount:
+    description: total coupon discount in USD used by customers in the city on the date
+
+  sum_wallet_credits:
+    description: total wallet credits in USD used by customers in the city on the date
+
+  count_guests:
+    description: total number of guests for which the bookings made for in the city
+
+  count_ad_impressions:
+    description: number of ad impressions received by campaigns for the city on the date
+
+  count_ad_clicks:
+    description: number of ad clicks received by campaigns for the city on the date
+
+  count_ad_conversions:
+    description: number of ad conversions received by campaigns for the city on the
+      date, as attributed by ad platforms
+
+  sum_google_ads_spend:
+    description: Google ad spend in USD for the city on the date, as attributed by
+      ad platforms
+
+  sum_microsoft_ads_spend:
+    description: Microsoft ad spend in USD for the city on the date, as attributed
+      by ad platforms
+
+  sum_facebook_ads_spend:
+    description: Facebook ad spend in USD for the city on the date, as attributed by
+      ad platforms
+
+measures:
+  count:
+    aggregate_type: count

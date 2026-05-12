@@ -1,0 +1,109 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_paypal_disputes
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_paypal_disputes
+
+dimensions:
+  evidence_required_at: {}
+  dispute_source: {}
+  chargeback_type: {}
+
+  dispute_id:
+    format: ID
+    description: unique id for each dispute on checkout
+
+  created_at:
+    description: timestamp at which the dispute was reported
+
+  paypal_transaction_id:
+    format: ID
+    description: id for the linked payment for which the dispute was reported given
+      by paypal
+
+  payment_created_at:
+    description: timestamp (utc) at which the payment linked to the dispute was created
+
+  order_id:
+    format: ID
+    description: headout order Id for the payment
+
+  disputed_amount:
+    description: amount in decimals
+
+  disputed_currency:
+    description: currency in which the amount is reported for the dispute
+
+  disputed_amount_usd:
+    description: dispute amount in usd
+
+  case_reason:
+    description: can be one of the values mentioned on
+      https://developer.paypal.com/docs/reports/sftp-reports/dispute-detail-custom/#case-fields
+
+  case_type:
+    description: can be one of the values mentioned on
+      https://developer.paypal.com/docs/reports/sftp-reports/dispute-detail-custom/#case-fields
+
+  days_since_payment:
+    description: number of days between the payment created date and date on which
+      the dispute was reported
+
+  payment_method:
+    description: always "Paypal"
+
+  status:
+    description: current status of the dispute
+
+  dispute_updates:
+    description: array of updates to the dispute over time
+
+  dispute_updates_buyer_comments:
+    sql: buyer_comments
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_case_reason:
+    sql: case_reason
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_case_status:
+    sql: case_status
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_case_type:
+    sql: case_type
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_dispute_status:
+    sql: dispute_status
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_dispute_update_id:
+    sql: dispute_update_id
+    format: ID
+    description: id of that specific update of the dispute
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_extracted_at:
+    sql: extracted_at
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_response_due_at:
+    sql: response_due_at
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  last_updated_at:
+    description: timestamp (utc) at which it was last updated
+
+measures:
+  count:
+    aggregate_type: count

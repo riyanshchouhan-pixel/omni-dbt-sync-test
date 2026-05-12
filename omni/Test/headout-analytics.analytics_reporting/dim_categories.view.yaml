@@ -1,0 +1,82 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_categories
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_categories
+
+dimensions:
+  heading: {}
+  language_content_data: {}
+
+  category_id:
+    format: ID
+    description: unique id for each tour on Headout
+
+  created_at:
+    description: timestamp (utc) at which the category was created
+
+  category_rank:
+    description: rank of the category amongst all categories
+
+  category_name:
+    description: name of the category
+
+  language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_display_name:
+    sql: display_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_heading:
+    sql: heading
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_code:
+    sql: language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_name:
+    sql: language_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_location_level:
+    sql: location_level
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_title:
+    sql: meta_title
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_subtext:
+    sql: subtext
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+measures:
+  count:
+    aggregate_type: count

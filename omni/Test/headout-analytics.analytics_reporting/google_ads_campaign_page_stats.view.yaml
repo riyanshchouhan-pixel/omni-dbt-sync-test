@@ -1,0 +1,48 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_campaign_page_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_campaign_page_stats
+
+dimensions:
+  date: {}
+  campaign_name: {}
+  campaign_city: {}
+  campaign_category: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  ad_group_name: {}
+  ad_group_status: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_target_roas: {}
+  campaign_status: {}
+  campaign_serving_status: {}
+  count_impressions: {}
+  count_clicks: {}
+  sum_cost: {}
+  count_attributed_orders: {}
+  count_attributed_assisted_orders: {}
+  sum_attributed_value: {}
+  sum_attributed_value_completed: {}
+  order_value_completion_rate: {}
+  revenue_percentage: {}
+  contribution_margin_percentage: {}
+  coupon_and_wallet_percentage: {}
+
+  campaign_id:
+    format: ID
+
+  final_url:
+    description: final url on which the user has landed for the ad campaign
+
+  campaign_combined_entity_id:
+    format: ID
+
+  customer_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

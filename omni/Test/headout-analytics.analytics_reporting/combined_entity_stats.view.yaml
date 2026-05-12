@@ -1,0 +1,258 @@
+# Reference this view as headout_analytics_analytics_reporting__combined_entity_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: combined_entity_stats
+
+dimensions:
+  sum_google_remarketing_ads_spend: {}
+  sum_facebook_remarketing_ads_spend: {}
+  sum_criteo_remarketing_ads_spend: {}
+  sum_google_brand_ads_spend: {}
+
+  surrogate_key:
+    description: A unique key created by combining combined_entity_id and report_date
+
+  combined_entity_id:
+    format: ID
+    description: Unique identifier for the combined entity
+
+  combined_entity_name:
+    description: Name of the combined entity
+
+  city:
+    description: City where the combined entity is located
+
+  country:
+    description: Country where the combined entity is located
+
+  region:
+    description: Region where the combined entity is located
+
+  business_market:
+    description: Business market classification for the combined entity
+
+  business_region:
+    description: Business region classification for the combined entity
+
+  report_date:
+    description: Date for which the metrics are recorded
+
+  days_since_created:
+    description: Number of days since the combined entity was first created (from
+      combined_entity_date_spine)
+
+  report_timestamp:
+    description: Timestamp for reporting (report_date + 30 minutes offset)
+
+  first_order_date:
+    description: Date of the first order ever received for this combined entity
+
+  count_customers:
+    description: Number of distinct customers (by email) who placed orders for this
+      combined entity on the date
+
+  count_repeating_customers:
+    description: Number of distinct customers whose orders on this date were not
+      their first-ever order at Headout (lifetime repeat)
+
+  count_orders:
+    description: Total number of orders for the combined entity on the date
+
+  count_repeat_orders:
+    description: Number of orders that are not the customer's first-ever order at
+      Headout (lifetime repeat orders)
+
+  sum_order_value:
+    description: Sum of order values in USD for all orders received for the combined entity
+
+  sum_repeat_order_value:
+    description: Sum of order values in USD for repeat orders only (orders that are
+      not the customer's first-ever order)
+
+  sum_order_value_cancelled_predicted:
+    description: Predicted value of orders that will be cancelled, calculated using
+      historical cancellation rates by days_since_created
+
+  sum_revenue_predicted:
+    description: Predicted revenue in USD. For future dates (>= today), uses ML
+      forecasts from stg_forecasting__combined_entity_revenue_forecasts. For
+      past dates, uses (sum_order_value - sum_order_value_cancelled_predicted)
+      multiplied by the revenue-to-completed-order-value ratio.
+
+  is_forecasted:
+    description: TRUE if sum_revenue_predicted uses ML forecast (future dates with
+      forecast data), FALSE otherwise
+
+  forecast_method:
+    description: Forecasting method used (arima_plus, seasonal_naive, linear,
+      lightgbm_per_region, or lightgbm_per_ce). NULL for past dates or when no
+      forecast is available.
+
+  sum_weekly_revenue_value:
+    description: Sum of gross revenue for the week (report_week) containing this report_date
+
+  sum_previous_2_weeks_revenue_value:
+    description: Sum of gross revenue for the 2 weeks following the current
+      report_week, used for classification lookback
+
+  combined_entity_weekly_classification:
+    description: Classification based on sum_previous_2_weeks_revenue_value. HERO
+      (>= $8,334), PRO (>= $1,667), SEED (>= $334), REST (below $334)
+
+  sum_mtd_revenue_value:
+    description: Cumulative gross revenue in USD for the combined entity from the
+      start of the calendar month through the report_date
+
+  combined_entity_monthly_classification:
+    description: Classification based on sum_mtd_revenue_value. HERO (>= $16,667),
+      PRO (>= $3,333), SEED (>= $667), REST (below $667). Thresholds are
+      quarterly values divided by 3.
+
+  sum_qtd_revenue_value:
+    description: Cumulative gross revenue in USD for the combined entity from the
+      start of the calendar quarter through the report_date
+
+  combined_entity_quarterly_classification:
+    description: Classification based on sum_qtd_revenue_value. HERO (>= $50,000),
+      PRO (>= $10,000), SEED (>= $2,000), REST (below $2,000).
+
+  sum_direct_costs:
+    description: Total direct costs in USD for the combined entity on the date
+
+  sum_audio_guide_costs:
+    description: Total audio guide costs in USD
+
+  sum_connectivity_fees:
+    description: Total connectivity fees in USD
+
+  sum_payment_gateway_fees:
+    description: Total payment gateway fees in USD
+
+  sum_forex_fees:
+    description: Total foreign exchange fees in USD
+
+  sum_operating_cost:
+    description: |-
+      Total operating cost in USD for the combined entity on the date. Calculated
+      at the booking level (in fct_bookings) and summed up via fct_orders. Rates:
+      non-partnered bookings -> 15% of margin (price_payable - price_net),
+      partnered PP DATE_TIME -> 15%, partnered PP OPEN -> 8%, partnered with no
+      PP ticket match -> 0%. Only completed bookings (including raw 'Dirty' that
+      maps to 'Completed') contribute.
+
+  count_guests:
+    description: Total number of guests across all bookings for the combined entity
+      on the date
+
+  sum_affiliate_commission:
+    description: Total affiliate commission paid in USD
+
+  count_completed_orders:
+    description: Number of orders with status Completed, Pending, or Partially Completed
+
+  sum_order_value_completed:
+    description: Sum of order values in USD actually paid by customers after
+      accounting for refunds
+
+  sum_fulfilment_value:
+    description: Total net amount in USD paid out to vendors (price_net, cost of goods sold)
+
+  sum_revenue:
+    description: Gross revenue in USD, calculated as order_value_completed minus
+      price_net (fulfilment cost)
+
+  sum_repeat_revenue:
+    description: Gross revenue in USD from repeat orders only (orders that are not
+      the customer's first-ever order)
+
+  sum_coupon_discount:
+    description: Total coupon discount in USD for completed/pending orders,
+      excluding affiliate and creator coupons
+
+  sum_wallet_credits:
+    description: Total wallet credits in USD used by customers on completed/pending orders
+
+  sum_organic_session_order_value:
+    description: Order value in USD from orders attributed to organic channel grouping
+
+  count_ad_impressions:
+    description: Number of ad impressions received by campaigns for the combined
+      entity on the date
+
+  count_ad_clicks:
+    description: Number of ad clicks received by campaigns for the combined entity
+      on the date
+
+  count_ad_conversions:
+    description: Number of ad conversions as attributed by ad platforms
+
+  sum_google_ads_spend:
+    description: Google Ads spend in USD (excludes brand, remarketing, PMax, and
+      travel campaigns), includes Google Ads fee adjustment
+
+  sum_microsoft_ads_spend:
+    description: Microsoft (Bing) Ads spend in USD, excludes brand and remarketing campaigns
+
+  sum_facebook_ads_spend:
+    description: Facebook Ads spend in USD, excludes brand and remarketing campaigns
+
+  sum_google_split_ads_spend:
+    description: Google Ads spend in USD allocated to this combined entity via
+      revenue share split
+
+  sum_facebook_split_ads_spend:
+    description: Facebook Ads spend in USD allocated to this combined entity via
+      revenue share split
+
+  sum_microsoft_split_ads_spend:
+    description: Microsoft Ads spend in USD allocated to this combined entity via
+      revenue share split
+
+  sum_pmax_ads_spend:
+    description: Google Performance Max campaign spend in USD, allocated by asset
+      group or revenue share
+
+  sum_travel_ads_spend:
+    description: Google Travel Ads (Things to Do) campaign spend in USD
+
+  sum_apple_ads_spend:
+    description: Apple Search Ads spend in USD
+
+  sum_google_ads_conversion_value:
+    description: Conversion value attributed by Google Ads in USD
+
+  sum_microsoft_ads_conversion_value:
+    description: Conversion value attributed by Microsoft Ads in USD
+
+  sum_facebook_ads_conversion_value:
+    description: Conversion value attributed by Facebook Ads in USD
+
+  sum_chargeback_costs:
+    description: Total chargeback costs in USD from daily_direct_costs
+
+  sum_inventory_loss:
+    description: Total inventory loss costs in USD from combined_entity_inventory_loss
+
+  sum_insider_commission:
+    description: Income from Insider Commission in USD from marketing_income sheet
+
+  sum_co_marketing_commission:
+    description: Income from Co-Marketing partnerships in USD from marketing_income sheet
+
+  sum_creator_collab_costs:
+    description: Total creator collaboration costs in USD (allocated to Others - Others)
+
+  sum_creator_collab_coupon_costs:
+    description: Total creator collaboration coupon costs in USD
+
+  sum_price_discrepancies:
+    description: Total price discrepancy amounts in USD
+
+  sum_cancellation_costs:
+    description: Total cancellation costs in USD from price discrepancies
+
+measures:
+  count:
+    aggregate_type: count

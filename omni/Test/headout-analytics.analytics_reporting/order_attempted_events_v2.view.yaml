@@ -1,0 +1,390 @@
+# Reference this view as headout_analytics_analytics_reporting__order_attempted_events_v2
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: order_attempted_events_v2
+
+dimensions:
+  created_at: {}
+  domain_host: {}
+  order_value: {}
+  order_value_usd: {}
+  price_payable: {}
+  price_payable_usd: {}
+  processing_currency: {}
+  amount_coupon_discount: {}
+  amount_concierge_commission: {}
+  amount_cart_discount: {}
+  conversion_rate_to_usd: {}
+  coupon_code: {}
+  order_status: {}
+  extracted_failed_reason: {}
+  cancellation_reason: {}
+  device: {}
+  user_agent: {}
+  is_logged_in: {}
+  customer_ip: {}
+  customer_ip_country: {}
+  primary_guest_phone_country: {}
+  primary_guest_phone_carrier: {}
+  number_of_guests: {}
+  number_of_guests_customer_charged_for: {}
+  bookings: {}
+  payment_gateway: {}
+  payment_gateway_type: {}
+  payment_status: {}
+  payment_type: {}
+  payment_method: {}
+  is_risky: {}
+  risky_verification_type: {}
+  sca_type: {}
+  is_order_pay_later: {}
+  is_authorized: {}
+  is_micro_auth_payment: {}
+  payment_scheme: {}
+  card_type: {}
+  card_network: {}
+  card_bin: {}
+  card_customer_name: {}
+  card_issuing_bank: {}
+  card_issuing_country: {}
+  card_wallet_type: {}
+  has_three_ds: {}
+  is_liability_shift: {}
+  is_three_ds_downgraded: {}
+  three_ds_eci: {}
+  is_three_ds_redirect: {}
+  three_ds_enrolled: {}
+  three_ds_signature_valid: {}
+  three_ds_requestor_challenge_indicator: {}
+  three_ds_directory_response: {}
+  three_ds_authentication_response: {}
+  three_ds_cavv: {}
+  three_ds_xid: {}
+  three_ds_version: {}
+  response_code: {}
+  response_message: {}
+  is_sent_to_bond: {}
+  fraud_evaluation_result: {}
+  fraud_evaluation_result_origin: {}
+  is_order_reported_fraud: {}
+  fraud_reported_date: {}
+  is_order_disputed: {}
+  dispute_reported_date: {}
+  failure_reason: {}
+
+  order_id:
+    format: ID
+    description: unique id of the headout order
+
+  calipso_user_id:
+    format: ID
+
+  calipso_user_email:
+    description: email of the calipso user
+
+  calipso_user_name:
+    description: name of the calipso user
+
+  domain_id:
+    format: ID
+
+  fingerprint_id:
+    format: ID
+
+  primary_guest_name:
+    description: name of the primary guest
+
+  primary_guest_email:
+    description: email of the primary guest
+
+  primary_guest_phone_number:
+    description: phone number of the primary guest
+
+  bookings_booking_id:
+    sql: booking_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_booking_status:
+    sql: booking_status
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_business_market:
+    sql: business_market
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_business_region:
+    sql: business_region
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_city:
+    sql: city
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_id:
+    sql: combined_entity_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_name:
+    sql: combined_entity_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_component_id:
+    sql: component_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_country:
+    sql: country
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_created_at:
+    sql: created_at
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_date:
+    sql: experience_date
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_name:
+    sql: experience_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_time:
+    sql: experience_time
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_is_seatmap:
+    sql: is_seatmap
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_language:
+    sql: language
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_language_code:
+    sql: language_code
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_lead_time_days:
+    sql: lead_time_days
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_lead_time_hours:
+    sql: lead_time_hours
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_number_of_guests:
+    sql: number_of_guests
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_number_of_guests_customer_charged_for:
+    sql: number_of_guests_customer_charged_for
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_category_id:
+    sql: primary_category_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_category_name:
+    sql: primary_category_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_collection_id:
+    sql: primary_collection_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_collection_name:
+    sql: primary_collection_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_poi_id:
+    sql: primary_poi_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_poi_name:
+    sql: primary_poi_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_sub_category_id:
+    sql: primary_sub_category_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_sub_category_name:
+    sql: primary_sub_category_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_region:
+    sql: region
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_timezone:
+    sql: timezone
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_tour_id:
+    sql: tour_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_tour_name:
+    sql: tour_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_updated_at:
+    sql: updated_at
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_variant_id:
+    sql: variant_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_variant_name:
+    sql: variant_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  payment_transaction_id:
+    format: ID
+
+  payment_id:
+    format: ID
+
+  order_pay_later_schedule:
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_pay_later_charge_attempt_count:
+    sql: order_pay_later_schedule.pay_later_charge_attempt_count
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_pay_later_charge_scheduled_timestamp:
+    sql: order_pay_later_schedule.pay_later_charge_scheduled_timestamp
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_pay_later_charge_status:
+    sql: order_pay_later_schedule.pay_later_charge_status
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_payment_deadline_timestamp:
+    sql: order_pay_later_schedule.payment_deadline_timestamp
+    parent_field: order_pay_later_schedule
+
+  sift_science_evaluation:
+    parent_field: sift_science_evaluation
+
+  sift_science_evaluation_rule:
+    sql: sift_science_evaluation.rule
+    parent_field: sift_science_evaluation
+
+  sift_science_evaluation_rule_primary_criteria:
+    sql: sift_science_evaluation.rule_primary_criteria
+    parent_field: sift_science_evaluation
+
+  sift_science_evaluation_rule_secondary_criteria:
+    sql: sift_science_evaluation.rule_secondary_criteria
+    parent_field: sift_science_evaluation
+
+  sift_science_evaluation_status:
+    sql: sift_science_evaluation.status
+    parent_field: sift_science_evaluation
+
+  watson_pre_auth_evaluation:
+    parent_field: watson_pre_auth_evaluation
+
+  watson_pre_auth_evaluation_rule:
+    sql: watson_pre_auth_evaluation.rule
+    parent_field: watson_pre_auth_evaluation
+
+  watson_pre_auth_evaluation_rule_number:
+    sql: watson_pre_auth_evaluation.rule_number
+    parent_field: watson_pre_auth_evaluation
+
+  watson_pre_auth_evaluation_status:
+    sql: watson_pre_auth_evaluation.status
+    parent_field: watson_pre_auth_evaluation
+
+  watson_post_auth_evaluation:
+    parent_field: watson_post_auth_evaluation
+
+  watson_post_auth_evaluation_post_auth_rule_number:
+    sql: watson_post_auth_evaluation.post_auth_rule_number
+    parent_field: watson_post_auth_evaluation
+
+  watson_post_auth_evaluation_rule:
+    sql: watson_post_auth_evaluation.rule
+    parent_field: watson_post_auth_evaluation
+
+  watson_post_auth_evaluation_status:
+    sql: watson_post_auth_evaluation.status
+    parent_field: watson_post_auth_evaluation
+
+  bond_evaluation:
+    parent_field: bond_evaluation
+
+  bond_evaluation_bond_decision_author:
+    sql: bond_evaluation.bond_decision_author
+    parent_field: bond_evaluation
+
+  bond_evaluation_bond_decision_timestamp:
+    sql: bond_evaluation.bond_decision_timestamp
+    parent_field: bond_evaluation
+
+  bond_evaluation_rule:
+    sql: bond_evaluation.rule
+    parent_field: bond_evaluation
+
+  bond_evaluation_status:
+    sql: bond_evaluation.status
+    parent_field: bond_evaluation
+
+measures:
+  count:
+    aggregate_type: count

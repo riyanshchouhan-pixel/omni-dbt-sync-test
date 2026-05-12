@@ -1,0 +1,36 @@
+# Reference this view as headout_analytics_analytics_reporting__goals_combined_entity_market_region
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: goals_combined_entity_market_region
+
+dimensions:
+  target_month: {}
+  year: {}
+  half_year_tag: {}
+  market: {}
+  region: {}
+  country: {}
+  ce_name: {}
+  ce_classification: {}
+  category: {}
+  biz_owner: {}
+  launch_date: {}
+  key_pointers: {}
+  key_actions: {}
+  mmp_analysis_status: {}
+  mmp_document: {}
+  mmp_execution_status: {}
+  status: {}
+  comments: {}
+  mb_landing_page_url: {}
+  data_level: {}
+  target_revenue: {}
+
+  ce_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

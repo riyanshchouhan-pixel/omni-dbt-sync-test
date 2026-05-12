@@ -1,0 +1,59 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_activity_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_activity_stats
+
+dimensions:
+  experience_name: {}
+  report_date: {}
+  extraction_timestamp: {}
+  campaign_name: {}
+  ad_group_name: {}
+  campaign_city: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  combined_entity_name: {}
+  experience_city: {}
+  experience_country: {}
+  experience_region: {}
+  experience_business_region: {}
+  campaign_country: {}
+  campaign_region: {}
+  ad_group_target_roas: {}
+  campaign_target_roas: {}
+  count_impressions: {}
+  count_clicks: {}
+  count_conversions: {}
+  sum_conversion_value: {}
+  sum_cost: {}
+  count_attributed_orders: {}
+  count_attributed_assisted_orders: {}
+  sum_attributed_value: {}
+  sum_attributed_value_completed: {}
+  order_value_completion_rate: {}
+  revenue_percentage: {}
+  contribution_margin_percentage: {}
+  coupon_and_wallet_percentage: {}
+
+  surrogate_key:
+    description: surrogate key created with a combination of activity id, campaign
+      id, ad group id and date
+
+  activity_id:
+    format: ID
+    description: activity id (experience id)
+
+  campaign_id:
+    format: ID
+
+  ad_group_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

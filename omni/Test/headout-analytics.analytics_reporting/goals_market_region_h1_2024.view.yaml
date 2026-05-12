@@ -1,0 +1,14 @@
+# Reference this view as headout_analytics_analytics_reporting__goals_market_region_h1_2024
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: goals_market_region_h1_2024
+
+dimensions:
+  target_month: {}
+  region: {}
+  market: {}
+  target_revenue: {}
+
+measures:
+  count:
+    aggregate_type: count

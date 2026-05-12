@@ -1,0 +1,66 @@
+# Reference this view as headout_analytics_analytics_reporting__competitor_weekly_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: competitor_weekly_stats
+
+dimensions:
+  competitor_name: {}
+  extrapolation_factor: {}
+  trailing_4_week_gbv: {}
+  combined_entity_average_order_value: {}
+  headout_trailing_4_week_gbv: {}
+
+  combined_entity_id:
+    format: ID
+    description: Unique identifier for the combined entity.
+
+  combined_entity_name:
+    description: Name of the combined entity.
+
+  week:
+    description: Week (Monday-truncated) for the aggregated data.
+
+  country:
+    description: Country of the combined entity.
+
+  business_market:
+    description: Business market grouping for the country.
+
+  region:
+    description: Region for the country (from mapping).
+
+  product_category:
+    description: Product category for the combined entity.
+
+  is_mapped_to_headout:
+    description: Whether the combined entity is mapped to Headout (1/0).
+
+  weekly_reviews:
+    description: Estimated number of new reviews for the combined entity in the week
+      (normalized for missing days).
+
+  weekly_bookings:
+    description: Estimated number of bookings for the combined entity in the week
+      (normalized for missing days).
+
+  weekly_gbv:
+    description: Estimated gross booking value for the combined entity in the week
+      (normalized for missing days).
+
+  review_rate:
+    description: Booking-to-review ratio used for estimation.
+
+  headout_weekly_orders:
+    description: Number of Headout orders with booking date in the week.
+
+  headout_weekly_gbv:
+    description: Gross booking value of Headout orders for the collection in the week.
+
+  headout_weekly_experiences:
+    description: Number of Headout orders with experience date in the week.
+
+measures:
+  count:
+    aggregate_type: count

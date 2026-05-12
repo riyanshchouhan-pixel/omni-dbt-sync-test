@@ -1,0 +1,132 @@
+# Reference this view as headout_analytics_analytics_reporting__zoho_spotdraft_sp_onboarding_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: zoho_spotdraft_sp_onboarding_events
+
+dimensions:
+  jurisdiction: {}
+  contract_approval_name: {}
+  contract_type_of_approval: {}
+  contract_approval_notes: {}
+  business_user_name: {}
+  business_user_email: {}
+  entity_name: {}
+  entity_type: {}
+  activity_counter_party_name: {}
+  contract_url: {}
+  modified_at: {}
+  execution_date: {}
+  minimum_pay_out_threshold: {}
+  ticket_type: {}
+  booking_method: {}
+  settlement_currency: {}
+  billing_cycle: {}
+  insurance_obligation: {}
+  maximum_test_bookings_per_year: {}
+  business_unit_department: {}
+  business_contact_owner: {}
+  counter_party: {}
+  expiration_date: {}
+  headout_role: {}
+  effective_date: {}
+  term_length: {}
+  post_execution_status: {}
+  auto_renewal: {}
+  notice_period_for_termination: {}
+  payment_frequency: {}
+  payment_timeline: {}
+  governing_law: {}
+  headout_counterparty_liability_cap: {}
+  headout_liability: {}
+  exclusion_of_headouts_limitation_of_liability: {}
+  payment_currency: {}
+  renewal_term: {}
+
+  contract_id:
+    format: ID
+    description: Unique ID given by Spotdraft to a contract created.
+
+  lead_id:
+    format: ID
+    description: Unique ID given by Zoho to a specific SP Lead created.
+
+  contract_title:
+    description: Title assigned to a contract.
+
+  contract_type_id:
+    format: ID
+    description: Unique ID given by Spotdraft to the type of contract created.
+
+  contract_type:
+    description: The type of contract created.
+
+  contract_kind:
+    description: The contract workflow.
+
+  activity:
+    description: Latest activity performed for the contract.
+
+  contract_status:
+    description: Current status of the contract.
+
+  contract_approval_status:
+    description: Current status of the contract approval.
+
+  contract_approver_name:
+    description: The name of the person who approves the contract.
+
+  contract_approver_email:
+    description: The mail id of the person who approves the contract.
+
+  organization_name:
+    description: Company name of SP Lead.
+
+  poc_name:
+    description: POC name from the SP.
+
+  poc_email:
+    description: POC mail id from the SP.
+
+  activity_performed_by_name:
+    description: Activity performer name from headout.
+
+  activity_performed_by_email:
+    description: Activity performer mail id from headout.
+
+  activity_performed_by_id:
+    format: ID
+    description: ID of person responsible for last modification of SP Lead.
+
+  activity_recipient_email:
+    description: Activity recipient or SP recipient mail id.
+
+  created_at:
+    description: Contract first drafted Timestamp.
+
+  activity_occured_at:
+    description: Activity performed at Timestamp.
+
+  city:
+    description: City where SP operates.
+
+  country:
+    description: Country where SP operates.
+
+  lead_type:
+    description: Type of lead.
+
+  website:
+    description: Website of SP Lead.
+
+  data_source:
+    description: Custome dimension to represent source of data as either zoho or spotdraft.
+
+  surrogate_key:
+    description: surrogate primary key built by combining Contract ID, Lead ID and
+      Activity/Lead status.
+
+measures:
+  count:
+    aggregate_type: count

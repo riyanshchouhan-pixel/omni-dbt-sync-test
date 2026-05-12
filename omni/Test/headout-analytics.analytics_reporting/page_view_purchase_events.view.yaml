@@ -1,0 +1,60 @@
+# Reference this view as headout_analytics_analytics_reporting__page_view_purchase_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: page_view_purchase_events
+
+dimensions:
+  event_id:
+    format: ID
+    description: unique id for each event built by combining user pseudo id, event
+      ts and event name
+
+  user_pseudo_id:
+    format: ID
+    description: user id set by google analytics every time a new user visits the
+      website. This may be different across whitelabels.
+
+  session_id:
+    format: ID
+    description: a unique id for each session as measured by google analytics
+
+  event_timestamp:
+    description: ts in utc when the event happened
+
+  event_name:
+    description: name of the event
+
+  page_url:
+    description: page URL where the event took place
+
+  page_name:
+    description: type of the page where the event took place
+
+  is_microband:
+    description: bool value to understand if the domain is headout
+
+  order_id:
+    format: ID
+    description: Headout order ID for the purchase event
+
+  previous_page:
+    description: URL for the previous page user came from
+
+  previous_page_name:
+    description: type for the previous page user came from
+
+  experience_id:
+    format: ID
+    description: headout experience id for ecommerce events
+
+  language_code:
+    description: language of the page where the event took place
+
+  translation_mode:
+    description: mode of tranlation of content of the page where the event took place
+
+measures:
+  count:
+    aggregate_type: count

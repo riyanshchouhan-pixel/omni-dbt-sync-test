@@ -1,0 +1,54 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_wallet_transactions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_wallet_transactions
+
+dimensions:
+  partner_type: {}
+  partner_name: {}
+  affiliate_code: {}
+  wallet_balance: {}
+  wallet_currency: {}
+
+  wallet_transaction_id:
+    format: ID
+    description: unique id for each wallet transaction
+
+  created_at:
+    description: timestamp (utc) at which the transaction was created
+
+  wallet_id:
+    format: ID
+    description: id of the wallet associated with the transaction
+
+  calipso_user_id:
+    format: ID
+    description: calipso user id of the customer who's wallet is being transacted
+
+  email:
+    description: email id of the customer associated with the wallet
+
+  user_type:
+    description: type of customer who's wallet is being transacted with
+
+  processing_currency:
+    description: processing currency of the transaction
+
+  amount:
+    description: transaction amount in processing currency
+
+  amount_usd:
+    description: transaction amount in usd
+
+  order_id:
+    format: ID
+    description: headout order id associated with this wallet transaction
+
+  transaction_type:
+    description: wallet transaction type
+
+measures:
+  count:
+    aggregate_type: count

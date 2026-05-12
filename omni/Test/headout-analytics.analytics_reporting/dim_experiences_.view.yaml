@@ -1,0 +1,158 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_experiences_
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_experiences_
+
+dimensions:
+  created_at: {}
+  experience_name: {}
+  language_content_data: {}
+  canonical_url: {}
+  no_index: {}
+  is_hidden: {}
+  city: {}
+  url: {}
+  image_url: {}
+  currency: {}
+  pricing_type: {}
+  minimum_price: {}
+  category_name: {}
+  tags: {}
+  micro_brands_descriptors: {}
+  last_extracted_at: {}
+  average_rating: {}
+  count_ratings: {}
+  no_of_images: {}
+  image_urls: {}
+  count_bookings: {}
+  first_booked_at: {}
+  last_booked_at: {}
+  gross_bookings: {}
+  count_completed_bookings: {}
+  is_new_qa_experience: {}
+  qa_completed_at: {}
+  is_qa_completed: {}
+  listed_at: {}
+  listing_status: {}
+  pod: {}
+  listing_priority: {}
+  select_page_users: {}
+  checkout_page_users: {}
+  is_added_to_mb: {}
+
+  experience_id:
+    format: ID
+
+  language_content_data_exclusions:
+    sql: exclusions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_content_created_at:
+    sql: experience_content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_content_id:
+    sql: experience_content_id
+    format: ID
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_content_requested_at:
+    sql: experience_content_requested_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_content_updated_at:
+    sql: experience_content_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_language:
+    sql: experience_language
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_language_code:
+    sql: experience_language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_meta_description:
+    sql: experience_meta_description
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_experience_name:
+    sql: experience_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_faq:
+    sql: faq
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_first_human_translation_at:
+    sql: first_human_translation_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_first_machine_translation_at:
+    sql: first_machine_translation_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_highlights:
+    sql: highlights
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_inclusions:
+    sql: inclusions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_title:
+    sql: meta_title
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_microbrands_highlight:
+    sql: microbrands_highlight
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_select_page_instructions:
+    sql: select_page_instructions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_summary:
+    sql: summary
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_ticket_delivery_info:
+    sql: ticket_delivery_info
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_translation_mode:
+    sql: translation_mode
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  primary_collection_id:
+    format: ID
+
+  primary_sub_category_id:
+    format: ID
+
+  category_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

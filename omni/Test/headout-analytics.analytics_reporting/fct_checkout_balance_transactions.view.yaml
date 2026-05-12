@@ -1,0 +1,75 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_checkout_balance_transactions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_checkout_balance_transactions
+
+dimensions:
+  account_type: {}
+
+  balance_transaction_id:
+    format: ID
+    description: surrogate key created using action id, breakdown type and fee_detail
+
+  action_id:
+    format: ID
+    description: action id in case of payment actions and payout id for settlements
+
+  processed_at:
+    description: timestamp (utc) at which the balance transaction occured
+
+  payment_id:
+    format: ID
+    description: payment id for payment action and settlement id for settlements
+
+  order_id:
+    format: ID
+    description: Headout order ID; can be null for micro auth payments and settlements
+
+  payment_method:
+    description: payment method using which the payment is processed (visa,
+      mastercard, ideal etc.)
+
+  action_type:
+    description: name of the action type the balance transaction is associated with
+
+  fee_detail:
+    description: extra information regarding the different Scheme fees applied
+
+  raw_breakdown_type:
+    description: breakdown type sent by Checkout for each action
+
+  breakdown_type:
+    description: a further breakdown for each action specifying different associated amounts
+
+  processing_currency:
+    description: processing currency for the payment associated with the balance transaction
+
+  amount_processing_currency:
+    description: amount in the processing currency of the payment
+
+  payout_currency:
+    description: settlement currency used by Checkout for settling the balance transaction
+
+  amount_payout_currency:
+    description: amount in the settlement currency used by checkout to settle the
+      transaction
+
+  amount_usd:
+    description: amount in usd converted using currency conversion from currency
+      conversion rates API
+
+  statement_id:
+    format: ID
+    description: statement id in which the transaction was settled
+
+  api_version:
+    description: version of the API the payment was made with
+
+  checkout_account:
+    description: name of the checkout account for which this statement is generated
+
+measures:
+  count:
+    aggregate_type: count

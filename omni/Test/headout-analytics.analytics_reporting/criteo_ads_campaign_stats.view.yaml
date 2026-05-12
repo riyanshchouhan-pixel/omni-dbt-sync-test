@@ -1,0 +1,82 @@
+# Reference this view as headout_analytics_analytics_reporting__criteo_ads_campaign_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: criteo_ads_campaign_stats
+
+dimensions:
+  campaign_country: {}
+  campaign_region: {}
+  count_attributed_orders: {}
+  sum_order_value: {}
+  sum_direct_costs: {}
+  sum_order_value_completed: {}
+  sum_fulfilment_value: {}
+  sum_revenue: {}
+  sum_coupon_discount: {}
+  sum_wallet_credits: {}
+
+  date:
+    description: date for which data is recorded
+
+  surrogate_key:
+    description: unique identifier for each row created by concatenating advertiser
+      id, campaign Id and date
+
+  advertiser_id:
+    format: ID
+    description: unique identifier assigned to each advertiser account
+
+  advertiser_name:
+    description: name of the advertiser account
+
+  campaign_id:
+    format: ID
+    description: unique identifier for the campaign
+
+  campaign_name:
+    description: name of the campaign
+
+  campaign_city:
+    description: campaign  city
+
+  campaign_category:
+    description: category for the campaign
+
+  campaign_language:
+    description: language for the campaign
+
+  campaign_targeting_location:
+    description: geographic location targeted by the campaign
+
+  count_impressions:
+    description: number of times the ad was shown to users
+
+  count_clicks:
+    description: number of clicks received on the ad
+
+  sum_spend:
+    description: total advertising spend.
+
+  count_visits:
+    description: number of visits to the website resulting from Criteo ad clicks
+
+  count_conversions:
+    description: number of sales attributed to Criteo ads using client-side attribution
+
+  count_reach:
+    description: share of potential users who have been served an ad
+
+  count_audience:
+    description: potential users who could be served an ad
+
+  count_exposed_users:
+    description: number of users who have been served an ad
+
+  sum_conversion_value:
+    description: conversion value generated for count conversions
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,215 @@
+# Reference this view as headout_analytics_analytics_reporting__mixpanel_user_funnel_progression
+description: |
+  **Business Purpose:** Tracks user funnel progression starting from session starters, capturing the complete customer journey from session start through conversion. 
+  this model allows funnel steps to span across multiple sessions for the same user, providing a complete view of cross-session conversion paths.
+
+  **Refresh Cadence:** Daily (incremental with partition replacement for last 60 days)
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: mixpanel_user_funnel_progression
+
+dimensions:
+  user_id:
+    format: ID
+    description: |-
+      Unique device identifier for each visitor (essentially the device ID from Mixpanel). 
+      Used to track user journey across sessions. This is the primary key for joining funnel events.
+
+  session_date:
+    description: |-
+      Date of the session start event. Derived from event_date of the session starter event. 
+      Used for partitioning and date-based filtering. Represents when the user's session began.
+
+  session_start_timestamp:
+    description: |-
+      Timestamp when the session started. This is the timestamp of the first event in the session 
+      (where session_start_pointer = 1). Used as the anchor point for tracking funnel progression.
+
+  session_end_timestamp:
+    description: |-
+      Timestamp when the session ended. This is the timestamp of the last event in the session. 
+      Note that funnel events may occur after this timestamp if they happen in subsequent sessions.
+
+  flow_type:
+    description: |-
+      Indicates whether the user journey is on Headout or Microbrand page. 
+      Calculated as 'Headout' if refined_page_url contains 'headout' (case-insensitive), otherwise 'Microbrand'. 
+      Used for page-specific funnel analysis.
+
+  refined_page_url:
+    description: |-
+      Cleaned and standardized page URL where the session started. This is the landing page URL 
+      from the session starter event. Used for understanding entry points and user acquisition paths.
+
+  previous_page_url:
+    description: |-
+      URL of the page the user was on before landing on the session starter page. 
+      NULL if this was a direct entry or the referrer is unknown. Helps understand traffic sources.
+
+  page_type:
+    description: |-
+      Type of page where the session started (e.g., 'Collection', 'Experience Page', 'Category Page'). 
+      Categorizes the entry point for funnel analysis by page type.
+
+  page_sub_type:
+    description: |-
+      Subtype classification of the page where the session started. Provides more granular 
+      categorization beyond page_type for detailed analysis.
+
+  browser:
+    description: |-
+      Web browser used by the user (e.g., Chrome, Safari, Firefox). Captured from the session starter event. 
+      Used for browser-specific conversion analysis.
+
+  browsing_city:
+    description: |-
+      City from which the user is browsing, determined by IP geolocation. 
+      Captured from the session starter event. Used for geographic analysis.
+
+  browsing_country:
+    description: |-
+      Country from which the user is browsing, determined by IP geolocation. 
+      Captured from the session starter event. Used for geographic and market analysis.
+
+  refined_language:
+    description: |-
+      Language preference of the user's browser or session. Standardized language code 
+      captured from the session starter event. Used for language-specific funnel analysis.
+
+  refined_device:
+    description: |-
+      Device type used by the user (e.g., Desktop, Mobile, Tablet). Standardized device classification 
+      captured from the session starter event. Used for device-specific conversion analysis.
+
+  campaign_id:
+    format: ID
+    description: |-
+      Marketing campaign identifier from which the user arrived. Captured from the session starter event. 
+      NULL if user did not arrive via a tracked campaign. Used for campaign attribution and ROI analysis.
+
+  channel_id:
+    format: ID
+    description: |-
+      Marketing channel identifier from which the user arrived. Captured from the session starter event. 
+      Used alongside channel_name for channel-level funnel analysis.
+
+  channel_name:
+    description: |-
+      Human-readable name of the marketing channel from which the user arrived (e.g., 'Google', 'Facebook', 'Direct'). 
+      Derived from channel_id via static mapping. Captured from the session starter event.
+
+  acqusition_source:
+    description: |-
+      Primary acquisition source identifier, derived as campaign_id if available, otherwise channel_name. 
+      Used for session change logic and attribution analysis. Captured from the session starter event.
+
+  geo_non_geo:
+    description: |-
+      Indicates whether the browsing location matches the experience location. 
+      'Geo' if browsing_city/country matches experience location, 'Non-Geo' otherwise. 
+      Used for understanding local vs. tourist booking behavior.
+
+  advertising_channel_type:
+    description: |-
+      Sub-channel classification for Google Ads and Bing Ads campaigns (e.g., 'PAMX', 'Discovery', 'Search'). 
+      NULL or 'Others' for non-paid channels. Used for granular paid media analysis.
+
+  combined_entity_id:
+    format: ID
+    description: |-
+      Combined entity identifier associated with the session starter. Represents a grouping of experiences 
+      (e.g., a collection, category, or subcategory). Used for entity-level funnel analysis.
+
+  combined_entity_name:
+    description: |-
+      Human-readable name of the combined entity associated with the session starter. 
+      Provides context for combined_entity_id in reports and dashboards.
+
+  experience_business_market:
+    description: |-
+      Business market classification for the combined entity (e.g., 'SEA (MLY + IND + VN)', '	South America', 'East Asia (CN, TW)'). 
+      Used for market-level analysis and reporting.
+
+  experience_business_region:
+    description: Business region classification for the combined entity. Used for
+      regional analysis and reporting.
+
+  experience_id:
+    format: ID
+    description: |-
+      Experience identifier (tour group ID) that the user selected during their funnel progression. 
+      NULL if user never reached the 'Experience Selected' or 'Seats Page Viewed' step.
+
+  experience_name:
+    description: |-
+      Human-readable name of the experience that the user selected. 
+      NULL if experience_id is NULL. Provides context for the experience in the funnel.
+
+  experience_date:
+    description: |-
+      Date of the experience that the user selected during checkout. 
+      NULL if user never reached checkout. Captured from the 'Checkout Started' event.
+
+  experience_time:
+    description: |-
+      Time of day for the experience that the user selected during checkout. 
+      NULL if user never reached checkout. Captured from the 'Checkout Started' event.
+
+  lead_time_days:
+    description: |-
+      Number of days between when the checkout was started and the experience date. 
+      NULL if user never reached checkout. Calculated from checkout_started event. 
+      Used for understanding booking lead times and planning windows.
+
+  select_page_viewed_timestamp:
+    description: |-
+      Timestamp when the user viewed the experience selection page (triggered by 'Experience Selected' 
+      or 'Seats Page Viewed' events). NULL if user never reached this funnel step. 
+      Used for calculating time-to-conversion metrics.
+
+  checkout_started_timestamp:
+    description: |-
+      Timestamp when the user initiated checkout (triggered by 'Checkout Started' event). 
+      NULL if user never reached this funnel step. Must occur after select_page_viewed_timestamp 
+      for the same experience_id. Used for funnel timing analysis.
+
+  order_attempted_timestamp:
+    description: |-
+      Timestamp when the user clicked 'Confirm And Pay' (triggered by 'Confirm And Pay Clicked' event). 
+      NULL if user never reached this funnel step. Must occur after checkout_started_timestamp 
+      for the same experience_id. Used for payment funnel analysis.
+
+  order_completed_timestamp:
+    description: |-
+      Timestamp when the user completed the order (triggered by 'Order Confirmation Page Viewed' event). 
+      Note: Uses 'Order Confirmation Page Viewed' as a proxy because 'Order Completed' event 
+      lacks experience_id (tgid) in more than 75% of cases. NULL if user never reached this funnel step. 
+      Must occur after order_attempted_timestamp for the same experience_id.
+
+  has_select_page_viewed:
+    description: |-
+      Boolean flag indicating whether the user reached the experience selection step in the funnel. 
+      TRUE if experience_id is not NULL, meaning the user triggered 'Experience Selected' or 'Seats Page Viewed' 
+      events after the session start. Used for calculating conversion rates at this funnel stage.
+
+  has_checkout_started:
+    description: |-
+      Boolean flag indicating whether the user initiated checkout. TRUE if checkout_started_timestamp is not NULL, 
+      meaning the user triggered 'Checkout Started' event after selecting an experience. 
+      Used for calculating checkout conversion rates.
+
+  has_order_attempted:
+    description: |-
+      Boolean flag indicating whether the user attempted to place an order. TRUE if order_attempted_timestamp is not NULL, 
+      meaning the user clicked 'Confirm And Pay' after starting checkout. Used for calculating payment attempt rates.
+
+  has_order_completed:
+    description: |-
+      Boolean flag indicating whether the user completed an order. TRUE if order_completed_timestamp is not NULL, 
+      meaning the user viewed the order confirmation page after attempting payment. Used for calculating final conversion rates. 
+      Note: This uses 'Order Confirmation Page Viewed' as a proxy for order completion due to data quality issues with 'Order Completed' event.
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,380 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_bookings
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_bookings
+
+dimensions:
+  primary_collection_name: {}
+  primary_sub_category_name: {}
+  sub_category_name: {}
+  primary_category_name: {}
+  combined_entity_name: {}
+  variant_category: {}
+  region: {}
+  timezone: {}
+  business_region: {}
+  business_market: {}
+  vendor_city: {}
+  vendor_country: {}
+  user_fields: {}
+  phone_country: {}
+  phone_carrier: {}
+  margin: {}
+  promo_discount: {}
+  promo_code: {}
+  promo_type: {}
+  affiliate_partner_name: {}
+  amount_affiliate_commission_usd: {}
+  audio_guide_cost: {}
+  audio_guide_provider: {}
+  created_month_timestamp: {}
+  date_created_at_et: {}
+  primary_poi_name: {}
+  poi_venue_group: {}
+  has_booking_insurance: {}
+  booking_insurance_coverage_amount_value: {}
+  booking_insurance_coverage_amount_currency: {}
+  booking_insurance_premium_amount_value: {}
+  booking_insurance_premium_amount_currency: {}
+  booking_insurance_status: {}
+
+  booking_id:
+    format: ID
+    description: unique id for each booking on headout
+
+  created_at:
+    description: timestamp (utc) at which the booking was created
+
+  order_id:
+    format: ID
+    description: unique identifier for each order on headout (itinerary id)
+
+  component_id:
+    format: ID
+    description: unique identifier for each component
+
+  primary_collection_id:
+    format: ID
+
+  category_id:
+    format: ID
+    description: unique id for the primary category of the experience booked
+
+  category_name:
+    description: name of the primary category of the experience booked
+
+  primary_sub_category_id:
+    format: ID
+
+  sub_category_id:
+    format: ID
+
+  primary_category_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+  variant_id:
+    format: ID
+    description: id of the variant picked by the customer
+
+  variant_name:
+    description: name of the variant chosen by the customer
+
+  country:
+    description: name of the destination country
+
+  city:
+    description: name of the destination city
+
+  tour_id:
+    format: ID
+    description: tour id booked which is mapped to the chosen variant
+
+  tour_name:
+    description: name of the tour which is mapped to the chosen variant
+
+  vendor_id:
+    format: ID
+
+  supply_partner_billing_entity_id:
+    format: ID
+
+  is_partnered:
+    description: whether the vendor fulfilling this booking is a partnered
+      (pre-purchase) vendor.
+
+  experience_date:
+    description: date chosen by the customer for the experience in the local
+      timezone of the experience
+
+  experience_time:
+    description: time chosen by the customer for the experience in the local
+      timezone of the experience
+
+  is_seatmap:
+    description: boolean representing whether the booking is a seatmap booking or not
+
+  primary_guest_name:
+    description: name of the primary guest making the booking
+
+  primary_guest_email:
+    description: email ID of the primary guest making the booking
+
+  primary_guest_number:
+    description: Phone number of the primary guest making the booking
+
+  user_fields_field_name:
+    sql: field_name
+    nested_on_field: user_fields
+    parent_field: user_fields
+
+  user_fields_field_value:
+    sql: field_value
+    description: an array containing user fields customer filled while making the booking
+    nested_on_field: user_fields
+    parent_field: user_fields
+
+  user_fields_guest_number:
+    sql: guest_number
+    nested_on_field: user_fields
+    parent_field: user_fields
+
+  completion_type:
+    description: completion type of the booking entered in the custom field
+
+  price:
+    description: price of the experience purchased by the customer in the processing
+      currency. This includes any extra charges applicable
+
+  price_payable:
+    description: price payable by the customer for the booking in the processing
+      currency, including any applicable extra charges
+
+  price_payable_usd:
+    description: price payable by the customer for the booking in usd, including any
+      applicable extra charges
+
+  distribution_partner_net_price:
+    description: |-
+      Distribution Partner Net Price (DPNP) in tour currency — the discounted amount
+      a B2B partner (API or Agent) actually pays. Sourced from the booking table.
+      NULL for B2C orders.
+
+  price_retail:
+    description: retail price of the experience
+
+  promo_id:
+    format: ID
+
+  processing_currency:
+    description: code for currency the booking was processed in. This is the
+      currency customer's card is charged in
+
+  validity_type:
+    description: |-
+      Pre-purchase ticket validity type from the PP allotment system.
+      Possible values: 'DATE_TIME', 'OPEN'. NULL for non-PP bookings.
+
+  affiliate_code:
+    description: unique tracking code for the affiliate set in user's cookie
+
+  affiliate_metadata_campaign:
+    description: UTM campaign parameter extracted from affiliate metadata
+
+  affiliate_metadata_content:
+    description: UTM content parameter extracted from affiliate metadata
+
+  affiliate_metadata_term:
+    description: UTM term parameter extracted from affiliate metadata
+
+  affiliate_metadata_utm_source:
+    description: UTM source parameter extracted from affiliate metadata
+
+  extra_charges:
+    description: an array containing the break down of extra charges on the booking
+
+  extra_charges_charge_type:
+    sql: charge_type
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  extra_charges_extra_charge_amount:
+    sql: extra_charge_amount
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  extra_charges_extra_charge_amount_usd:
+    sql: extra_charge_amount_usd
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  amount_cashback:
+    description: cashback amount applicable in the processing currency to be given
+      to the customer for making the booking
+
+  language:
+    description: language the customer was using the headout website in while making
+      the booking
+
+  language_code:
+    description: language code for the language the customer was using the headout
+      website in while making the booking
+
+  booking_type:
+    description: the type of booking (Normal, Gift Credits, DF etc)
+
+  updated_at:
+    description: timestamp (utc) at which the booking was last updated
+
+  experience_id:
+    format: ID
+    description: unique id of the experience booked
+
+  experience_name:
+    description: name of the experience purchased by the customer (tour group name)
+
+  primary_poi_id:
+    format: ID
+
+  vendor_name:
+    description: name of the vendor the booking is fulfilled with
+
+  lead_time_hours:
+    description: number of hours between the booking and experience
+
+  lead_time_days:
+    description: number of calendar days between booking and experience
+
+  number_of_guests:
+    description: total number of guests in the booking
+
+  number_of_guests_customer_charged_for:
+    description: number of guests with price per guest greater than 0
+
+  guests:
+    description: |-
+      Array of guest details per booking. Each element is a STRUCT with:
+      number_of_guests, guest_type, price_per_guest, net_price_per_guest,
+      seat_booked, headout_selling_price (final price in processing currency minor units),
+      headout_listing_price (pre-discount price in processing currency minor units),
+      headout_discount (Headout-funded discount fraction, 0-1 scale),
+      headout_discount_absolute (Headout-funded discount amount in minor units),
+      supply_partner_discount (vendor-funded discount fraction, 0-1 scale),
+      supply_partner_discount_absolute (vendor-funded discount amount in minor units),
+      inventory_slot_discount_absolute (slot-level discount amount in minor units),
+      and seat_detail (STRUCT with venue_bookable_id and seat_description,
+      populated only for seatmap bookings).
+
+  guests_guest_type:
+    sql: guest_type
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_headout_discount:
+    sql: headout_discount
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_headout_discount_absolute:
+    sql: headout_discount_absolute
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_headout_listing_price:
+    sql: headout_listing_price
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_headout_selling_price:
+    sql: headout_selling_price
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_inventory_slot_discount_absolute:
+    sql: inventory_slot_discount_absolute
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_net_price_per_guest:
+    sql: net_price_per_guest
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_number_of_guests:
+    sql: number_of_guests
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_price_per_guest:
+    sql: price_per_guest
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_seat_booked:
+    sql: seat_booked
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_seat_detail:
+    sql: seat_detail
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_seat_detail_seat_description:
+    sql: seat_detail.seat_description
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_seat_detail_venue_bookable_id:
+    sql: seat_detail.venue_bookable_id
+    format: ID
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_supply_partner_discount:
+    sql: supply_partner_discount
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_supply_partner_discount_absolute:
+    sql: supply_partner_discount_absolute
+    nested_on_field: guests
+    parent_field: guests
+
+  booking_status:
+    description: current status of the booking
+
+  price_net:
+    description: net price paid to the vendor in the processing currency
+
+  price_net_usd:
+    description: net price paid to the vendor in USD
+
+  conversion_rate_to_usd:
+    description: conversion rate from processing currency to usd applicable for the booking
+
+  booking_insurance_id:
+    format: ID
+
+  booking_insurance_config_id:
+    format: ID
+
+  amount_operating_cost:
+    description: |-
+      Booking-level operating cost in tour (processing) currency. Calculated as a
+      percentage of booking margin (price_payable - price_net). Rates: non-partnered
+      or PP DATE_TIME → 15%, PP OPEN → 8%. Only applied to completed bookings.
+
+  amount_operating_cost_usd:
+    description: |-
+      Booking-level operating cost in USD. Calculated as a percentage of booking
+      margin (price_payable_usd - price_net_usd). Rates: non-partnered or PP
+      DATE_TIME → 15%, PP OPEN → 8%. Only applied to completed bookings.
+
+measures:
+  count:
+    aggregate_type: count

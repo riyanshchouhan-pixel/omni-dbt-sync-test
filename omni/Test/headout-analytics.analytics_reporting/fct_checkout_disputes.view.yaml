@@ -1,0 +1,85 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_checkout_disputes
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_checkout_disputes
+
+dimensions:
+  evidence_required_at: {}
+  dispute_source: {}
+  chargeback_type: {}
+
+  dispute_id:
+    format: ID
+    description: unique id for each dispute on checkout
+
+  created_at:
+    description: timestamp at which the dispute was reported
+
+  payment_id:
+    format: ID
+    description: id for the linked payment for which the dispute was reported
+
+  payment_created_at:
+    description: timestamp (utc) at which the payment linked to the dispute was created
+
+  order_id:
+    format: ID
+    description: headout order Id for the payment
+
+  amount:
+    description: amount in decimals
+
+  amount_usd:
+    description: dispute amount in usd
+
+  amount_in_cents:
+    description: amount in currency's smallest unit
+
+  currency:
+    description: currency in which the amount is reported for the dispute
+
+  reason_code:
+    description: checkout's internal reason code for why the dispute was reported
+
+  reason_category:
+    description: reason bucket for why the dispute was reported
+
+  days_since_payment:
+    description: number of days between the payment created date and date on which
+      the dispute was reported
+
+  payment_method:
+    description: name of the card network (scheme) used to make the payment. visa,
+      mastercard etc
+
+  status:
+    description: current status of the dispute
+
+  dispute_updates:
+    description: array of updates to the dispute over time
+
+  dispute_updates_dispute_status:
+    sql: dispute_status
+    description: dispute status after the update
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_evidence_required_by:
+    sql: evidence_required_by
+    description: timestamp (utc) till which we can submit the evidence to fight the dispute
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_status_updated_at:
+    sql: status_updated_at
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  last_updated_at:
+    description: timestamp (utc) at which it was last updated
+
+measures:
+  count:
+    aggregate_type: count

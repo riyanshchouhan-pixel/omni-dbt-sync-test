@@ -1,0 +1,358 @@
+# Reference this view as headout_analytics_analytics_reporting__order_attempted_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: order_attempted_events
+
+dimensions:
+  price_payable_usd: {}
+  combined_entity_name: {}
+  is_order_pay_later: {}
+  is_order_disputed: {}
+  dispute_reported_date: {}
+  chargeback_type: {}
+
+  order_id:
+    format: ID
+    description: unique id of the headout order
+
+  created_at:
+    description: creation timestamp (in UTC) of the order
+
+  fingerprint_id:
+    format: ID
+    description: assigned id (fingerprint or email) to each headout order to
+      identify the user
+
+  calipso_user_id:
+    format: ID
+    description: calipso user id of the user
+
+  email:
+    description: email id of the user, associated with the calipso_user_id
+
+  city:
+    description: experience city of the order
+
+  country:
+    description: experience country of the order
+
+  order_value_usd:
+    description: order_value_usd
+
+  order_value:
+    description: order_value
+
+  processing_currency:
+    description: processing_currency
+
+  coupon_code:
+    description: coupon code (if any) used to make the purchase
+
+  order_status:
+    description: status of the order
+
+  device:
+    description: device that was used to make the order
+
+  ip_country:
+    description: country from where the customer is making the booking
+
+  is_logged_in:
+    description: was the user logged in while making the purchase
+
+  failed_reason:
+    description: raw failure reason for the order
+
+  cancellation_reason:
+    description: raw cancellation reason for the order
+
+  booking_id:
+    format: ID
+    description: unique id of the headout booking
+
+  component_id:
+    format: ID
+    description: component_id
+
+  experience_id:
+    format: ID
+    description: id of the experience booked
+
+  experience_name:
+    description: name of the experience booked
+
+  collection_id:
+    format: ID
+    description: id of the collection booked
+
+  collection_name:
+    description: name of the collection booked
+
+  sub_category_id:
+    format: ID
+    description: id of the sub_category booked
+
+  sub_category_name:
+    description: name of the sub_category booked
+
+  category_id:
+    format: ID
+    description: id of the category booked
+
+  category_name:
+    description: name of the category booked
+
+  combined_entity_id:
+    format: ID
+
+  tour_id:
+    format: ID
+    description: id of the tour booked
+
+  tour_name:
+    description: name of the tour booked
+
+  experience_timestamp:
+    description: datetime of visit of the experience booked
+
+  is_seatmap:
+    description: boolean indicating whether the purchase is for a seatmap product or not
+
+  booking_status:
+    description: status of the booking
+
+  language:
+    description: language that the order was made in
+
+  booking_type:
+    description: the type of the booking
+
+  vendor_id:
+    format: ID
+    description: id of the vendor the booking was made with
+
+  phone_country:
+    description: country of the phone number provided by the customer
+
+  payment_transaction_id:
+    format: ID
+    description: unique key for each payment assigned by Headout
+
+  payment_id:
+    format: ID
+    description: unique id assigned to the payment by the payment gateway
+
+  payment_gateway:
+    description: payment gateway the payment has been made through. example - Adyen,
+      Checkout, Stripe
+
+  payment_gateway_type:
+    description: payment gateway that the payment has been made through along with
+      the merchant entity
+
+  payment_status:
+    description: status of the payment
+
+  payment_type:
+    description: type of payment. example - MicroAuth, Booking
+
+  payment_method:
+    description: method of payment. example - Paypal, iDEAL, Card
+
+  is_risky:
+    description: if the payment was tagged risky
+
+  risky_verification_type:
+    description: type of verification applied to see if the payment was risky or not
+
+  sca_type:
+    description: if the transaction was retried automatically by Adyen because the
+      initial authorisation was soft-declined.
+
+  order_pay_later_schedule:
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_pay_later_charge_attempt_count:
+    sql: order_pay_later_schedule.pay_later_charge_attempt_count
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_pay_later_charge_scheduled_timestamp:
+    sql: order_pay_later_schedule.pay_later_charge_scheduled_timestamp
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_pay_later_charge_status:
+    sql: order_pay_later_schedule.pay_later_charge_status
+    parent_field: order_pay_later_schedule
+
+  order_pay_later_schedule_payment_deadline_timestamp:
+    sql: order_pay_later_schedule.payment_deadline_timestamp
+    parent_field: order_pay_later_schedule
+
+  is_authorized:
+    description: was the payment authorized or not
+
+  is_micro_auth_payment:
+    description: did the payment go through a micro auth flow or not
+
+  payment_scheme:
+    description: scheme of the payment. example - Visa, Mastercard, Paypal, iDEAL etc.
+
+  card_type:
+    description: credit/debit/deferred debit etc.
+
+  card_network:
+    description: newtwork of the payment. example - Visa, Mastercard etc.
+
+  card_bin:
+    description: first 6 digits of the card number
+
+  card_customer_name:
+    description: name of the cardholder
+
+  card_issuing_bank:
+    description: bank of the cardholder
+
+  card_issuing_country:
+    description: bank country of the cardholder
+
+  card_wallet_type:
+    description: whether a wallet was used to make the payment or not. example -
+      ApplePay, GooglePay
+
+  has_three_ds:
+    description: whether the payment went through the 3DS flow or not
+
+  is_liability_shift:
+    description: will liability shift be applicable
+
+  is_three_ds_downgraded:
+    description: bool representing whether the 3ds request was downgraded or not
+
+  three_ds_eci:
+    description: three_ds_eci
+
+  is_three_ds_redirect:
+    description: for 3d secure 2, the transaction went through the redirect flow.
+
+  three_ds_enrolled:
+    description: whether the card is enrolled in 3ds scheme or not
+
+  three_ds_signature_valid:
+    description: three_ds_signature_valid
+
+  three_ds_requestor_challenge_indicator:
+    description: whether the merchant (Headout) had a preference for Challenge or not
+
+  three_ds_directory_response:
+    description: 3ds response from the card scheme
+
+  three_ds_authentication_response:
+    description: 3ds authentication response
+
+  three_ds_cavv:
+    description: 3ds cryptogram
+
+  three_ds_xid:
+    description: three_ds_xid
+
+  three_ds_version:
+    description: 3ds version used for completing the request
+
+  response_code:
+    description: human readable code returned by the payment gateway for the
+      authorization event
+
+  response_message:
+    description: human readable message returned by the payment gateway for the
+      authorization event
+
+  sift_event_name:
+    description: name of the event from sift
+
+  is_payment_via_sift:
+    description: boolean indicating whether the payment went through Sift or not
+
+  sift_score:
+    description: risk score assigned to the payment by Sift (fraud prevention tool)
+
+  route_name:
+    description: name of the route the payment matched with on Sift
+
+  route_primary_criteria_field:
+    description: route_primary_criteria_field
+
+  route_primary_criteria_value:
+    description: route_primary_criteria_value
+
+  route_secondary_criteria_field:
+    description: route_secondary_criteria_field
+
+  route_secondary_criteria_value:
+    description: route_secondary_criteria_value
+
+  rules_engine_status:
+    description: fraud decision of Watson based on its rules on the basis of both
+      fingerprint or email from the pre-auth flow
+
+  post_auth_rules_engine_status:
+    description: fraud decision of Watson based on its rules on the basis of both
+      fingerprint or email from the post-auth flow
+
+  is_payment_via_watson:
+    description: boolean indicating whether the payment went through Watson or not
+
+  is_payment_via_post_auth_watson:
+    description: boolean indicating whether the payment went through Watson or not
+
+  rule:
+    description: the description of the rule which was the final decision from the
+      pre-auth flow
+
+  post_auth_rule:
+    description: the description of the rule which was the final decision from the
+      post-auth flow
+
+  rule_number:
+    description: rule number which was the final decision from the pre-auth flow
+
+  post_auth_rule_number:
+    description: rule number which was the final decision from the post-auth flow
+
+  is_sent_to_bond:
+    description: did the order go to Bond or not
+
+  bond_decision:
+    description: what was the decision taken by the headout team when the order was
+      sent fpr manual review on Bond
+
+  bond_decision_author:
+    description: who from the headout team took the decision on Bond
+
+  bond_decision_reason:
+    description: what was the reason of the decision (in case of fraud) by the headout team
+
+  bond_decision_timestamp:
+    description: ts of the decision taken by the headout team on Bond
+
+  fraud_engine_result:
+    description: final decision of the Fraud Engine (Sift + Watson) according to the
+      priority of the rules
+
+  fraud_engine_result_dri:
+    description: who took the final decision between Sift or Watson for the final
+      decision on the order. Watson is given priority be default.
+
+  is_order_reported_fraud:
+    description: was the order eventually reported as fraud
+
+  fraud_reported_date:
+    description: when was the order reported as fraud
+
+  failure_reason:
+    description: the reason the order failed
+
+measures:
+  count:
+    aggregate_type: count

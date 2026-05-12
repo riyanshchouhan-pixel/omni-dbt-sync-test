@@ -1,0 +1,132 @@
+# Reference this view as headout_analytics_analytics_reporting__plugin_booking_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: plugin_booking_events
+
+dimensions:
+  event_id:
+    format: ID
+    description: Unique id of the event (source `id` field from the event pipeline).
+      One row per plugin booking attempt.
+
+  event_timestamp:
+    description: Timestamp (UTC) at which the plugin booking attempt event was
+      emitted by the fulfilment service.
+
+  event_date:
+    description: Date (UTC) of `event_timestamp`. Partition column.
+
+  server_timestamp:
+    description: Timestamp (UTC) at which the event pipeline server received the event.
+
+  consumer_timestamp:
+    description: Timestamp (UTC) at which the event was consumed into BigQuery by
+      the event pipeline.
+
+  event_name:
+    description: "Name of the event. One of: `plugin_booking_success`,
+      `plugin_booking_failure`."
+
+  status:
+    description: "Outcome of the plugin booking attempt. One of: `SUCCESS`, `FAIL`."
+
+  api_name:
+    description: Vendor integration plugin used for the booking attempt (e.g. BOKUN,
+      VENTRATA, TourCMS, INGRESSO).
+
+  booking_id:
+    format: ID
+    description: Headout booking id the attempt was made for. A single booking_id
+      can have multiple attempts (retries).
+
+  tour_id:
+    format: ID
+    description: Headout tour id the booking attempt targets.
+
+  experience_id:
+    format: ID
+    description: Headout experience id the tour belongs to (denormalized from `dim_tours`).
+
+  experience_name:
+    description: Name of the experience booked (denormalized from `dim_tours`).
+
+  vendor_id:
+    format: ID
+    description: Headout vendor id the booking attempt is fulfilled by.
+
+  vendor_name:
+    description: Name of the vendor (denormalized from `dim_vendors`).
+
+  fulfilment_id:
+    format: ID
+    description: Headout fulfilment id associated with the booking attempt. Null for
+      all events prior to April 2025 (the backend started emitting this field in
+      2025-04, reaching full coverage from November 2025 onwards).
+
+  booking_duration_ms:
+    description: Time taken by the plugin to complete the booking attempt, in milliseconds.
+
+  is_reschedule_request:
+    description: Boolean flag indicating whether the attempt is a reschedule
+      (rebook) of an existing booking rather than a new booking.
+
+  product_name:
+    description: Vendor-side product name sent with the booking request.
+
+  ticket_delivery_type:
+    description: |-
+      Ticket delivery method requested. Possible values include: `MOBILE_TICKET`,
+      `MOBILE_VOUCHER`, `PRINT_TICKET`, `ONLINE_VENUE_CHECK_IN`, `MOBILE_CODE`,
+      `PRINT_VOUCHER`, `ORDER_NUMBER`, `MOBILE_EMAIL`, `NONE`.
+
+  ticket_type:
+    description: Ticket format requested from the vendor (e.g. `QRCODE`, `TEXT`,
+      `HTML_URL`). Nullable.
+
+  inventory_date:
+    description: Date of the experience slot being booked (vendor-side inventory date).
+
+  inventory_time:
+    description: Time of the experience slot being booked (vendor-side inventory
+      time, local to the experience).
+
+  threshold_price_usd:
+    description: Threshold price of the booking in USD, as sent to the vendor. Used
+      by the fulfilment service to cap booking cost.
+
+  threshold_price_local:
+    description: Threshold price of the booking in the local currency sent to the vendor.
+
+  threshold_price_local_currency:
+    description: ISO currency code of `threshold_price_local`.
+
+  vendor_order_id:
+    format: ID
+    description: Order id returned by the vendor in the booking response. Null for
+      failed attempts and for vendors that do not return one.
+
+  vendor_cancellation_id:
+    format: ID
+    description: Cancellation id returned by the vendor. Used to cancel the booking
+      with the vendor later.
+
+  count_tickets_issued:
+    description: |-
+      Number of entries in the vendor booking response `tickets` array. Always null for
+      failed attempts. For successful attempts, some plugins return tickets outside this
+      array (e.g. embedded in the vendor order payload), so a null or 0 value does not
+      always mean no tickets were issued.
+
+  failure_reason:
+    description: Raw failure reason returned by the vendor or the plugin. Populated
+      only when `status = 'FAIL'`.
+
+  failure_stack_trace:
+    description: Full stack trace captured when the plugin raised an exception.
+      Populated only for exception-driven failures.
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,19 @@
+# Reference this view as headout_analytics_analytics_reporting__goals_combined_entity_h2_2023
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: goals_combined_entity_h2_2023
+
+dimensions:
+  target_month: {}
+  market: {}
+  region: {}
+  combined_entity_name: {}
+  combined_entity_classification: {}
+  target_gross_bookings: {}
+
+  combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

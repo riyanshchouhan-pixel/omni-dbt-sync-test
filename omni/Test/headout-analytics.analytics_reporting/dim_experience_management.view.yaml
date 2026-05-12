@@ -1,0 +1,810 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_experience_management
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_experience_management
+
+dimensions:
+  is_experience_city_discoverable: {}
+  is_experience_not_indexed: {}
+  is_experience_hidden: {}
+  sub_category_language_content_data: {}
+  category_language_content_data: {}
+  is_collection_hidden: {}
+  is_collection_not_index: {}
+  is_collection_city_discoverable: {}
+  pricing_base: {}
+  has_two_step_fulfillment: {}
+  rms_name: {}
+  rms_account_name: {}
+  available_in_next_7d: {}
+  available_in_next_30d: {}
+  product_descriptors: {}
+  experience_promos: {}
+  poi_name: {}
+  poi_venue_group: {}
+
+  surrogate_key:
+    description: surrogate_key
+
+  experience_id:
+    format: ID
+    description: Experience ID of an Experience
+
+  experience_created_at:
+    description: Creation Timestamp of an Experience
+
+  experience_name:
+    description: Name of the Experience
+
+  canonical_url:
+    description: canonical_url
+
+  experience_city:
+    description: City in which experience is located
+
+  experience_city_id:
+    format: ID
+    description: ID of city in which experience is located.
+
+  experience_country:
+    description: Country in which experience is located
+
+  experience_region:
+    description: Market Region in which experience is located
+
+  experience_language_content_data:
+    description: Language specific data for the experience
+
+  experience_language_content_data_cancellation:
+    sql: cancellation
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_confirmed_ticket_info:
+    sql: confirmed_ticket_info
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_exclusions:
+    sql: exclusions
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_experience_name:
+    sql: experience_name
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_faq:
+    sql: faq
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_first_human_translation_at:
+    sql: first_human_translation_at
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_first_machine_translation_at:
+    sql: first_machine_translation_at
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_highlights:
+    sql: highlights
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_inclusions:
+    sql: inclusions
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_language_code:
+    sql: language_code
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_language_name:
+    sql: language_name
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_meta_title:
+    sql: meta_title
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_microbrands_descriptor:
+    sql: microbrands_descriptor
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_microbrands_highlight:
+    sql: microbrands_highlight
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_neighborhood:
+    sql: neighborhood
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_promotion_label:
+    sql: promotion_label
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_select_page_instructions:
+    sql: select_page_instructions
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_select_page_instructions_updated_at:
+    sql: select_page_instructions_updated_at
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_short_summary:
+    sql: short_summary
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_summary:
+    sql: summary
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_ticket_delivery_info:
+    sql: ticket_delivery_info
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_translation_mode:
+    sql: translation_mode
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  experience_language_content_data_validity:
+    sql: validity
+    nested_on_field: experience_language_content_data
+    parent_field: experience_language_content_data
+
+  sub_category_id:
+    format: ID
+    description: Sub Category ID of the experience
+
+  sub_category_name:
+    description: Sub Category Name of the experience
+
+  is_primary_sub_category:
+    description: Boolean field to identify the primary subcategory
+
+  category_id:
+    format: ID
+    description: Category ID of the experience
+
+  experience_sub_category_rank:
+    description: Rank of the experience in that sub category.
+
+  sub_category_rank:
+    description: Rank of that subcategory
+
+  sub_category_language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_display_name:
+    sql: display_name
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_heading:
+    sql: heading
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_language_code:
+    sql: language_code
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_language_name:
+    sql: language_name
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_location_level:
+    sql: location_level
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_meta_title:
+    sql: meta_title
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  sub_category_language_content_data_subtext:
+    sql: subtext
+    nested_on_field: sub_category_language_content_data
+    parent_field: sub_category_language_content_data
+
+  category_name:
+    description: Category Name of the experience
+
+  is_primary_category:
+    description: Boolean field to identify the primary category.
+
+  heading:
+    description: Heading of the experience.
+
+  category_rank:
+    description: category_rank
+
+  category_language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_display_name:
+    sql: display_name
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_heading:
+    sql: heading
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_language_code:
+    sql: language_code
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_language_name:
+    sql: language_name
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_location_level:
+    sql: location_level
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_meta_title:
+    sql: meta_title
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  category_language_content_data_subtext:
+    sql: subtext
+    nested_on_field: category_language_content_data
+    parent_field: category_language_content_data
+
+  collection_created_at:
+    description: Creation Timestamp of the Collection
+
+  collection_id:
+    format: ID
+    description: ID of the collection to which experience belongs.
+
+  is_primary_collection:
+    description: Boolean field to identify the primary collection.
+
+  collection_name:
+    description: Name of the collection to which experience belongs.
+
+  parent_collection_id:
+    format: ID
+    description: ID of the parent collection.
+
+  experience_collection_rank:
+    description: Rank of the experience in the collection.
+
+  collection_rank:
+    description: Rank of the collection.
+
+  collection_template_type:
+    description: Template type of the collection.
+
+  collection_poi_name:
+    description: POI name of the collection to which experience belongs.
+
+  is_collection_card_image_url:
+    description: Boolean to identify if we have image URL of the collection Card.
+
+  collection_city:
+    description: City of the collection.
+
+  collection_city_id:
+    format: ID
+    description: ID of Collection City.
+
+  collection_country:
+    description: Country in which collection is located.
+
+  collection_region:
+    description: Market Region in which collection is located.
+
+  is_collection_long_form_description:
+    description: Boolean to check about Collection Long Form Description.
+
+  collection_language_content_data:
+    description: Language specific data of content.
+
+  collection_language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_display_name:
+    sql: display_name
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_heading:
+    sql: heading
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_language_code:
+    sql: language_code
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_language_name:
+    sql: language_name
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_long_form_description:
+    sql: long_form_description
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_subtext:
+    sql: subtext
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  collection_language_content_data_title:
+    sql: title
+    nested_on_field: collection_language_content_data
+    parent_field: collection_language_content_data
+
+  combined_entity_id:
+    format: ID
+    description: ID of Combined Entity of the Experience.
+
+  combined_entity_name:
+    description: Name of Combined Entity of the Experience.
+
+  variant_id:
+    format: ID
+    description: ID of the variant connected to the experience.
+
+  variant_created_at:
+    description: Creation Timestamp of the variant connected to the experience.
+
+  variant_name:
+    description: Name of the variant connected to the experience.
+
+  variant_status:
+    description: Status of the variant connected to the experience.
+
+  variant_discount_type:
+    description: Discount type of the variant connected to the experience.
+
+  variant_discount_value:
+    description: Discount value of the variant connected to the experience.
+
+  tour_id:
+    format: ID
+    description: ID of the tour connected to the experience.
+
+  tour_priority:
+    description: Priority of the tour connected to the experience.
+
+  variant_language_content_data:
+    description: Language specific data of the variant connected to the experience.
+
+  variant_language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  variant_language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  variant_language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  variant_language_content_data_language_code:
+    sql: language_code
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  variant_language_content_data_language_name:
+    sql: language_name
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  variant_language_content_data_variant_description:
+    sql: variant_description
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  variant_language_content_data_variant_info:
+    sql: variant_info
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  variant_language_content_data_variant_name:
+    sql: variant_name
+    nested_on_field: variant_language_content_data
+    parent_field: variant_language_content_data
+
+  tour_created_at:
+    description: Creation Timestamp of the tour connected to the experience.
+
+  tour_name:
+    description: Name of the tour connected to the experience.
+
+  tour_release_period_minutes:
+    description: Release Period of the tour connected to the experience in minutes.
+
+  tour_status:
+    description: Status of the tour connected to the experience.
+
+  tour_inventory_type:
+    description: Inventory of the tour connected to the experience.
+
+  tour_date_type:
+    description: Date Type of the tour connected to the experience.
+
+  tour_language_content_data:
+    description: Language Specific data of the tour connected to the experience.
+
+  tour_language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: tour_language_content_data
+    parent_field: tour_language_content_data
+
+  tour_language_content_data_language_code:
+    sql: language_code
+    nested_on_field: tour_language_content_data
+    parent_field: tour_language_content_data
+
+  tour_language_content_data_language_name:
+    sql: language_name
+    nested_on_field: tour_language_content_data
+    parent_field: tour_language_content_data
+
+  tour_language_content_data_tour_name:
+    sql: tour_name
+    nested_on_field: tour_language_content_data
+    parent_field: tour_language_content_data
+
+  vendor_tour_id:
+    format: ID
+    description: ID of the vendor tour connected to the experience.
+
+  vendor_id:
+    format: ID
+    description: ID of the vendor connected to the experience.
+
+  is_inventory_automated:
+    description: Boolean to check if the inventory is automated for the vendor tour
+      connected to the experience.
+
+  name_in_vendor_site:
+    description: Name of the experience in vendor site.
+
+  is_booking_automated:
+    description: Boolean to check about booking automation for the vendor tour
+      connected to the experience.
+
+  is_reschedulable:
+    description: Boolean to check about reschedule for the vendor tour connected to
+      the experience.
+
+  is_strict_allotment:
+    description: Boolean to check about strict allotment for the vendor tour
+      connected to the experience.
+
+  reschedulable_up_to:
+    description: Reschedule timeline for the vendor tour connected to the experience.
+
+  is_cancellable:
+    description: Boolean to check about cancellation for the vendor tour connected
+      to the experience.
+
+  cancellable_up_to:
+    description: Cancellation timeline for the vendor tour connected to the experience.
+
+  release_period_minutes:
+    description: Release Period of the vendor tour connected to the experience in minutes.
+
+  priority:
+    description: Priority of the vendor tour connected to the experience.
+
+  important_instructions:
+    description: Important Instructions of the vendor tour connected to the experience.
+
+  fulfillment_type:
+    description: Fulfillment Type of the vendor tour connected to the experience.
+
+  ticket_validity_type:
+    description: Ticket Validity Type of the vendor tour connected to the experience.
+
+  ticket_validity_date_at:
+    description: Ticket Validity Date of the vendor tour connected to the experience.
+
+  ticket_validity_until_days_from_purchase:
+    description: Ticket Validity from day of purchase of the vendor tour connected
+      to the experience.
+
+  resolution_time_unit:
+    description: Unit of the resolution time of the vendor tour connected to the experience.
+
+  resolution_time:
+    description: Resolution time of the vendor tour connected to the experience.
+
+  ticket_delivery:
+    description: Ticket Delivery Method of the vendor tour connected to the experience.
+
+  ticket_redemption_method:
+    description: Ticket Redemption Method of the vendor tour connected to the experience.
+
+  vendor_website_link:
+    description: Website link of the vendor
+
+  vendor_tour_language_content_data:
+    description: Language specific data of the vendor tour.
+
+  vendor_tour_language_content_data_callout_instructions:
+    sql: callout_instructions
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_tour_language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_tour_language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_tour_language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_tour_language_content_data_language_code:
+    sql: language_code
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_tour_language_content_data_language_name:
+    sql: language_name
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_tour_language_content_data_pax_selection_instructions:
+    sql: pax_selection_instructions
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_tour_language_content_data_redemption_instructions:
+    sql: redemption_instructions
+    nested_on_field: vendor_tour_language_content_data
+    parent_field: vendor_tour_language_content_data
+
+  vendor_created_at:
+    description: Creation timestamp of the vendor.
+
+  vendor_name:
+    description: Name of the vendor.
+
+  vendor_city:
+    description: City of the vendor, where it is headquartered.
+
+  country_iso2_code:
+    description: ISO2 code of the country where vendor is located.
+
+  vendor_country:
+    description: Name of the country where vendor is located.
+
+  payment_method:
+    description: Payment Method of the vendor.
+
+  payment_basis:
+    description: Basis on which the vendor is paid, can be date of booking or date
+      of experience.
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: Billing Entity ID of the vendor.
+
+  rms_id:
+    format: ID
+
+  rms_account_id:
+    format: ID
+
+  is_active:
+    description: Boolean to check if the vendor is active or not.
+
+  next_available_date:
+    description: Minimum date at which the experience would be next available.
+
+  last_available_date:
+    description: Maximum date at which the experience would be last available.
+
+  experience_is_active:
+    description: Boolean to check if the experience is active or not.
+
+  experience_is_available_7d:
+    description: Boolean to check for next 7 days availability of the experience.
+
+  experience_is_available_30d:
+    description: Boolean to check for next 30 days availability of the experience.
+
+  experience_next_available_date:
+    description: Minimum date at which the experience would be next available.
+
+  collection_is_active:
+    description: Boolean to check if the collection is active or not.
+
+  collection_is_available_7d:
+    description: Boolean to check for next 7 days availability of the collection.
+
+  collection_is_available_30d:
+    description: Boolean to check for next 30 days availability of the collection.
+
+  collection_next_available_date:
+    description: Minimum date at which the collection would be next available.
+
+  product_descriptors_descriptor_code:
+    sql: descriptor_code
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  product_descriptors_descriptor_id:
+    sql: descriptor_id
+    format: ID
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  product_descriptors_descriptor_name:
+    sql: descriptor_name
+    nested_on_field: product_descriptors
+    parent_field: product_descriptors
+
+  image_urls:
+    description: URLs of the experience images.
+
+  count_images:
+    description: Count of the experience images.
+
+  experience_promos_active_days:
+    sql: active_days
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_is_active:
+    sql: is_active
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_offset_days:
+    sql: offset_days
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_code:
+    sql: promo_code
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_discount_value:
+    sql: promo_discount_value
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_id:
+    sql: promo_id
+    format: ID
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_location:
+    sql: promo_location
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  experience_promos_promo_type:
+    sql: promo_type
+    nested_on_field: experience_promos
+    parent_field: experience_promos
+
+  poi_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

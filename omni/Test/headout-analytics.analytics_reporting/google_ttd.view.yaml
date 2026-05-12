@@ -1,0 +1,46 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ttd
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ttd
+
+dimensions:
+  surrogate_key: {}
+  last_extracted_date: {}
+  collection_name: {}
+  collection_region: {}
+  collection_country: {}
+  collection_city: {}
+  correct_tgid: {}
+  ttd_kw: {}
+  poi_url: {}
+  company_name: {}
+  is_official_site: {}
+  status: {}
+  rank: {}
+  experience_name: {}
+  product_url: {}
+  sub_rank: {}
+  price_in_euros: {}
+  default_currency: {}
+  local_currency: {}
+  conversion_rate: {}
+  is_general_admissions: {}
+
+  collection_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  ticket_type:
+    parent_field: ticket_type
+
+  ticket_type_category:
+    sql: ticket_type.category
+    parent_field: ticket_type
+
+measures:
+  count:
+    aggregate_type: count

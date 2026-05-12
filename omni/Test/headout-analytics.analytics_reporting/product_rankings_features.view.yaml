@@ -1,0 +1,30 @@
+# Reference this view as headout_analytics_analytics_reporting__product_rankings_features
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: product_rankings_features
+
+dimensions:
+  event_date: {}
+  lev_score: {}
+  days_to_first_available_date: {}
+  count_days_available_30d: {}
+  original_price_usd: {}
+  final_price_usd: {}
+  is_combo: {}
+  count_ratings: {}
+  average_rating: {}
+  revenue_contribution_last30day: {}
+  selects_contribution_last30day: {}
+  checkouts_contribution_last30day: {}
+  orders_contribution_last30day: {}
+  query_date: {}
+
+  query_id:
+    format: ID
+
+  product_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

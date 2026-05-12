@@ -1,0 +1,117 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_tours
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_tours
+
+dimensions:
+  tour_id:
+    format: ID
+    description: Primary key - unique identifier for each tour on Headout
+
+  created_at:
+    description: Timestamp (UTC) when the tour was created
+
+  tour_name:
+    description: Name of the tour, sourced from tour_content if available, otherwise
+      fallback from tour table
+
+  tour_status:
+    description: Current status of the tour (e.g., Active, Inactive, Pending Review)
+
+  experience_id:
+    format: ID
+    description: Foreign key referencing the experience (tour_group) this tour belongs to
+
+  experience_name:
+    description: Name of the parent experience this tour belongs to
+
+  city:
+    description: Primary city where the experience takes place
+
+  country:
+    description: Country where the experience takes place
+
+  continent:
+    description: Continent where the experience takes place
+
+  inventory_type:
+    description: Type of inventory management (e.g., FIXED_START_FIXED_DURATION,
+      FLEXIBLE_START_FIXED_DURATION)
+
+  duration_minutes:
+    description: Duration of the tour in minutes
+
+  min_pax:
+    description: Minimum number of passengers required for the tour to operate
+
+  max_pax:
+    description: Maximum number of passengers allowed per booking or tour slot
+
+  is_private_tour:
+    description: Boolean indicating whether this is a private tour (exclusive booking)
+
+  experience_date_type:
+    description: "Type of experience date selection. Values: FIXED_DATE (specific
+      date required), FLEXIBLE_DATE (date range allowed), RANGE (multi-day
+      experiences)"
+
+  tags:
+    description: "Array of tag strings assigned to the tour for categorization and
+      filtering. Examples: SFX-TICKETS, SCHEDULE-180-DAYS,
+      SAFETY_SOCIAL_DISTANCING, FEATURED"
+
+  extra_charges:
+    description: Array of structs containing extra charges applied to the tour. Each
+      struct has extra_charge_code (e.g., CONVENIENCE_FEE, TAX), charge_type
+      (PERCENTAGE or ABSOLUTE), and charge_value
+
+  extra_charges_charge_type:
+    sql: charge_type
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  extra_charges_charge_value:
+    sql: charge_value
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  extra_charges_extra_charge_code:
+    sql: extra_charge_code
+    nested_on_field: extra_charges
+    parent_field: extra_charges
+
+  language_content_data:
+    description: Array of structs containing localized content for the tour. Each
+      struct includes language_code, language name, and localized tour_name
+
+  language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_code:
+    sql: language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_name:
+    sql: language_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_tour_name:
+    sql: tour_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  holiday_dates:
+    description: Array of future holiday dates when this tour is not operational,
+      sorted in ascending order. Only includes dates from today onwards (past
+      holidays are excluded). NULL if no future holidays are configured for the
+      tour.
+
+measures:
+  count:
+    aggregate_type: count

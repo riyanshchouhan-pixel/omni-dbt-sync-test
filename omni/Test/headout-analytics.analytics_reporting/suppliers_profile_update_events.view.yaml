@@ -1,0 +1,47 @@
+# Reference this view as headout_analytics_analytics_reporting__suppliers_profile_update_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: suppliers_profile_update_events
+
+dimensions:
+  user_email: {}
+
+  event_id:
+    format: ID
+    description: Event ID of the event generated from the profile changes on suppliers.
+
+  updated_at:
+    description: ts (utc) at which the event took place
+
+  comment:
+    description: comment left by the user making the update
+
+  ticket_id:
+    format: ID
+
+  updated_field:
+    description: Field updated by the user on Suppliers for the given tour profile.
+
+  tour_id:
+    format: ID
+    description: tour id of the tour for which the suppliers profile was updated
+
+  vendor_id:
+    format: ID
+    description: id of the vendor who's suppliers profile updated
+
+  tour_profile_id:
+    format: ID
+    description: tour profile id for which the suppliers profile was updated
+
+  value_after:
+    description: Field value after the update
+
+  value_before:
+    description: Field value before the update
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,142 @@
+# Reference this view as headout_analytics_analytics_reporting__mixpanel_user_funnel
+description: This model tracks user activity across various funnel stages,
+  capturing key events and attributes for analysis.
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: mixpanel_user_funnel
+
+dimensions:
+  experience_name: {}
+
+  event_date:
+    description: The date when the event was triggered.
+
+  funnel_level:
+    description: Identifies if the funnel is at the collection level or TGID level.
+      TGID funnel starts from the select page view.
+
+  combined_entity_id:
+    format: ID
+    description: Represents the combined entity ID for respective funnel CTEs where
+      event activities occur.
+
+  experience_id:
+    format: ID
+    description: Represents the experience ID for respective funnel CTEs where event
+      activities occur.
+
+  user_id:
+    format: ID
+    description: A distinct device identifier, referred to as user_id.
+
+  channel_name:
+    description: The first channel of the day through which the user started their journey.
+
+  advertising_channel_type:
+    description: Specifies sub-channels of Google Ads and Bing Ads, such as PAMX,
+      Discovery, etc.
+
+  campaign_id:
+    format: ID
+    description: Campaign ID from which the user has come to the current page.
+
+  refined_language:
+    description: Language from which the user is browsing.
+
+  refined_page_url:
+    description: Page url of each event.
+
+  previous_page_url:
+    description: Previous page url of each event.
+
+  page_type:
+    description: Page type of the respective page viewed by the user.
+
+  page_sub_type:
+    description: subtype of the respective page viewed by the user.
+
+  refined_device:
+    description: Device used by the user.
+
+  search_engine:
+    description: Search engine used by the user.
+
+  browser:
+    description: Browser used by the user.
+
+  browsing_city:
+    description: City from which the user is browsing.
+
+  browsing_country:
+    description: Country from which the user is browsing.
+
+  currency:
+    description: Currency from which the user is browsing.
+
+  channel_id:
+    format: ID
+    description: Marketing channel ID from which the user has come to the current page.
+
+  experiment_name:
+    description: Name of the experiment associated with the event.
+
+  experiment_variant:
+    description: Variant of the experiment associated with the event.
+
+  combined_entity_name:
+    description: Name of the combined entity associated with the event.
+
+  experience_city:
+    description: City associated with the event.
+
+  experience_country:
+    description: Country associated with the event.
+
+  experience_region:
+    description: Region associated with the event.
+
+  experience_business_market:
+    description: Business market associated with the event.
+
+  experience_business_region:
+    description: Business region associated with the event.
+
+  geo_non_geo:
+    description: Indicates whether the browsing location and experience location are
+      the same (Geo) or different (Non-Geo).
+
+  has_mb_collection_page_viewed:
+    description: Indicates if the user has visited a microbrand collection page.
+
+  has_mb_content_page_viewed:
+    description: Indicates if the user has visited a microbrand content page.
+
+  has_ho_experience_page_viewed:
+    description: Indicates if the user has visited a Headout experience page.
+
+  has_ho_collection_page_viewed:
+    description: Indicates if the user has visited a Headout collection page.
+
+  has_either_ho_mb_page_viewed:
+    description: Indicates if the user has visited any Headout or microbrand page
+      (collection or content).
+
+  has_select_page_viewed:
+    description: Indicates if the user has clicked on "Check Availability."
+
+  has_checkout_started:
+    description: Indicates if the user has initiated the checkout process.
+
+  has_order_attempted:
+    description: Indicates if the user has attempted to place an order.
+
+  has_order_completed:
+    description: Indicates if the user has completed an order.
+
+  has_order_confirmation_page_viewed:
+    description: Indicates if the user has viewed the order confirmation page.
+
+measures:
+  count:
+    aggregate_type: count

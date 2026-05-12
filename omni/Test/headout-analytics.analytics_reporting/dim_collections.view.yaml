@@ -1,0 +1,256 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_collections
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_collections
+
+dimensions:
+  is_no_index: {}
+
+  collection_id:
+    format: ID
+    description: Unique identifier for each collection on Headout
+
+  created_at:
+    description: Timestamp (UTC) when the collection was first created in the system
+
+  collection_name:
+    description: Name of the collection in English, sourced from collection content
+      or base table
+
+  alternate_collection_name:
+    description: Alternate display name of the collection in English, used as a
+      fallback display option
+
+  primary_sub_category_id:
+    format: ID
+    description: Foreign key to the primary sub-category this collection belongs to
+
+  primary_sub_category_name:
+    description: Name of the primary sub-category, denormalized from
+      dim_sub_categories for convenience
+
+  primary_category_id:
+    format: ID
+    description: Foreign key to the primary category this collection belongs to,
+      denormalized from sub_category
+
+  primary_category_name:
+    description: Name of the primary category, denormalized from dim_sub_categories
+      for convenience
+
+  parent_collection_id:
+    format: ID
+    description: Foreign key to the parent collection in the hierarchy.
+      Self-references to collection_id if no parent exists (top-level
+      collection).
+
+  collection_rank:
+    description: Numeric rank determining the display order of this collection
+      relative to other collections
+
+  card_image_url:
+    description: URL of the card image used to represent this collection in grid/list views
+
+  collection_city:
+    description: Primary city associated with the collection, properly formatted
+      with title case
+
+  is_active:
+    description: Boolean flag indicating whether the collection is currently active
+      and available for display
+
+  is_semantic_collection:
+    description: Boolean flag indicating whether this is a semantic/keyword-driven
+      collection (collection_type = 'KEYWORD_DRIVEN'). These collections use
+      semantic embeddings to automatically map products.
+
+  semantic_query:
+    description: Keyword query string used for semantic embedding matching to
+      automatically map products. Only populated for semantic collections
+      (is_semantic_collection = true).
+
+  url_slug:
+    description: URL-friendly slug used in the collection's page URL
+
+  is_hidden:
+    description: Boolean flag indicating whether the collection is hidden from
+      public view on the platform
+
+  long_form_description:
+    description: Detailed long-form description text for the collection, displayed
+      on collection pages
+
+  template_type:
+    description: Template identifier determining how the collection page should be
+      rendered (e.g., standard, POI-based, city-based)
+
+  poi_id:
+    format: ID
+    description: Foreign key to the point of interest (POI) if this collection is
+      associated with a specific landmark or location
+
+  poi_name:
+    description: Name of the point of interest associated with this collection
+      (e.g., 'Eiffel Tower', 'Louvre Museum')
+
+  poi_latitude:
+    description: Geographic latitude coordinate of the associated POI, used for
+      mapping and location-based features
+
+  poi_longitude:
+    description: Geographic longitude coordinate of the associated POI, used for
+      mapping and location-based features
+
+  tour_groups:
+    description: Array of structs with experience_id (as tour_group_id) and
+      tour_group_rank for backward compatibility with downstream models
+
+  tour_groups_tour_group_id:
+    sql: tour_group_id
+    format: ID
+    nested_on_field: tour_groups
+    parent_field: tour_groups
+
+  tour_groups_tour_group_rank:
+    sql: tour_group_rank
+    nested_on_field: tour_groups
+    parent_field: tour_groups
+
+  experiences:
+    description: Array of structs containing experience_id and rank, representing
+      all experiences mapped to this collection ordered by rank
+
+  experiences_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: experiences
+    parent_field: experiences
+
+  experiences_rank:
+    sql: rank
+    nested_on_field: experiences
+    parent_field: experiences
+
+  mapped_cities:
+    description: Array of distinct city names (primary and secondary) mapped to this
+      collection for multi-city collections
+
+  language_content_data:
+    description: Array of structs containing localized content across different
+      languages. Each struct includes collection_language_code,
+      collection_language, collection_content_is_valid, collection_name, title,
+      subtext, long_form_description, collection_meta_description, and
+      collection_heading.
+
+  language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_display_name:
+    sql: display_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_heading:
+    sql: heading
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_code:
+    sql: language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_name:
+    sql: language_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_long_form_description:
+    sql: long_form_description
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_meta_description:
+    sql: meta_description
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_subtext:
+    sql: subtext
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_title:
+    sql: title
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  descendant_collections:
+    description: Array of structs containing collection_id, collection_name, level,
+      and path for all descendant (child) collections in the hierarchy. Ordered
+      by relationship level (direct children first).
+
+  descendant_collections_collection_id:
+    sql: collection_id
+    format: ID
+    nested_on_field: descendant_collections
+    parent_field: descendant_collections
+
+  descendant_collections_collection_name:
+    sql: collection_name
+    nested_on_field: descendant_collections
+    parent_field: descendant_collections
+
+  descendant_collections_level:
+    sql: level
+    nested_on_field: descendant_collections
+    parent_field: descendant_collections
+
+  descendant_collections_path:
+    sql: path
+    nested_on_field: descendant_collections
+    parent_field: descendant_collections
+
+  ancestor_collections:
+    description: Array of structs containing collection_id, collection_name, level,
+      and path for all ancestor (parent) collections in the hierarchy. Ordered
+      by relationship level descending (immediate parent first).
+
+  ancestor_collections_collection_id:
+    sql: collection_id
+    format: ID
+    nested_on_field: ancestor_collections
+    parent_field: ancestor_collections
+
+  ancestor_collections_collection_name:
+    sql: collection_name
+    nested_on_field: ancestor_collections
+    parent_field: ancestor_collections
+
+  ancestor_collections_level:
+    sql: level
+    nested_on_field: ancestor_collections
+    parent_field: ancestor_collections
+
+  ancestor_collections_path:
+    sql: path
+    nested_on_field: ancestor_collections
+    parent_field: ancestor_collections
+
+measures:
+  count:
+    aggregate_type: count

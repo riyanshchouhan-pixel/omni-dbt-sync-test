@@ -1,0 +1,63 @@
+# Reference this view as headout_analytics_analytics_reporting__live_inventory_check
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: live_inventory_check
+
+dimensions:
+  api_name: {}
+  customer_email: {}
+  inventory_check_status: {}
+  creation_date: {}
+  inventory_check_timestamp: {}
+  experience_name: {}
+  vendor_name: {}
+  inventory_timestamp: {}
+  inventory_date: {}
+  inventory_time: {}
+  number_of_guests: {}
+  number_of_guests_customer_charged_for: {}
+  guests: {}
+
+  surrogate_key:
+    description: surrogate primary key built by combining inventory_check_id,
+      itinerary_id, booking_id
+
+  booking_id:
+    format: ID
+
+  itinerary_id:
+    format: ID
+
+  inventory_check_id:
+    format: ID
+    description: identifier for the live inventory check
+
+  vendor_id:
+    format: ID
+
+  tour_id:
+    format: ID
+
+  tour_group_id:
+    format: ID
+
+  guests_guest_type:
+    sql: guest_type
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_number_of_guests:
+    sql: number_of_guests
+    nested_on_field: guests
+    parent_field: guests
+
+  guests_price_per_guest:
+    sql: price_per_guest
+    nested_on_field: guests
+    parent_field: guests
+
+measures:
+  count:
+    aggregate_type: count

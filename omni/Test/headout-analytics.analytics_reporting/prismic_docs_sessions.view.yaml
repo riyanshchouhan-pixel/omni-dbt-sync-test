@@ -1,0 +1,202 @@
+# Reference this view as headout_analytics_analytics_reporting__prismic_docs_sessions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: prismic_docs_sessions
+
+dimensions:
+  has_longform: {}
+  first_tgid: {}
+  tgid_arr: {}
+  canonical_link: {}
+  has_noindex: {}
+  has_nofollow: {}
+  has_amp: {}
+  has_breadcrumbs: {}
+  has_shoulder_page_tickets: {}
+  has_primary_footer: {}
+  has_secondary_footer: {}
+  has_accordions_as_faq_and_schema: {}
+  attraction_name: {}
+  tags: {}
+  main_h1_headings: {}
+  content_framework_h1_headings: {}
+  breadcrumbs_l1_text: {}
+  breadcrumbs_l1_url: {}
+  breadcrumbs_l2_text: {}
+  breadcrumbs_l2_url: {}
+  breadcrumbs_l3_text: {}
+  breadcrumbs_l3_url: {}
+  breadcrumbs_l4_text: {}
+  breadcrumbs_l4_url: {}
+  parent_domain: {}
+  first_publication_at: {}
+  last_publication_at: {}
+  redirect_type: {}
+  mb_type: {}
+  focus_keyword: {}
+  author_name: {}
+  content_type: {}
+  shoulder_page_type: {}
+  header_logo_url: {}
+  header_logo_redirect_url: {}
+  favicon_url: {}
+  layout: {}
+  banner_subtext: {}
+  footer_logo_url: {}
+  footer_disclaimer: {}
+  microsite_doc_footer_disclaimer: {}
+  meta_image_url: {}
+  is_freelancer: {}
+  meta_title_override: {}
+  meta_description_override: {}
+  root_domain: {}
+  redirect_url: {}
+  raw_prismic_page_url: {}
+  lfc_published_at: {}
+  custom_banner_subtext: {}
+  footer_subtext: {}
+  custom_footer_disclaimer: {}
+  is_poi_mb: {}
+  disclaimer_type: {}
+  primary_tag: {}
+  shoulder_page_custom_label: {}
+  misc_page_mapping: {}
+  category_heading_override: {}
+  category_subtext_override: {}
+  is_entertainment_mb: {}
+  product_card_common_ranks: {}
+  product_card_common_exclusions: {}
+  product_card_experience_limit: {}
+  unavailable_tgids: {}
+  is_active_collection: {}
+
+  country:
+    description: name of the destination country
+
+  linked_content_framework_id:
+    format: ID
+    description: ID for each content framework document
+
+  sub_category_id:
+    format: ID
+    description: unique id for each sub category on Headout
+
+  language:
+    description: language of the MB site
+
+  category_id:
+    format: ID
+    description: unique id for each category on Headout
+
+  collection_id:
+    format: ID
+    description: unique id for each collection on Headout
+
+  mb_page_url:
+    description: url of the MB site
+
+  product_cards_id:
+    format: ID
+
+  id:
+    format: ID
+    description: ID assigned to each page on prismic
+    primary_key: true
+
+  document_type:
+    description: grouping MB to one of the following document type Microsite/
+      Content Page/ Show Page/ Global Homepage/ Global City/ Global Country/
+      Global Collection/ Global Experience/ Product Cards
+
+  title:
+    description: title assigned
+
+  description:
+    description: description accompanied with the MB
+
+  tgids:
+    description: tour group id of the MB
+
+  count_experiences_on_page:
+    description: number of experiences/tgids related to the MB page
+
+  available_languages:
+    description: available languages for the MB
+
+  headout_page_id:
+    format: ID
+    description: unique id for each page on Headout
+
+  headout_page_type:
+    description: Headout page type
+
+  structure:
+    description: url structure, possible values are Root Domain, Subdomain,
+      Subfolder, Subfolder on Subdomain
+
+  page_type:
+    description: type of page landing or shoulder page
+
+  updated_at:
+    description: timestamp (utc) at which the booking was last updated
+
+  google_site_verification_id:
+    format: ID
+    description: id to find MBs that are not being tracked
+
+  bing_site_verification_id:
+    format: ID
+
+  product_card_sub_category_id:
+    format: ID
+
+  product_card_collection_id:
+    format: ID
+
+  collection_name:
+    description: name of the collection of the MB
+
+  category_name:
+    description: name of the primary category of the MB
+
+  sub_category_name:
+    description: name of the sub-category
+
+  content_framework_tags:
+    description: tags of content framework document
+
+  content_framework_first_publication_date:
+    description: first pulication date of content framework document
+
+  content_framework_last_publication_date:
+    description: last pulication date of content framework document
+
+  content_framework_language:
+    description: language of the content framework document
+
+  content_framework_available_languages:
+    description: available languages for the content framework document
+
+  prismic_preview_title:
+    description: preview title
+
+  uid:
+    description: unique identifier for the record
+
+  city:
+    description: name of the destination city
+
+  region:
+    description: name of the region the country belongs to
+
+  ho_url:
+    description: url of the headout site
+
+  page_url:
+    description: url of the headout and MB sites
+
+measures:
+  count:
+    aggregate_type: count

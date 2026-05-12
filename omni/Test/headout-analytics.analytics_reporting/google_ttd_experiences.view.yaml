@@ -1,0 +1,63 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ttd_experiences
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ttd_experiences
+
+dimensions:
+  collection_region: {}
+  collection_country: {}
+  collection_city: {}
+  experience_name: {}
+  price_in_euros: {}
+  experience_rating: {}
+  experience_reviews: {}
+  default_currency: {}
+  local_currency: {}
+  conversion_rate: {}
+
+  surrogate_key:
+    description: surrogate primary key built by combining last_extracted_date,
+      ttd_kw, collection_id, rank
+
+  last_extracted_date:
+    description: date (utc) on which this row was extracted
+
+  collection_id:
+    format: ID
+    description: Headout collection id of the given POI KW
+
+  collection_name:
+    description: Headout collection name of the given POI KW
+
+  experience_id:
+    format: ID
+
+  correct_tgid:
+    description: Headout TGID that is expected to be part of the admissions result
+
+  ttd_kw:
+    description: Things to Do Keyword that is used for google search results
+
+  gmap_url:
+    description: Google map search URL used to fetch the TTD experiences results
+
+  company_name:
+    description: Name of the company that appears on google search results in
+      Admissions section
+
+  status:
+    description: status of the POI No TTD module, Free, Restricted, Not restricted,
+      Not available
+
+  rank:
+    description: Rank of the company that appeared on the Admissions section of the
+      google search results
+
+  product_url:
+    description: URL of the products listed
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,114 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_ad_group_age_range_performance
+description: |
+  **Business Purpose:** Age range demographic performance enriched with campaign and ad group dimensions. Each row represents one ad group x age range x date x device x ad network combination with campaign context. Combines basic stats (impressions, clicks, spend) with per-conversion-action breakdowns and campaign/ad group metadata. Powers demographic bid adjustment dashboards and age-based audience optimization analysis.
+  **Refresh Cadence:** Daily.
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_ad_group_age_range_performance
+
+dimensions:
+  campaign_language: {}
+  campaign_targeting_location: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  ad_group_status: {}
+  count_all_conversions: {}
+  sum_conversions_value: {}
+  sum_all_conversions_value: {}
+  count_cross_device_conversions: {}
+  count_view_through_conversions: {}
+
+  surrogate_key:
+    description: Surrogate primary key from the age range stats staging model.
+
+  customer_id:
+    format: ID
+    description: Google Ads customer (account) ID.
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign.
+
+  ad_group_id:
+    format: ID
+    description: Unique identifier for the ad group.
+
+  age_range:
+    description: "Age range bucket: 18-24, 25-34, 35-44, 45-54, 55-64, 65+, or
+      Undetermined."
+
+  report_date:
+    description: Date of the performance report.
+
+  device:
+    description: "Device type: MOBILE, DESKTOP, TABLET, CONNECTED_TV."
+
+  ad_network_type:
+    description: "Ad network: SEARCH, SEARCH_PARTNERS, CONTENT, YOUTUBE, MIXED."
+
+  account_name:
+    description: Name of the Google Ads account.
+
+  campaign_name:
+    description: Current name of the campaign.
+
+  campaign_city:
+    description: City extracted from the campaign name.
+
+  campaign_category:
+    description: Category extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  ad_group_name:
+    description: Name of the ad group.
+
+  ad_group_target_cpa:
+    description: Target cost per acquisition set at the ad group level.
+
+  ad_group_target_roas:
+    description: Target return on ad spend set at the ad group level.
+
+  count_impressions:
+    description: Number of ad impressions.
+
+  count_clicks:
+    description: Number of ad clicks.
+
+  sum_spend:
+    description: Total spend in USD.
+
+  count_conversions:
+    description: Number of primary (biddable) conversions.
+
+  count_conversions_online:
+    description: Number of online conversions tracked via Tag Manager, iOS, and
+      Android. Defaults to 0.
+
+  sum_conversion_value_online:
+    description: Total value of online conversions in USD. Defaults to 0.
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline gross bookings conversions. Defaults to 0.
+
+  sum_conversion_value_offline_gross_bookings:
+    description: Total value of offline gross bookings conversions in USD. Defaults to 0.
+
+  count_conversions_offline_revenue:
+    description: Number of offline revenue conversions. Defaults to 0.
+
+  sum_conversion_value_offline_revenue:
+    description: Total value of offline revenue conversions in USD. Defaults to 0.
+
+  count_conversions_offline_contribution_margin:
+    description: Number of offline contribution margin conversions. Defaults to 0.
+
+  sum_conversion_value_offline_contribution_margin:
+    description: Total value of offline contribution margin conversions in USD.
+      Defaults to 0.
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,64 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_meta_recon
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_meta_recon
+
+dimensions:
+  created_at: {}
+  experience_date: {}
+  city: {}
+  vendor_name: {}
+  payment_method: {}
+  payment_basis: {}
+  processing_currency: {}
+  conversion_rate_to_usd: {}
+  value_usd: {}
+  value_local: {}
+  price_net_local: {}
+  price_net_usd: {}
+  booking_status: {}
+  completion_type: {}
+  reconciled_price_net: {}
+  reconciled_count: {}
+  recon_date: {}
+  reconciliation_data: {}
+
+  booking_id:
+    format: ID
+
+  billing_entity_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+  reconciliation_data_created_date:
+    sql: created_date
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_net_price_previous:
+    sql: net_price_previous
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_net_price_updated:
+    sql: net_price_updated
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_recon_month:
+    sql: recon_month
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+  reconciliation_data_recon_type:
+    sql: recon_type
+    nested_on_field: reconciliation_data
+    parent_field: reconciliation_data
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,373 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_vendor_tours
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_vendor_tours
+
+dimensions:
+  option_addresses: {}
+  has_late_arrival_policy: {}
+  is_photo_id_required: {}
+  redemption_type: {}
+  redemption_additional_info: {}
+
+  vendor_tour_id:
+    format: ID
+    description: Unique identifier for the vendor tour
+
+  vendor_id:
+    format: ID
+    description: Foreign key to the vendor table
+
+  tour_id:
+    format: ID
+    description: Foreign key to the tour table
+
+  created_at:
+    description: Timestamp (UTC) when the vendor tour was created
+
+  updated_at:
+    description: Timestamp (UTC) when the vendor tour was last modified
+
+  name_in_vendor_site:
+    description: Name of the product as it appears on the vendor's website
+
+  code_in_vendor_site:
+    description: Product code used by the vendor
+
+  priority:
+    description: Priority ranking for vendor selection when multiple vendors can fulfill
+
+  is_inventory_automated:
+    description: Boolean indicating whether inventory sync is automated
+
+  is_inventory_schedule_automated:
+    description: Boolean indicating whether inventory schedule updates are automated
+
+  is_inventory_schedule_fill_automated:
+    description: Boolean indicating whether inventory schedule filling is automated
+
+  is_booking_automated:
+    description: Boolean indicating whether booking fulfillment is automated
+
+  has_two_step_fulfillment:
+    description: Boolean indicating whether fulfillment requires two steps
+
+  has_hub_managed_schedules:
+    description: Boolean indicating whether schedules are managed by hub
+
+  is_ri_hub_managed:
+    description: Boolean indicating whether RI is hub managed
+
+  vendor_website_link:
+    description: URL to the vendor's product page
+
+  on_ground_contact:
+    description: Contact information for on-ground support
+
+  on_ground_team_id:
+    format: ID
+    description: Foreign key to the on-ground team
+
+  fulfillment_type:
+    description: Type of fulfillment (e.g., Freesale, Vendor Request, Pre Purchase)
+
+  fulfilment_process:
+    description: Process used for fulfillment
+
+  release_period:
+    description: Time before experience when tickets are released (in minutes)
+
+  booking_window_period:
+    description: Booking window period configuration
+
+  is_pickup_available:
+    description: Boolean indicating whether pickup service is available
+
+  is_marked_up:
+    description: Boolean indicating whether prices include markup
+
+  machine_code_type:
+    description: Type of machine code used for ticket validation
+
+  pricing_base:
+    description: Base pricing model used
+
+  price_type_override:
+    description: Override for price type
+
+  commission:
+    description: Commission percentage or amount
+
+  important_instructions:
+    description: Important instructions for guests
+
+  cancellation_policy:
+    description: Cancellation policy description
+
+  is_cancellable:
+    description: Boolean indicating whether bookings can be cancelled
+
+  cancellable_up_to:
+    description: Time window before experience when cancellation is allowed
+
+  is_reschedulable:
+    description: Boolean indicating whether bookings can be rescheduled
+
+  reschedulable_up_to:
+    description: Time window before experience when rescheduling is allowed
+
+  is_strict_allotment:
+    description: Boolean indicating strict allotment policy
+
+  ticket_redemption_method:
+    description: Method for redeeming tickets
+
+  is_voucher_expiry_hidden:
+    description: Boolean indicating whether voucher expiry is hidden from guests
+
+  comments:
+    description: Internal comments about the vendor tour
+
+  meeting_point_latitude:
+    description: Latitude of the meeting point
+
+  meeting_point_longitude:
+    description: Longitude of the meeting point
+
+  meeting_point_address:
+    description: Address of the meeting point
+
+  start_time_buffer:
+    description: Buffer time before experience start
+
+  ticket_delivery:
+    description: Method of ticket delivery
+
+  resolution_time:
+    description: Expected time for issue resolution
+
+  resolution_time_unit:
+    description: Unit for resolution time (e.g., HOURS, DAYS)
+
+  ticket_validity_type:
+    description: Type of ticket validity (e.g., FIXED_DATE, OPEN_DATED)
+
+  ticket_validity_date_at:
+    description: Fixed date for ticket validity if applicable
+
+  ticket_validity_until_days_from_purchase:
+    description: Number of days ticket is valid from purchase date
+
+  receipt_email_permission:
+    description: Permission setting for receipt emails
+
+  auto_fulfilment_cutoff:
+    description: Cutoff time for automatic fulfillment
+
+  lead_time_cutoff:
+    description: Lead time cutoff configuration
+
+  eta_before_date_of_exp:
+    description: Expected time of arrival before experience date
+
+  is_live_pricing_supported:
+    description: Boolean indicating whether live pricing is supported
+
+  primary_platform_to_access_tickets:
+    description: Primary platform for ticket access
+
+  card_provider:
+    description: Card provider for physical card products
+
+  vendor_tour_content_created_at:
+    description: Timestamp (UTC) when the vendor tour content was created
+
+  language_content_data:
+    description: Array of language-specific content data for the vendor tour
+
+  language_content_data_callout_instructions:
+    sql: callout_instructions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_created_at:
+    sql: content_created_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_content_updated_at:
+    sql: content_updated_at
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_is_content_valid:
+    sql: is_content_valid
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_code:
+    sql: language_code
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_language_name:
+    sql: language_name
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_pax_selection_instructions:
+    sql: pax_selection_instructions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  language_content_data_redemption_instructions:
+    sql: redemption_instructions
+    nested_on_field: language_content_data
+    parent_field: language_content_data
+
+  user_fields_config:
+    description: |-
+      Array of user field configurations with inheritance. Each entry contains user_field_id, user_field_name,
+      user_field_type, user_field_data_type, user_field_title (English title), user_field_description
+      (English description), level, is_required, is_default, is_vendor_override (TRUE for vendor-specific
+      overrides, FALSE for tour-level defaults), and enum_options (ARRAY of user_field_enum_option_id/is_default/option_value
+      for ENUM-type fields, empty array otherwise).
+
+  user_fields_config_enum_options:
+    sql: enum_options
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_enum_options_is_default:
+    sql: is_default
+    nested_on_field: user_fields_config_enum_options
+    parent_field: user_fields_config
+
+  user_fields_config_enum_options_option_value:
+    sql: option_value
+    nested_on_field: user_fields_config_enum_options
+    parent_field: user_fields_config
+
+  user_fields_config_enum_options_user_field_enum_option_id:
+    sql: user_field_enum_option_id
+    format: ID
+    nested_on_field: user_fields_config_enum_options
+    parent_field: user_fields_config
+
+  user_fields_config_is_default:
+    sql: is_default
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_is_required:
+    sql: is_required
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_is_vendor_override:
+    sql: is_vendor_override
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_level:
+    sql: level
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_user_field_data_type:
+    sql: user_field_data_type
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_user_field_description:
+    sql: user_field_description
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_user_field_id:
+    sql: user_field_id
+    format: ID
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_user_field_name:
+    sql: user_field_name
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_user_field_title:
+    sql: user_field_title
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  user_fields_config_user_field_type:
+    sql: user_field_type
+    nested_on_field: user_fields_config
+    parent_field: user_fields_config
+
+  pax_types:
+    description: Array of pax types configured for this vendor tour. Each entry
+      contains pax_code, is_primary_pax, and pax_order.
+
+  pax_types_is_primary_pax:
+    sql: is_primary_pax
+    nested_on_field: pax_types
+    parent_field: pax_types
+
+  pax_types_pax_code:
+    sql: pax_code
+    nested_on_field: pax_types
+    parent_field: pax_types
+
+  pax_types_pax_order:
+    sql: pax_order
+    nested_on_field: pax_types
+    parent_field: pax_types
+
+  audio_guide_provider:
+    description: Name of the audio guide provider (e.g., Vox, Detour)
+
+  audio_guide_lego_slug:
+    description: Lego slug identifier for the audio guide content
+
+  is_audio_guide_active:
+    description: Boolean indicating whether the audio guide is currently active
+
+  audio_guide_config:
+    description: JSON configuration settings for the audio guide
+
+  option_addresses_address_type:
+    sql: address_type
+    nested_on_field: option_addresses
+    parent_field: option_addresses
+
+  option_addresses_full_address:
+    sql: full_address
+    nested_on_field: option_addresses
+    parent_field: option_addresses
+
+  option_addresses_google_maps_url:
+    sql: google_maps_url
+    nested_on_field: option_addresses
+    parent_field: option_addresses
+
+  option_addresses_guide_details_en:
+    sql: guide_details_en
+    nested_on_field: option_addresses
+    parent_field: option_addresses
+
+  option_addresses_latitude:
+    sql: latitude
+    nested_on_field: option_addresses
+    parent_field: option_addresses
+
+  option_addresses_longitude:
+    sql: longitude
+    nested_on_field: option_addresses
+    parent_field: option_addresses
+
+measures:
+  count:
+    aggregate_type: count

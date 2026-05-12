@@ -1,0 +1,23 @@
+# Reference this view as headout_analytics_analytics_reporting__competitors_mapped
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: competitors_mapped
+
+dimensions:
+  product_name: {}
+  country: {}
+  city: {}
+  combined_entity_name: {}
+  competitor_name: {}
+  count_reviews: {}
+  total_reviews: {}
+
+  product_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

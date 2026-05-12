@@ -1,0 +1,108 @@
+# Reference this view as headout_analytics_analytics_reporting__experience_listing_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: experience_listing_events
+
+dimensions:
+  issue_type: {}
+  supply_queue_name: {}
+
+  ticket_id:
+    format: ID
+    description: Parent Ticket ID of the requested listing on Zendesk.
+
+  focus_ce:
+    description: Focus CE ID of the product for which supply listing was requested.
+
+  ce_type:
+    description: CE Type of the product for which supply listing was requested.
+
+  experience_id:
+    format: ID
+    description: Experience ID of the requested listing.
+
+  tour_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+  event_timestamp:
+    description: Event timestamp of the workflow event of the listing process.
+
+  city:
+    description: City in which new listing is requested.
+
+  market_region:
+    description: Country of the requested listing.
+
+  pod:
+    description: Pod in which new listing is requested.
+
+  owner:
+    description: Owner of the requested listing.
+
+  category:
+    description: Category of the requested listing.
+
+  sub_category:
+    description: Sub Category of the requested listing.
+
+  combined_entity_id:
+    format: ID
+    description: Combined entity ID of the requested listing.
+
+  combined_entity_name:
+    description: Combined entity name of the requested listing.
+
+  assignee:
+    description: Assignee of the requested new listing.
+
+  priority:
+    description: Priority of the requested listing.
+
+  request_type:
+    description: External or Internal.
+
+  source:
+    description: Zendesk or Hub Workflow Sheet (Legacy System)
+
+  is_localisation_required:
+    description: Boolean to identify if the localisation is required.
+
+  is_inventory_required:
+    description: Boolean to identify if the inventory is required.
+
+  is_cancelled:
+    description: Boolean to identify if the listing is cancelled.
+
+  is_magic_listing:
+    description: Boolean indicating whether this is a magic listing.
+
+  listing_source:
+    description: Source of the listing request. Possible values are EOS, SOS, or HUB.
+
+  ce_classification:
+    description: Classification of the CE for the listing. Possible values are
+      Managed CE, Managed Lite CE, or Unmanaged CE.
+
+  event_name:
+    description: Event name of the listing process.
+
+  localisation_language:
+    description: Language of the requested listing.
+
+  experience_created_at:
+    description: Creation timestamp of the listing.
+
+  days_since_experience_created:
+    description: Days elapsed for the event since listing was created.
+
+  days_since_previous_step:
+    description: Days elapsed for the event since previous event was completed.
+
+measures:
+  count:
+    aggregate_type: count

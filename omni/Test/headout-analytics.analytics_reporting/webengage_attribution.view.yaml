@@ -1,0 +1,100 @@
+# Reference this view as headout_analytics_analytics_reporting__webengage_attribution
+description: This model has one record for each webengage event (push and email)
+  and information on any bookings attributed to those events
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: webengage_attribution
+
+dimensions:
+  cuid:
+    description: customer id from webengage, a user's email address or unique id
+      corresoonding to device
+
+  event_name:
+    description: event_name for each event
+
+  event_at:
+    description: event timestamp for each event
+
+  event_date:
+    description: event date for each event
+
+  language:
+    description: language of the event
+
+  locale:
+    description: locale for each event.
+
+  session_type:
+    description: session_type of each event.
+
+  carrier:
+    description: user's carrier for each event
+
+  model:
+    description: user's device model for each event
+
+  brand:
+    description: user's device brand for each event
+
+  device:
+    description: specific device of the user for each event
+
+  os_name:
+    description: operating system of the user for each event
+
+  tag:
+    description: campaign tag for each event
+
+  campaign_name:
+    description: campaign name for each event
+
+  channel:
+    description: channel for eache event
+
+  status:
+    description: campaign status for each event
+
+  campaign_type:
+    description: campaign type for each event
+
+  creator:
+    description: webengage user who set up each campaign
+
+  last_editor:
+    description: webengage user who last edited the campaign
+
+  created_at:
+    description: timestamp of the campaign creation
+
+  journey_id:
+    format: ID
+    description: webengage journey_id for each event
+
+  experiment_id:
+    format: ID
+    description: id for each experiment
+
+  id:
+    format: ID
+    description: unique id for each campaign variant
+    primary_key: true
+
+  has_conversion:
+    description: whether a booking can be attributed to the event (deepest latest
+      attribution)
+
+  booking_id:
+    format: ID
+    description: the booking id of a booking attributed to the event (if attributable)
+
+  gbv:
+    description: the gbv of the booking (if attributable)
+
+  net_price:
+    description: the net price of the booking (if attributable)
+
+measures:
+  count:
+    aggregate_type: count

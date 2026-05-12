@@ -1,0 +1,109 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_feverup_experiences
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_feverup_experiences
+
+dimensions:
+  extractions: {}
+
+  experience_id:
+    format: ID
+    description: unique id for each experience on feverup
+
+  experience_name:
+    description: name of the experience on feverup
+
+  category:
+    description: category of experience (not the same as primary category on Headout)
+
+  description:
+    description: description of the experience
+
+  place_id:
+    format: ID
+    description: id of the place of the experience
+
+  city:
+    description: destination city of the experience
+
+  country:
+    description: destination country of the experience
+
+  currency:
+    description: currency for the starting price of the experience
+
+  experience_url:
+    description: url of the experience on feverup
+
+  average_rating:
+    description: avg rating the experience has
+
+  ratings:
+    description: number of ratings the experience has
+
+  price:
+    description: price of the experience
+
+  surcharge_per_ticket:
+    description: surcharge levied on a ticket
+
+  surcharge_per_transaction:
+    description: surcharge levied per transaction
+
+  available_tickets:
+    description: total number of tickets available for the experience
+
+  min_num_tickets:
+    description: minimum number of tickets a user can buy for an experience
+
+  max_num_tickets:
+    description: maximum number of tickets a user can buy for an experience
+
+  last_extracted_at:
+    description: ts at which the experience was last extracted
+
+  is_hidden:
+    description: if the experience is hidden or not
+
+  extractions_average_rating:
+    sql: average_rating
+    description: average rating of the experience as of the extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_change_in_ratings:
+    sql: change_in_ratings
+    description: change in ratings for the experience since the last extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_daily_change_in_ratings:
+    sql: daily_change_in_ratings
+    description: ∆ in ratings for the experience since the last extraction,
+      normalized using the number of days since last extraction.
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_days_since_last_extraction:
+    sql: days_since_last_extraction
+    description: number of days since the experience was last extraxcted from feverup
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_extraction_date:
+    sql: extraction_date
+    description: extraction date (utc)
+    nested_on_field: extractions
+    parent_field: extractions
+
+  extractions_ratings:
+    sql: ratings
+    description: number of ratings the experience had as of the extraction date
+    nested_on_field: extractions
+    parent_field: extractions
+
+measures:
+  count:
+    aggregate_type: count

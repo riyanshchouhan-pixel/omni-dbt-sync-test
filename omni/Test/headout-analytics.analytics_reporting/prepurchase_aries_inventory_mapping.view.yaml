@@ -1,0 +1,33 @@
+# Reference this view as headout_analytics_analytics_reporting__prepurchase_aries_inventory_mapping
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: prepurchase_aries_inventory_mapping
+
+dimensions:
+  vendor_name: {}
+  experience_name: {}
+  experience_date: {}
+  experience_time: {}
+  guest_type: {}
+  is_closed: {}
+  count_remaining_pp: {}
+  count_remaining_aries: {}
+
+  surrogate_key:
+    description: unique id for the table, using tour_id, vendor_id, experience_id,
+      date time, and guest type
+
+  tour_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

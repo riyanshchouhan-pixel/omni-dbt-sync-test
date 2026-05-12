@@ -1,0 +1,87 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_affiliate_sessions
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_affiliate_sessions
+
+dimensions:
+  session_id:
+    format: ID
+    description: Surrogate key uniquely identifying each affiliate session row.
+      Generated from event_date, affiliate_code, landing_page,
+      affiliate_utm_campaign, affiliate_utm_source, combined_entity_id,
+      experience_id, category_id, and sub_category_id.
+
+  event_date:
+    description: Date of the affiliate session (day-level).
+
+  affiliate_code:
+    description: Affiliate code associated with the session.
+
+  landing_page:
+    description: Landing page value from h_attr at session start.
+
+  normalized_landing_page:
+    description: Cleaned version of landing_page — normalized to HTTPS, lowercase,
+      stripped of query params and trailing slashes. Used for URL-based entity
+      mapping.
+
+  affiliate_utm_campaign:
+    description: UTM campaign value extracted from affiliate_utm.
+
+  affiliate_utm_source:
+    description: UTM Source value extracted from affiliate_utm.
+
+  category_id:
+    format: ID
+    description: Category ID extracted from category page viewed event properties.
+      Populated only for sessions landing on category pages. NULL for
+      experience, collection, home, or seats page sessions.
+
+  sub_category_id:
+    format: ID
+    description: Sub-category ID extracted from category page viewed event
+      properties. Populated only for sessions landing on sub-category pages.
+      NULL otherwise.
+
+  combined_entity_id:
+    format: ID
+    description: |-
+      Business segmentation entity resolved from the landing page URL. Populated via a priority
+      fallback: (1) URL mapping from page_url_combined_entity_mapping, (2) collection_id from
+      event properties, (3) category_id concatenated with city for top-level categories
+      (Travel Services, Water Sports, Wellness, Staycations, Cruises), (4) sub_category_id
+      mapped to its parent category + city for recognized sub-categories, (5) other
+      sub_category_id + city. NULL when the landing page cannot be mapped and no
+      category/collection context is available.
+
+  combined_entity_mapping_source:
+    description: "Source that resolved combined_entity_id. Values:
+      'payload_documents', 'url_slugs_collections', 'url_slugs_experiences',
+      'orders', 'sheetload_manual' (from page_url_combined_entity_mapping),
+      'events_properties_collection_id', or 'events_properties_category_id'.
+      NULL when combined_entity_id is unresolved."
+
+  experience_id:
+    format: ID
+    description: Experience ID extracted from the -e-{id} suffix in the landing page
+      URL. Populated for experience page sessions (~99.9% coverage). NULL for
+      collection, category, home, or seats page sessions.
+
+  count_users:
+    description: Count of distinct device_id sessions attributed to the affiliate on
+      that day.
+
+  count_users_with_experience_selected:
+    description: Count of sessions where experience was selected after landing.
+
+  count_users_with_checkout_started:
+    description: Count of sessions where checkout was started.
+
+  count_users_with_orders:
+    description: Count of sessions that resulted in an order within the attribution window.
+
+measures:
+  count:
+    aggregate_type: count

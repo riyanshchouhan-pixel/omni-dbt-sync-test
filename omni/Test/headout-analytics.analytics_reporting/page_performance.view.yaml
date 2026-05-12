@@ -1,0 +1,39 @@
+# Reference this view as headout_analytics_analytics_reporting__page_performance
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: page_performance
+
+dimensions:
+  surrogate_key:
+    description: Surrogate primary key derived from report_date, page, and search_type.
+
+  report_date:
+    description: Date for which the search performance data is recorded.
+
+  site:
+    description: The Search Console property (site URL). Normalized to always end
+      with a trailing slash.
+
+  page:
+    description: Full URL of the page that appeared in search results.
+
+  search_type:
+    description: Type of Google search result. Possible values include 'web',
+      'image', 'video', 'news'.
+
+  count_impressions:
+    description: Number of times the page appeared in search results on this date.
+
+  count_clicks:
+    description: Number of times a user clicked through to the page from search
+      results on this date.
+
+  avg_position:
+    description: Average position of the page in search results on this date. Lower
+      values indicate higher ranking.
+
+measures:
+  count:
+    aggregate_type: count

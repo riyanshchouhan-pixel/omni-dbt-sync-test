@@ -1,0 +1,67 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_keyword_device_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_keyword_device_stats
+
+dimensions:
+  account_name: {}
+  campaign_name: {}
+  campaign_city: {}
+  campaign_country: {}
+  campaign_region: {}
+  campaign_category: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  campaign_start_date: {}
+  advertising_channel_type: {}
+  advertising_channel_sub_type: {}
+  campaign_status: {}
+  campaign_serving_status: {}
+  ad_group_name: {}
+  device: {}
+  date: {}
+  approval_status: {}
+  keyword_match_type: {}
+  keyword: {}
+  is_negative: {}
+  creative_quality_score: {}
+  post_click_quality_score: {}
+  quality_score: {}
+  search_predicted_ctr: {}
+  status: {}
+  system_serving_status: {}
+  bidding_strategy_type: {}
+  has_enhanced_cpc_enabled: {}
+  bidding_strategy_source: {}
+  has_quality_score: {}
+  count_eligible_searches: {}
+  count_impressions: {}
+  count_clicks: {}
+  sum_spend: {}
+  count_conversions: {}
+  sum_conversion_value: {}
+
+  surrogate_key:
+    description: surrogate primary key created for this table using account id,
+      campaign id, ad group id, keyword, device and date
+
+  customer_id:
+    format: ID
+
+  campaign_id:
+    format: ID
+
+  campaign_combined_entity_id:
+    format: ID
+
+  ad_group_id:
+    format: ID
+
+  criterion_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

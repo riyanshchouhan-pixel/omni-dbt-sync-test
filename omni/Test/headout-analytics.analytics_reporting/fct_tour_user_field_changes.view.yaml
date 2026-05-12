@@ -1,0 +1,138 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_tour_user_field_changes
+description: |
+  **Business Purpose:** Tracks the full history of custom field (user field) configuration changes
+  on tours. Each row represents a single change event — a field being added, modified, or removed
+  from a tour/vendor combination. Enriched with tour, experience, and vendor context. Used by
+  operations and growth teams to debug field issues and audit configuration changes over time.
+
+  **Refresh Cadence:** Daily (incremental, last 8 days replaced)
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_tour_user_field_changes
+
+dimensions:
+  tour_rel_user_field_id:
+    format: ID
+    description: Unique identifier for the tour/vendor user field configuration record
+
+  tour_id:
+    format: ID
+    description: Foreign key to the tour table
+
+  tour_name:
+    description: Name of the tour from the dim_tours dimension
+
+  tour_status:
+    description: Current status of the tour (e.g., ACTIVE, INACTIVE)
+
+  experience_id:
+    format: ID
+    description: Experience (tour group) that this tour belongs to
+
+  experience_name:
+    description: Name of the experience from the dim_tours dimension
+
+  city:
+    description: City where the experience operates
+
+  country:
+    description: Country where the experience operates
+
+  vendor_id:
+    format: ID
+    description: Foreign key to the vendor table. NULL indicates a tour-level
+      default, non-NULL indicates a vendor-specific override.
+
+  vendor_name:
+    description: Name of the vendor, if this is a vendor-specific override
+
+  user_field_id:
+    format: ID
+    description: Foreign key to the user_field table
+
+  user_field_name:
+    description: System name of the user field (e.g., Full Name, Phone, Email)
+
+  user_field_type:
+    description: Type category of the field. Possible values are NAME, EMAIL, PHONE,
+      ADDRESS, CUSTOM.
+
+  user_field_data_type:
+    description: Data type for validation (e.g., STRING, NUMBER)
+
+  user_field_title:
+    description: English display title of the user field
+
+  user_field_description:
+    description: English description of the user field, providing additional context
+      for the field
+
+  enum_options:
+    description: Array of enum options for ENUM-type user fields. Each entry
+      contains user_field_enum_option_id, is_default, and option_value (English
+      display value). NULL for non-ENUM fields.
+
+  enum_options_is_default:
+    sql: is_default
+    nested_on_field: enum_options
+    parent_field: enum_options
+
+  enum_options_option_value:
+    sql: option_value
+    nested_on_field: enum_options
+    parent_field: enum_options
+
+  enum_options_user_field_enum_option_id:
+    sql: user_field_enum_option_id
+    format: ID
+    nested_on_field: enum_options
+    parent_field: enum_options
+
+  level:
+    description: Level at which the field is collected. Possible values are
+      PRIMARY_CUSTOMER, ALL_CUSTOMER, TOUR.
+
+  is_required:
+    description: Boolean indicating whether the field is mandatory for the customer to fill
+
+  is_default:
+    description: Boolean indicating whether this is a default field configuration
+
+  is_vendor_override:
+    description: Boolean flag indicating whether this record is a vendor-specific
+      override (vendor_id IS NOT NULL) vs a tour-level default (vendor_id IS
+      NULL). Matches the logic used in dim_vendor_tours.
+
+  change_type:
+    description: Type of CDC change event. INSERT means a field was added,
+      UPDATE-INSERT means a field was modified, DELETE means a field was
+      removed.
+
+  is_deleted:
+    description: Boolean flag from Datastream indicating whether this record
+      represents a deletion
+
+  created_at:
+    description: Timestamp (UTC) when the field configuration was originally created
+
+  modified_at:
+    description: Timestamp (UTC) when the field configuration was last modified
+
+  valid_from_timestamp:
+    description: Timestamp when this version of the record became valid
+
+  valid_to_timestamp:
+    description: Timestamp when this version was superseded by a newer change. NULL
+      for the most recent version.
+
+  is_current:
+    description: Boolean flag indicating if this is the most recent version of the record
+
+  changed_date:
+    description: Date when the change occurred. Used as the partition key for
+      incremental processing.
+
+measures:
+  count:
+    aggregate_type: count

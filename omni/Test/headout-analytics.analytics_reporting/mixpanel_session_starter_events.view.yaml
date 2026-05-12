@@ -1,0 +1,150 @@
+# Reference this view as headout_analytics_analytics_reporting__mixpanel_session_starter_events
+description: |
+  **Business Purpose:** Sessionisation model for Mixpanel web events, covering only session-starter
+  events (Microsite Page Viewed, Collection Page Viewed, Experience Page Viewed, Category Page Viewed,
+  Blog Page Viewed, Experience Selected). Each row represents a single session-starter event enriched
+  with computed session identifiers and acquisition context. Serves as the foundation for
+  mixpanel_user_funnel_progression_v2 and session-level traffic analysis.
+
+  **Refresh Cadence:** Daily (incremental with partition replacement for last 9 days)
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: mixpanel_session_starter_events
+
+dimensions:
+  user_id:
+    format: ID
+    description: |-
+      Mixpanel distinct_id representing the user or device. Typically a UUID prefixed with
+      '$device:' for anonymous users. Primary key for tracking activity across sessions.
+
+  session_id:
+    format: ID
+    description: |-
+      Unique session identifier constructed as CONCAT(session_number, '-', user_id). A new
+      session is created whenever the acquisition source (campaign_id or channel_name) changes
+      between consecutive session-starter events for the same user.
+
+  session_start_pointer:
+    description: |-
+      Flag indicating whether this event is the first event of the session. Equals 1 for the
+      session-opening event (ordered by event_timestamp, event_name within each session), 0
+      otherwise. Used to filter session starters in downstream models.
+
+  session_start_timestamp:
+    description: |-
+      Timestamp of the first event within the session. Computed using FIRST_VALUE over the
+      session partition ordered by event_timestamp and event_name. Used as the anchor timestamp
+      for session-level analysis.
+
+  session_number:
+    description: |-
+      Monotonically increasing session counter per user, computed as a cumulative sum of
+      session_start_pointer over event_timestamp order. Resets per user_id. Used internally
+      to construct session_id.
+
+  event_date:
+    description: Date when the event was triggered. Serves as the partition key for
+      incremental loads.
+
+  event_timestamp:
+    description: Exact timestamp when the session-starter event occurred.
+
+  event_name:
+    description: |-
+      Name of the Mixpanel event. Limited to session-starter events: 'Microsite Page Viewed',
+      'Collection Page Viewed', 'Experience Page Viewed', 'Category Page Viewed',
+      'Blog Page Viewed', 'Experience Selected'.
+
+  page_url:
+    description: |-
+      Page URL where the event occurred, with query parameters, URL fragments, and language
+      path segments stripped.
+
+  previous_page_url:
+    description: |-
+      Referrer URL with query parameters and fragments stripped. Derived from the Mixpanel
+      $referrer property. NULL for direct traffic or when referrer is unavailable. For
+      Experience Page Viewed and Experience Selected, only events with NULL previous_page_url
+      are included (direct entry to experience pages).
+
+  page_type:
+    description: |-
+      Type of the page where the event occurred (e.g. 'Microsite', 'Collection', 'Experience Page',
+      'Category Page'). NULL for Blog Page Viewed events.
+
+  page_sub_type:
+    description: |-
+      Sub-type classification of the page. Only populated for Microsite Page Viewed events.
+      NULL for all other event types.
+
+  device_type:
+    description: |-
+      Normalized device category derived from the Mixpanel $device property. Possible values:
+      'iOS Mweb' (iPhone), 'Android Mweb' (Android devices), 'Other Mweb' (other mobile),
+      'Desktop' (when $device is null). NULL for Blog Page Viewed events.
+
+  browsing_city:
+    description: |-
+      City from which the user is browsing, detected via Mixpanel geo-IP lookup ($city property).
+      Reflects the user's physical location, not the experience destination.
+
+  browsing_country_code:
+    description: |-
+      ISO-2 country code of the user's browsing location, from the Mixpanel mp_country_code
+      property.
+
+  language:
+    description: |-
+      Normalized language name derived from the two-letter code in the page URL path
+      (e.g. '/en/' → 'English', '/fr/' → 'French'). Defaults to 'English' when no code
+      is present. NULL for Blog Page Viewed events.
+
+  campaign_id:
+    format: ID
+    description: |-
+      Marketing campaign ID with the numeric channel prefix stripped (e.g. '1 - 23357773868'
+      → '23357773868'). NULL for Category Page Viewed and Blog Page Viewed events, which
+      do not carry campaign attribution.
+
+  channel_id:
+    format: ID
+    description: |-
+      Marketing channel ID. Values 1–7 map to known channels; other values default to 'Others'.
+      NULL for Category Page Viewed and Blog Page Viewed events.
+
+  channel_name:
+    description: |-
+      Human-readable marketing channel name derived from channel_id and referrer domain
+      (e.g. 1=Google Ads, 3=Facebook Ads, 4=Affiliates). NULL for Category Page Viewed
+      and Blog Page Viewed events.
+
+  city:
+    description: |-
+      City associated with the experience or content on the page. Normalized using INITCAP
+      with underscore-to-space replacement. NULL for Blog Page Viewed events. Used internally
+      for combined_entity_id construction.
+
+  collection_id:
+    format: ID
+    description: |-
+      Collection ID associated with the page. Present for Microsite Page Viewed, Collection
+      Page Viewed, and Experience Page Viewed events. NULL for Category Page Viewed, Blog
+      Page Viewed, and Experience Selected events.
+
+  category_id:
+    format: ID
+    description: |-
+      Category ID of the experience or content. Present for Experience Page Viewed and
+      Category Page Viewed events. NULL for all other event types.
+
+  sub_category_id:
+    format: ID
+    description: |-
+      Sub-category ID of the experience or content. Present for Experience Page Viewed and
+      Category Page Viewed events. NULL for all other event types.
+
+measures:
+  count:
+    aggregate_type: count

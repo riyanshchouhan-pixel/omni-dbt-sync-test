@@ -1,0 +1,216 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_customers_xf
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_customers_xf
+
+dimensions:
+  email: {}
+  name: {}
+  acquired_at: {}
+  customer_country: {}
+  customer_country_first_order: {}
+  acquisition_city: {}
+  acquisition_country: {}
+  acquisition_region: {}
+  acquisition_traffic_channel: {}
+  acquisition_landing_page: {}
+  acquisition_landing_page_host: {}
+  acquisition_device: {}
+  last_ordered_city: {}
+  last_ordered_country: {}
+  acquisition_collection_name: {}
+  first_order_at: {}
+  last_order_at: {}
+  num_orders: {}
+  completed_orders: {}
+  customer_lifetime_value: {}
+  average_order_value: {}
+  num_disputes: {}
+  num_fraudulent_orders: {}
+  num_logged_in_orders: {}
+  has_disputed: {}
+  is_fraudulent: {}
+  has_logged_in: {}
+  orders: {}
+  experiences_ordered: {}
+  cities_ordered_in: {}
+  last_order_language: {}
+  last_order_language_code: {}
+  last_order_currency: {}
+  last_order_experience_date: {}
+  last_experience_date: {}
+  has_ordered_on_headout: {}
+  has_wallet: {}
+  wallet_balance: {}
+  wallet_currency: {}
+  num_bookings: {}
+  bookings: {}
+
+  customer_id:
+    format: ID
+
+  calipso_user_id:
+    format: ID
+
+  acquisition_collection_id:
+    format: ID
+
+  orders_card_issuing_country:
+    sql: card_issuing_country
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_city:
+    sql: city
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_combined_entity_id:
+    sql: combined_entity_id
+    format: ID
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_combined_entity_name:
+    sql: combined_entity_name
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_country:
+    sql: country
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_coupon_code:
+    sql: coupon_code
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_created_at:
+    sql: created_at
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_customer_order_sequence_number:
+    sql: customer_order_sequence_number
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_days_since_first_order:
+    sql: days_since_first_order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_days_since_last_order:
+    sql: days_since_last_order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_device:
+    sql: device
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_months_since_first_order:
+    sql: months_since_first_order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_months_since_last_order:
+    sql: months_since_last_order
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_order_id:
+    sql: order_id
+    format: ID
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_order_status:
+    sql: order_status
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_order_value_usd:
+    sql: order_value_usd
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_payment_amount_received_usd:
+    sql: payment_amount_received_usd
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_region:
+    sql: region
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_session_landing_page_host:
+    sql: session_landing_page_host
+    nested_on_field: orders
+    parent_field: orders
+
+  orders_session_traffic_channel_grouping:
+    sql: session_traffic_channel_grouping
+    nested_on_field: orders
+    parent_field: orders
+
+  bookings_booking_id:
+    sql: booking_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_booking_status:
+    sql: booking_status
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_city:
+    sql: city
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_id:
+    sql: combined_entity_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_name:
+    sql: combined_entity_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_created_at:
+    sql: created_at
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_days_since_first_order:
+    sql: days_since_first_order
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_is_repeat_booking_combo:
+    sql: is_repeat_booking_combo
+    nested_on_field: bookings
+    parent_field: bookings
+
+measures:
+  count:
+    aggregate_type: count

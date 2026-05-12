@@ -1,0 +1,80 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_discounts
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_discounts
+
+dimensions:
+  discount_id:
+    format: ID
+    description: Unique ID for the discount
+
+  discount_name:
+    description: Name of the discount
+
+  applicable_date_type:
+    description: Indicates whether the date applicability is based on booking or
+      experience date
+
+  discount_status:
+    description: Status of the discount record (e.g., ACTIVE, INACTIVE)
+
+  raw_time_slots:
+    description: Raw JSON string of time slots
+
+  raw_day_selections:
+    description: Raw JSON string of day selections
+
+  raw_pax_types:
+    description: Raw JSON string of pax type discounts
+
+  tour_id:
+    format: ID
+    description: Tour ID associated with the discount
+
+  vendor_id:
+    format: ID
+    description: Vendor ID of the SP
+
+  booking_start_date:
+    description: Booking Start Date of the Offer
+
+  booking_end_date:
+    description: Booking End Date of the Offer
+
+  experience_start_date:
+    description: Experience Start Date of the Offer
+
+  experience_end_date:
+    description: Experience End Date of the Offer
+
+  created_at:
+    description: Timestamp when the discount record was created
+
+  last_modified_at:
+    description: Timestamp of the last modification to the discount record
+
+  slot_days:
+    description: Extracted list of days from timeslots (e.g., MONDAY, TUESDAY)
+
+  slots_grouped:
+    description: List of slot ranges corresponding to each day
+
+  pax_types:
+    description: Extracted list of pax type keys (e.g., ADULT, CHILD)
+
+  pax_discounts:
+    description: List of discount values associated with each pax type
+
+  discount_type:
+    description: Discount type for each offer (whether its Supply partner or headout
+      discount)
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: Supply Partner Billing Entity ID of the SP
+
+measures:
+  count:
+    aggregate_type: count

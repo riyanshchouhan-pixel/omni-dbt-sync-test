@@ -1,0 +1,251 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_zendesk_ops_tickets
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_zendesk_ops_tickets
+
+dimensions:
+  l1_categorisation: {}
+  l2_categorisation: {}
+  sla_hours: {}
+  focus_ce: {}
+  minutes_to_assignment: {}
+  minutes_to_first_resolution_from_assignment: {}
+  minutes_to_full_resolution_from_assignment: {}
+  minutes_delayed_to_full_resolution_from_due: {}
+  due_at: {}
+  custom_tid: {}
+  critical_timestamp: {}
+  is_child: {}
+  sub_issue_type: {}
+  custom_fields: {}
+
+  ticket_id:
+    format: ID
+    description: unique id for each ticket on zendesk
+
+  created_at:
+    description: timestamp (utc) at which the ticket was created
+
+  updated_at:
+    description: timestamp (utc) at which the ticket was last updated
+
+  booking_id:
+    format: ID
+    description: custom field booking id
+
+  ticket_subject:
+    description: ticket subject on zendesk
+
+  ticket_tags:
+    description: tags added to the ticket on zendesk
+
+  ticket_status:
+    description: the current status of the ticket on zendesk
+
+  priority:
+    description: The urgency with which the ticket should be addressed
+
+  issue_type:
+    description: type of issue raised for
+
+  team_name:
+    description: team assigned to the ticket
+
+  title:
+    description: title of request entered in the custom field
+
+  languages:
+    description: languages as entered in the custom field
+
+  sla_days:
+    description: number of business days within which the ticket needs to be resolved
+
+  requester_email:
+    description: Email address of the ticket requester. Contains Headout or
+      vendor/supply partner emails, not customer emails.
+
+  requester_name:
+    description: Name of the ticket requester. Contains Headout or vendor/supply
+      partner names, not customer names.
+
+  assignee_email:
+    description: email id of the user assinged to the ticket
+
+  assignee_name:
+    description: name of the user assinged to the ticket
+
+  initially_assigned_at:
+    description: when the ticket was initially assigned
+
+  num_reopens:
+    description: total number of times the ticket was reopened
+
+  num_replies:
+    description: total number of times the ticket was replied to
+
+  minutes_to_first_resolution:
+    description: number of minutes to the first resolution time
+
+  first_resolved_at:
+    description: when the ticket was first resolved
+
+  minutes_to_full_resolution:
+    description: number of minutes to the full resolution
+
+  resolved_at:
+    description: when the ticket was resolved
+
+  has_met_sla:
+    description: boolean signifying whether the ticket was resolved within SLA
+
+  requester_wait_minutes:
+    description: number of minutes the requester spent waiting
+
+  agent_wait_minutes:
+    description: number of minutes the agent spent waiting
+
+  tgid:
+    description: tgid entered in the custom field
+
+  tid:
+    description: tid entered in the custom field
+
+  notify_team:
+    description: team to be notified to work on the request
+
+  custom_market_region:
+    description: market region (countries) to help create pod
+
+  custom_pod:
+    description: supply ops pod in which the ticket is assigned
+
+  custom_city:
+    description: city associated with ticket request
+
+  custom_description_halp:
+    description: subject raised with halp request
+
+  custom_due_date_review_at:
+    description: estimated date of completion
+
+  custom_engagement_rate:
+    description: engagement rate raised through halp form
+
+  custom_experience_name:
+    description: experience name associated with ticket request
+
+  custom_fulfillment_type:
+    description: product level fulfillment raised through halp form
+
+  custom_inventory_error_issue_type:
+    description: type of inventory error issue raised through halp form
+
+  custom_io_follow_up_pending:
+    description: reason For IO pending state
+
+  custom_issue_type:
+    description: type of issue raised for
+
+  custom_nature_of_request:
+    description: Nature of request (Fix or Post Launch Change)
+
+  custom_l1_categorisation:
+    description: l1 category as entered in the custom field
+
+  custom_l2_catgorisation:
+    description: l2 category entered in the custom field
+
+  custom_languages:
+    description: languages entered in the custom field
+
+  custom_languages_internal_use:
+    description: languages entered in the custom field for internal use
+
+  custom_microbrand_reason:
+    description: microbrand reason entered in the custom field
+
+  custom_microbrand_type:
+    description: type of microbrand entered in the custom field
+
+  custom_notify_teams:
+    description: team to be notified to work on the request
+
+  custom_orm_issue_type:
+    description: category of orm issue entered in the custom field
+
+  custom_pe_supply_partner_name:
+    description: supply partner name entered in the custom field
+
+  custom_ratings_and_reviews:
+    description: ratings and reviews given entered in the custom field
+
+  custom_review_team_pending:
+    description: reason for pending by review team entered in the custom field
+
+  custom_review_ticket_closure:
+    description: closure details for review ticket entered in the custom field
+
+  custom_team_internal_use:
+    description: team name entered in the custom field for internal use case
+
+  custom_tgid:
+    description: tgid entered in the custom field
+
+  custom_content_marketing_fix_type:
+    description: type of content marketing fix request
+
+  custom_variant_name:
+    description: mame of the variant for which changes are to be made
+
+  pending_team:
+    description: request thats pending on the the team mentioned
+
+  blocked_timestamp:
+    description: timestamp (utc) at which ticket moved to blocker
+
+  pending_team_timestamp:
+    description: timestamp (utc) at which ticket moved to pending
+
+  requester_sp_id:
+    format: ID
+    description: sp_id of the external requester
+
+  parent_id:
+    format: ID
+
+  root_parent_ticket_id:
+    format: ID
+
+  request_id:
+    format: ID
+    description: derived id to get actual requested ticket id from requester.
+
+  request_status:
+    description: derived status to get combined status of requested ticket id.
+
+  custom_fields_id:
+    sql: id
+    format: ID
+    nested_on_field: custom_fields
+    parent_field: custom_fields
+
+  custom_fields_value:
+    sql: value
+    nested_on_field: custom_fields
+    parent_field: custom_fields
+
+  custom_fields_value__ar:
+    sql: value__ar
+    nested_on_field: custom_fields
+    parent_field: custom_fields
+
+  custom_fields_value__bo:
+    sql: value__bo
+    nested_on_field: custom_fields
+    parent_field: custom_fields
+
+measures:
+  count:
+    aggregate_type: count

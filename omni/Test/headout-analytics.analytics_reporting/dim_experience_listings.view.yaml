@@ -1,0 +1,305 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_experience_listings
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_experience_listings
+
+dimensions:
+  supply_queue_name: {}
+  issue_type: {}
+  parent_ticket_status_updated_at: {}
+  fqa_unhide_ticket_created_at: {}
+  fqa_unhide_ticket_status: {}
+  fqa_unhide_ticket_assignee: {}
+  fqa_unhide_ticket_updated_at: {}
+  fqa_unhide_ticket_status_updated_at: {}
+
+  ticket_id:
+    format: ID
+    description: Ticket ID of the dummy parent ticket of the requested listing.
+
+  created_at:
+    description: Creation Timestamp of the dummy parent ticket of the requested listing.
+
+  experience_id:
+    format: ID
+    description: |-
+      Experience ID of the requested listing.
+      - unique - not_null
+
+  city:
+    description: City in which experience is requested.
+
+  category:
+    description: Category of the requested listing.
+
+  sub_category:
+    description: Sub-Category of the requested listing.
+
+  combined_entity_id:
+    format: ID
+    description: Combined Entity ID of the requested listing.
+
+  combined_entity_name:
+    description: Combined Entity Name of the requested listing.
+
+  focus_ce:
+    description: Focus CE ID of the product for which supply listing was requested.
+
+  ce_type:
+    description: CE Type of the product for which supply listing was requested.
+
+  is_magic_listing:
+    description: Boolean indicating whether this is a magic listing.
+
+  listing_source:
+    description: Source of the listing request. Possible values are EOS, SOS, or HUB.
+
+  ce_classification:
+    description: Classification of the CE for the listing. Possible values are
+      Managed CE, Managed Lite CE, or Unmanaged CE.
+
+  pod:
+    description: Pod of the requested listing.
+
+  priority:
+    description: Priority of the requested listing.
+
+  owner:
+    description: Owner of the requested listing.
+
+  is_inventory_required:
+    description: Boolean for inventory requirement.
+
+  is_localisation_required:
+    description: Boolean for localisation requirement.
+
+  listing_status:
+    description: Status of the requested listing.
+
+  plc_status:
+    description: PLC Team Status on the requested listing.
+
+  content_status:
+    description: Content Team Status on the requested listing.
+
+  media_status:
+    description: Media Team Status on the requested listing.
+
+  inventory_status:
+    description: Inventory Team Status on the requested listing.
+
+  localisation_status:
+    description: Localisation Team Status on the requested listing.
+
+  count_tours:
+    description: count_tours
+
+  is_cancelled:
+    description: Boolean to check if the listing is cancelled.
+
+  request_type:
+    description: Field to determine if the request is external or internal.
+
+  mv_addition:
+    description: Field to determine if the request is multivariant or multivendor.
+
+  market_region:
+    description: Country name field
+
+  sp_name:
+    description: Supply partner of the requested listing.
+
+  plc_ticket_created_at:
+    description: Creation Timestamp of the PLC Ticket
+
+  plc_ticket_status:
+    description: Status of the PLC Ticket.
+
+  plc_blockers:
+    description: Blockers on the PLC Ticket.
+
+  plc_ticket_assignee:
+    description: Assignee of the PLC Ticket.
+
+  plc_ticket_updated_at:
+    description: Update timestamp of the PLC Ticket
+
+  plc_ticket_status_updated_at:
+    description: Status update timestamp of the PLC Ticket.
+
+  tour_id:
+    format: ID
+
+  vendor_id:
+    format: ID
+
+  catalog_ticket_created_at:
+    description: Created timestamp of the Catalog Ticket
+
+  catalog_ticket_status:
+    description: Status of the Catalog Ticket.
+
+  catalog_blockers:
+    description: Blockers on the Catalog Ticket.
+
+  catalog_ticket_assignee:
+    description: Assignee of the Catalog Ticket.
+
+  catalog_ticket_updated_at:
+    description: Updated timestamp of the Catalog Ticket.
+
+  catalog_ticket_status_updated_at:
+    description: Status update Timestamp of the Catalog Ticket.
+
+  content_ticket_created_at:
+    description: Creation timestamp of the Content Ticket.
+
+  original_product_content_writer:
+    description: Original product content writer for the requested listing.
+
+  content_ticket_status:
+    description: Status of the Content Ticket.
+
+  content_blockers:
+    description: Blockers for the Content Ticket.
+
+  content_ticket_assignee:
+    description: Assignee for the Content Ticket.
+
+  content_ticket_updated_at:
+    description: Updated timestamp for the Content Ticket.
+
+  content_ticket_status_updated_at:
+    description: Status updated timestamp for the Content Ticket.
+
+  inventory_ticket_created_at:
+    description: Creation Timestamp for the IO Ticket.
+
+  inventory_ticket_status:
+    description: Status of the IO Ticket.
+
+  inventory_ticket_assignee:
+    description: Assignee of the IO Ticket.
+
+  inventory_ticket_updated_at:
+    description: Updated timestamp for the IO Ticket.
+
+  inventory_ticket_status_updated_at:
+    description: Status updated timestamp for the IO Ticket.
+
+  media_ops_ticket_created_at:
+    description: Creation timestamp for the Media Ops ticket.
+
+  media_ops_ticket_status:
+    description: Ticket status for the Media Ops ticket.
+
+  media_blockers:
+    description: Blockers for the Media Ops Ticket.
+
+  media_tasks_nl:
+    description: Task list for the Media Ops Ticket.
+
+  media_ops_ticket_assignee:
+    description: Assignee for the Media Ops Ticket.
+
+  media_ops_ticket_updated_at:
+    description: Updated Timestamp for the Media Ops Ticket.
+
+  media_ops_ticket_status_updated_at:
+    description: Status update timestamp for the Media Ops Ticket.
+
+  fqa_ticket_created_at:
+    description: Creation Timestamp for the Fqa Ticket.
+
+  fqa_ticket_status:
+    description: Status for the Fqa Ticket.
+
+  fqa_fixes:
+    description: Fixes for the Fqa Ticket.
+
+  fqa_ticket_assignee:
+    description: Assignee for the Fqa Ticket.
+
+  fqa_ticket_updated_at:
+    description: Updated timestamp for the Fqa Ticket.
+
+  fqa_ticket_status_updated_at:
+    description: Status update timestamp for the Fqa Ticket.
+
+  mqa_ticket_created_at:
+    description: Creation Timestamp for the Mqa Ticket.
+
+  mqa_ticket_status:
+    description: Status for the Mqa Ticket.
+
+  mqa_fixes:
+    description: Fixes for the Mqa Ticket.
+
+  mqa_ticket_assignee:
+    description: Assignee for the Mqa Ticket.
+
+  mqa_ticket_updated_at:
+    description: Updated timestamp for the Mqa Ticket.
+
+  mqa_ticket_status_updated_at:
+    description: Status update timestamp for the Mqa Ticket.
+
+  cqa_ticket_created_at:
+    description: Creation Timestamp for the Cqa Ticket.
+
+  cqa_ticket_status:
+    description: Status for the Cqa Ticket.
+
+  cqa_fixes:
+    description: Fixes for the Cqa Ticket.
+
+  cqa_ticket_assignee:
+    description: Assignee for the Cqa Ticket.
+
+  cqa_ticket_updated_at:
+    description: Updated timestamp for the Cqa Ticket.
+
+  cqa_ticket_status_updated_at:
+    description: Status update timestamp for the Cqa Ticket.
+
+  localisation_tickets:
+    description: Array of localisation ticket objects.
+
+  localisation_tickets_assignee:
+    sql: assignee
+    nested_on_field: localisation_tickets
+    parent_field: localisation_tickets
+
+  localisation_tickets_created_at:
+    sql: created_at
+    nested_on_field: localisation_tickets
+    parent_field: localisation_tickets
+
+  localisation_tickets_language:
+    sql: language
+    nested_on_field: localisation_tickets
+    parent_field: localisation_tickets
+
+  localisation_tickets_localisation_ticket_status_updated_at:
+    sql: localisation_ticket_status_updated_at
+    nested_on_field: localisation_tickets
+    parent_field: localisation_tickets
+
+  localisation_tickets_status:
+    sql: status
+    nested_on_field: localisation_tickets
+    parent_field: localisation_tickets
+
+  localisation_tickets_updated_at:
+    sql: updated_at
+    nested_on_field: localisation_tickets
+    parent_field: localisation_tickets
+
+  source:
+    description: Zendesk or Hub Workflow Sheet (Legacy System)
+
+measures:
+  count:
+    aggregate_type: count

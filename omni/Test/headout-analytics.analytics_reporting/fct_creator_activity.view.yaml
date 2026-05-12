@@ -1,0 +1,200 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_creator_activity
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_creator_activity
+
+dimensions:
+  order_created_at: {}
+  order_value_usd: {}
+
+  creator_id:
+    format: ID
+    description: Unique ID for the creator
+
+  coupon_id:
+    format: ID
+    description: Unique ID for the coupon
+
+  coupon_number:
+    description: Serial number of coupon for a particular creator
+
+  coupon_code:
+    description: Unique promo code issued to the creator for redemptions
+
+  coupon_status:
+    description: Current status of the coupon (active, redeemed, expired)
+
+  coupon_created_at:
+    description: Timestamp when the coupon was created/issued
+
+  coupon_redeemed_at:
+    description: Timestamp when the coupon was redeemed on an order
+
+  content_submitted_at:
+    description: Timestamp when the creator submitted content for review
+
+  content_reviewed_at:
+    description: Timestamp when the submitted content was reviewed
+
+  experience_date:
+    description: Date of the booked/attended experience
+
+  order_id:
+    format: ID
+    description: Headout order ID associated with the redemption
+
+  order_status:
+    description: "Current status of the order "
+
+  city:
+    description: City where the experience takes place
+
+  country:
+    description: Country where the experience takes place
+
+  region:
+    description: State/region or business region for the experience location
+
+  experience_id:
+    format: ID
+    description: Headout experience/product identifier
+
+  experience_name:
+    description: Display name of the experience
+
+  primary_category_id:
+    format: ID
+    description: Identifier of the experience’s primary category
+
+  primary_category_name:
+    description: Name of the experience’s primary category
+
+  combined_entity_id:
+    format: ID
+    description: Identifier of the parent attraction/combined entity
+
+  combined_entity_name:
+    description: Name of the parent combined entity
+
+  number_of_guests:
+    description: Number of guests on the order
+
+  price_payable_usd:
+    description: Total amount payable by the customer in USD (after discounts)
+
+  price_net_usd:
+    description: Net price to Headout in USD
+
+  amount_coupon_discount_usd:
+    description: Discount amount applied via coupon in USD
+
+  content_number:
+    description: Unique internal sequence/number for the content submission for each creator
+
+  content_id:
+    format: ID
+    description: Unique identifier of the content record
+
+  content_status:
+    description: Workflow status of the content (submitted, approved, rejected, published)
+
+  content_title:
+    description: Title of the submitted or published content
+
+  content_url:
+    description: URL where the content is hosted/published
+
+  content_format:
+    description: Format/type of content (video, reel)
+
+  content_note:
+    description: Creator notes/comments about the content
+
+  content_performance:
+    description: Performance metrics for the content at fetched at certain interval of days
+
+  content_performance_comments:
+    sql: comments
+    nested_on_field: content_performance
+    parent_field: content_performance
+
+  content_performance_interval_days:
+    sql: interval_days
+    nested_on_field: content_performance
+    parent_field: content_performance
+
+  content_performance_likes:
+    sql: likes
+    nested_on_field: content_performance
+    parent_field: content_performance
+
+  content_performance_saves:
+    sql: saves
+    nested_on_field: content_performance
+    parent_field: content_performance
+
+  content_performance_shares:
+    sql: shares
+    nested_on_field: content_performance
+    parent_field: content_performance
+
+  content_performance_views:
+    sql: views
+    nested_on_field: content_performance
+    parent_field: content_performance
+
+  review_time:
+    description: Time taken to review content (duration between submission and review)
+
+  count_rejected_submissions:
+    description: Number of content submissions rejected for this creator
+
+  all_submissions:
+    description: Details of all other content submissions for this creator
+
+  all_submissions_content_format:
+    sql: content_format
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_id:
+    sql: content_id
+    format: ID
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_note:
+    sql: content_note
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_rejection_reason:
+    sql: content_rejection_reason
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_reviewed_at:
+    sql: content_reviewed_at
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_status:
+    sql: content_status
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_submitted_at:
+    sql: content_submitted_at
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+  all_submissions_content_url:
+    sql: content_url
+    nested_on_field: all_submissions
+    parent_field: all_submissions
+
+measures:
+  count:
+    aggregate_type: count

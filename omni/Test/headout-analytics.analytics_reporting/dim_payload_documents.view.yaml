@@ -1,0 +1,344 @@
+# Reference this view as headout_analytics_analytics_reporting__dim_payload_documents
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: dim_payload_documents
+
+dimensions:
+  page_url:
+    description: The full URL for this row
+
+  page_url_key:
+    description: Normalized URL for downstream joins (lowercase, no query params,
+      https://www., trailing slash)
+
+  locale:
+    description: ISO language code (en, fr, de, es, etc.)
+
+  is_subdomain:
+    description: TRUE if this row represents a subdomain URL, FALSE if it is a
+      direct page URL
+
+  reference_page_url:
+    description: For subdomain rows, the destination page URL in the same locale.
+      NULL for page rows.
+
+  page_uid:
+    description: UID string of the page
+
+  page_id:
+    format: ID
+    description: ID of the page (for subdomains, the destination page)
+
+  subdomain_id:
+    format: ID
+    description: Unique identifier for the subdomain. NULL for page rows.
+
+  subdomain_uid:
+    description: UID of the subdomain. NULL for page rows.
+
+  subdomain_status:
+    description: Publication status of the subdomain. NULL for page rows.
+
+  subdomain_action:
+    description: Action related to the subdomain (read/write). NULL for page rows.
+
+  domain_uid:
+    description: UID of the domain the page belongs to
+
+  domain_migration_status:
+    description: Migration status from Prismic to Payload of the domain
+
+  author_id:
+    format: ID
+    description: ID of the user who authored the page
+
+  author_name:
+    description: Name of the user who authored the page
+
+  publication_status:
+    description: Publication status of the page
+
+  is_non_renderable:
+    description: Boolean indicating if the page is non-renderable
+
+  created_at:
+    description: Timestamp when the page was created
+
+  updated_at:
+    description: Timestamp when the page was last updated
+
+  first_published_at:
+    description: First time the page was first published
+
+  extracted_at:
+    description: Timestamp when the record was extracted
+
+  domain_created_at:
+    description: Timestamp when the domain was created
+
+  domain_updated_at:
+    description: Timestamp when the domain was last updated
+
+  domain_country_code:
+    description: ISO2 country code for the domain
+
+  domain_country:
+    description: Country name of the domain
+
+  domain_type:
+    description: Location type of the domain
+
+  domain_city:
+    description: City name associated with the domain
+
+  domain_theme_type:
+    description: Theme type defined for the domain
+
+  domain_supported_languages:
+    description: List of supported language codes for the domain
+
+  page_type:
+    description: Type of the page
+
+  page_subtype:
+    description: More granular type of the page, if available
+
+  layout_shoulder_page_mapping:
+    description: Layout metadata for shoulder page mapping
+
+  country:
+    description: Country name based on the page's assigned country code
+
+  city:
+    description: City name extracted from page metadata
+
+  sub_category_id:
+    format: ID
+    description: ID of the sub-category associated with the page
+
+  sub_category_name:
+    description: Name of the sub-category associated with the page
+
+  category_id:
+    format: ID
+    description: ID of the category associated with the page
+
+  category_name:
+    description: Name of the category associated with the page
+
+  collection_id:
+    format: ID
+    description: ID of the collection associated with the page
+
+  collection_name:
+    description: Name of the collection associated with the page
+
+  is_active_collection:
+    description: Boolean indicating if the collection is currently active
+
+  primary_poi_id:
+    format: ID
+    description: ID of the point of interest associated with the page
+
+  primary_poi_name:
+    description: Name of the point of interest
+
+  combined_entity_id:
+    format: ID
+    description: Page-level Combined Entity ID derived from page categorisation.
+      Uses collection_id when present, category_id + city for specific
+      categories (Travel Services, Water Sports, Wellness, Staycations,
+      Cruises), or sub_category_id + city for all others. Follows
+      dim_experiences logic.
+
+  combined_entity_name:
+    description: Page-level Combined Entity Name derived from page categorisation.
+      Uses collection_name when present, category_name + city or
+      sub_category_name + city following the same logic as combined_entity_id.
+
+  partnership_status:
+    description: Indicates sensitivity or partnership tagging for the page
+
+  breadcrumb_label:
+    description: Label used for this record in breadcrumb navigation
+
+  breadcrumbs:
+    description: Array of breadcrumb path details
+
+  breadcrumbs_doc_id:
+    sql: doc_id
+    format: ID
+    nested_on_field: breadcrumbs
+    parent_field: breadcrumbs
+
+  breadcrumbs_label:
+    sql: label
+    nested_on_field: breadcrumbs
+    parent_field: breadcrumbs
+
+  breadcrumbs_url:
+    sql: url
+    nested_on_field: breadcrumbs
+    parent_field: breadcrumbs
+
+  blocks_summary:
+    description: Summary details of the blocks used in the page layout
+
+  blocks_summary_block_type:
+    sql: block_type
+    nested_on_field: blocks_summary
+    parent_field: blocks_summary
+
+  blocks_summary_is_fixed:
+    sql: is_fixed
+    nested_on_field: blocks_summary
+    parent_field: blocks_summary
+
+  blocks_summary_is_required:
+    sql: is_required
+    nested_on_field: blocks_summary
+    parent_field: blocks_summary
+
+  blocks_summary_position:
+    sql: position
+    nested_on_field: blocks_summary
+    parent_field: blocks_summary
+
+  blocks_summary_variants:
+    sql: variants
+    nested_on_field: blocks_summary
+    parent_field: blocks_summary
+
+  product_blocks:
+    description: Structured configuration for product card blocks on the page
+
+  product_blocks_common_exclusions:
+    sql: common_exclusions
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  product_blocks_common_ranks:
+    sql: common_ranks
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  product_blocks_experience_limit:
+    sql: experience_limit
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  product_blocks_position:
+    sql: position
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  product_blocks_product_card_block_type:
+    sql: product_card_block_type
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  product_blocks_product_card_block_variant:
+    sql: product_card_block_variant
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  product_blocks_product_card_filter_category_id:
+    sql: product_card_filter_category_id
+    format: ID
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  product_blocks_product_card_filter_sub_category_id:
+    sql: product_card_filter_sub_category_id
+    format: ID
+    nested_on_field: product_blocks
+    parent_field: product_blocks
+
+  meta_focus_keyword:
+    description: SEO focus keyword for the page
+
+  meta_title:
+    description: Meta title for SEO purposes
+
+  meta_description:
+    description: Meta description for SEO purposes
+
+  meta_canonical:
+    description: Canonical URL to prevent duplicate content
+
+  meta_no_index:
+    description: Flag indicating whether search engines should index the page
+
+  meta_media_alt:
+    description: Alt text for the primary media asset
+
+  meta_media_url:
+    description: URL for the main media used in SEO/meta
+
+  google_site_verification:
+    description: Verification tag for Google Search Console
+
+  experience_theme_type:
+    description: Experience theme type associated with the page
+
+  sub_attraction_type:
+    description: Sub-attraction classification for Shoulder pages of type
+      SubAttraction (e.g. 'Museum', 'Theme Park'). NULL for all other page
+      types.
+
+  non_poi_shoulder_page_type:
+    description: Classification for Shoulder pages that are not POI-based (e.g.
+      'Airport', 'Neighborhood'). NULL for all other page types.
+
+  things_to_do_silo:
+    description: Top-level silo grouping for Things-To-Do pages (e.g.
+      'Attractions'). NULL for all other page types.
+
+  things_to_do_sub_silo:
+    description: Sub-silo grouping within the Things-To-Do silo (e.g. 'Museums').
+      NULL for all other page types.
+
+  is_things_to_do_landing_silo:
+    description: TRUE if this Things-To-Do page is the landing page for its silo.
+      NULL for all other page types.
+
+  is_things_to_do_landing_sub_silo:
+    description: TRUE if this Things-To-Do page is the landing page for its
+      sub-silo. NULL for all other page types.
+
+  travel_guide_silo:
+    description: Top-level silo grouping for Travel Guide pages (e.g. 'Europe').
+      NULL for all other page types.
+
+  travel_guide_sub_silo:
+    description: Sub-silo grouping within the Travel Guide silo (e.g. 'France').
+      NULL for all other page types.
+
+  is_travel_guide_landing_silo:
+    description: TRUE if this Travel Guide page is the landing page for its silo.
+      NULL for all other page types.
+
+  is_travel_guide_landing_sub_silo:
+    description: TRUE if this Travel Guide page is the landing page for its
+      sub-silo. NULL for all other page types.
+
+  travel_guide_ce1:
+    description: First Combined Entity used for CE comparison on Travel Guide pages.
+      NULL for all other page types.
+
+  travel_guide_ce2:
+    description: Second Combined Entity used for CE comparison on Travel Guide
+      pages. NULL for all other page types.
+
+  travel_guide_ce3:
+    description: Third Combined Entity used for CE comparison on Travel Guide pages.
+      NULL for all other page types.
+
+  last_modified_by_author_name:
+    description: Name of the last user who modified the page
+
+measures:
+  count:
+    aggregate_type: count

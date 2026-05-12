@@ -1,0 +1,53 @@
+# Reference this view as headout_analytics_analytics_reporting__keyword_site_country_report
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: keyword_site_country_report
+
+dimensions:
+  surrogate_key:
+    description: Surrogate primary key derived from country_iso3_code, report_date,
+      device, site, keyword, and search_type.
+
+  report_date:
+    description: Date for which the search performance data is recorded.
+
+  site:
+    description: The Search Console property (site URL). Normalized to always end
+      with a trailing slash.
+
+  search_type:
+    description: Type of Google search result. Possible values include 'web',
+      'image', 'video', 'news'.
+
+  keyword:
+    description: The search query that triggered an impression or click for this
+      site in the given country.
+
+  iso3_code:
+    description: ISO 3166-1 alpha-3 country code (e.g. 'gbr', 'usa') indicating
+      where the search originated.
+
+  device:
+    description: Device category of the searcher. Values are title-cased (e.g.
+      'Desktop', 'Mobile', 'Tablet').
+
+  country:
+    description: Full country name resolved from iso3_code via the countries dimension.
+
+  count_impressions:
+    description: Number of times the site appeared in search results for this
+      keyword and country on this date.
+
+  count_clicks:
+    description: Number of times a user clicked through to the site from search
+      results for this keyword and country on this date.
+
+  avg_position:
+    description: Average position of the site in search results for this keyword and
+      country on this date. Lower values indicate higher ranking.
+
+measures:
+  count:
+    aggregate_type: count

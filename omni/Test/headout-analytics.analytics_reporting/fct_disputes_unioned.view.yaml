@@ -1,0 +1,36 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_disputes_unioned
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_disputes_unioned
+
+dimensions:
+  chargeback_raised_at: {}
+  payment_created_at: {}
+  amount: {}
+  amount_usd: {}
+  currency: {}
+  reason_code: {}
+  days_since_payment: {}
+  status: {}
+  payment_method: {}
+  last_updated_at: {}
+  evidence_required_at: {}
+  dispute_source: {}
+  chargeback_type: {}
+  reason_category: {}
+
+  dispute_id:
+    format: ID
+    description: unique identifier for each dispute on Adyen and Checkout
+
+  payment_id:
+    format: ID
+
+  order_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

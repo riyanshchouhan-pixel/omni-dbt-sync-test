@@ -1,0 +1,44 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_adyen_statements
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_adyen_statements
+
+dimensions:
+  adyen_account:
+    description: name of the Adyen account for which this statement is generated
+
+  batch_number:
+    description: the sequence number of the settlement
+
+  created_at:
+    description: timestamp (UTC) when the statement was generated. ts when the
+      MerchantPayout was booked into Adyen's accounting sytem
+
+  payouts:
+    description: an array of payouts settled in the statement
+
+  payouts_currency:
+    sql: currency
+    description: the currency for the payout settlement
+    nested_on_field: payouts
+    parent_field: payouts
+
+  payouts_net_amount:
+    sql: net_amount
+    description: net amount to be paid out in this peiod (carried_forward_amount +
+      current_period_amount)
+    nested_on_field: payouts
+    parent_field: payouts
+
+  payouts_payout_id:
+    sql: payout_id
+    format: ID
+    description: unique id for each payout that checkout deposits to the bank
+    nested_on_field: payouts
+    parent_field: payouts
+
+measures:
+  count:
+    aggregate_type: count

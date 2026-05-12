@@ -1,0 +1,33 @@
+# Reference this view as headout_analytics_analytics_reporting__get_your_guide_daily_bookings
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: get_your_guide_daily_bookings
+
+dimensions:
+  product_name: {}
+  review_count: {}
+  category: {}
+  starting_price: {}
+  starting_price_usd: {}
+  price_type: {}
+  currency: {}
+  availability_type: {}
+  next_available_date: {}
+  count_bookings: {}
+  gross_bookings: {}
+  country: {}
+  city: {}
+  region: {}
+  combined_entity_name: {}
+  competitor_name: {}
+  extracted_at: {}
+
+  product_id:
+    format: ID
+
+  combined_entity_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

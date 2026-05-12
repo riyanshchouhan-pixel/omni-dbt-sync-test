@@ -1,0 +1,100 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_adyen_disputes
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_adyen_disputes
+
+dimensions:
+  evidence_required_at: {}
+  dispute_source: {}
+  chargeback_type: {}
+
+  dispute_id:
+    format: ID
+    description: unique identifier for each dispute on Adyen
+
+  created_at:
+    description: ts of when the dispute was first created
+
+  payment_id:
+    format: ID
+    description: unique identifier for each payment on Adyen
+
+  payment_created_at:
+    description: ts of when the payment was created
+
+  order_id:
+    format: ID
+    description: headout order id for the payment
+
+  status:
+    description: most recent status of the dispute
+
+  amount:
+    description: amount
+
+  amount_usd:
+    description: amount in usd converted using currency conversion from currency
+      conversion rates API
+
+  currency:
+    description: processing currency for the payment on checkout
+
+  reason_code:
+    description: reason code for the dispute sent directly by Adyen
+
+  reason_category:
+    description: reason categorised by us for the dispute sent directly by Adyen
+
+  reason:
+    description: reason for the dispute sent directly by Adyen
+
+  days_since_payment:
+    description: difference (in days) between the dispute created at and the payment
+      created date
+
+  payment_method:
+    description: type of payment method used by the customer (visa, mastercard,
+      iDeal, PayPal etc.)
+
+  dispute_updates:
+    description: an array of updates to the dispute
+
+  dispute_updates_dispute_status:
+    sql: dispute_status
+    description: status at the point of update
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_dispute_update_rank:
+    sql: dispute_update_rank
+    description: rank of the update (ordered by ts of the update)
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_evidence_required_by:
+    sql: evidence_required_by
+    description: evidence (if at all) required by after the update
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_record_type:
+    sql: record_type
+    description: type of update, sent directly by Adyen
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  dispute_updates_status_updated_at:
+    sql: status_updated_at
+    description: ts of the update
+    nested_on_field: dispute_updates
+    parent_field: dispute_updates
+
+  last_updated_at:
+    description: difference (in days) between the dispute created at and the payment
+      created date
+
+measures:
+  count:
+    aggregate_type: count

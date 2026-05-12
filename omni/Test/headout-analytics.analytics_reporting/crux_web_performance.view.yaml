@@ -1,0 +1,245 @@
+# Reference this view as headout_analytics_analytics_reporting__crux_web_performance
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: crux_web_performance
+
+dimensions:
+  surrogate_key:
+    description: Surrogate primary key derived from origin, form_factor, and
+      collection_period_start.
+
+  origin:
+    description: The origin URL tracked by CrUX (e.g., https://www.headout.com).
+
+  origin_domain:
+    description: Clean domain extracted from origin URL, with protocol and www
+      prefix stripped (e.g., headout.com, pompeii-tickets.com).
+
+  origin_type:
+    description: Classification of the origin. headout_origin is the www.headout.com
+      origin-level aggregate, headout_select_page is a checkout page
+      (/book/{id}/select/), headout_collection_page is a collection page
+      (-c-{id}), headout_experience_page is an experience detail page (-e-{id}),
+      and microbrand is a partner/whitelabel domain.
+
+  experience_id:
+    format: ID
+    description: Headout experience ID extracted from select page or experience page
+      URLs. Populated for headout_select_page and headout_experience_page origin
+      types. Joinable with dim_experiences.
+
+  collection_id:
+    format: ID
+    description: Headout collection ID extracted from collection page URLs
+      (-c-{id}). Only populated for headout_collection_page origin type.
+      Joinable with dim_collections.
+
+  form_factor:
+    description: Device form factor. ALL is aggregate, DESKTOP and PHONE are
+      device-specific.
+
+  collection_period_start:
+    description: Start date of the 28-day rolling CrUX collection window.
+
+  collection_period_end:
+    description: End date of the 28-day rolling CrUX collection window.
+
+  is_cwv_passing:
+    description: Google Core Web Vitals pass/fail. TRUE when LCP, INP, and CLS p75
+      values are all in the good range. FALSE when any metric fails. NULL when
+      any of the three metrics is missing (insufficient CrUX data). Direct SEO
+      Search ranking signal.
+
+  was_cwv_passing_previous_period:
+    description: CWV pass/fail status from the previous collection period. Enables
+      detection of status changes (e.g., origin that was passing now failing, or
+      vice versa).
+
+  lcp_rating:
+    description: "LCP threshold rating: good (<= 2500ms), needs_improvement (<=
+      4000ms), or poor (> 4000ms)."
+
+  cls_rating:
+    description: "CLS threshold rating: good (<= 0.1), needs_improvement (<= 0.25),
+      or poor (> 0.25)."
+
+  inp_rating:
+    description: "INP threshold rating: good (<= 200ms), needs_improvement (<=
+      500ms), or poor (> 500ms)."
+
+  fcp_rating:
+    description: "FCP threshold rating: good (<= 1800ms), needs_improvement (<=
+      3000ms), or poor (> 3000ms)."
+
+  ttfb_rating:
+    description: "TTFB threshold rating: good (<= 800ms), needs_improvement (<=
+      1800ms), or poor (> 1800ms)."
+
+  lcp_p75:
+    description: Largest Contentful Paint p75 in milliseconds. Core Web Vital
+      measuring loading performance.
+
+  cls_p75:
+    description: Cumulative Layout Shift p75 (unitless). Core Web Vital measuring
+      visual stability.
+
+  inp_p75:
+    description: Interaction to Next Paint p75 in milliseconds. Core Web Vital
+      measuring responsiveness.
+
+  fcp_p75:
+    description: First Contentful Paint p75 in milliseconds. Time until first text
+      or image renders.
+
+  ttfb_p75:
+    description: Time to First Byte p75 in milliseconds. Server responsiveness metric.
+
+  rtt_p75:
+    description: Round Trip Time p75 in milliseconds. Network latency metric.
+
+  lcp_image_render_delay_p75:
+    description: LCP image element render delay p75 in milliseconds. Time between
+      image download completion and paint. Only populated when LCP element is an
+      image.
+
+  lcp_image_load_delay_p75:
+    description: LCP image resource load delay p75 in milliseconds. Time between
+      TTFB and resource request start. Only populated when LCP element is an
+      image.
+
+  lcp_image_load_duration_p75:
+    description: LCP image resource load duration p75 in milliseconds. Time to
+      download the LCP image. Only populated when LCP element is an image.
+
+  lcp_image_ttfb_p75:
+    description: LCP image time to first byte p75 in milliseconds. Server response
+      time for the LCP image resource. Only populated when LCP element is an
+      image.
+
+  lcp_p75_wow_delta:
+    description: Week-over-week change in LCP p75 (current minus previous period).
+      Positive values indicate regression (slower). NULL for the first observed
+      period.
+
+  cls_p75_wow_delta:
+    description: Week-over-week change in CLS p75. Positive values indicate
+      regression (more layout shift).
+
+  inp_p75_wow_delta:
+    description: Week-over-week change in INP p75. Positive values indicate
+      regression (less responsive).
+
+  fcp_p75_wow_delta:
+    description: Week-over-week change in FCP p75. Positive values indicate regression.
+
+  ttfb_p75_wow_delta:
+    description: Week-over-week change in TTFB p75. Positive values indicate regression.
+
+  lcp_good_density:
+    description: Fraction of page loads where LCP was good (<= 2500ms). Ranges from
+      0.0 to 1.0.
+
+  lcp_needs_improvement_density:
+    description: Fraction of page loads where LCP needed improvement (2500-4000ms).
+
+  lcp_poor_density:
+    description: Fraction of page loads where LCP was poor (> 4000ms).
+
+  cls_good_density:
+    description: Fraction of page loads where CLS was good (<= 0.1).
+
+  cls_needs_improvement_density:
+    description: Fraction of page loads where CLS needed improvement (0.1-0.25).
+
+  cls_poor_density:
+    description: Fraction of page loads where CLS was poor (> 0.25).
+
+  inp_good_density:
+    description: Fraction of page loads where INP was good (<= 200ms).
+
+  inp_needs_improvement_density:
+    description: Fraction of page loads where INP needed improvement (200-500ms).
+
+  inp_poor_density:
+    description: Fraction of page loads where INP was poor (> 500ms).
+
+  fcp_good_density:
+    description: Fraction of page loads where FCP was good (<= 1800ms).
+
+  fcp_needs_improvement_density:
+    description: Fraction of page loads where FCP needed improvement (1800-3000ms).
+
+  fcp_poor_density:
+    description: Fraction of page loads where FCP was poor (> 3000ms).
+
+  ttfb_good_density:
+    description: Fraction of page loads where TTFB was good (<= 800ms).
+
+  ttfb_needs_improvement_density:
+    description: Fraction of page loads where TTFB needed improvement (800-1800ms).
+
+  ttfb_poor_density:
+    description: Fraction of page loads where TTFB was poor (> 1800ms).
+
+  rtt_good_density:
+    description: Fraction of page loads in the first (best) RTT histogram bucket.
+
+  rtt_needs_improvement_density:
+    description: Fraction of page loads in the middle RTT histogram bucket.
+
+  rtt_poor_density:
+    description: Fraction of page loads in the worst RTT histogram bucket.
+
+  form_factor_desktop_fraction:
+    description: Fraction of traffic from desktop devices. Only meaningful when
+      form_factor = 'ALL'. Ranges from 0.0 to 1.0.
+
+  form_factor_phone_fraction:
+    description: Fraction of traffic from phone devices. Only meaningful when
+      form_factor = 'ALL'.
+
+  form_factor_tablet_fraction:
+    description: Fraction of traffic from tablet devices. Only meaningful when
+      form_factor = 'ALL'.
+
+  nav_type_navigate_fraction:
+    description: Fraction of page loads that were fresh navigations (typing URL,
+      clicking link).
+
+  nav_type_navigate_cache_fraction:
+    description: Fraction of page loads served from navigation cache.
+
+  nav_type_reload_fraction:
+    description: Fraction of page loads that were reloads.
+
+  nav_type_restore_fraction:
+    description: Fraction of page loads restored from session (e.g., reopened tab).
+
+  nav_type_back_forward_fraction:
+    description: Fraction of page loads via browser back/forward buttons.
+
+  nav_type_back_forward_cache_fraction:
+    description: Fraction of page loads served from back/forward cache (bfcache).
+
+  nav_type_prerender_fraction:
+    description: Fraction of page loads that were prerendered.
+
+  lcp_resource_type_image_fraction:
+    description: Fraction of page loads where LCP element was an image.
+
+  lcp_resource_type_text_fraction:
+    description: Fraction of page loads where LCP element was text.
+
+  total_periods_observed:
+    description: Number of collection periods this origin x form_factor has data
+      for. Higher values indicate more consistent CrUX coverage. Origins with
+      fewer periods may have intermittent traffic below CrUX thresholds.
+
+  extraction_timestamp:
+    description: Timestamp when the CrUX API was called to extract this data.
+
+measures:
+  count:
+    aggregate_type: count

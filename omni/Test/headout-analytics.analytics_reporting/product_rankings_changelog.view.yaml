@@ -1,0 +1,95 @@
+# Reference this view as headout_analytics_analytics_reporting__product_rankings_changelog
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: product_rankings_changelog
+
+dimensions:
+  entity_id:
+    format: ID
+    description: Identifier of the entity (collection, subcategory, or category)
+      within which the experience is ranked.
+
+  entity_type:
+    description: Type of the entity. Possible values are 'COLLECTION',
+      'SUB_CATEGORY', 'CATEGORY'.
+
+  entity_name:
+    description: Human-readable name of the entity resolved from the corresponding
+      dimension table (dim_collections, dim_sub_categories, or dim_categories).
+      May be NULL if the entity ID is not found in the dimension.
+
+  experience_id:
+    format: ID
+    description: Headout experience ID that was ranked within the entity.
+
+  experience_name:
+    description: Human-readable name of the experience resolved from
+      dim_experiences. May be NULL if the experience ID is not found.
+
+  city:
+    description: City code associated with the ranking context.
+
+  computed_rank:
+    description: The algorithmically computed rank position of the experience within
+      the entity. Lower values indicate higher ranking.
+
+  ranking_source:
+    description: Source or algorithm that produced this ranking (e.g., ML model
+      version or manual override).
+
+  ranked_timestamp:
+    description: Timestamp (UTC) when the ranking was computed.
+
+  feature_date:
+    description: Date for which the ranking feature values were computed. Matched to
+      the ranking date via DATE(ranked_timestamp).
+
+  lev_score:
+    description: LEV (Listing Experience Value) score for the experience within the
+      entity context. Higher scores indicate better overall listing quality.
+
+  days_to_first_available_date:
+    description: Number of days from the feature date to the first available booking
+      date for the experience.
+
+  count_days_available_30d:
+    description: Number of days with available inventory in the next 30-day window
+      from the feature date.
+
+  original_price_usd:
+    description: Original listed price of the experience in USD before any discounts.
+
+  final_price_usd:
+    description: Final price of the experience in USD after applying discounts and
+      promotions.
+
+  is_combo:
+    description: Whether the experience is a combo product bundling multiple activities.
+
+  count_ratings:
+    description: Total number of customer ratings for the experience.
+
+  average_rating:
+    description: Average customer rating for the experience on a 1-5 scale.
+
+  revenue_contribution_last30day:
+    description: Revenue contribution score of the experience within the entity over
+      the last 30 days. Higher values indicate greater revenue share.
+
+  selects_contribution_last30day:
+    description: Selects (clicks) contribution score of the experience within the
+      entity over the last 30 days.
+
+  checkouts_contribution_last30day:
+    description: Checkouts contribution score of the experience within the entity
+      over the last 30 days.
+
+  orders_contribution_last30day:
+    description: Orders contribution score of the experience within the entity over
+      the last 30 days.
+
+measures:
+  count:
+    aggregate_type: count

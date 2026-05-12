@@ -1,0 +1,75 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_ap_control_reconciliations
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_ap_control_reconciliations
+
+dimensions:
+  ticket_assignee: {}
+  ticket_progress: {}
+  recon_type: {}
+  previous_price_net_total: {}
+
+  ticket_id:
+    format: ID
+    description: Ticket ID of related Vendor/Supply Partner on Zendesk
+
+  vendor_id:
+    format: ID
+    description: ID of Vendor/Supply Partner as per our Vendors table
+
+  sp_name:
+    description: Name of Vendor/Supply Partner as per our Vendors table
+
+  invoice_basis:
+    description: Invoice Basis of a Vendor/Supply Partner as per our Vendors table
+
+  invoice_start_date:
+    description: Start date from when the invoice calculation has been started for
+      the given vendor/SP
+
+  invoice_end_date:
+    description: End date from when the invoice calculation has been stopped for the
+      given vendor/SP
+
+  processing_currency:
+    description: Processing Currency of the Vendor/Supply Partner as per our bookings table
+
+  invoice_amount:
+    description: Amount that has been calculated in the given invoice period for the
+      given vendor/SP
+
+  approved_amount:
+    description: Amount that has been approved by Finance Team in the given invoice
+      period for the given vendor/SP
+
+  paid_amount:
+    description: Amount that has been actually paid by Finance Team in the given
+      invoice period to the given vendor/SP
+
+  adjustment:
+    description: Type of adjustment with respect to the invoice amount in the given
+      invoice period for the given vendor/SP
+
+  adjustment_total:
+    description: Amount that is adjusted with respect to the invoice amount in the
+      given invoice period for the given vendor/SP
+
+  price_payable:
+    description: Net price payable to SP as per aggregation of bookings in that
+      invoice period
+
+  price_net_db:
+    description: Net price that has been calculated using the bookings data for the
+      given vendor/SP in the given invoice period, in accordance with the
+      payment basis of that vendor/SP
+
+  meta_recon_total:
+    description: Net price that has been reconciled as per the bookings data for the
+      given vendor/SP in the given invoice period, in accordance with the
+      payment basis of that vendor/SP
+
+measures:
+  count:
+    aggregate_type: count

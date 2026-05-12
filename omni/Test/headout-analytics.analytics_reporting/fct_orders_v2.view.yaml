@@ -1,0 +1,427 @@
+# Reference this view as headout_analytics_analytics_reporting__fct_orders_v2
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: fct_orders_v2
+
+dimensions:
+  order_id:
+    format: ID
+    description: order_id
+
+  created_at:
+    description: created_at
+
+  bookings:
+    description: bookings
+
+  bookings_booking_id:
+    sql: booking_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_booking_status:
+    sql: booking_status
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_category_id:
+    sql: category_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_category_name:
+    sql: category_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_city:
+    sql: city
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_collection_id:
+    sql: collection_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_collection_name:
+    sql: collection_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_id:
+    sql: combined_entity_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_combined_entity_name:
+    sql: combined_entity_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_completion_type:
+    sql: completion_type
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_country:
+    sql: country
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_date:
+    sql: experience_date
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_id:
+    sql: experience_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_experience_name:
+    sql: experience_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_fulfilments:
+    sql: fulfilments
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_fulfilments_final_net_price:
+    sql: final_net_price
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_first_successful_fulfilment_at:
+    sql: first_successful_fulfilment_at
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_attempt:
+    sql: fulfilment_attempt
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_created_at:
+    sql: fulfilment_created_at
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_failure_reason:
+    sql: fulfilment_failure_reason
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_id:
+    sql: fulfilment_id
+    format: ID
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_last_modified_at:
+    sql: fulfilment_last_modified_at
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_plugin:
+    sql: fulfilment_plugin
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_retail_price:
+    sql: fulfilment_retail_price
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_status:
+    sql: fulfilment_status
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_fulfilment_type:
+    sql: fulfilment_type
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_has_charge_loss:
+    sql: has_charge_loss
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_is_failed_due_to_inventory:
+    sql: is_failed_due_to_inventory
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_is_partially_fulfilled:
+    sql: is_partially_fulfilled
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_is_successfully_fulfilled:
+    sql: is_successfully_fulfilled
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_last_successful_fulfilment_at:
+    sql: last_successful_fulfilment_at
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_recon_currency:
+    sql: recon_currency
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_reconciliation_error_reason:
+    sql: reconciliation_error_reason
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_reconciliation_status:
+    sql: reconciliation_status
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_rms_account_name:
+    sql: rms_account_name
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_tour_id:
+    sql: tour_id
+    format: ID
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_fulfilments_vendor_id:
+    sql: vendor_id
+    format: ID
+    nested_on_field: bookings_fulfilments
+    parent_field: bookings
+
+  bookings_language:
+    sql: language
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_language_code:
+    sql: language_code
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_phone_carrier:
+    sql: phone_carrier
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_phone_country:
+    sql: phone_country
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_poi_venue_group:
+    sql: poi_venue_group
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_price_net:
+    sql: price_net
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_price_net_usd:
+    sql: price_net_usd
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_guest_email:
+    sql: primary_guest_email
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_guest_name:
+    sql: primary_guest_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_poi_id:
+    sql: primary_poi_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_primary_poi_name:
+    sql: primary_poi_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_region:
+    sql: region
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_sub_category_id:
+    sql: sub_category_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_sub_category_name:
+    sql: sub_category_name
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_tour_id:
+    sql: tour_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  bookings_vendor_id:
+    sql: vendor_id
+    format: ID
+    nested_on_field: bookings
+    parent_field: bookings
+
+  order_status:
+    description: order_status
+
+  order_value:
+    description: order_value
+
+  order_value_usd:
+    description: order_value_usd
+
+  processing_currency:
+    description: processing_currency
+
+  price_payable:
+    description: price_payable
+
+  price_payable_usd:
+    description: price_payable_usd
+
+  price_net:
+    description: price_net
+
+  price_net_usd:
+    description: price_net_usd
+
+  amount_coupon_discount:
+    description: amount_coupon_discount
+
+  amount_promo_discount:
+    description: amount_promo_discount
+
+  amount_coupon_discount_usd:
+    description: amount_coupon_discount_usd
+
+  amount_concierge_commission:
+    description: amount_concierge_commission
+
+  amount_concierge_commission_usd:
+    description: amount_concierge_commission_usd
+
+  conversion_rate_to_usd:
+    description: conversion_rate_to_usd
+
+  payment_id:
+    format: ID
+    description: payment_id
+
+  payment_amount:
+    description: payment_amount
+
+  payment_amount_captured:
+    description: payment_amount_captured
+
+  payment_amount_refunded:
+    description: payment_amount_refunded
+
+  payment_amount_received:
+    description: payment_amount_received
+
+  payment_amount_received_usd:
+    description: payment_amount_received_usd
+
+  card_issuing_country:
+    description: card_issuing_country
+
+  payment_gateway:
+    description: payment_gateway
+
+  email:
+    description: email
+
+  fingerprint_id:
+    format: ID
+    description: fingerprint_id
+
+  wallet_credits:
+    description: wallet_credits
+
+  wallet_credits_usd:
+    description: wallet_credits_usd
+
+  wallet_transactions:
+    description: wallet_transactions
+
+  wallet_transactions_amount:
+    sql: amount
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_amount_usd:
+    sql: amount_usd
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_created_at:
+    sql: created_at
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_processing_currency:
+    sql: processing_currency
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_transaction_type:
+    sql: transaction_type
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  wallet_transactions_wallet_transaction_id:
+    sql: wallet_transaction_id
+    format: ID
+    nested_on_field: wallet_transactions
+    parent_field: wallet_transactions
+
+  customer_order_sequence_number:
+    description: customer_order_sequence_number
+
+  updated_at:
+    description: updated_at
+
+  order_value_completed:
+    description: order_value_completed
+
+  order_value_completed_usd:
+    description: order_value_completed_usd
+
+  is_repeat_order:
+    description: is_repeat_order
+
+measures:
+  count:
+    aggregate_type: count

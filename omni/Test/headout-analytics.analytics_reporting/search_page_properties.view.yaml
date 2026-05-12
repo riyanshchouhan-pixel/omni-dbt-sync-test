@@ -1,0 +1,45 @@
+# Reference this view as headout_analytics_analytics_reporting__search_page_properties
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: search_page_properties
+
+dimensions:
+  sub_category_name: {}
+  content_type: {}
+  page_type: {}
+  collection_name: {}
+  document_type: {}
+  mb_type: {}
+  language: {}
+  structure: {}
+
+  page:
+    description: Focus page
+
+  mapped_kw:
+    description: focus keyword mapped to page
+
+  city:
+    description: Headout city the page is mapped to
+
+  country:
+    description: Headout country the page is mapped to
+
+  category_id:
+    format: ID
+    description: Headout category ID the page is mapped to
+
+  category_name:
+    description: Headout category the microbrand page is mapped to
+
+  sub_category_id:
+    format: ID
+
+  collection_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

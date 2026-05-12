@@ -1,0 +1,36 @@
+# Reference this view as headout_analytics_analytics_reporting__selenium_auto_closure_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: selenium_auto_closure_events
+
+dimensions:
+  event_timestamp: {}
+  event_name: {}
+  tour_name: {}
+  vendor_name: {}
+  inventory_date_end: {}
+  inventory_date_start: {}
+  time_slot: {}
+  action: {}
+  cron_type: {}
+  failure_count: {}
+  username: {}
+  cron_run_date: {}
+
+  event_id:
+    format: ID
+    description: Event ID of the event generated from the selenium auto closures
+
+  tour_id:
+    format: ID
+    description: tour id of the tour for which the suppliers profile was updated
+
+  vendor_id:
+    format: ID
+    description: id of the vendor who's suppliers profile updated
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,238 @@
+# Reference this view as headout_analytics_analytics_reporting__meta_ads_campaign_stats
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: meta_ads_campaign_stats
+
+dimensions:
+  campaign_target_combined_entity_type: {}
+  campaign_target_combined_entity_category: {}
+  campaign_target_combined_entity_subcategory: {}
+  campaign_target_evolution_bucket: {}
+  campaign_target_management_type: {}
+  is_campaign_target_existing: {}
+  campaign_target_headout_status: {}
+  campaign_target_bucket_2025: {}
+  campaign_target_roi_target: {}
+  campaign_target_ce_label: {}
+
+  surrogate_key:
+    description: Surrogate primary key created for this table using customer_id,
+      campaign_id, and report_date
+
+  customer_id:
+    format: ID
+    description: Meta Ads account ID
+
+  campaign_id:
+    format: ID
+    description: Unique identifier for the campaign
+
+  report_date:
+    description: Date of the performance report
+
+  account_name:
+    description: Name of the Meta Ads account (always "Headout")
+
+  campaign_name:
+    description: Current name of the campaign
+
+  campaign_category:
+    description: Category extracted from the campaign name (current value)
+
+  campaign_target_combined_entity_id:
+    format: ID
+    description: Combined entity ID that the campaign is targeting (always NULL for
+      Meta Ads)
+
+  campaign_target_combined_entity_name:
+    description: Name of the combined entity that the campaign is targeting
+
+  campaign_city:
+    description: City extracted from the campaign name (current value)
+
+  campaign_country:
+    description: Country for the campaign city
+
+  campaign_region:
+    description: Region for the campaign city
+
+  campaign_target_business_market:
+    description: Business market of the targeted combined entity
+
+  campaign_target_business_region:
+    description: Business region of the targeted combined entity
+
+  campaign_language:
+    description: Language extracted from the campaign name (current value)
+
+  campaign_targeting_location:
+    description: Targeting location extracted from the campaign name (current value)
+
+  campaign_start_date:
+    description: Date when the campaign first started
+
+  combined_entity_campaigns_start_date:
+    description: Date when campaigns for this combined entity first started (always
+      NULL for Meta Ads)
+
+  current_campaign_budget:
+    description: Current campaign budget (always NULL for Meta Ads)
+
+  current_campaign_budget_period:
+    description: Current campaign budget period (always NULL for Meta Ads)
+
+  current_campaign_target_roas:
+    description: Current target return on ad spend percentage (always NULL for Meta Ads)
+
+  current_campaign_bidding_strategy:
+    description: Current bidding strategy for the campaign (always NULL for Meta Ads)
+
+  current_bidding_strategy_name:
+    description: Name of the current bidding strategy (always NULL for Meta Ads)
+
+  current_campaign_status:
+    description: Current campaign status (ENABLED if ACTIVE, otherwise
+      effective_status value)
+
+  current_campaign_labels:
+    description: Current campaign labels as an array (always NULL for Meta Ads)
+
+  current_campaign_target_cpa:
+    description: Current target cost per acquisition (always NULL for Meta Ads)
+
+  campaign_budget:
+    description: Historical campaign budget for the specific report date (always
+      NULL for Meta Ads)
+
+  campaign_budget_period:
+    description: Historical campaign budget period for the specific report date
+      (always NULL for Meta Ads)
+
+  campaign_bidding_strategy:
+    description: Historical bidding strategy for the specific report date (always
+      NULL for Meta Ads)
+
+  bidding_strategy_name:
+    description: Name of the bidding strategy for the specific report date (always
+      NULL for Meta Ads)
+
+  campaign_target_roas:
+    description: Historical target return on ad spend percentage for the specific
+      report date (always NULL for Meta Ads)
+
+  campaign_labels:
+    description: Campaign labels for the specific report date as an array (always
+      NULL for Meta Ads)
+
+  campaign_advertising_channel_type:
+    description: Advertising channel type (always NULL for Meta Ads)
+
+  campaign_advertising_channel_sub_type:
+    description: Sub-type of the advertising channel (always NULL for Meta Ads)
+
+  campaign_status:
+    description: Historical campaign status for the specific report date
+
+  campaign_serving_status:
+    description: Serving status of the campaign
+
+  campaign_target_cpa:
+    description: Historical target cost per acquisition for the specific report date
+      (always NULL for Meta Ads)
+
+  count_impressions:
+    description: Number of impressions (defaults to 0 if no data)
+
+  count_clicks:
+    description: Number of clicks (defaults to 0 if no data)
+
+  sum_spend:
+    description: Total spend in account currency (defaults to 0 if no data)
+
+  count_conversions_online:
+    description: Number of online conversions tracked via custom conversion event
+      (offsite_conversion.custom.1301332137834638) with 7-day click attribution
+
+  sum_conversion_value_online:
+    description: Total value of online conversions in account currency
+
+  count_conversions_offline_gross_bookings:
+    description: Number of offline gross bookings conversions tracked via custom
+      conversion event (offsite_conversion.custom.2344754695886979) with 7-day
+      click attribution
+
+  sum_conversion_value_offline_gross_bookings:
+    description: Total value of offline gross bookings conversions in account currency
+
+  count_conversions_offline_revenue:
+    description: Number of offline revenue conversions tracked via Facebook Pixel
+      purchase event (offsite_conversion.fb_pixel_purchase) with 7-day click
+      attribution
+
+  sum_conversion_value_offline_revenue:
+    description: Total value of offline revenue conversions in account currency
+
+  count_conversions_offline_contribution_margin:
+    description: Number of offline conversions for contribution margin (always NULL
+      for Meta Ads)
+
+  sum_conversion_value_offline_contribution_margin:
+    description: Total value of offline contribution margin conversions (always NULL
+      for Meta Ads)
+
+  search_impression_share:
+    description: Percentage of impressions received out of total eligible
+      impressions (always NULL for Meta Ads)
+
+  count_eligible_searches:
+    description: Estimated total number of eligible searches (always NULL for Meta Ads)
+
+  count_rank_lost_searches:
+    description: Estimated number of searches lost due to poor ad rank (always NULL
+      for Meta Ads)
+
+  count_budget_lost_searches:
+    description: Estimated number of searches lost due to budget constraints (always
+      NULL for Meta Ads)
+
+  count_attributed_orders:
+    description: Number of orders attributed to this campaign using campaign
+      ID-based matching from Aug 2024 onwards (defaults to 0)
+
+  count_attributed_assisted_orders:
+    description: Total number of orders where this campaign was in the customer
+      journey using campaign ID-based matching from Aug 2024 onwards (defaults
+      to 0)
+
+  sum_attributed_value:
+    description: Total order value in USD attributed to this campaign (defaults to 0)
+
+  sum_attributed_value_completed:
+    description: Total completed order value in USD for attributed orders (only
+      includes orders with status Completed, Pending, or Partially Completed,
+      defaults to 0)
+
+  sum_conversion_value_calculated_revenue:
+    description: Calculated revenue by multiplying sum_conversion_value_online with
+      the campaign's historical revenue percentage (actual revenue as % of order
+      value after cancellations/changes, defaults to 0)
+
+  sum_conversion_value_calculated_contribution_margin:
+    description: Calculated contribution margin using Meta Ads' offline revenue
+      tracking (sum_conversion_value_offline_revenue) multiplied by contribution
+      margin to revenue percentage. Falls back to sum_conversion_value_online
+      multiplied by revenue percentage if offline revenue tracking is
+      unavailable. This approach is more accurate for Meta Ads since they track
+      actual revenue via fb_pixel_purchase (defaults to 0)
+
+  sum_coupon_and_wallet_credits:
+    description: Calculated discount impact by multiplying
+      sum_conversion_value_online with the campaign's historical coupon and
+      wallet usage percentage (excludes affiliate and creator coupons, defaults
+      to 0)
+
+measures:
+  count:
+    aggregate_type: count

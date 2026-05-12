@@ -1,0 +1,92 @@
+# Reference this view as headout_analytics_analytics_reporting__goals_2024
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: goals_2024
+
+dimensions:
+  target_year: {}
+
+  target_month:
+    description: calendar month for goals
+
+  target_half:
+    description: Tag to filter if the goals are for H1 or H2
+
+  market:
+    description: market that the CE belong to
+
+  region:
+    description: Region that the CE belong to
+
+  country:
+    description: Country that the CE belong to
+
+  combined_entity_id:
+    format: ID
+    description: Combined entity id
+
+  combined_entity_name:
+    description: Name of CE
+
+  combined_entity_type:
+    description: classification of CE into swap, existing, long tail etc.
+
+  category:
+    description: to define if the CE is part of new category or not [ New category
+      is a new addition ]
+
+  business_team_owner:
+    description: name of business owner of any CE
+
+  launch_date:
+    description: launch date for CE
+
+  mmp_analysis_start_date:
+    description: start date for mmp analysis for a particular CE
+
+  mmp_execution_start_date:
+    description: start date for mmp execution for a particular CE
+
+  ce_focus_month:
+    description: focus month for a particular CE
+
+  target_bucket:
+    description: target bucket for a particular CE, i.e. Hero or Pro Target
+
+  key_pointers:
+    description: key pointers for a particular CE
+
+  key_actions:
+    description: key action that needs to taken for a particular CE
+
+  mmp_analysis_status:
+    description: status for mmp analysis
+
+  mmp_document:
+    description: link for mmp document
+
+  mmp_execution_status:
+    description: status of mmp execution
+
+  status:
+    description: overall status of CE mmp & otherwise
+
+  comments:
+    description: comments from growth managers regarding the mmp process in the
+      g-sheet will update this field
+
+  mb_landing_page_url:
+    description: landing page url for the CE
+
+  goal_type:
+    description: Tag to filter if the goals are at combined entity level or
+      market/region level
+
+  target_revenue:
+    description: target revenue for the CE or market/region
+
+measures:
+  count:
+    aggregate_type: count

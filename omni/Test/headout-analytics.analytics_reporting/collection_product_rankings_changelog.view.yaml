@@ -1,0 +1,34 @@
+# Reference this view as headout_analytics_analytics_reporting__collection_product_rankings_changelog
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: collection_product_rankings_changelog
+
+dimensions:
+  collection_name: {}
+  experience_name: {}
+  city: {}
+  computed_rank: {}
+  ranking_source: {}
+  lev_score: {}
+  days_to_first_available_date: {}
+  count_days_available_30d: {}
+  original_price_usd: {}
+  final_price_usd: {}
+  is_combo: {}
+  count_ratings: {}
+  average_rating: {}
+  revenue_contribution_last30day: {}
+  selects_contribution_last30day: {}
+  checkouts_contribution_last30day: {}
+  orders_contribution_last30day: {}
+  ranked_timestamp: {}
+
+  collection_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

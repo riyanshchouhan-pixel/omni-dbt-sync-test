@@ -1,0 +1,79 @@
+# Reference this view as headout_analytics_analytics_reporting__google_ads_ad_group_geo_performance
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: google_ads_ad_group_geo_performance
+
+dimensions:
+  device: {}
+  ad_network_type: {}
+  account_name: {}
+  geo_target_city: {}
+  geo_target_region: {}
+  geo_target_most_specific: {}
+  ad_group_name: {}
+  ad_group_status: {}
+  campaign_name: {}
+  campaign_language: {}
+  campaign_targeting_location: {}
+  current_campaign_bidding_strategy: {}
+  current_campaign_status: {}
+  count_impressions: {}
+  count_clicks: {}
+  sum_spend: {}
+  count_conversions: {}
+  count_all_conversions: {}
+  sum_conversions_value: {}
+  sum_all_conversions_value: {}
+  count_cross_device_conversions: {}
+  count_view_through_conversions: {}
+  count_interactions: {}
+  count_conversions_online: {}
+  sum_conversion_value_online: {}
+  count_conversions_offline_gross_bookings: {}
+  sum_conversion_value_offline_gross_bookings: {}
+  count_conversions_offline_revenue: {}
+  sum_conversion_value_offline_revenue: {}
+  count_conversions_offline_contribution_margin: {}
+  sum_conversion_value_offline_contribution_margin: {}
+
+  surrogate_key:
+    description: Surrogate primary key from the geo stats staging model.
+
+  customer_id:
+    format: ID
+
+  campaign_id:
+    format: ID
+
+  ad_group_id:
+    format: ID
+
+  report_date:
+    description: Date of the performance report.
+
+  country_criterion_id:
+    format: ID
+    description: Google Ads geo target constant for the country (e.g., 2840 for US,
+      2826 for UK).
+
+  location_type:
+    description: LOCATION_OF_PRESENCE (where the user physically is) or
+      AREA_OF_INTEREST (what destination they searched about).
+
+  campaign_city:
+    description: City extracted from the campaign name (the destination being advertised).
+
+  campaign_category:
+    description: Category extracted from the campaign name.
+
+  campaign_target_combined_entity_id:
+    format: ID
+
+  count_video_views:
+    description: Number of video views (relevant for YouTube/Display geo analysis).
+
+measures:
+  count:
+    aggregate_type: count
