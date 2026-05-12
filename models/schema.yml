@@ -1,19 +1,25 @@
 version: 2
 
-   sources:
-     - name: dbt_audit_reporting
-       database: segment-data
-       schema: dbt_audit_reporting
-       tables:
-         - name: combined_entity_stats
-           description: "Test metadata pilot — Riyansh"
-           columns:
-             - name: combined_entity_id
-               meta:
-                 label: "CE ID [TEST]"
-                 ai_context: "Test marker — Riyansh's pilot"
-             - name: sum_revenue_predicted
-               meta:
-                 label: "Revenue (Predicted) [TEST]"
-                 format: bigcurrency
-                 ai_context: "Default revenue metric — test marker"
+models:
+  - name: test_field_pilot
+    description: "Sync test pilot — Riyansh. Hard-coded values, no production deps."
+    columns:
+      - name: test_id
+        description: "Sync test description for test_id"
+        meta:
+          label: "Test ID [SYNC PILOT]"
+          ai_context: "AI context test marker — Riyansh"
+
+      - name: city_name
+        description: "Sync test description for city"
+        meta:
+          label: "City [SYNC PILOT]"
+          ai_context: "City field test marker"
+
+      - name: test_revenue
+        description: "Sync test description for revenue"
+        meta:
+          label: "Test Revenue [SYNC PILOT]"
+          format: bigcurrency
+          aggregate_type: sum
+          ai_context: "Revenue field test marker — Riyansh"
