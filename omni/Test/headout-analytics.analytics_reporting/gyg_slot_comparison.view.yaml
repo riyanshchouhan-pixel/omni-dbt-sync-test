@@ -1,0 +1,128 @@
+# Reference this view as headout_analytics_analytics_reporting__gyg_slot_comparison
+description: |
+  **Business Purpose:** Daily slot-level price comparison between Headout inventory and GYG
+  (GetYourGuide) for mapped tour/vendor combinations. Each row represents a specific time slot
+  on a given inventory date, showing both Headout listing price and the corresponding GYG deal
+  price side by side. Enables the commercial team to monitor price competitiveness at the slot
+  level and track how pricing gaps evolve as the experience date approaches.
+
+  **Refresh Cadence:** Daily
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: gyg_slot_comparison
+
+dimensions:
+  tour_id:
+    format: ID
+    description: Headout tour ID.
+
+  vendor_id:
+    format: ID
+    description: Headout vendor ID. Null for tour-only mapping rows that surface as
+      GYG-only slots in the final join.
+
+  crawl_date:
+    description: Date the pricing data was crawled for both Headout and GYG. Partition key.
+
+  inventory_date:
+    description: Date of the experience slot being compared.
+
+  inventory_time:
+    description: Start time of the experience slot in HH:MM format.
+
+  gyg_variant_id:
+    format: ID
+    description: GYG variant ID mapped to this Headout tour/vendor combination.
+
+  gyg_page_url:
+    description: GYG page URL for the mapped product.
+
+  provider:
+    description: Supplier name on the competitor platform.
+
+  ho_extraction_timestamp:
+    description: Exact timestamp of the Headout inventory snapshot used for this comparison.
+
+  price_profile_id:
+    format: ID
+    description: Headout price profile ID for the slot.
+
+  profile_pax_parameter:
+    description: Passenger type parameter for the Headout price profile (e.g., 'ADULT').
+
+  currency:
+    description: Local currency of the Headout experience.
+
+  usd_to_currency_rate:
+    description: Exchange rate representing units of local currency per 1 USD. Used
+      to convert Headout prices to USD.
+
+  ho_retail_price:
+    description: Headout retail price in local currency before any discounts.
+
+  ho_retail_price_usd:
+    description: Headout retail price converted to USD.
+
+  ho_discount:
+    description: Headout platform discount percentage applied to the retail price.
+
+  ho_sp_discount:
+    description: Supply partner discount percentage applied to the retail price.
+
+  ho_listing_price_usd:
+    description: Final Headout listing price in USD after applying ho_discount and
+      ho_sp_discount. This is the price shown to the customer.
+
+  ho_commission:
+    description: Headout commission percentage for this price profile.
+
+  ho_count_remaining:
+    description: Number of Headout inventory slots remaining for this time slot.
+
+  is_shown_on_ui:
+    description: Whether this slot is shown on the Headout UI (is_chosen flag from
+      inventory).
+
+  days_out:
+    description: Number of days between the crawl date and the inventory date.
+      Ranges from 0 to 30.
+
+  gyg_variant_title:
+    description: Display title of the GYG variant.
+
+  gyg_pax_type:
+    description: Passenger type for the GYG slot (filtered to 'Adult x 1').
+
+  gyg_currency:
+    description: Currency of the GYG slot prices.
+
+  gyg_deal_price:
+    description: Discounted deal price on GYG for the slot in GYG local currency.
+
+  gyg_base_price:
+    description: Original base price on GYG before any discount, in GYG local currency.
+
+  gyg_discount_percentage:
+    description: Discount percentage applied by GYG to arrive at the deal price.
+
+  gyg_count_remaining:
+    description: Number of vacancies remaining on GYG for this slot.
+
+  gyg_extraction_timestamp:
+    description: Exact timestamp of the GYG pricing crawl used for this comparison.
+
+  listing_price_difference_usd:
+    description: Headout listing price (ho_listing_price_usd) minus GYG deal price
+      in USD. Negative value means Headout is cheaper than GYG.
+
+  retail_price_difference_usd:
+    description: Headout retail price (ho_retail_price_usd) minus GYG base price in
+      USD. Compares undiscounted prices on both platforms.
+
+  processing_timestamp:
+    description: Timestamp when this record was processed by dbt.
+
+measures:
+  count:
+    aggregate_type: count

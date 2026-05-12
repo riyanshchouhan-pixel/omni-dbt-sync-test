@@ -30,6 +30,7 @@ dimensions:
 
   call_id:
     format: ID
+    description: ID of the call.
 
   ticket_id:
     format: ID

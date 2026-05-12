@@ -24,7 +24,7 @@ dimensions:
   api_plugin:
     description: rms or api plugin of the vendor of that inventory cron
 
-  event_hour:
+  event_hour_at:
     description: event timestamp truncated to aggregate the data at an hour level
 
   inventory_period:
