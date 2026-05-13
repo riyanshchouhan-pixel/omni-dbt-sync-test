@@ -11,7 +11,7 @@ models:
           ai_context: "AI context test marker — Riyansh"
 
       - name: city_name
-        description: "Sync test description for city"
+  description: "Updated city description - Test 2 sync check"
         meta:
           label: "City [SYNC PILOT]"
           ai_context: "City field test marker"
