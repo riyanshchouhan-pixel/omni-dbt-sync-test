@@ -29,17 +29,3 @@ models:
         meta:
           label: "Country [SYNC PILOT]"
           ai_context: "Country field test marker"
-
-semantic_models:
-  - name: test_field_pilot_semantic
-    model: ref('test_field_pilot')
-    measures:
-      - name: total_revenue
-        agg: sum
-        expr: test_revenue
-        create_metric: true
-    dimensions:
-      - name: city_name
-        type: categorical
-      - name: country_name
-        type: categorical
