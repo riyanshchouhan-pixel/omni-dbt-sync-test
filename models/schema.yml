@@ -21,7 +21,7 @@ models:
         meta:
           label: "Test Revenue [SYNC PILOT]"
           format: bigcurrency
-          aggregate_type: sum
+          aggregate_type: avg
           ai_context: "Revenue field test marker — Riyansh"
 
       - name: country_name
