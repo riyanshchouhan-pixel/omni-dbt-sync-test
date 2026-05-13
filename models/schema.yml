@@ -11,7 +11,7 @@ models:
           ai_context: "AI context test marker — Riyansh"
 
       - name: city_name
-  description: "Updated city description - Test 2 sync check"
+        description: "Updated city description - Test 2 sync check"
         meta:
           label: "City [SYNC PILOT]"
           ai_context: "City field test marker"
@@ -23,3 +23,9 @@ models:
           format: bigcurrency
           aggregate_type: sum
           ai_context: "Revenue field test marker — Riyansh"
+
+      - name: country_name
+        description: "Sync test description for country"
+        meta:
+          label: "Country [SYNC PILOT]"
+          ai_context: "Country field test marker"
