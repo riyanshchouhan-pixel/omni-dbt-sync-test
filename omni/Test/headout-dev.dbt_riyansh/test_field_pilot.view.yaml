@@ -1,0 +1,45 @@
+# Reference this view as headout_dev_dbt_riyansh__test_field_pilot
+#This description was pulled from dbt.
+description: Sync test pilot — Riyansh. Hard-coded values, no production deps.
+
+catalog: headout-dev
+schema: dbt_riyansh
+table_name: test_field_pilot
+
+dimensions:
+  test_id:
+    format: ID
+    #This description was pulled from dbt.
+    description: Sync test description for test_id
+
+  city_name:
+    #This description was pulled from dbt.
+    description: Updated city description - Test 2 sync check
+
+  test_revenue:
+    #This description was pulled from dbt.
+    description: Sync test description for revenue
+
+  country_name:
+    #This description was pulled from dbt.
+    description: Sync test description for country
+
+measures:
+  count:
+    aggregate_type: count
+
+#The info below was pulled from your dbt repository and is read-only.
+dbt:
+  name: test_field_pilot
+  target_schema: dbt_riyansh
+  description: Sync test pilot — Riyansh. Hard-coded values, no production deps.
+  config:
+    materialized: view
+  code: |-
+    {{ config(materialized='view') }}
+
+    select 1 as test_id, 'Amsterdam' as city_name, 100.50 as test_revenue, 'Netherlands' as country_name
+    union all
+    select 2 as test_id, 'Paris' as city_name, 250.75 as test_revenue, 'France' as country_name
+    union all
+    select 3 as test_id, 'Tokyo' as city_name, 500.00 as test_revenue, 'Japan' as country_name
