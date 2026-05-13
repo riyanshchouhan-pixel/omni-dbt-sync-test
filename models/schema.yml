@@ -30,14 +30,16 @@ models:
           label: "Country [SYNC PILOT]"
           ai_context: "Country field test marker"
 
-metrics:
-  - name: total_revenue
-    label: "Total Revenue [TEST 7 METRIC]"
+semantic_models:
+  - name: test_field_pilot_semantic
     model: ref('test_field_pilot')
-    description: "Sum of test_revenue — Test 7 dbt metric sync check"
-    type: simple
-    type_params:
-      measure:
-        name: test_revenue_sum
+    measures:
+      - name: total_revenue
         agg: sum
         expr: test_revenue
+        create_metric: true
+    dimensions:
+      - name: city_name
+        type: categorical
+      - name: country_name
+        type: categorical
