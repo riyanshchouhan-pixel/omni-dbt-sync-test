@@ -3,9 +3,8 @@
 select 
     'Amsterdam' as city_name,
     'Netherlands' as country_name,
-    100.50 as revenue,
-    'Europe' as region
+    100.50 as revenue
 union all
-select 'Paris', 'France', 250.75, 'Europe'
+select 'Paris', 'France', 250.75
 union all
-select 'Tokyo', 'Japan', 500.00, 'Asia'
+select 'Tokyo', 'Japan', 500.00
