@@ -1,0 +1,33 @@
+# Reference this view as headout_dev_dbt_riyansh__test_cities_revenue
+catalog: headout-dev
+schema: dbt_riyansh
+table_name: test_cities_revenue
+
+dimensions:
+  city_name: {}
+  country_name: {}
+  revenue: {}
+  region: {}
+
+measures:
+  count:
+    aggregate_type: count
+
+#The info below was pulled from your dbt repository and is read-only.
+dbt:
+  name: test_cities_revenue
+  target_schema: dbt_riyansh
+  config:
+    materialized: view
+  code: |-
+    {{ config(materialized='view') }}
+
+    select 
+        'Amsterdam' as city_name,
+        'Netherlands' as country_name,
+        100.50 as revenue,
+        'Europe' as region
+    union all
+    select 'Paris', 'France', 250.75, 'Europe'
+    union all
+    select 'Tokyo', 'Japan', 500.00, 'Asia'
