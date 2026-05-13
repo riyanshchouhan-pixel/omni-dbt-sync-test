@@ -1,4 +1,4 @@
-{{ config(materialized='view') }}
+{{ config(materialized='table') }}
 
 select 1 as test_id, 'Amsterdam' as city_name, 100.50 as test_revenue, 'Netherlands' as country_name
 union all

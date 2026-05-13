@@ -130,9 +130,71 @@
 
 ---
 
+---
+
+## Field Types Test — How does Omni classify BigQuery types?
+
+**Model:** `test_field_types` | **Date:** 13 May 2026
+
+| # | Field | BigQuery Type | Omni Classification | Result |
+|---|---|---|---|---|
+| 1 | `city_name` | STRING | String dimension | ✅ Correct |
+| 2 | `revenue` | FLOAT64 | Number dimension (`#`) | ✅ Correct |
+| 3 | `item_count` | INT64 | Number dimension (`#`) | ✅ Correct |
+| 4 | `created_date` | DATE | Date + auto hierarchy (Raw / Date / Week / Month / Quarter / Year) | ✅ Correct + Auto hierarchy! |
+| 5 | `created_at` | TIMESTAMP | Timestamp + auto hierarchy (Raw / Date / Week / Month / Quarter / Year) | ✅ Correct + Auto hierarchy! |
+| 6 | `is_active` | BOOL | Number (`#`) — NOT classified as boolean | ⚠️ Treated as number |
+| 7 | `id` | INT64 (named `id`) | `format: ID` + `primary_key: true` auto-applied | ✅ Auto-detected as primary key! |
+| 8 | `avg_revenue` | FLOAT64 | Number dimension (`#`) | ✅ Correct |
+
+**Key Findings:**
+- ✅ Omni correctly maps STRING → string, FLOAT64/INT64 → number, DATE/TIMESTAMP → date
+- ✅ DATE and TIMESTAMP fields **automatically get a 5-level drill-down hierarchy**: Raw → Date → Week → Month → Quarter → Year. No configuration needed.
+- ✅ Fields named `id` are **automatically detected as primary keys** (`format: ID`, `primary_key: true` added to view YAML)
+- ⚠️ BOOL fields are treated as **numbers (0/1)**, not as a distinct boolean type
+- ⚠️ Numeric fields do **not** get auto-generated Sum or Average measures — only Count is auto-generated
+
+---
+
+---
+
+## Refresh Type Comparison (Tests 27 & 28)
+
+**Date:** 13 May 2026
+
+| Behaviour | Refresh Schema (Hard) | Sync dbt Metadata (Soft) |
+|---|---|---|
+| New BigQuery columns | ✅ Picks up | ❌ Ignores |
+| New dbt models | ✅ Picks up | ❌ Ignores |
+| Deleted columns | ✅ Removes | ❌ Ignores |
+| dbt descriptions sync | ✅ Yes | ✅ Yes |
+| Custom Omni measures preserved | ✅ Yes | ✅ Yes |
+| Custom Omni dimensions preserved | ✅ Yes | ✅ Yes |
+| Omni hidden fields preserved | ✅ Yes | ✅ Yes |
+| Omni description overrides preserved | ✅ Yes | ✅ Yes |
+
+**Key finding:** Both refresh types preserve all custom Omni additions. Use **Sync dbt metadata** for quick description updates without risk of structural changes. Use **Refresh Schema** when dbt models have changed (new/deleted columns or models).
+
+---
+
+### Test 25 — Push to dbt (Omni → dbt)
+- **Date:** 13 May 2026
+- **Action:** Model → Push to dbt → "Sync descriptions" checked → Create Pull Request
+- **Result:** ✅ PASSED
+- **What it pushed:** Created a PR on branch `omni/riyansh-chouhan-headout-com/xX8RqtDR` modifying `models/schema.yml` — changed `city_name` description from `"Updated city description - Test 2 sync check"` (old dbt value) to `"OMNI OVERRIDE - Test 13 custom description"` (Omni override value)
+- **What it does NOT push:** Custom measures, dimensions, labels, hidden fields — only descriptions
+- **Key insight:** This creates a complete **bidirectional description sync**:
+  - `dbt schema.yml → Omni` via Schema Refresh
+  - `Omni → dbt schema.yml` via Push to dbt (creates a PR for review)
+- **Workflow enabled:** Analyst improves descriptions in Omni → team reviews PR → merges to dbt → all future refreshes use improved description
+
+---
+
 ## Pending Tests
 
 | # | Test | Direction | Status |
 |---|------|-----------|--------|
 | 8 | Change materialization (view → table) | dbt → Omni | 🔲 Pending |
+| 23 | Create a Topic in Omni | Omni → Git | 🔲 Pending |
+| 24 | Define a join/relationship in Omni | Omni → Git | 🔲 Pending |
 
