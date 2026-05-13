@@ -1,0 +1,58 @@
+# Reference this view as headout_dev_dbt_riyansh__test_field_types
+catalog: headout-dev
+schema: dbt_riyansh
+table_name: test_field_types
+
+dimensions:
+  city_name: {}
+  revenue: {}
+  item_count: {}
+  created_date: {}
+  created_at: {}
+  is_active: {}
+  avg_revenue: {}
+
+  id:
+    format: ID
+    primary_key: true
+
+measures:
+  count:
+    aggregate_type: count
+
+#The info below was pulled from your dbt repository and is read-only.
+dbt:
+  name: test_field_types
+  target_schema: dbt_riyansh
+  config:
+    materialized: view
+  code: |-
+    {{ config(materialized='view') }}
+
+    select
+      1                                    as id,
+      'Amsterdam'                          as city_name,
+      100.50                               as revenue,
+      42                                   as item_count,
+      DATE('2024-01-01')                   as created_date,
+      TIMESTAMP('2024-01-01 10:00:00')     as created_at,
+      TRUE                                 as is_active,
+      CAST(100.50 / 3 AS FLOAT64)          as avg_revenue
+
+    union all
+
+    select
+      2, 'Paris', 250.75, 18,
+      DATE('2024-02-15'),
+      TIMESTAMP('2024-02-15 14:30:00'),
+      FALSE,
+      CAST(250.75 / 5 AS FLOAT64)
+
+    union all
+
+    select
+      3, 'Tokyo', 500.00, 35,
+      DATE('2024-03-20'),
+      TIMESTAMP('2024-03-20 09:15:00'),
+      TRUE,
+      CAST(500.00 / 7 AS FLOAT64)
