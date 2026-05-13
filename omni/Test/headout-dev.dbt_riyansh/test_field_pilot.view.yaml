@@ -28,6 +28,10 @@ measures:
   count:
     aggregate_type: count
 
+  total_revenue:
+    sql: ${test_revenue}
+    aggregate_type: sum
+
 #The info below was pulled from your dbt repository and is read-only.
 dbt:
   name: test_field_pilot
