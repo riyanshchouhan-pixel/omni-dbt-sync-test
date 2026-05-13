@@ -3,3 +3,4 @@ logs/
 target/
 dbt_packages/
 .user.yml
+!target/manifest.json
