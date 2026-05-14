@@ -1,0 +1,31 @@
+# Reference this view as headout_dev_dbt_riyansh__fct_reviews
+catalog: headout-dev
+schema: dbt_riyansh
+table_name: fct_reviews
+
+dimensions:
+  city_name: {}
+  country_name: {}
+  rating: {}
+  review_text: {}
+  is_verified: {}
+  review_date: {}
+  reviewed_at: {}
+  experience_price: {}
+  review_count: {}
+
+  review_id:
+    format: ID
+
+  experience_id:
+    format: ID
+
+  booking_id:
+    format: ID
+
+  customer_id:
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count
