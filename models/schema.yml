@@ -11,7 +11,7 @@ models:
           ai_context: "AI context test marker — Riyansh"
 
       - name: city_name
-        description: "Updated city description - Test 2 sync check"
+        description: OMNI OVERRIDE - Test 13 custom description
         meta:
           label: "City Name [TEST 3 LABEL CHANGE]"
           ai_context: "City field test marker"
