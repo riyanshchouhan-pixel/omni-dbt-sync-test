@@ -5,8 +5,10 @@ table_name: test_cities_revenue
 
 dimensions:
   city_name: {}
-  country_name: {}
   revenue: {}
+
+  country_name:
+    label: Country Name [TEST 22 CUSTOM]
 
 measures:
   count:
