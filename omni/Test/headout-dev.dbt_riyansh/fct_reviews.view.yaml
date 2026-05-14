@@ -1,31 +1,103 @@
 # Reference this view as headout_dev_dbt_riyansh__fct_reviews
+#This description was pulled from dbt.
+description: Fact table with one record per customer review submitted on headout
+  experiences.
+
 catalog: headout-dev
 schema: dbt_riyansh
 table_name: fct_reviews
 
 dimensions:
-  city_name: {}
-  country_name: {}
-  rating: {}
-  review_text: {}
-  is_verified: {}
-  review_date: {}
-  reviewed_at: {}
-  experience_price: {}
-  review_count: {}
-
   review_id:
     format: ID
+    #This description was pulled from dbt.
+    description: Unique identifier for each review, same as booking id.
 
   experience_id:
     format: ID
+    #This description was pulled from dbt.
+    description: ID of the headout experience being reviewed.
 
   booking_id:
     format: ID
+    #This description was pulled from dbt.
+    description: Booking ID for the booking that was reviewed.
 
   customer_id:
     format: ID
+    #This description was pulled from dbt.
+    description: ID of the customer who submitted the review.
+
+  city_name:
+    #This description was pulled from dbt.
+    description: City where the reviewed experience took place.
+
+  country_name:
+    #This description was pulled from dbt.
+    description: Country where the reviewed experience took place.
+
+  rating:
+    #This description was pulled from dbt.
+    description: Rating submitted by the guest, from 1 (worst) to 5 (best).
+
+  review_text:
+    #This description was pulled from dbt.
+    description: Free-text review written by the customer.
+
+  is_verified:
+    #This description was pulled from dbt.
+    description: Whether the review has been verified as coming from a confirmed booking.
+
+  review_date:
+    #This description was pulled from dbt.
+    description: Date on which the review was submitted.
+
+  reviewed_at:
+    #This description was pulled from dbt.
+    description: Timestamp (UTC) at which the review was submitted.
+
+  experience_price:
+    #This description was pulled from dbt.
+    description: Price of the experience at the time of booking.
+
+  review_count:
+    #This description was pulled from dbt.
+    description: Always 1 at row level — use SUM to aggregate.
 
 measures:
   count:
     aggregate_type: count
+
+#The info below was pulled from your dbt repository and is read-only.
+dbt:
+  name: fct_reviews
+  target_schema: dbt_riyansh
+  description: Fact table with one record per customer review submitted on headout
+    experiences.
+  config:
+    materialized: view
+  code: |-
+    {{ config(materialized='view') }}
+
+    select
+        1                           as review_id,
+        101                         as experience_id,
+        201                         as booking_id,
+        301                         as customer_id,
+        'Amsterdam'                 as city_name,
+        'Netherlands'               as country_name,
+        5                           as rating,
+        'Absolutely loved it!'      as review_text,
+        TRUE                        as is_verified,
+        DATE('2024-01-15')          as review_date,
+        TIMESTAMP('2024-01-15 10:30:00') as reviewed_at,
+        89.99                       as experience_price,
+        1                           as review_count
+
+    union all select 2, 102, 202, 302, 'Paris', 'France', 4, 'Great experience, would recommend.', TRUE, DATE('2024-02-20'), TIMESTAMP('2024-02-20 14:15:00'), 120.00, 1
+    union all select 3, 103, 203, 303, 'Tokyo', 'Japan', 5, 'Best trip of my life!', TRUE, DATE('2024-03-05'), TIMESTAMP('2024-03-05 09:00:00'), 200.00, 1
+    union all select 4, 101, 204, 304, 'Amsterdam', 'Netherlands', 3, 'Good but could be better.', FALSE, DATE('2024-03-10'), TIMESTAMP('2024-03-10 16:45:00'), 89.99, 1
+    union all select 5, 104, 205, 305, 'New York', 'USA', 2, 'Disappointing, not as described.', TRUE, DATE('2024-04-01'), TIMESTAMP('2024-04-01 11:00:00'), 150.00, 1
+    union all select 6, 102, 206, 301, 'Paris', 'France', 5, 'Magnifique! Will be back.', TRUE, DATE('2024-04-18'), TIMESTAMP('2024-04-18 13:30:00'), 120.00, 1
+    union all select 7, 105, 207, 306, 'Barcelona', 'Spain', 4, 'Very well organized tour.', TRUE, DATE('2024-05-02'), TIMESTAMP('2024-05-02 10:00:00'), 95.00, 1
+    union all select 8, 103, 208, 307, 'Tokyo', 'Japan', 1, 'Cancelled last minute, very unhappy.', TRUE, DATE('2024-05-15'), TIMESTAMP('2024-05-15 08:00:00'), 200.00, 1
