@@ -1,34 +1,52 @@
-- name: fct_reviews
-    description: This view has one record for each rating or review submitted on WebEngage
+version: 2
+
+models:
+  - name: fct_reviews
+    description: "Fact table with one record per customer review submitted on headout experiences."
     meta:
       owner: "@data-ops"
 
     columns:
       - name: review_id
-        description: unique id for each review, same as booking id
+        description: "Unique identifier for each review, same as booking id."
         tests:
           - not_null
           - unique
 
+      - name: experience_id
+        description: "ID of the headout experience being reviewed."
+
       - name: booking_id
-        description: booking id for the booking reviewed
+        description: "Booking ID for the booking that was reviewed."
         tests:
-          - unique
+          - not_null
 
-      - name: review
-        description: review text by the guest
+      - name: customer_id
+        description: "ID of the customer who submitted the review."
 
-      - name: review_media
-        description: Array of Media Assets of the given review
+      - name: city_name
+        description: "City where the reviewed experience took place."
+
+      - name: country_name
+        description: "Country where the reviewed experience took place."
 
       - name: rating
-        description: rating submitted by the guest
+        description: "Rating submitted by the guest, from 1 (worst) to 5 (best)."
+
+      - name: review_text
+        description: "Free-text review written by the customer."
+
+      - name: is_verified
+        description: "Whether the review has been verified as coming from a confirmed booking."
+
+      - name: review_date
+        description: "Date on which the review was submitted."
 
       - name: reviewed_at
-        description: ts (utc) at which the review was submitted
+        description: "Timestamp (UTC) at which the review was submitted."
 
-      - name: tagged_at
-        description: ts (utc) at which the review was tagged by Vectorshift Pipeline.
+      - name: experience_price
+        description: "Price of the experience at the time of booking."
 
-      - name: dissatisfaction_reasons
-        description: Array struct for L1-L2 reasons for guided and audio guided TGIDs.
+      - name: review_count
+        description: "Always 1 at row level — use SUM to aggregate."
