@@ -1,0 +1,34 @@
+- name: fct_reviews
+    description: This view has one record for each rating or review submitted on WebEngage
+    meta:
+      owner: "@data-ops"
+
+    columns:
+      - name: review_id
+        description: unique id for each review, same as booking id
+        tests:
+          - not_null
+          - unique
+
+      - name: booking_id
+        description: booking id for the booking reviewed
+        tests:
+          - unique
+
+      - name: review
+        description: review text by the guest
+
+      - name: review_media
+        description: Array of Media Assets of the given review
+
+      - name: rating
+        description: rating submitted by the guest
+
+      - name: reviewed_at
+        description: ts (utc) at which the review was submitted
+
+      - name: tagged_at
+        description: ts (utc) at which the review was tagged by Vectorshift Pipeline.
+
+      - name: dissatisfaction_reasons
+        description: Array struct for L1-L2 reasons for guided and audio guided TGIDs.
