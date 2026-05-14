@@ -30,3 +30,45 @@ models:
           label: "Country [SYNC PILOT]"
           ai_context: "Country field test marker"
 
+  - name: fct_reviews
+    description: "Fact table for customer reviews — headout experience ratings and feedback."
+    columns:
+      - name: review_id
+        description: "Unique identifier for each review."
+
+      - name: experience_id
+        description: "ID of the headout experience being reviewed."
+
+      - name: booking_id
+        description: "ID of the booking associated with this review."
+
+      - name: customer_id
+        description: "ID of the customer who left the review."
+
+      - name: city_name
+        description: "City where the reviewed experience took place."
+
+      - name: country_name
+        description: "Country where the reviewed experience took place."
+
+      - name: rating
+        description: "Customer rating from 1 (worst) to 5 (best)."
+
+      - name: review_text
+        description: "Free-text review written by the customer."
+
+      - name: is_verified
+        description: "Whether the review has been verified as coming from a real booking."
+
+      - name: review_date
+        description: "Date the review was submitted."
+
+      - name: reviewed_at
+        description: "Timestamp of when the review was submitted."
+
+      - name: experience_price
+        description: "Price of the experience at the time of booking."
+
+      - name: review_count
+        description: "Count of reviews — always 1 at row level, use SUM for aggregation."
+
