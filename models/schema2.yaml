@@ -31,7 +31,7 @@ models:
         description: "Country where the reviewed experience took place."
 
       - name: rating
-        description: "Rating submitted by the guest, from 1 (worst) to 5 (best)."
+        description: changed in omni Rating submitted by the guest, from 1 (worst) to 5 (best).
 
       - name: review_text
         description: "Free-text review written by the customer."
