@@ -11,6 +11,7 @@ dimensions:
   is_latest_active_general_profile: {}
   opening_time: {}
   closing_time: {}
+  is_inventory_schedule_automated: {}
   next_profile_start_date_at: {}
 
   surrogate_key:

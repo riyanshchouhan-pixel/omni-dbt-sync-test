@@ -30,7 +30,7 @@ dimensions:
 
   city_name:
     #This description was pulled from dbt.
-    description: City where the reviewed experience took place.
+    description: Bhopal-The City of Lakes
 
   country_name:
     #This description was pulled from dbt.

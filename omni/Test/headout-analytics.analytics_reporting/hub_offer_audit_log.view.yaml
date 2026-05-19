@@ -1,0 +1,166 @@
+# Reference this view as headout_analytics_analytics_reporting__hub_offer_audit_log
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: hub_offer_audit_log
+
+dimensions:
+  event_id:
+    format: ID
+    description: Unique identifier for this lifecycle event (not the discount ID).
+      Carries through from the source event.
+
+  event_type:
+    description: Discount lifecycle action taken in Hub. CREATE = new discount
+      created; UPDATE = discount configuration edited (field-level changes);
+      STATUS_UPDATE = status toggled via Enable/Disable (e.g. ACTIVE↔INACTIVE);
+      DELETE = discount removed.
+
+  discount_id:
+    format: ID
+    description: Hub identifier for the discount (offer) this event belongs to.
+      Stable across all lifecycle events for the same offer.
+
+  tour_id:
+    format: ID
+    description: Identifier of the Headout experience (tour) the discount applies to.
+
+  vendor_id:
+    format: ID
+    description: Identifier of the supply partner company that operates the tour.
+      Backfilled from dim_discounts when missing on the source event (common on
+      CREATE).
+
+  sp_billing_entity_id:
+    format: ID
+    description: Supply Partner Billing Entity ID (SPBEID) at the payload top level,
+      identifying which billing entity this discount event belongs to. SPBEs are
+      managed in Salesforce and created at SP onboarding.
+
+  event_ticket_url:
+    description: Zendesk or Slack thread URL attached by the author to give context
+      for the change. Sourced from newEntity.ticket → newEntity.comment →
+      top-level comment (first non-null). Typically populated only when the
+      author explicitly attached a reference; null otherwise.
+
+  new_entity_ticket:
+    description: Ticket/URL reference from payload.newEntity.ticket (typically a
+      Zendesk or Slack link). Only present on some CREATE/UPDATE events.
+
+  new_entity_comment:
+    description: Free-text or URL comment from payload.newEntity.comment (often
+      duplicates new_entity_ticket). Only present on some CREATE/UPDATE events.
+
+  event_timestamp:
+    description: Timestamp when the event was recorded.
+
+  server_timestamp:
+    description: Timestamp recorded by the backend when the event was ingested into
+      event_pipeline.hub_discount_event. Use this for freshness and partition
+      filtering.
+
+  consumer_timestamp:
+    description: Timestamp recorded on the client/consumer side after event
+      propagation. Typically seconds to minutes after server_timestamp.
+
+  author_type:
+    description: Persona who made the change. INTERNAL = Headout staff (e.g.
+      CATALOG_OPS for HO discounts, BIZ_OPS for SP discounts); SUPPLY_PARTNER =
+      external SP user acting via Hub. Critical for ops attribution.
+
+  author_email:
+    description: Email address of the person who made the change.
+
+  author_name:
+    description: Display name of the person who made the change.
+
+  author_user_id:
+    format: ID
+    description: Hub internal user ID of the author (payload.user.id). Populated for
+      SUPPLY_PARTNER users; often null for INTERNAL users (who still carry
+      author_name and author_email).
+
+  author_auth_user_id:
+    format: ID
+    description: Auth-provider user ID of the author (payload.user.authUserId).
+      Populated for SUPPLY_PARTNER users only.
+
+  sp_user_id:
+    format: ID
+    description: Hub supply-partner user record ID
+      (payload.user.supplyPartnerUser.id) — the specific user within the SP's
+      account that made the change. Null for INTERNAL authors.
+
+  sp_legal_name:
+    description: Registered legal name of the Supply Partner Billing Entity (from
+      Salesforce spbe_details.legal_name). Null for INTERNAL authors.
+
+  sp_is_partnered:
+    description: Whether the SPBE has a signed Supply Partner Agreement. True =
+      contracted partner terms; false = marketplace/ad-hoc. Null for INTERNAL
+      authors.
+
+  sp_onboarding_type:
+    description: "Onboarding flow the SPBE went through: NEW_SUPPLY_PARTNER,
+      PRE_PURCHASE, or ENTITY_CHANGE. Null for INTERNAL authors."
+
+  sp_sf_account_id:
+    format: ID
+    description: Salesforce Account ID linked to the SPBE (from
+      spbe_details.salesforce_account_id). Null for INTERNAL authors.
+
+  sp_sf_opportunity_id:
+    format: ID
+    description: Salesforce Opportunity ID tied to the SPBE onboarding (from
+      spbe_details.salesforce_opportunity_id). Null for INTERNAL authors.
+
+  sp_billing_entity_id_from_user:
+    description: SPBE ID as carried on the user record. Should match
+      sp_billing_entity_id; a mismatch signals a cross-entity edit or sync
+      issue.
+
+  changed_field:
+    description: "Attribute that changed (for UPDATE), or a marker row: - created /
+      deleted: lifecycle markers - status: status transition row for
+      STATUS_UPDATE events - untracked_update: UPDATE event occurred but no
+      tracked attribute changed at the canonical level - unknown_event_type:
+      unexpected event type surfaced for debugging"
+
+  before_value:
+    description: Previous value for changed_field (stringified). Compare with
+      after_value to see what changed. For pax_types/time_slots rows, a '[]'
+      value may indicate either a cleared value or a parse failure — check the
+      matching *_parse_error column.
+
+  after_value:
+    description: New value for changed_field (stringified). Compare with
+      before_value to see what changed. For pax_types/time_slots rows, a '[]'
+      value may indicate either a cleared value or a parse failure — check the
+      matching *_parse_error column.
+
+  prev_pax_types_parse_error:
+    description: Non-null only when the previous pax_types JSON failed to parse in
+      the UDF. When non-null on a `pax_types` diff row, the '[]' value in
+      before_value may indicate a parse failure rather than a genuinely cleared
+      pax_types.
+
+  new_pax_types_parse_error:
+    description: Non-null only when the new pax_types JSON failed to parse in the
+      UDF. When non-null on a `pax_types` diff row, the '[]' value in
+      after_value may indicate a parse failure rather than a genuinely cleared
+      pax_types.
+
+  prev_time_slots_parse_error:
+    description: Non-null only when the previous time_slots JSON failed to parse in
+      the UDF. Same semantics as prev_pax_types_parse_error but for the
+      time_slots field.
+
+  new_time_slots_parse_error:
+    description: Non-null only when the new time_slots JSON failed to parse in the
+      UDF. Same semantics as new_pax_types_parse_error but for the time_slots
+      field.
+
+measures:
+  count:
+    aggregate_type: count
