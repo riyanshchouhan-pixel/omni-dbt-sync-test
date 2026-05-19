@@ -8,6 +8,10 @@ schema: dbt_riyansh
 table_name: fct_reviews
 
 dimensions:
+  review_identifier:
+    sql: review_id
+    description: some other description
+
   review_id:
     format: ID
     description: riyansh
