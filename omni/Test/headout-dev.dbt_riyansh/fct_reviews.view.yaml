@@ -38,8 +38,8 @@ dimensions:
     description: Country where the reviewed experience took place.
 
   rating:
-    #This description was pulled from dbt.
-    description: changed in omni Rating submitted by the guest, from 1 (worst) to 5 (best).
+    description: changed in dbt
+    ai_context: changed in dbt
 
   review_text:
     #This description was pulled from dbt.
