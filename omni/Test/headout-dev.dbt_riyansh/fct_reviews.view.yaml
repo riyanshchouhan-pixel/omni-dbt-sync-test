@@ -37,16 +37,17 @@ dimensions:
     ai_context: Bhopal-The City of Lakes
 
   country_name:
-    description: United states of America
-    ai_context: United states of America
+    description: India
+    ai_context: India
 
   rating:
-    description: changed in dbt at 12:57
-    ai_context: changed in dbt at 12:57
+    description: changed in dbt
+    ai_context: changed in dbt
 
   review_text:
-    description: Free-text review written by the customer at 12:59.
-    ai_context: Free-text review written by the customer at 12:59.
+    #This description was pulled from dbt.
+    description: Free-text review written by the customer.
+    ai_context: Free-text review written by the customer.
 
   is_verified:
     #This description was pulled from dbt.
@@ -54,8 +55,9 @@ dimensions:
     ai_context: Whether the review has been verified as coming from a confirmed booking.
 
   review_date:
-    description: Date on which the review was submitted.at 12:59
-    ai_context: Date on which the review was submitted.at 12:59
+    #This description was pulled from dbt.
+    description: Date on which the review was submitted.
+    ai_context: Date on which the review was submitted.
 
   reviewed_at:
     #This description was pulled from dbt.
