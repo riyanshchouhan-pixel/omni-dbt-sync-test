@@ -29,19 +29,16 @@ dimensions:
     description: ID of the customer who submitted the review.
 
   city_name:
+    description: Bangalore-Silicon Valley of India
 
-    #This description was pulled from dbt.
-    description: City where the reviewed experience took place.
-    ai_context: City where the reviewed experience took place.
   country_name:
     #This description was pulled from dbt.
     description: Country where the reviewed experience took place.
 
   rating:
-
     #This description was pulled from dbt.
-    description: Rating submitted by the guest, from 1 (worst) to 5 (best).
-    ai_context: Rating submitted by the guest, from 1 (worst) to 5 (best).
+    description: changed in omni Rating submitted by the guest, from 1 (worst) to 5 (best).
+
   review_text:
     #This description was pulled from dbt.
     description: Free-text review written by the customer.
