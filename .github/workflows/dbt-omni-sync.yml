@@ -1,0 +1,40 @@
+name: dbt → Omni Sync
+
+on:
+  # Manually trigger from the GitHub Actions UI
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install dbt-bigquery requests
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v1
+        with:
+          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
+
+      - name: Run dbt compile
+        run: dbt compile --no-partial-parse
+
+      - name: Sync descriptions to Omni
+        run: python3 sync.py
+        env:
+          OMNI_API_KEY: ${{ secrets.OMNI_API_KEY }}
+
+      - name: Refresh Coda data dictionary
+        run: python3 generate_docs.py
+        env:
+          OMNI_API_KEY: ${{ secrets.OMNI_API_KEY }}
+          CODA_API_KEY: ${{ secrets.CODA_API_KEY }}

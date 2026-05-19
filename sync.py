@@ -13,8 +13,8 @@ OMNI_BASE_URL = f"https://headout.omniapp.co/api/v1/models/{OMNI_MODEL_ID}"
 # Add more entries here as you onboard additional models
 MODEL_TO_FILE_KEY = {
     "fct_reviews": "headout-dev.dbt_riyansh/fct_reviews.view",
-    "test_field_pilot": "headout-dev.dbt_riyansh/test_field_pilot.view",
-    "test_cities_revenue": "headout-dev.dbt_riyansh/test_cities_revenue.view",
+    # "test_field_pilot": "headout-dev.dbt_riyansh/test_field_pilot.view",
+    # "test_cities_revenue": "headout-dev.dbt_riyansh/test_cities_revenue.view",
 }
 
 DBT_SECTION_MARKER = "#The info below was pulled from your dbt repository"
