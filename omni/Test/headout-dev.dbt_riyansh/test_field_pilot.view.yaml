@@ -14,9 +14,10 @@ dimensions:
 
   city_name:
     label: City Name [OMNI OVERRIDE TEST 10]
-    #This description was pulled from dbt.
-    description: OMNI OVERRIDE - Test 13 custom description
 
+    #This description was pulled from dbt.
+    description: Updated city description - Test 2 sync check
+    ai_context: Updated city description - Test 2 sync check
   city_upper:
     sql: UPPER(${city_name})
 
