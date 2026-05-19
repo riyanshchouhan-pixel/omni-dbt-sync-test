@@ -28,7 +28,7 @@ models:
         description: "Bhopal-The City of Lakes"
 
       - name: country_name
-        description: "Country where the reviewed experience took place."
+        description: "india"
 
       - name: rating
         description: "changed in dbt"
