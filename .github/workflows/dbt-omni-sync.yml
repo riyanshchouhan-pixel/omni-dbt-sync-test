@@ -18,15 +18,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install dbt-bigquery requests
-
-      - name: Authenticate to Google Cloud
-        uses: google-github-actions/auth@v1
-        with:
-          credentials_json: ${{ secrets.GCP_CREDENTIALS }}
-
-      - name: Run dbt compile
-        run: dbt compile --no-partial-parse
+        run: pip install requests
 
       - name: Sync descriptions to Omni
         run: python3 sync.py
