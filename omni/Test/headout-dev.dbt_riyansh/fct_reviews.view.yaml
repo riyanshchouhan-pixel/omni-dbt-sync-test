@@ -10,8 +10,8 @@ table_name: fct_reviews
 dimensions:
   review_id:
     format: ID
-    #This description was pulled from dbt.
-    description: Unique identifier for each review, same as booking id.
+    description: riyansh
+    ai_context: riyansh
 
   experience_id:
     format: ID
