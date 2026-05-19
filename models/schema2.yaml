@@ -31,7 +31,7 @@ models:
         description: "India "
 
       - name: rating
-        description: "changed in dbt at 12:57"
+        description: "changed in dbt "
 
       - name: review_text
         description: "Free-text review written by the customer."
