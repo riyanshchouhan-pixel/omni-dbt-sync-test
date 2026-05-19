@@ -11,24 +11,25 @@ dimensions:
   review_id:
     format: ID
     description: riyansh
-    ai_context: RC
+    ai_context: riyansh
 
   experience_id:
     format: ID
     #This description was pulled from dbt.
     description: ID of the headout experience being reviewed.
-    ai_context: ID of the changed in omni
+    ai_context: ID of the headout experience being reviewed.
 
   booking_id:
     format: ID
-    description: Booking ID for the booking changed in omni
+    #This description was pulled from dbt.
+    description: Booking ID for the booking that was reviewed.
     ai_context: Booking ID for the booking that was reviewed.
 
   customer_id:
     format: ID
     #This description was pulled from dbt.
     description: ID of the customer who submitted the review.
-    ai_context: ID of the.
+    ai_context: ID of the customer who submitted the review.
 
   city_name:
     #This description was pulled from dbt.
