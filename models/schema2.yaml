@@ -28,19 +28,19 @@ models:
         description: "Bhopal-The City of Lakes"
 
       - name: country_name
-        description: "United states of America "
+        description: "India "
 
       - name: rating
         description: "changed in dbt at 12:57"
 
       - name: review_text
-        description: "Free-text review written by the customer at 12:59."
+        description: "Free-text review written by the customer."
 
       - name: is_verified
         description: "Whether the review has been verified as coming from a confirmed booking."
 
       - name: review_date
-        description: "Date on which the review was submitted.at 12:59"
+        description: "Date on which the review was submitted."
 
       - name: reviewed_at
         description: "Timestamp (UTC) at which the review was submitted."
