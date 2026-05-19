@@ -6,19 +6,29 @@ schema: analytics_reporting
 table_name: dim_sub_categories
 
 dimensions:
-  created_at: {}
-  sub_category_name: {}
-  sub_category_rank: {}
   category_name: {}
-  tour_groups: {}
   experiences: {}
   language_content_data: {}
 
   sub_category_id:
     format: ID
+    description: unique id for each tour on Headout
+
+  created_at:
+    description: timestamp (utc) at which the sub-category was created
+
+  sub_category_name:
+    description: name of the sub-category
+
+  sub_category_rank:
+    description: rank of the sub-category amongst all categories
 
   category_id:
     format: ID
+    description: the associated category_id with the sub-category
+
+  tour_groups:
+    description: an array of tour groups the sub-category is mapped to
 
   tour_groups_tour_group_id:
     sql: tour_group_id
