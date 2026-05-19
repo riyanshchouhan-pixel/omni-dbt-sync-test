@@ -29,7 +29,7 @@ dimensions:
     description: ID of the customer who submitted the review.
 
   city_name:
-    description: Bhopal
+    description: Bangalore
     ai_context: Bangalore
 
   country_name:
