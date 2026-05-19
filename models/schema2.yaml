@@ -25,7 +25,7 @@ models:
         description: "ID of the customer who submitted the review."
 
       - name: city_name
-        description: "Bhopal-The City of Lakes"
+        description: "Bangalore"
 
       - name: country_name
         description: "india"
