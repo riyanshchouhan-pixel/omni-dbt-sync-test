@@ -11,11 +11,13 @@ dimensions:
     format: ID
     #This description was pulled from dbt.
     description: Sync test description for test_id
+    ai_context: Sync test description for test_id
 
   city_name:
     label: City Name [OMNI OVERRIDE TEST 10]
     #This description was pulled from dbt.
     description: OMNI OVERRIDE - Test 13 custom description
+    ai_context: OMNI OVERRIDE - Test 13 custom description
 
   city_upper:
     sql: UPPER(${city_name})
@@ -24,10 +26,12 @@ dimensions:
     #This description was pulled from dbt.
     description: Sync test description for revenue
     hidden: true
+    ai_context: Sync test description for revenue
 
   country_name:
     #This description was pulled from dbt.
     description: Sync test description for country
+    ai_context: Sync test description for country
 
 measures:
   count:
