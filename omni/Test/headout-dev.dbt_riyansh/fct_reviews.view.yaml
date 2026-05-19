@@ -29,9 +29,8 @@ dimensions:
     description: ID of the customer who submitted the review.
 
   city_name:
-    #This description was pulled from dbt.
-    description: Bhopal-The City of Lakes
-    ai_context: Bhopal-The City of Lakes
+    description: Bangalore
+    ai_context: Bangalore
 
   country_name:
     #This description was pulled from dbt.
