@@ -10,9 +10,8 @@ table_name: fct_reviews
 dimensions:
   review_id:
     format: ID
-    #This description was pulled from dbt.
-    description: Unique identifier for each review, same as booking id.
-    ai_context: Unique identifier for each review, same as booking id.
+    description: riyansh
+    ai_context: riyansh
 
   experience_id:
     format: ID
@@ -35,24 +34,24 @@ dimensions:
     ai_context: Bhopal-The City of Lakes
 
   country_name:
-    #This description was pulled from dbt.
-    description: Country where the reviewed experience took place.
+    description: United states of America
+    ai_context: United states of America
 
   rating:
-    description: changed in dbt
-    ai_context: changed in dbt
+    description: changed in dbt at 12:57
+    ai_context: changed in dbt at 12:57
 
   review_text:
-    #This description was pulled from dbt.
-    description: Free-text review written by the customer.
+    description: Free-text review written by the customer at 12:59.
+    ai_context: Free-text review written by the customer at 12:59.
 
   is_verified:
     #This description was pulled from dbt.
     description: Whether the review has been verified as coming from a confirmed booking.
 
   review_date:
-    #This description was pulled from dbt.
-    description: Date on which the review was submitted.
+    description: Date on which the review was submitted.at 12:59
+    ai_context: Date on which the review was submitted.at 12:59
 
   reviewed_at:
     #This description was pulled from dbt.
