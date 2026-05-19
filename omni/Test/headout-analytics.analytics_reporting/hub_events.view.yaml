@@ -1,0 +1,35 @@
+# Reference this view as headout_analytics_analytics_reporting__hub_events
+description: None
+
+catalog: headout-analytics
+schema: analytics_reporting
+table_name: hub_events
+
+dimensions:
+  supply_partner_user_role: {}
+  supply_partner_user_city: {}
+  supply_partner_user_country: {}
+
+  event_id:
+    format: ID
+    description: event primary key created for this table, basically the _sdc_primary_key
+
+  event_received_at:
+    description: timestamp at which the event was triggered
+
+  event_name:
+    description: event name
+
+  supply_partner_billing_entity_id:
+    format: ID
+    description: billing entity ID of the supply partner who triggered the event
+
+  supply_partner_user_id:
+    format: ID
+
+  supply_partner_user_name:
+    description: name of the supply partner who triggered the event
+
+measures:
+  count:
+    aggregate_type: count
