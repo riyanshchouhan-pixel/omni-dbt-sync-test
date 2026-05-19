@@ -8,7 +8,7 @@ models:
 
     columns:
       - name: review_id
-        description: "Unique identifier for each review, same as booking id."
+        description: "riyansh"
         tests:
           - not_null
           - unique
