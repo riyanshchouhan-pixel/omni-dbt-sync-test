@@ -29,14 +29,14 @@ dimensions:
     description: ID of the customer who submitted the review.
 
   city_name:
-    #This description was pulled from dbt.
-    description: Bhopal-The City of Lakes
+    description: Bangalore-Silicon Valley of India
 
   country_name:
     #This description was pulled from dbt.
     description: Country where the reviewed experience took place.
 
   rating:
+    #This description was pulled from dbt.
     description: changed in omni Rating submitted by the guest, from 1 (worst) to 5 (best).
 
   review_text:

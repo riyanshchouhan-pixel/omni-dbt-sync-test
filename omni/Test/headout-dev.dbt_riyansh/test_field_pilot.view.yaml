@@ -14,6 +14,7 @@ dimensions:
 
   city_name:
     label: City Name [OMNI OVERRIDE TEST 10]
+    #This description was pulled from dbt.
     description: OMNI OVERRIDE - Test 13 custom description
 
   city_upper:
