@@ -13,6 +13,8 @@ dimensions:
     description: Sync test description for test_id
 
   city_name:
+    #This description was pulled from dbt.
+    description: Updated city description - Test 2 sync check
     label: City Name [OMNI OVERRIDE TEST 10]
     description: OMNI OVERRIDE - Test 13 custom description
 
