@@ -17,16 +17,19 @@ dimensions:
     format: ID
     #This description was pulled from dbt.
     description: ID of the headout experience being reviewed.
+    ai_context: ID of the headout experience being reviewed.
 
   booking_id:
     format: ID
     #This description was pulled from dbt.
     description: Booking ID for the booking that was reviewed.
+    ai_context: Booking ID for the booking that was reviewed.
 
   customer_id:
     format: ID
     #This description was pulled from dbt.
     description: ID of the customer who submitted the review.
+    ai_context: ID of the customer who submitted the review.
 
   city_name:
     #This description was pulled from dbt.
@@ -48,6 +51,7 @@ dimensions:
   is_verified:
     #This description was pulled from dbt.
     description: Whether the review has been verified as coming from a confirmed booking.
+    ai_context: Whether the review has been verified as coming from a confirmed booking.
 
   review_date:
     description: Date on which the review was submitted.at 12:59
@@ -56,14 +60,17 @@ dimensions:
   reviewed_at:
     #This description was pulled from dbt.
     description: Timestamp (UTC) at which the review was submitted.
+    ai_context: Timestamp (UTC) at which the review was submitted.
 
   experience_price:
     #This description was pulled from dbt.
     description: Price of the experience at the time of booking.
+    ai_context: Price of the experience at the time of booking.
 
   review_count:
     #This description was pulled from dbt.
     description: Always 1 at row level — use SUM to aggregate.
+    ai_context: Always 1 at row level — use SUM to aggregate.
 
 measures:
   count:
