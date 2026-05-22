@@ -39,10 +39,11 @@ def _gh_headers():
 
 
 # Fetch a file from headout/omni-analytics; returns (yaml_str, file_sha)
-def get_file_from_github(file_path):
+def get_file_from_github(file_path, ref=None):
     encoded_path = requests.utils.quote(file_path, safe="/")
-    url  = f"{GITHUB_API}/repos/{GITHUB_REPO}/contents/{encoded_path}"
-    resp = requests.get(url, headers=_gh_headers(), timeout=30)
+    url    = f"{GITHUB_API}/repos/{GITHUB_REPO}/contents/{encoded_path}"
+    params = {"ref": ref} if ref else {}
+    resp   = requests.get(url, headers=_gh_headers(), params=params, timeout=30)
     resp.raise_for_status()
     data    = resp.json()
     content = base64.b64decode(data["content"]).decode("utf-8")
@@ -96,6 +97,50 @@ def create_pull_request(branch_name, title, body):
     pr = resp.json()
     print(f"✅ PR created: {pr['html_url']}")
     return pr["html_url"]
+
+
+# ── Open PR deduplication ─────────────────────────────────────────────────────
+
+# Returns a set of (file_path, omni_field) pairs already covered by open dbt-sync PRs
+def get_already_synced_fields(files_to_check, dbt_descriptions_by_file):
+    already_synced = set()
+
+    # List all open PRs with dbt-sync/ branches
+    url  = f"{GITHUB_API}/repos/{GITHUB_REPO}/pulls"
+    resp = requests.get(url, headers=_gh_headers(), params={"state": "open", "per_page": 50}, timeout=30)
+    resp.raise_for_status()
+    open_prs = resp.json()
+
+    sync_prs = [pr for pr in open_prs if pr["head"]["ref"].startswith("dbt-sync/")]
+    if not sync_prs:
+        return already_synced
+
+    print(f"  Found {len(sync_prs)} open dbt-sync PR(s) — checking for duplicate changes...")
+
+    for pr in sync_prs:
+        branch = pr["head"]["ref"]
+        pr_url = pr["html_url"]
+        print(f"  Checking {pr_url} (branch: {branch})")
+
+        for file_path, dbt_descs_by_omni_field in dbt_descriptions_by_file.items():
+            try:
+                yaml_on_branch, _ = get_file_from_github(file_path, ref=branch)
+            except Exception:
+                continue  # file might not exist on that branch yet
+
+            fields_on_branch = parse_omni_fields(yaml_on_branch)
+
+            for omni_field, expected_desc in dbt_descs_by_omni_field.items():
+                fd = fields_on_branch.get(omni_field)
+                if not fd:
+                    continue
+                # If both description and ai_context already match dbt on this branch,
+                # the open PR already covers this change — skip it
+                if fd.get("description") == expected_desc and fd.get("ai_context") == expected_desc:
+                    print(f"    ↩ Skipping {omni_field} — already in open PR {pr_url}")
+                    already_synced.add((file_path, omni_field))
+
+    return already_synced
 
 
 # ── dbt manifest parsing ──────────────────────────────────────────────────────
@@ -290,9 +335,30 @@ def main():
         print("\n✅ No differences found. Everything in sync.")
         return
 
+    # Build a lookup of { file_path: { omni_field: expected_dbt_desc } } for dedup check
+    dbt_descs_by_file = {
+        file_path: {c["omni_field"]: c["dbt_desc"] for c in file_data["changes"]}
+        for file_path, file_data in files_to_update.items()
+    }
+
+    print("\nChecking open dbt-sync PRs for duplicate changes...")
+    already_synced = get_already_synced_fields(files_to_update, dbt_descs_by_file)
+
+    # Remove fields already covered by an open PR
+    for file_path in list(files_to_update.keys()):
+        files_to_update[file_path]["changes"] = [
+            c for c in files_to_update[file_path]["changes"]
+            if (file_path, c["omni_field"]) not in already_synced
+        ]
+        if not files_to_update[file_path]["changes"]:
+            del files_to_update[file_path]
+
+    if not files_to_update:
+        print("\n✅ All differences are already covered by open PR(s). Nothing new to raise.")
+        return
+
     total = sum(len(v["changes"]) for v in files_to_update.values())
-    print(f"\n{total} difference(s) found across {len(files_to_update)} file(s).")
-    print("Creating GitHub branch and PR...\n")
+    print(f"\n{total} new difference(s) to sync. Creating GitHub branch and PR...\n")
 
     timestamp   = datetime.now().strftime("%Y-%m-%d-%H-%M")
     branch_name = f"dbt-sync/{timestamp}"
